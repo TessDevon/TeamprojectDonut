@@ -54,6 +54,10 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
+                    <br>
+                    <button id="subtract">-</button>
+                    <input type="number" value="o" id="currentCount">
+                    <button id="add">+</button>
                 </div>
             </article>
             <article>
@@ -66,6 +70,10 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
+                    <br>
+                    <button id="subtract">-</button>
+                    <input type="number" value="o" id="currentCount">
+                    <button id="add">+</button>
                 </div>
             </article>
             <article>
@@ -78,6 +86,10 @@
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
+                    <br>
+                    <button id="subtract">-</button>
+                    <input type="number" value="o" id="currentCount">
+                    <button id="add">+</button>
                 </div>
             </article>
             <article>
@@ -90,6 +102,10 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
+                    <br>
+                    <button id="subtract">-</button>
+                    <input type="number" value="o" id="currentCount">
+                    <button id="add">+</button>
                 </div>
             </article>
             <article>
@@ -102,6 +118,10 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
+                    <br>
+                    <button id="subtract">-</button>
+                    <input type="number" value="o" id="currentCount">
+                    <button id="add">+</button>
                 </div>
             </article>
             <article>
@@ -114,6 +134,10 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
+                    <br>
+                    <button id="subtract">-</button>
+                    <input type="number" value="o" id="currentCount">
+                    <button id="add">+</button>
                 </div>
             </article>
             <article>
@@ -126,6 +150,10 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
+                    <br>
+                    <button id="subtract">-</button>
+                    <input type="number" value="o" id="currentCount">
+                    <button id="add">+</button>
                 </div>
             </article>
             <article>
@@ -138,6 +166,10 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
+                    <br>
+                    <button id="subtract">-</button>
+                    <input type="number" value="o" id="currentCount">
+                    <button id="add">+</button>
                 </div>
             </article>
             <article>
@@ -150,6 +182,10 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
+                    <br>
+                    <button id="subtract">-</button>
+                    <input type="number" value="o" id="currentCount">
+                    <button id="add">+</button>
                 </div>
             </article>
             <article>
@@ -162,20 +198,123 @@
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
+                    <br>
+                    <button id="subtract">-</button>
+                    <input type="number" value="o" id="currentCount">
+                    <button id="add">+</button>
                 </div>
             </article>
         </section>
         <section>
             <h2>Övrig info</h2>
+            <ul>
+                <li>10% rabatt vid köp av 10 munkar av samma smak</li>
+                <li>Fri frakt vid fler än 15 munkar</li>
+                <li>Vid</li>
+                <li>25 kr rabatt tisdagar jämna veckor om ni köper för mer än 25 kr </li>
+                <li>Leveranstid 30 minuter från lagd beställning</li>
+                <li>Undantag på leveranstid <br> 
+                    På helger: leveranstid 1,5 h efter lagd beställning <br> 
+                    Mellan 22-06: leverantid 45 minuter efter lagd beställning <br> 
+                    Sker beställningen pån fredagar mellan 11-13 levereras munkarna kl 15 </li>
+                <li>På lucia tillkommer en smarrig luciamunk till din beställning</li>
+            </ul>
         </section>
         <section>
-            <h2>Varukorg</h2>
+            <h2>Varukorg</h2> <!--På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".-->
+            <h3>Valda produkter</h3>
+            <h3>Antal</h3>
+            <h3>Delsumma</h3>
+            <button>Använd rabattkod</button> <!--Litet formulär där de ska kunna fylla i koden, nån label kanske-->
+            <h3>Sammanställning</h3>
+            <p>Totlatsumma</p>
+            <p>Dragenrabatt</p>
+            <p>Summa att betala</p>
+            <!--bilder på de beställda munkarna
+            info om munken som är vald, namn och pris
+            antal knappar som ska kopplas ihop med de andra
+            Kryss knapp så man kan ta bort en sort av munk
+           totalsumma 
+           Dragen rabatt
+           Summa att betala
+            Rabbatkod-->
         </section>
         <section>
             <h2>Kundformulär</h2>
+            <form action="">
+                <label for="">
+                    Förnamn 
+                    <input type="text" id="name"> 
+                </label>
+                <br>
+                <label for="">
+                    Efternamn 
+                    <input type="text" id="lastname">
+                </label>
+                <br>
+                <label for=""> 
+                    Gatuadress
+                    <input type="text" id="adress">
+                </label>
+                <br>
+                <label for="">
+                    Postnummer
+                    <input type="number" id="postnumber">
+                </label>
+                <br>
+                <label for="">
+                    Postort
+                    <input type="text" id="city">
+                </label>
+                <br>
+                <label for="">
+                    Portkod
+                    <input type="number" id="doorCode">
+                </label>
+                <br>
+                <label for="">
+                    Telefonnummer
+                    <input type="number" id="phonenumber">
+                </label>
+                <br>
+                <label for="">
+                    Epost
+                    <input type="email" id="email">
+                </label>
+                <br>
+                <label for="">
+                    Godkännande av behandling av personuppgifter
+                    <input type="checkbox" name="gdpr" id="gdpr">
+                </label>
+                <br>
+                <label for="">
+                    Prenumerera på vårt nyhetsbrev
+                    <input type="checkbox" name="news" id="news">
+                </label>
+                <br>
+                <p>Betalsätt</p>
+                <label for="">
+                    Kort
+                    <input type="radio" id="creditcard" name="waysToPay" value="creditcard">
+                </label>
+                <label for="">
+                    Faktura
+                    <input type="radio" id="invoice" name="waysToPay" value="invoice"> 
+                </label> <!--vid faktura fält med personnr, ska valideras-->
+                <br>
+                <br>
+                <input type="submit" value="submit">
+                <input type="reset" value="reset">
+            </form>
         </section>
     </main>
-    
+    <footer>
+        <address>
+            <a href="">Epost: gottfridsmunkar@gmail.com</a>
+            <a href="">Telefonnummer: 08-6343030 </a>
+            Måsvägen 4, Stockholm
+        </address>
+    </footer>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

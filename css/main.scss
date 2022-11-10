@@ -1,6 +1,14 @@
 @import "normalize.scss"; /*Här har vi inportera normalize!!*/
 
+@import '../style/base';   
 
+@media screen and (min-width: 800px){
+    @import '../style/tablet';
+}
+
+@media screen and (min-width: 1400px){
+    @import '../style/desctop';
+}
 
 
 
