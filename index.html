@@ -220,15 +220,17 @@
         </section>
         <section class="section_bucket">
                 <div class="bucket">
-                <h2>Varukorg</h2> <!--På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".-->
-                <h3>Valda produkter</h3>
-                <h3>Antal</h3>
-                <h3>Delsumma</h3>
-                <button>Använd rabattkod</button> <!--Litet formulär där de ska kunna fylla i koden, nån label kanske-->
-                <h3>Sammanställning</h3>
-                <p>Totlatsumma</p>
-                <p>Dragenrabatt</p>
-                <p>Summa att betala</p>
+                <h2 class="middlepart_h2">Varukorg</h2> <!--På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".-->
+                <div class="main_heading_bucket">    
+                    <h3 class="bucket_heading">Valda produkter</h3>
+                    <h3 class="bucket_heading_none">Antal</h3>
+                    <h3 class="bucket_heading">Delsumma</h3>
+                </div>
+                <button class="discount_button">Använd rabattkod</button> <!--Litet formulär där de ska kunna fylla i koden, nån label kanske-->
+                <h3 class="bucket_heading_none">Sammanställning</h3>
+                <p class="bucket_heading">Totaltsumma</p>
+                <p class="bucket_heading">Dragen rabatt</p>
+                <p class="summery">Summa att betala</p>
                 <!--bilder på de beställda munkarna
                 info om munken som är vald, namn och pris
                 antal knappar som ska kopplas ihop med de andra
@@ -241,58 +243,57 @@
         </section>
         <section class="section-form">
             <div class="checkout_form">
-                <h2>Kundformulär</h2>
+                <h2 class="middlepart_h2">Kundformulär</h2>
                 <form action="">
                     <label for="">
                         Förnamn 
-                        <input type="text" id="name"> 
+                        <input required class="input_group" type="text" id="name"> 
                     </label>
-                    <br><br>
+                    <br>
                     <label for="">
                         Efternamn 
-                        <input type="text" id="lastname">
+                        <input required class="input_group" type="text" id="lastname">
                     </label>
-                    <br><br>
+                    <br>
                     <label for=""> 
                         Gatuadress
-                        <input type="text" id="adress">
+                        <input required class="input_group" type="text" id="adress">
                     </label>
-                    <br><br>
+                    <br>
                     <label for="">
                         Postnummer
-                        <input type="number" id="postnumber">
+                        <input required class="input_group" type="number" id="postnumber">
                     </label>
-                    <br><br>
+                    <br>
                     <label for="">
                         Postort
-                        <input type="text" id="city">
+                        <input required class="input_group" type="text" id="city">
                     </label>
-                    <br><br>
+                    <br>
                     <label for="">
                         Portkod
-                        <input type="number" id="doorCode">
+                        <input class="input_group" type="number" id="doorCode">
                     </label>
-                    <br><br>
+                    <br>
                     <label for="">
                         Telefonnummer
-                        <input type="number" id="phonenumber">
+                        <input required class="input_group" type="number" id="phonenumber">
                     </label>
-                    <br><br>
+                    <br>
                     <label for="">
                         Epost
-                        <input type="email" id="email">
+                        <input required class="input_group" type="email" id="email">
                     </label>
-                    <br><br>
+                    <br>
                     <label for="">
                         Godkännande av behandling av personuppgifter
-                        <input type="checkbox" name="gdpr" id="gdpr">
+                        <input required class="input_group" type="checkbox" name="gdpr" id="gdpr">
                     </label>
-                    <br><br>
+                    <br>
                     <label for="">
                         Prenumerera på vårt nyhetsbrev
                         <input type="checkbox" name="news" id="news">
                     </label>
-                    <br><br>
                     <p>Betalsätt</p>
                     <label for="">
                         Kort
@@ -304,8 +305,8 @@
                     </label> <!--vid faktura fält med personnr, ska valideras-->
                     <br>
                     <br>
-                    <input type="submit" value="submit">
-                    <input type="reset" value="reset">
+                    <input class="reset_form_button" type="reset" value="Rensa formulär">
+                    <input class="submit_form_button" type="submit" value="Skicka">
                 </form>
             </div>
         </section>
