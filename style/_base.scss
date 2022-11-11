@@ -7,7 +7,7 @@
 -------------------Dounat card-----------------------------
 ----------------------------------------------------------*/
 
-.dounatCard {
+.donutCard {
     background-color: pink;
     max-width: 400px;
     min-width: 100px;
@@ -18,45 +18,46 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.dounatCardHeaderContainer{
+.donutCardHeaderContainer{
    height: 100px;
    text-align: center;
 }
 
-.dounatCardHeaderContainer h3{
+.donutCardHeaderContainer h3{
     line-height: 100px;
     font-size: 2rem;
     font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px #ffffff;
 }
 
-.dounutCardImgContainer{
+.donutCardImgContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.dounutCardImgContainer img{
+.donutCardImgContainer img{
     width: 100%;
     max-width: 150px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.dounatCardContainer img.dounatCardImg2{
+.donutCardContainer img.donutCardImg2{
     display: none;
 }
 
-.dounutCardImgContainer p{
+.donutCardImgContainer p{
     font-size: 1.3rem;
 }
 
-.dounutCardRating{
+.donutCardRating{
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.dounutCardRating span{
+.donutCardRating span{
     margin-left: 2px;
     margin-right: 2px;
     font-size: 1.5rem;
@@ -66,13 +67,13 @@
     color: yellow;
 }
 
-.dounatCardButtonContainer{
+.donutCardButtonContainer{
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.dounatCardButtonContainer button{
+.donutCardButtonContainer button{
     margin-left: 10px;
     margin-right: 10px;
     height: 40px;
@@ -85,9 +86,98 @@
     border-radius: 5px;
 }
 
-.dounatCardButtonContainer input{
+.donutCardButtonContainer input{
     width: 70px;
     height: 40px;
     border-radius: 5px;
     border: grey 2px solid;
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+ }
+
+/*---------------------------------------------------------
+-------------------Information ----------------------------
+----------------------------------------------------------*/
+
+.informationText{
+    background-color: lightblue;
+    min-height: 750px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.informationTextHeaderContainer{
+    height: 80px;
+    text-align: center;
+}
+
+.informationTextHeaderContainer h2{
+    line-height: 80px;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px #ffffff;
+}
+
+.informationUlContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.informationUlText{
+    list-style:none;
+    font-size: 1.1rem;
+    text-align: center;
+    padding:0;
+}
+
+.informationUlText li{
+    margin-top: 10px;
+    max-width: 550px;
+    min-height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(245, 239, 239);
+    padding: 1px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 1px #ffffff;
+}
+
+.informationUlIcons{
+    list-style:none;
+    font-size: 2rem;
+    text-align: center;
+    padding: 0;
+}
+
+.informationUlIcons li{
+    margin-top: 10px;
+    max-width: 60px;
+    min-height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-sack-dollar{
+    color: rgb(138, 123, 38);
+}
+
+.fa-truck-fast{
+    color: rgb(9, 9, 70);
 }
