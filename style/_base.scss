@@ -6,13 +6,13 @@
     font-size: 5.5vw;
 }
 
-.section_bucket{
+.section_basket{
     background-color: rgb(248, 219, 242); /*Variabel som följer temat!?*/
     padding: 10px 15px;
 
 }
 
-.bucket{
+.basket{
     background-color: white;
     border: 1px solid black;
     border-radius: 10px;
@@ -21,17 +21,17 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.main_heading_bucket{
+.main_heading_basket{
     display: flex;
     justify-content: space-between;
 }
 
-.bucket_heading{
+.basket_heading{
     font-size: 4.5vw;
     
 }
 
-.bucket_heading_none{
+.basket_heading_none{
     display: none;         /*ev annan lösning men går så länge*/
 }
 
