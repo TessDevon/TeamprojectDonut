@@ -6,10 +6,14 @@
     font-size: 5.5vw;
 }
 
+.discount_button{  
+    cursor: pointer;
+    font-size: smaller;
+}
+
 .section_basket{
     background-color: rgb(248, 219, 242); /*Variabel som följer temat!?*/
     padding: 10px 15px;
-
 }
 
 .basket{
@@ -96,17 +100,22 @@ label{
 }
 
 .reset_form_button{
+    font-size: larger;
     background-color:  rgb(248, 219, 242);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
     border-radius: 5px;
     font-size: 4.5;
+    cursor: pointer;
+    margin-right: 7vw;
 }
 
 
 
 .submit_form_button{
+    font-size: larger;
     background-color: rgb(195, 237, 195);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
     border-radius: 5px;
     font-size: 4.5;
+    cursor: pointer;
 }
 
 
