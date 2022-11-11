@@ -218,98 +218,102 @@
                 <li>På lucia tillkommer en smarrig luciamunk till din beställning</li>
             </ul>
         </section>
-        <section class="section_basket">
-                <div class="basket">
-                <h2 class="middlepart_h2">Varukorg</h2> <!--På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".-->
-                <div class="main_heading_bucket">    
-                    <h3 class="basket_heading">Valda produkter</h3>
-                    <h3 class="basket_heading_none">Antal</h3>
-                    <h3 class="basket_heading">Delsumma</h3>
-                </div>
-                <button class="discount_button">Använd rabattkod</button> <!--Litet formulär där de ska kunna fylla i koden, nån label kanske-->
-                <h3 class="basket_heading_none">Sammanställning</h3>
-                <p class="basket_heading">Totaltsumma</p>
-                <p class="basket_heading">Dragen rabatt</p>
-                <p class="summery">Summa att betala</p>
-                <!--bilder på de beställda munkarna
-                info om munken som är vald, namn och pris
-                antal knappar som ska kopplas ihop med de andra
-                Kryss knapp så man kan ta bort en sort av munk
-                totalsumma 
-                Dragen rabatt
-                Summa att betala
-                Rabbatkod-->
+            <div class="middlepart_container">
+                <section class="section_basket">
+                    <div class="basket">
+                            <h2 class="middlepart_h2">Varukorg</h2> <!--På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".-->
+                        <div class="main_heading_basket">    
+                            <h3 class="basket_heading">Valda produkter</h3>
+                            <h3 class="basket_heading_none">Antal</h3>
+                            <h3 class="basket_heading">Delsumma</h3>
+                        </div>
+                        <button class="discount_button">Använd rabattkod</button> <!--Litet formulär där de ska kunna fylla i koden, nån label kanske-->
+                        <div class="basket_sum">
+                            <h3 class="basket_heading_none">Sammanställning</h3>
+                            <p class="basket_heading">Totaltsumma</p>
+                            <p class="basket_heading">Dragen rabatt</p>
+                            <p class="summery">Summa att betala</p>
+                        </div>
+                        <!--bilder på de beställda munkarna
+                        info om munken som är vald, namn och pris
+                        antal knappar som ska kopplas ihop med de andra
+                        Kryss knapp så man kan ta bort en sort av munk
+                        totalsumma 
+                        Dragen rabatt
+                        Summa att betala
+                        Rabbatkod-->
+                    </div>
+                </section>
+                <section class="section-form">
+                    <div class="checkout_form">
+                        <h2 class="middlepart_h2">Kundformulär</h2>
+                        <form action="">
+                            <label for="">
+                                Förnamn 
+                                <input required class="input_group" type="text" id="name"> 
+                            </label>
+                            <br>
+                            <label for="">
+                                Efternamn 
+                                <input required class="input_group" type="text" id="lastname">
+                            </label>
+                            <br>
+                            <label for=""> 
+                                Gatuadress
+                                <input required class="input_group" type="text" id="adress">
+                            </label>
+                            <br>
+                                <label for="">
+                                Postnummer
+                                <input required class="input_group" type="number" id="postnumber">
+                            </label>
+                            <br>
+                            <label for="">
+                                Postort
+                                <input required class="input_group" type="text" id="city">
+                            </label>
+                            <br>
+                            <label for="">
+                                Portkod
+                                <input class="input_group" type="number" id="doorCode">
+                            </label>
+                            <br>
+                            <label for="">
+                                Telefonnummer
+                                <input required class="input_group" type="number" id="phonenumber">
+                            </label>
+                            <br>
+                            <label for="">
+                                Epost
+                                <input required class="input_group" type="email" id="email">
+                            </label>
+                            <br>
+                            <label for="">
+                                Godkännande av behandling av personuppgifter
+                                <input required class="input_group" type="checkbox" name="gdpr" id="gdpr">
+                            </label>
+                            <br>
+                            <label for="">
+                                Prenumerera på vårt nyhetsbrev
+                                <input type="checkbox" name="news" id="news">
+                            </label>
+                            <p>Betalsätt</p>
+                            <label for="">
+                                Kort
+                                <input type="radio" id="creditcard" name="waysToPay" value="creditcard">
+                            </label>
+                            <label for="">
+                                Faktura
+                                <input type="radio" id="invoice" name="waysToPay" value="invoice"> 
+                            </label> <!--vid faktura fält med personnr, ska valideras-->
+                            <br>
+                            <br>
+                            <input class="reset_form_button" type="reset" value="Rensa formulär">
+                            <input class="submit_form_button" type="submit" value="Skicka">
+                        </form>
+                    </div>
+                </section>
             </div>
-        </section>
-        <section class="section-form">
-            <div class="checkout_form">
-                <h2 class="middlepart_h2">Kundformulär</h2>
-                <form action="">
-                    <label for="">
-                        Förnamn 
-                        <input required class="input_group" type="text" id="name"> 
-                    </label>
-                    <br>
-                    <label for="">
-                        Efternamn 
-                        <input required class="input_group" type="text" id="lastname">
-                    </label>
-                    <br>
-                    <label for=""> 
-                        Gatuadress
-                        <input required class="input_group" type="text" id="adress">
-                    </label>
-                    <br>
-                    <label for="">
-                        Postnummer
-                        <input required class="input_group" type="number" id="postnumber">
-                    </label>
-                    <br>
-                    <label for="">
-                        Postort
-                        <input required class="input_group" type="text" id="city">
-                    </label>
-                    <br>
-                    <label for="">
-                        Portkod
-                        <input class="input_group" type="number" id="doorCode">
-                    </label>
-                    <br>
-                    <label for="">
-                        Telefonnummer
-                        <input required class="input_group" type="number" id="phonenumber">
-                    </label>
-                    <br>
-                    <label for="">
-                        Epost
-                        <input required class="input_group" type="email" id="email">
-                    </label>
-                    <br>
-                    <label for="">
-                        Godkännande av behandling av personuppgifter
-                        <input required class="input_group" type="checkbox" name="gdpr" id="gdpr">
-                    </label>
-                    <br>
-                    <label for="">
-                        Prenumerera på vårt nyhetsbrev
-                        <input type="checkbox" name="news" id="news">
-                    </label>
-                    <p>Betalsätt</p>
-                    <label for="">
-                        Kort
-                        <input type="radio" id="creditcard" name="waysToPay" value="creditcard">
-                    </label>
-                    <label for="">
-                        Faktura
-                        <input type="radio" id="invoice" name="waysToPay" value="invoice"> 
-                    </label> <!--vid faktura fält med personnr, ska valideras-->
-                    <br>
-                    <br>
-                    <input class="reset_form_button" type="reset" value="Rensa formulär">
-                    <input class="submit_form_button" type="submit" value="Skicka">
-                </form>
-            </div>
-        </section>
     </main>
     <footer>
         <address>
