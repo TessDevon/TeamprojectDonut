@@ -1,0 +1,93 @@
+
+*{
+    box-sizing: border-box;
+}
+
+/*---------------------------------------------------------
+-------------------Dounat card-----------------------------
+----------------------------------------------------------*/
+
+.dounatCard {
+    background-color: pink;
+    max-width: 400px;
+    min-width: 100px;
+    width: 100%;
+    height: 450px;
+    margin: 0 auto;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.dounatCardHeaderContainer{
+   height: 100px;
+   text-align: center;
+}
+
+.dounatCardHeaderContainer h3{
+    line-height: 100px;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dounutCardImgContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dounutCardImgContainer img{
+    width: 100%;
+    max-width: 150px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.dounatCardContainer img.dounatCardImg2{
+    display: none;
+}
+
+.dounutCardImgContainer p{
+    font-size: 1.3rem;
+}
+
+.dounutCardRating{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.dounutCardRating span{
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 1.5rem;
+}
+
+.checked{
+    color: yellow;
+}
+
+.dounatCardButtonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.dounatCardButtonContainer button{
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 40px;
+    width: 40px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.dounatCardButtonContainer input{
+    width: 70px;
+    height: 40px;
+    border-radius: 5px;
+    border: grey 2px solid;
+}
