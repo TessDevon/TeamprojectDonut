@@ -64,6 +64,7 @@
 
 .informationTextHeaderContainer{
     height: 100px;
+    margin-left: 100px;
 }
 
 .informationTextHeaderContainer h2{
@@ -81,4 +82,10 @@
 
 .informationUlIcons{
     font-size: 2.5rem;
+}
+
+.informationUlIcons li{
+    display: block;
+    margin-top: 20px;
+    display: flex;
 }

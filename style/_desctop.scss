@@ -1,0 +1,107 @@
+
+/*---------------------------------------------------------
+-------------------------Our donuts------------------------
+----------------------------------------------------------*/
+
+.ourDonuts h2{
+    font-size: 5rem;
+}
+
+/*---------------------------------------------------------
+-------------------Dropdown sorting donuts-----------------
+----------------------------------------------------------*/
+
+.ourDonutsDropdownContainer{
+    max-width: 1270px;
+    margin-bottom: 40px;
+}
+
+.ourDonutsDropdown{
+    font-size: 1.8rem;
+}
+
+.ourDounatsDropdownContent{
+    min-width: 170px;
+    font-size: 1.5rem;
+  }
+
+/*---------------------------------------------------------
+-------------------Dounat card-----------------------------
+----------------------------------------------------------*/
+
+.donutCardWraper{
+    display: grid;
+    grid-template-columns: 345px 345px 345px 345px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.donutCard {
+    width: 270px;
+    margin: 0 auto;
+   margin-bottom: 50px; 
+}
+
+.donutCardHeaderContainer h3{
+    font-size: 2rem;
+}
+
+.donutCardImgContainer p{
+    font-size: 1.3rem;
+}
+
+/*---------------------------------------------------------
+-------------------Information ----------------------------
+----------------------------------------------------------*/
+
+.informationTextHeaderContainer{
+    height: 120px;
+    text-align: center;
+}
+
+.informationTextHeaderContainer h2{
+    line-height: 120px;
+    font-size: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.informationUlText{
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+
+.informationUlIcons{
+    font-size: 2.4rem;
+    margin-top: 0;
+}
+
+.informationUlIcons li{
+    display: block;
+    margin-bottom: 40px;
+    display: flex;
+}
+
+#icon1{
+    margin-top: 90px;
+    margin-bottom: 0;
+}
+
+#icon2{
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+#icon3{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#icon4{
+    margin-top: 20px;
+}
+
+#icon5{
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
