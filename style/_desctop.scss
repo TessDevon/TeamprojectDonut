@@ -32,7 +32,7 @@ label{
     border-radius: 5px;
     font-size: 4.5;
     cursor: pointer;
-    margin-right: 15vw;
+    margin-right: 20vw;
 }
 
 .submit_form_button{
@@ -41,6 +41,16 @@ label{
     border-radius: 5px;
     font-size: 4.5;
     cursor: pointer;
+}
+
+
+label { 
+    display: flex; 
+    gap:20px;
+}
+
+label span {
+    width: 300px;
 }
 
 /*----------------------------------------------------------------------------------------------------
