@@ -1,3 +1,96 @@
+
+
+/*---------------------------------------------------------
+-------------------------Our donuts------------------------
+----------------------------------------------------------*/
+
+.ourDonuts h2{
+    font-size: 4rem;
+}
+
+/*---------------------------------------------------------
+-------------------Dropdown sorting donuts------------------------
+----------------------------------------------------------*/
+
+.ourDounatsDropdownContent{
+    min-width: 180px;
+  }
+  
+.ourDounatsDropdownContent a {
+    color: black;
+    padding: 16px 20px;
+  }
+
+/*---------------------------------------------------------
+-------------------Dounat card-----------------------------
+----------------------------------------------------------*/
+
+.donutCard {
+    max-width: 600px;
+    height: 500px;
+}
+
+.donutCardHeaderContainer h3{
+    font-size: 3rem;
+}
+
+.donutCardImgContainer img{
+    max-width: 190px;
+}
+
+.donutCardImgContainer p{
+    font-size: 1.7rem;
+}
+
+.donutCardRating span{
+    margin-left: 4px;
+    margin-right: 4px;
+    font-size: 1.7rem;
+}
+
+.donutCardButtonContainer button{
+    width: 50px;
+    font-size: 1.9rem;
+    line-height: 35px;
+}
+
+.donutCardButtonContainer input{
+    width: 80px;
+    font-size: 1.8rem;
+}
+
+/*---------------------------------------------------------
+-------------------Information ----------------------------
+----------------------------------------------------------*/
+
+.informationTextHeaderContainer{
+    height: 100px;
+    margin-left: 100px;
+}
+
+.informationTextHeaderContainer h2{
+    line-height: 100px;
+    font-size: 4rem;
+}
+
+.informationUlText{
+    font-size: 1.3rem;
+}
+
+.informationUlText li{
+    max-width: 700px;
+}
+
+.informationUlIcons{
+    font-size: 2.5rem;
+}
+
+.informationUlIcons li{
+    display: block;
+    margin-top: 20px;
+    display: flex;
+}
+
 /*--------------------------------------------------------------------------------------------
 --------------------------Basket--------------------------------------------------------------
 ----------------------------------------------------------------------------------------------*/
@@ -58,6 +151,7 @@ label{
 /*----------------------------------------------------------------------------------------------------
 ----------------------------- Footer -------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------*/
+
 
 
 
