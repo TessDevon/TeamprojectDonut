@@ -124,7 +124,76 @@ label{
 Men är en del att fixa i JS sen. Se i JS- filen.*/
 
 
+
+
+/*---------------------------------------------------------------------------------------------------
+-------------------------------- Header-------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------*/
+header {
+    position: relative;    
+    padding: 20px;
+    color: rgb(21, 123, 134);
+    background-image: url("../images/donut_in_napkin2.jpg");
+    min-height: 50vh;
+    background-size: cover;
+    background-position: center;
+    width: auto;
+    background-repeat: no-repeat;     
+}
+
+h1 {
+    font-family: 'Sofia';   
+    font-size: 4rem;
+    display: block;
+    font-style: italic;
+    text-align: right;
+    position: relative;
+    padding-top: 35px;
+    padding-right: 35px;
+}
+
+
+/*---------------------------------------------------------------------------------------------------
+-------------------------------- Nav-------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------*/
+nav {
+    display: flex;
+    background-color: rgb(5, 54, 71);
+}
+
+nav a {                                   
+    color:rgb(195, 237, 195);               
+    text-decoration: none;
+    padding: 16px;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-left: -20px;
+}
+
+nav a:hover {
+    color: rgb(26, 108, 111);
+}
+
+nav i {
+    text-align: right; 
+    position: fixed;
+    right: 25px;
+    top: 20px;
+    z-index: 2;
+}
+
 /*---------------------------------------------------------------------------------------------------
 -------------------------------- Footer-------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------*/
+footer {
+    background-color:rgb(222, 247, 242);
+    width: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    padding: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    display: flex;    
+}
 
