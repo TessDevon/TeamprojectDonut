@@ -1,4 +1,5 @@
 
+
 *{
     box-sizing: border-box;
 }
@@ -249,3 +250,135 @@ input[type=number] {
 .fa-truck-fast{
     color: rgb(9, 9, 70);
 }
+
+/*-------------------------------------------------------------------------------------------------------------------------------
+--------------------------------- Basket --------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------*/
+
+.middlepart_h2, .summery, .discount_button{  
+    font-size: 5.5vw;
+}
+
+.discount_button{  
+    cursor: pointer;
+    font-size: smaller;
+}
+
+.section_basket{
+    background-color: rgb(248, 219, 242); /*Variabel som följer temat!?*/
+    padding: 10px 15px;
+}
+
+.basket{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main_heading_basket{
+    display: flex;
+    justify-content: space-between;
+}
+
+.basket_heading{
+    font-size: 4.5vw;
+    
+}
+
+.basket_heading_none{
+    display: none;         /*Rubrikerna dolts i mobil*/
+}
+
+.summery{
+    font-weight: 600;
+}
+
+/* I varukorgen i mobil kommer vi nog få hoppa rubriker och infon på munkarna, 
+blir nog för rörigt och plottrigt? Mitt förslag:
+Namn, bild, antal och delsumma vill man ju ha i sammanställningen på rad. 
+Följs sedan av totalsumma, dragen rabatt och Summa att betala. Se nedan.
+
+Varukorg:               Delsumma:
+Namn på munk
+bild
+antal                   Summa
+
+Namn på munk
+bild
+antal                   Summa
+
+Namn på munk
+bild 
+antal                   Summa
+
+Använd rabattkod 
+
+Totalsumma:
+Dragen rabatt:
+Summa att betala:
+*/
+
+
+/*-----------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------  Form   -----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------*/
+
+.section-form{
+    background-image: url(../images/blueberrybackground.jpg);
+    padding: 15px;
+}
+    
+
+.checkout_form{
+    background-color:white;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label{
+    font-size: 4.5vw;
+}
+
+.input_group{
+    display: block;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.reset_form_button{
+    font-size: larger;
+    background-color:  rgb(248, 219, 242);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
+    border-radius: 5px;
+    font-size: 4.5;
+    cursor: pointer;
+    margin-right: 7vw;
+}
+
+
+
+.submit_form_button{
+    font-size: larger;
+    background-color: rgb(195, 237, 195);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
+    border-radius: 5px;
+    font-size: 4.5;
+    cursor: pointer;
+}
+
+
+/*Så gott som klart.
+
+Men är en del att fixa i JS sen. Se i JS- filen.*/
+
+
+/*---------------------------------------------------------------------------------------------------
+-------------------------------- Footer-------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------*/
+
+
