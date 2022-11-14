@@ -5,12 +5,16 @@
 ----------------------------------------------------------*/
 
 .ourDonuts h2{
-    font-size: 5rem;
+    font-size: 4rem;
 }
 
 /*---------------------------------------------------------
 -------------------Dropdown sorting donuts-----------------
 ----------------------------------------------------------*/
+
+.ourDonutsDropBtn{
+    width: 175px;
+}
 
 .ourDonutsDropdownContainer{
     max-width: 1270px;
@@ -111,8 +115,12 @@
 --------------------------Basket--------------------------------------------------------------
 ----------------------------------------------------------------------------------------------*/
 
-.middlepart_h2, .summery, .discount_button, .basket_heading{  
+.summery, .discount_button, .basket_heading{  
     font-size: 1.2vw;
+}
+
+.middlepart_h2 {
+    font-size: 3vw;
 }
 
 .basket_heading_none{

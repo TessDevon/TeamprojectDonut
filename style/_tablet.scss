@@ -8,9 +8,19 @@
     font-size: 4rem;
 }
 
+.donutFlexWrap {
+    display: flex;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
 /*---------------------------------------------------------
 -------------------Dropdown sorting donuts------------------------
 ----------------------------------------------------------*/
+
+.ourDonutsDropBtn{
+    margin-top: 50px;
+}
 
 .ourDounatsDropdownContent{
     min-width: 180px;
@@ -117,8 +127,12 @@
     justify-content: space-between;
 }
 
-.middlepart_h2, .summery, .discount_button, .basket_heading{  
+.summery, .discount_button, .basket_heading{  
     font-size: 2vw;
+}
+
+.middlepart_h2  {
+    font-size: 4vw;
 }
 
 .basket_heading_none{
