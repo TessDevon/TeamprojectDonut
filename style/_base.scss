@@ -47,7 +47,7 @@ nav a {
     text-decoration: none;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    font-size: 1.2rem;
     margin-left: 10px;
 }
 
@@ -249,6 +249,7 @@ input[type=number] {
     background-color: rgb(222, 247, 242);
     min-height: 750px;
     font-family: Arial, Helvetica, sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .informationTextHeaderContainer{
@@ -262,6 +263,7 @@ input[type=number] {
     font-size: 3rem;
     font-family: Arial, Helvetica, sans-serif;
     text-shadow: 1px 1px #ffffff;
+    padding-top: 15px;
 }
 
 .informationUlContainer{
@@ -335,11 +337,12 @@ input[type=number] {
 .section_basket{
     background-color: rgb(248, 219, 242); /*Variabel som följer temat!?*/
     padding: 10px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
 }
 
 .basket{
     background-color: white;
-    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     margin: 5px;
     padding: 15px;
@@ -397,12 +400,13 @@ Summa att betala:
 .section-form{
     background-image: url(../images/blueberrybackground.jpg);
     padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
 }
     
 
 .checkout_form{
     background-color:white;
-    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     margin: 5px;
     padding: 15px;
@@ -424,7 +428,6 @@ label{
     font-size: larger;
     background-color:  rgb(248, 219, 242);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
     border-radius: 5px;
-    font-size: 4.5;
     cursor: pointer;
     margin-right: 7vw;
 }
@@ -435,8 +438,12 @@ label{
     font-size: larger;
     background-color: rgb(195, 237, 195);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
     border-radius: 5px;
-    font-size: 4.5;
     cursor: pointer;
+}
+
+form p {
+    font-size: 5vw;
+    font-weight: bold;
 }
 
 
@@ -456,9 +463,9 @@ footer {
     background-color:rgb(222, 247, 242);
     width: auto;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     padding: 20px;
-    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
     position: relative;
     display: flex;    
 }
