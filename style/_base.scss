@@ -1,5 +1,3 @@
-
-
 *{
     box-sizing: border-box;
 }
@@ -9,21 +7,85 @@ body{
     overflow-x: hidden;
 }
 
+/*---------------------------------------------------------------------------------------------------
+-------------------------------- Header-------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------*/
+header {
+    position: relative;    
+    padding: 20px;
+    color: rgb(21, 123, 134);
+    background-image: url("../images/donut_in_napkin2.jpg");
+    min-height: 50vh;
+    background-size: cover;
+    background-position: center;
+    width: auto;
+    background-repeat: no-repeat;     
+}
+
+h1 {
+    font-family: 'Sofia';   
+    font-size: 4rem;
+    display: block;
+    font-style: italic;
+    text-align: right;
+    position: relative;
+    padding-top: 35px;
+    padding-right: 35px;
+}
+
+
+/*---------------------------------------------------------------------------------------------------
+-------------------------------- Nav-------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------*/
+nav {
+    display: flex;
+    background-color: rgb(5, 54, 71);
+}
+
+nav a {                                   
+    color:rgb(195, 237, 195);               
+    text-decoration: none;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    margin-left: 10px;
+}
+
+nav ul {
+    padding: 0;
+}
+
+nav a:hover {
+    color: rgb(26, 108, 111);
+}
+
+nav i {
+    text-align: right; 
+    position: fixed;
+    right: 25px;
+    top: 20px;
+    z-index: 2;
+}
+
+
+
 /*---------------------------------------------------------
 -------------------------Our donuts------------------------
 ----------------------------------------------------------*/
 
 .ourDonuts{
-    height: 150px;
+    height: 80px;
     text-align: center;
     width: 100vw;
 }
 
 .ourDonuts h2{
-    line-height: 150px;
+    line-height: 80px;
     font-size: 3rem;
     font-family: Arial, Helvetica, sans-serif;
+    margin-top: 30px;    
 }
+
 
 /*---------------------------------------------------------
 -------------------Dropdown sorting donuts------------------------
@@ -38,7 +100,7 @@ body{
 .ourDonutsDropdown{
     display: inline-block;
     position: relative;
-    font-size: 1.5rem;
+    font-size: 1rem;
     max-width: 750px;
     font-family: 'Dosis', sans-serif;
 }
@@ -49,6 +111,7 @@ body{
     padding: 16px;
     border: none;
     border-radius: 5px;
+    width: 150px;
 }
 
 .ourDounatsDropdownContent{
@@ -122,6 +185,7 @@ body{
 
 .donutCardImgContainer p{
     font-size: 1.3rem;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .donutCardRating{
@@ -182,9 +246,10 @@ input[type=number] {
 ----------------------------------------------------------*/
 
 .informationText{
-    background-color: lightblue;
+    background-color: rgb(222, 247, 242);
     min-height: 750px;
     font-family: Arial, Helvetica, sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .informationTextHeaderContainer{
@@ -195,9 +260,10 @@ input[type=number] {
 
 .informationTextHeaderContainer h2{
     line-height: 80px;
-    font-size: 2rem;
-    font-family: 'Dosis', sans-serif;
+    font-size: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
     text-shadow: 1px 1px #ffffff;
+    padding-top: 15px;
 }
 
 .informationUlContainer{
@@ -255,7 +321,11 @@ input[type=number] {
 --------------------------------- Basket --------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------*/
 
-.middlepart_h2, .summery, .discount_button{  
+.middlepart_h2, .discount_button{  
+    font-size: 9vw;
+}
+
+.summery {
     font-size: 5.5vw;
 }
 
@@ -267,11 +337,12 @@ input[type=number] {
 .section_basket{
     background-color: rgb(248, 219, 242); /*Variabel som följer temat!?*/
     padding: 10px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
 }
 
 .basket{
     background-color: white;
-    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     margin: 5px;
     padding: 15px;
@@ -329,12 +400,13 @@ Summa att betala:
 .section-form{
     background-image: url(../images/blueberrybackground.jpg);
     padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
 }
     
 
 .checkout_form{
     background-color:white;
-    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     margin: 5px;
     padding: 15px;
@@ -356,7 +428,6 @@ label{
     font-size: larger;
     background-color:  rgb(248, 219, 242);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
     border-radius: 5px;
-    font-size: 4.5;
     cursor: pointer;
     margin-right: 7vw;
 }
@@ -367,8 +438,12 @@ label{
     font-size: larger;
     background-color: rgb(195, 237, 195);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
     border-radius: 5px;
-    font-size: 4.5;
     cursor: pointer;
+}
+
+form p {
+    font-size: 5vw;
+    font-weight: bold;
 }
 
 
@@ -379,62 +454,7 @@ Men är en del att fixa i JS sen. Se i JS- filen.*/
 
 
 
-/*---------------------------------------------------------------------------------------------------
--------------------------------- Header-------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------*/
-header {
-    position: relative;    
-    padding: 20px;
-    color: rgb(21, 123, 134);
-    background-image: url("../images/donut_in_napkin2.jpg");
-    min-height: 50vh;
-    background-size: cover;
-    background-position: center;
-    width: auto;
-    background-repeat: no-repeat;     
-}
 
-h1 {
-    font-family: 'Sofia';   
-    font-size: 4rem;
-    display: block;
-    font-style: italic;
-    text-align: right;
-    position: relative;
-    padding-top: 35px;
-    padding-right: 35px;
-}
-
-
-/*---------------------------------------------------------------------------------------------------
--------------------------------- Nav-------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------*/
-nav {
-    display: flex;
-    background-color: rgb(5, 54, 71);
-}
-
-nav a {                                   
-    color:rgb(195, 237, 195);               
-    text-decoration: none;
-    padding: 16px;
-    text-align: left;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    margin-left: -20px;
-}
-
-nav a:hover {
-    color: rgb(26, 108, 111);
-}
-
-nav i {
-    text-align: right; 
-    position: fixed;
-    right: 25px;
-    top: 20px;
-    z-index: 2;
-}
 
 /*---------------------------------------------------------------------------------------------------
 -------------------------------- Footer-------------------------------------------------------------------------
@@ -443,9 +463,9 @@ footer {
     background-color:rgb(222, 247, 242);
     width: auto;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     padding: 20px;
-    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
     position: relative;
     display: flex;    
 }

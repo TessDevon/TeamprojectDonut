@@ -26,29 +26,31 @@
    </header>
     <nav>
         <ul>
-            <a href="#">Våra&nbsp;munkar</a>
-            <a href="#">Övrig&nbsp;info</a>
-            <a href="#">Varukorg</a> <!--Ikon för varukorg samt summa-->
-
-            <i class="fa fa-shopping-cart" style="font-size:36px;color:rgb(182, 19, 146)"></i>
-
+            <a href="#ourdonuts">Våra munkar</a>
+            <a href="#info">Övrig info</a>
+            <a href="#shopping-basket">Varukorg</a> <!--Ikon för varukorg samt summa-->
+            <a href="#shopping-basket">
+                <i class="fa fa-shopping-cart" style="font-size:36px;color:rgb(182, 19, 146)"></i>
+            </a>
           <!--  <li>Kunduppgifter</li>   -->
         </ul>
     </nav>
     <main>
         <section>
-            <div class="ourDonuts">
-                <h2>Våra munkar</h2>
-            </div>
-            <div class="ourDonutsDropdownContainer">
-                <div class="ourDonutsDropdown"> <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover-->
-                    <button class="ourDonutsDropBtn">Sortera efter</button>
-                    <div class="ourDounatsDropdownContent">
-                    <a href="#">Lägsta pris</a>
-                    <a href="#">Högsta pris</a>
-                    <a href="#">Populärt</a>
-                    <a href="#">Namn</a>
-                    <a href="#">Kategori</a>
+            <div class="donutFlexWrap">
+                <div class="ourDonuts" id="ourdonuts">
+                    <h2>Våra munkar</h2>
+                </div>
+                <div class="ourDonutsDropdownContainer">
+                    <div class="ourDonutsDropdown"> <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover-->
+                        <button class="ourDonutsDropBtn">Sortera efter</button>
+                        <div class="ourDounatsDropdownContent">
+                        <a href="#">Lägsta pris</a>
+                        <a href="#">Högsta pris</a>
+                        <a href="#">Populärt</a>
+                        <a href="#">Namn</a>
+                        <a href="#">Kategori</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -306,7 +308,7 @@
             </section>
         </section>
         <section class="informationText">
-            <div class="informationTextHeaderContainer">
+            <div class="informationTextHeaderContainer" id="info">
                 <h2>Övrig information</h2>
             </div>
             <div class="informationUlContainer">
@@ -332,7 +334,7 @@
             </div>
         </section>    
            <div class="middlepart_container">
-                <section class="section_basket">
+                <section class="section_basket" id="shopping-basket">
                     <div class="basket">
                             <h2 class="middlepart_h2">Varukorg</h2> <!--På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".-->
                         <div class="main_heading_basket">    

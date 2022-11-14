@@ -1,3 +1,33 @@
+let subtractBtn = document.querySelector('#subtract');
+
+let currentCount = document.querySelector('#currentCount');
+
+subtractBtn.addEventListener('click', removeNumber);
+
+function removeNumber (){
+
+    if(currentCount.value > 0){
+
+        currentCount.value -= 1;
+
+    }
+
+}
+
+ /* Add one when addBtn is clicked*/
+
+let addBtn = document.querySelector('#add');
+
+addBtn.addEventListener('click', addNumber);
+
+function addNumber (e) {
+
+    let amount = Number(currentCount.value);
+
+    currentCount.value = amount + 1;  
+
+}  
+
 /*-----------------------------------------------------------------------------------------------
 ------------------ Basket -----------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------*/
