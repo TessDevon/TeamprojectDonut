@@ -365,27 +365,27 @@
                         <form action="">
                             <label for="">
                                 <span>Förnamn</span>  
-                                <input required class="input_group" type="text" id="name"> 
+                                <input pattern="[A-Za-zÅÄÖåäö\-]{1,}" required class="input_group" type="text" id="name"> 
                             </label>
                             <br>
                             <label for="">
                                 <span>Efternamn</span>  
-                                <input required class="input_group" type="text" id="lastname">
+                                <input pattern="[A-Za-zÅÄÖåäö\-]{1,}" required class="input_group" type="text" id="lastname">
                             </label>
                             <br>
                             <label for=""> 
                                 <span>Gatuadress</span> 
-                                <input required class="input_group" type="text" id="adress">
+                                <input pattern="[A-Za-zÅÄÖåäö0-9 ]{1,}" required class="input_group" type="text" id="adress">
                             </label>
                             <br>
                                 <label for="">
                                     <span>Postnummer</span> 
-                                <input required class="input_group" type="number" id="postnumber">
+                                <input pattern="[0-9]{5}" required class="input_group" type="text" id="postnumber">
                             </label>
                             <br>
                             <label for="">
                                 <span>Postort</span> 
-                                <input required class="input_group" type="text" id="city">
+                                <input pattern="[A-Za-zÅÄÖåäö\- ]{1,}" required class="input_group" type="text" id="city">
                             </label>
                             <br>
                             <label for="">
@@ -410,7 +410,7 @@
                             <br>
                             <label for="">
                                 Prenumerera på vårt nyhetsbrev
-                                <input type="checkbox" name="news" id="news">
+                                <input checked type="checkbox" name="news" id="news">
                             </label>
                             <p>Betalsätt</p>
                             <label for="">
