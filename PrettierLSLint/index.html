@@ -75,7 +75,7 @@
                         <br>
                         <div class="donutCardButtonContainer">
                             <button data-operator="minus">-</button>
-                            <input type="number" value="0" class="amount">
+                            <input type="number" value="0">
                             <button data-operator="plus">+</button>
                         </div>
                     </section>
@@ -100,7 +100,7 @@
                         <br>
                         <div class="donutCardButtonContainer">
                             <button data-operator="minus">-</button>
-                            <input type="number" value="0" class="amount">
+                            <input type="number" value="0">
                             <button data-operator="plus">+</button>
                         </div>
                     </section>
@@ -125,7 +125,7 @@
                         <br>
                         <div class="donutCardButtonContainer">
                             <button data-operator="minus">-</button>
-                            <input type="number" value="0" class="amount">
+                            <input type="number" value="0">
                             <button data-operator="plus">+</button>
                         </div>
                     </section>
@@ -150,7 +150,7 @@
                         <br>
                         <div class="donutCardButtonContainer">
                             <button data-operator="minus">-</button>
-                            <input type="number" value="0" class="amount">
+                            <input type="number" value="0">
                             <button data-operator="plus">+</button>
                         </div>
                     </section>
@@ -175,7 +175,7 @@
                         <br>
                         <div class="donutCardButtonContainer">
                             <button data-operator="minus">-</button>
-                            <input type="number" value="0" class="amount">
+                            <input type="number" value="0">
                             <button data-operator="plus">+</button>
                         </div>
                     </section>
@@ -200,7 +200,7 @@
                         <br>
                         <div class="donutCardButtonContainer">
                             <button data-operator="minus">-</button>
-                            <input type="number" value="0" class="amount">
+                            <input type="number" value="0">
                             <button data-operator="plus">+</button>
                         </div>
                     </section>
@@ -225,7 +225,7 @@
                         <br>
                         <div class="donutCardButtonContainer">
                             <button data-operator="minus">-</button>
-                            <input type="number" value="0" class="amount">
+                            <input type="number" value="0">
                             <button data-operator="plus">+</button>
                         </div>
                     </section>
@@ -250,7 +250,7 @@
                         <br>
                         <div class="donutCardButtonContainer">
                             <button data-operator="minus">-</button>
-                            <input type="number" value="0" class="amount">
+                            <input type="number" value="0">
                             <button data-operator="plus">+</button>
                         </div>
                     </section>
@@ -275,7 +275,7 @@
                         <br>
                         <div class="donutCardButtonContainer">
                             <button data-operator="minus">-</button>
-                            <input type="number" value="0" class="amount">
+                            <input type="number" value="0">
                             <button data-operator="plus">+</button>
                         </div>
                     </section>
@@ -300,7 +300,7 @@
                         <br>
                         <div class="donutCardButtonContainer">
                             <button data-operator="minus">-</button>
-                            <input type="number" value="0" class="amount">
+                            <input type="number" value="0">
                             <button data-operator="plus">+</button>
                         </div>
                     </section>
@@ -423,12 +423,11 @@
                             </label> <!--vid faktura fält med personnr, ska valideras-->
                             <br>
                             <br>
-                            <label id="personnr" for="">
+                            <label id="ssn" class="display-none" for="">
                                 <span>Personnummer</span> 
                             <input pattern="[0-9]{10}" required class="input_group" type="text" >
                             </label>
-
-                            <div id="cardpay">
+                            <div id="cardpay" class="display-none">
                                 <label for="">
                                     <span>Kortnummer</span> 
                                     <input required class="input_group" type="number" id="cardnr">
@@ -442,8 +441,6 @@
                                     <input required class="input_group" type="number" id="CVC">
                                 </label>
                             </div>
-
-
                             <input class="reset_form_button" type="reset" value="Rensa formulär">
                             <input class="submit_form_button" type="submit" value="Skicka">
                         </form>
