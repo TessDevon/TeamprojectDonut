@@ -1,4 +1,10 @@
-let subtractBtn = document.querySelector('#subtract');
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------- Donut -------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+//Få knapparna att fungera i Donutsection
+
+/*let subtractBtn = document.querySelector('#subtract');
 
 let currentCount = document.querySelector('#currentCount');
 
@@ -14,7 +20,7 @@ function removeNumber (){
 
 }
 
- /* Add one when addBtn is clicked*/
+ /*Add one when addBtn is clicked
 
 let addBtn = document.querySelector('#add');
 
@@ -26,7 +32,56 @@ function addNumber (e) {
 
     currentCount.value = amount + 1;  
 
-}  
+}  */
+
+const decreaseButtons = document.querySelectorAll('button[data-operator="minus"]');                            //Plockar upp alla knappar, som innehåller minus. 
+//let currentCount = document.querySelectorAll('#currentCount');              
+const indecreaseButtons = document.querySelectorAll('button[data-operator="plus"]');                                   //Plockar upp alla knappar, som inenhåller plus.
+
+for (let i = 0; i < decreaseButtons.length; i++) {                                                              // Startar från 0 munkar, varar så länge man addar buttons, ökar med ett i värde. 
+    decreaseButtons[i].addEventListener('click', decreaseCount);                                                //När man trycker på knappen minskar summan med 1
+    indecreaseButtons[i].addEventListener('click', increaseCount);                                                //När man trycker på knappen ska antalet öka med 1
+
+    console.log(decreaseButtons[i]);                                                      //test2
+}
+
+function increaseCount(e) {
+    const amountEl = e.currentTarget.parentElement.querySelector('.amount');
+
+    let amount = Number(amountEl.innerText);
+
+    amountEl.innerText = amount + 1;
+
+    //console.log(increaseCount); 
+
+ //   updateDonutSum(e.currentTarget.parentElement);
+}
+
+
+function decreaseCount(e) {
+    const amountEl = e.currentTarget.parentElement.querySelector('.amount'); 
+    
+    let amount = Number(amountEl.innerText);                                                                   //Eller innerHTML eller .textContent
+
+    
+    if (amount - 1 < 0){                                                                                       
+        return;
+    }
+
+    amountEl.innerHTML = amount - 1;
+
+//    updateDonutSum(e.currentTarget.parentElement);                                                              //Summan ska uppdateras på hur många vi har beställt.
+}
+/*
+function updateDonutSum(donutElement) {                                                                     
+    const donutSinglePrice = donutElement.querySelector('.price').innerHTML;                                    //Leta upp priset
+    const orderedAmount = donutElement.querySelector('#currentCount').innerHTML;                                      //Antal munkar
+
+    const sum = donutSinglePrice * orderedAmount;                                                               //Summa pris*antal
+
+    donutElement.querySelector('.sum').innerHTML = sum + ' kr';                                                 //
+    console.log(sum + 'kr'); 
+}*/
 
 /*-----------------------------------------------------------------------------------------------
 ------------------ Basket -----------------------------------------------------------------------
