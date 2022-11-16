@@ -122,6 +122,30 @@ Lägg gärna in om ni hittar mer som ska in här???????
 /*-----------------------------------------------------------------------------------------------
 ------------------- Form ------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------*/
+const creditcardButton = document.querySelector('#creditcard')
+const invoiceButton = document.querySelector('#invoice')
+
+/*
+const card = document.querySelector('#cardplay');
+const invoice = document.querySelector('#cardplay');
+*/
+
+element.classList.add("my-class");
+
+
+creditcardButton.addEventListener('click', showContent1);
+invoiceButton.addEventListener('click', showConten2);
+
+function showContent1(){
+    document.querySelector('#cardplay').style.display = 'block';
+    document.querySelector('#personnr').style.display = 'none';
+}
+
+function showContent2(){
+    document.querySelector('#cardplay').style.display = 'none';
+    document.querySelector('#personnr').style.display = 'block';
+}
+
 
 /*
 Att lägga till i js designmässigt/användarvänligt. 
