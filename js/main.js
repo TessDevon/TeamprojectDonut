@@ -1,9 +1,103 @@
+
+
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------- Donut -------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------- Donut cards -------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+
+/**
+ * Få våra donut kort att komma upp genom att ligger i en array och körs genom en loop
+ */
+const donutCardsContainer = document.querySelector('#donutCards') //Kallar på section för våra donut kort för att kunna lägga in våra kort
+
+const donutCards = [ // En array med varje donut kort som objekt
+{
+    donutTitle: 'Apelsinmunk',
+    donutImg1: './images/apelsinmunk.jpg',
+    donutImg2: './images/apelsinmunk2.jpg',
+    donutAlt: 'Apelsinmunk',
+    donutPrice: '15 kr/st',
+}, {
+    donutTitle: 'Banana suprice',
+    donutImg1: './images/banansuprice.jpg',
+    donutImg2: './images/banansuprice2.jpg',
+    donutAlt: 'munk med banansmak',
+    donutPrice: '20 kr/st',
+},{
+    donutTitle: 'Blåbär',
+    donutImg1: './images/blueberry.jpg',
+    donutImg2: './images/blueberry2.jpg',
+    donutAlt: 'munk med blåbärssmak',
+    donutPrice: '15 kr/st',
+},{
+    donutTitle: 'Karamellchoklad',
+    donutImg1: './images/caramellchoklad.jpg',
+    donutImg2: './images/caramellchoklad2.jpg',
+    donutAlt: 'munk med karamellchoklad smak',
+    donutPrice: '18 kr/st',
+},{
+    donutTitle: 'Chunky monkey',
+    donutImg1: './images/chunkymonkey.jpg',
+    donutImg2: './images/chunkymonkey2.jpg',
+    donutAlt: 'munk med Chunky munky smak',
+    donutPrice: '25 kr/st',
+},{
+    donutTitle: 'Citronfromage',
+    donutImg1: './images/citronfromage.jpg',
+    donutImg2: './images/citronfromage2.jpg',
+    donutAlt: 'munk med citron smak',
+    donutPrice: '18 kr/st',
+},{
+    donutTitle: 'Hallon-choklad',
+    donutImg1: './images/hallonchoklad.jpg',
+    donutImg2: './images/hallonchoklad2.jpg',
+    donutAlt: 'munk med citron hallon och choklad smak',
+    donutPrice: '20 kr/st',
+},{
+    donutTitle: 'Jordgrubbsdröm',
+    donutImg1: './images/strawberrydream.jpg',
+    donutImg2: './images/strawberrydream2.jpg',
+    donutAlt: 'munk med jordgubbs smak',
+    donutPrice: '15 kr/st',
+},{
+    donutTitle: 'Laktris',
+    donutImg1: './images/lakrits.jpg',
+    donutImg2: './images/lakrits2.jpg',
+    donutAlt: 'munk med laktris smak',
+    donutPrice: '15 kr/st',
+},{
+    donutTitle: 'Mandelknäck',
+    donutImg1: './images/caramell.jpg',
+    donutImg2: './images/caramell.jpg',
+    donutAlt: 'munk med mandel och knäck smak',
+    donutPrice: '15 kr/st',
+}];
+
+for(let i = 0; i < donutCards.length; i++){ // Varje gång loopen körs kommer vår artikel läggas in i vår html struktur i vår section och alla 10 korten kommer upp i webben
+donutCardsContainer.innerHTML += 
+`<article class="donutCard">
+    <div class="donutCardHeaderContainer">
+        <h3>${donutCards[i].donutTitle}</h3 id="donutCardHeader"> <!-- .checked {  color: orange;  } -->
+    </div>
+    <section class="donutCardContainer">
+        <div class="donutCardImgContainer">
+            <img src="${donutCards[i].donutImg1}" alt="" class="donutCardImg1" id="donutcardImg1">
+            <img src="${donutCards[i].donutImg2}" alt="" class="donutCardImg2" id="donutCardImg2">
+            <p id="donutCardPrice">${donutCards[i].donutPrice}</p>
+        </div>
+        <div class='donutCardRating'></div>
+        <br>
+        <div class="donutCardButtonContainer">
+            <button data-operator="minus" id="donutCardMinusBtn">-</button>
+            <input type="number" value="0">
+            <button data-operator="plus" id="donutCardPlusBtn">+</button>
+        </div>
+    </section>
+</article>`
+};
+
 /*
-*Donut cards + and - buttons 
+*Få våra + och - knappar att fungera
 */
 const addBtns = document.querySelectorAll('button[data-operator="plus"]');
 const subtractBtns = document.querySelectorAll('button[data-operator="minus"]');
@@ -13,7 +107,7 @@ for (let i = 0; i < addBtns.length; i++){
     subtractBtns[i].addEventListener('click', removeNumber)
 }
 
- /* Add one when + is clicked*/
+ /* När vi klickar på + ökar vi antal med 1*/
 function addNumber (e) {
 
     const amountEl = e.currentTarget.parentElement.querySelector('input')
@@ -22,7 +116,7 @@ function addNumber (e) {
     amountEl.value = amount + 1;
   
 }   
- /* Remove one when - is clicked*/
+ /* När vi klickar på - minskar vi antalet med 1*/
 function removeNumber(e){
 
     const amountEl = e.currentTarget.parentElement.querySelector('input')
@@ -66,24 +160,26 @@ Summa att betala:
 Lägg gärna in om ni hittar mer som ska in här???????
 */
 
-
-
 /*-----------------------------------------------------------------------------------------------
 ------------------- Form ------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------*/
+
+/**
+ * När vi klickar på kort ska korinformation visas och när vi klickar på form ska personnr visas
+ */
 const creditcardBtn = document.querySelector('#creditcard')
 const invoiceBtn = document.querySelector('#invoice')
 
 creditcardBtn.addEventListener('click', showCardInfo);
 invoiceBtn.addEventListener('click', showPersonNr);
 
-// When card is clicked show kardinformation form
+/* När vi klivkar på kort visas kortinformationen*/
 function showCardInfo(){
     document.querySelector('#cardpay').style.display = 'block';
     document.querySelector('#ssn').style.display = 'none';
 }
 
-//When invoice is clicked show social security number form
+/*När vi klickar på faktura kommer personnr visas*/
 function showPersonNr(){
     document.querySelector('#ssn').style.display = 'block';
     document.querySelector('#cardpay').style.display = 'none';
