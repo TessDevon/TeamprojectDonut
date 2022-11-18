@@ -2,86 +2,35 @@
 --------------------------------------- Donut -------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-//Få knapparna att fungera i Donutsection
+/*
+*Donut cards + and - buttons 
+*/
+const addBtns = document.querySelectorAll('button[data-operator="plus"]');
+const subtractBtns = document.querySelectorAll('button[data-operator="minus"]');
 
-/*let subtractBtn = document.querySelector('#subtract');
-
-let currentCount = document.querySelector('#currentCount');
-
-subtractBtn.addEventListener('click', removeNumber);
-
-function removeNumber (){
-
-    if(currentCount.value > 0){
-
-        currentCount.value -= 1;
-
-    }
-
+for (let i = 0; i < addBtns.length; i++){
+    addBtns[i].addEventListener('click', addNumber)
+    subtractBtns[i].addEventListener('click', removeNumber)
 }
 
- /*Add one when addBtn is clicked
-
-let addBtn = document.querySelector('#add');
-
-addBtn.addEventListener('click', addNumber);
-
+ /* Add one when + is clicked*/
 function addNumber (e) {
 
-    let amount = Number(currentCount.value);
+    const amountEl = e.currentTarget.parentElement.querySelector('input')
+    let amount = Number(amountEl.value);
+   
+    amountEl.value = amount + 1;
+  
+}   
+ /* Remove one when - is clicked*/
+function removeNumber(e){
 
-    currentCount.value = amount + 1;  
+    const amountEl = e.currentTarget.parentElement.querySelector('input')
+    if(amountEl.value > 0){
 
-}  */
-
-const decreaseButtons = document.querySelectorAll('button[data-operator="minus"]');                            //Plockar upp alla knappar, som innehåller minus. 
-//let currentCount = document.querySelectorAll('#currentCount');              
-const indecreaseButtons = document.querySelectorAll('button[data-operator="plus"]');                                   //Plockar upp alla knappar, som inenhåller plus.
-
-for (let i = 0; i < decreaseButtons.length; i++) {                                                              // Startar från 0 munkar, varar så länge man addar buttons, ökar med ett i värde. 
-    decreaseButtons[i].addEventListener('click', decreaseCount);                                                //När man trycker på knappen minskar summan med 1
-    indecreaseButtons[i].addEventListener('click', increaseCount);                                                //När man trycker på knappen ska antalet öka med 1
-
-    console.log(decreaseButtons[i]);                                                      //test2
-}
-
-function increaseCount(e) {
-    const amountEl = e.currentTarget.parentElement.querySelector('.amount');
-
-    let amount = Number(amountEl.innerText);
-
-    amountEl.innerText = amount + 1;
-
-    //console.log(increaseCount); 
-
- //   updateDonutSum(e.currentTarget.parentElement);
-}
-
-
-function decreaseCount(e) {
-    const amountEl = e.currentTarget.parentElement.querySelector('.amount'); 
-    
-    let amount = Number(amountEl.innerText);                                                                   //Eller innerHTML eller .textContent
-
-    
-    if (amount - 1 < 0){                                                                                       
-        return;
+        amountEl.value -= 1;
     }
-
-    amountEl.innerHTML = amount - 1;
-
-//    updateDonutSum(e.currentTarget.parentElement);                                                              //Summan ska uppdateras på hur många vi har beställt.
 }
-/*
-function updateDonutSum(donutElement) {                                                                     
-    const donutSinglePrice = donutElement.querySelector('.price').innerHTML;                                    //Leta upp priset
-    const orderedAmount = donutElement.querySelector('#currentCount').innerHTML;                                      //Antal munkar
-
-    const sum = donutSinglePrice * orderedAmount;                                                               //Summa pris*antal
-
-    donutElement.querySelector('.sum').innerHTML = sum + ' kr';                                                 //
-    console.log(sum + 'kr'); 
-}*/
 
 /*-----------------------------------------------------------------------------------------------
 ------------------ Basket -----------------------------------------------------------------------
@@ -122,28 +71,22 @@ Lägg gärna in om ni hittar mer som ska in här???????
 /*-----------------------------------------------------------------------------------------------
 ------------------- Form ------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------*/
-const creditcardButton = document.querySelector('#creditcard')
-const invoiceButton = document.querySelector('#invoice')
+const creditcardBtn = document.querySelector('#creditcard')
+const invoiceBtn = document.querySelector('#invoice')
 
-/*
-const card = document.querySelector('#cardplay');
-const invoice = document.querySelector('#cardplay');
-*/
+creditcardBtn.addEventListener('click', showCardInfo);
+invoiceBtn.addEventListener('click', showPersonNr);
 
-element.classList.add("my-class");
-
-
-creditcardButton.addEventListener('click', showContent1);
-invoiceButton.addEventListener('click', showConten2);
-
-function showContent1(){
-    document.querySelector('#cardplay').style.display = 'block';
-    document.querySelector('#personnr').style.display = 'none';
+// When card is clicked show kardinformation form
+function showCardInfo(){
+    document.querySelector('#cardpay').style.display = 'block';
+    document.querySelector('#ssn').style.display = 'none';
 }
 
-function showContent2(){
-    document.querySelector('#cardplay').style.display = 'none';
-    document.querySelector('#personnr').style.display = 'block';
+//When invoice is clicked show social security number form
+function showPersonNr(){
+    document.querySelector('#ssn').style.display = 'block';
+    document.querySelector('#cardpay').style.display = 'none';
 }
 
 
@@ -156,8 +99,8 @@ Att lägga till i js designmässigt/användarvänligt.
 * postnummer innehålla 5 siffror 
 
 Lägga till från uppgiften: 
-* Om faktura valts som betalsätt ska ett formulärfält för svenskt personnummer visas. 
-Även detta fält ska valideras innan formuläret går att skicka iväg, dvs. 
+[x]Om faktura valts som betalsätt ska ett formulärfält för svenskt personnummer visas. 
+[]Även detta fält ska valideras innan formuläret går att skicka iväg, dvs. 
 att man fyllt i korrekt personnummer.
 * Om kort väljs som betalsätt, visas fält för kortnummer, datum/år och CVC. Dessa behöver 
 inte valideras!
