@@ -33,16 +33,26 @@ h1 {
     padding-right: 35px;
 }
 
-
 /*---------------------------------------------------------------------------------------------------
 -------------------------------- Nav-------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------*/
-nav {
+.navLinks ul {
     display: flex;
     background-color: rgb(5, 54, 71);
+    margin-top: 0;
 }
 
-nav a {                                   
+.menuList   {
+    list-style: none;
+}
+
+.navLinks_a {     
+    color:rgb(195, 237, 195);               
+    text-decoration: none;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    margin-left: 10px;                              
     color:rgb(195, 237, 195);               
     text-decoration: none;
     text-align: left;
@@ -52,7 +62,7 @@ nav a {
 }
 
 nav ul {
-    padding: 0;
+    padding: 20px;
 }
 
 nav a:hover {
@@ -66,8 +76,6 @@ nav i {
     top: 20px;
     z-index: 2;
 }
-
-
 
 /*---------------------------------------------------------
 -------------------------Our donuts------------------------
@@ -85,7 +93,6 @@ nav i {
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 30px;    
 }
-
 
 /*---------------------------------------------------------
 -------------------Dropdown sorting donuts------------------------
@@ -403,7 +410,6 @@ Summa att betala:
     box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
 }
     
-
 .checkout_form{
     background-color:white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -448,15 +454,9 @@ form p {
     font-weight: bold;
 }
 
-
 /*Så gott som klart.
 
 Men är en del att fixa i JS sen. Se i JS- filen.*/
-
-
-
-
-
 
 /*---------------------------------------------------------------------------------------------------
 -------------------------------- Footer-------------------------------------------------------------------------
