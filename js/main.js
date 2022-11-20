@@ -9,6 +9,7 @@
  * Få våra donut kort att komma upp genom att ligger i en array och körs genom en loop
  */
 const donutCardsContainer = document.querySelector('#donutCards') //Kallar på section för våra donut kort för att kunna lägga in våra kort
+const basketDonuts = document.querySelector('#basketDonuts') // kallar på html strukturen till donutsen som ska ligga i vår varukorg
 
 const donutCards = [ // En array med varje donut kort som objekt
 {
@@ -83,6 +84,17 @@ const donutCards = [ // En array med varje donut kort som objekt
     amount: 0
 }];
 
+
+
+
+
+
+
+
+
+
+
+
 for(let i = 0; i < donutCards.length; i++){ // Varje gång loopen körs kommer vår artikel läggas in i vår html struktur i vår section och alla 10 korten kommer upp i webben
 donutCardsContainer.innerHTML += 
 `<article class="donutCard">
@@ -106,6 +118,20 @@ donutCardsContainer.innerHTML +=
 </article>`
 };// data id i är för att knapparna ska få index som id 0123456789 så vi vet vilken av knapparna i arrayen vi klickat på
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 *Få våra + och - knappar att fungera
 */
@@ -117,6 +143,18 @@ for (let i = 0; i < addBtns.length; i++){
     subtractBtns[i].addEventListener('click', removeNumber)
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
  /* När vi klickar på + ökar vi antal med 1*/
 function addNumber (e) {
 
@@ -125,10 +163,25 @@ function addNumber (e) {
     
     const amountEl = e.currentTarget.parentElement.querySelector('input')
     let amount = Number(amountEl.value);
-   
     amountEl.value = amount + 1;
-  
+    
+    UpdatedonutsBasket();// kallar på min funktion som lägger till och tar bort donuts från basket
 }   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  /* När vi klickar på - minskar vi antalet med 1*/
 function removeNumber(e){
 
@@ -140,14 +193,66 @@ function removeNumber(e){
 
         amountEl.value -= 1;
     }
+    
+    UpdatedonutsBasket();// kallar på min funktion som lägger till och tar bort donuts från basket
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function UpdatedonutsBasket(){
+
+    basketDonuts.innerHTML = ''; // rensar formuläret varje gång jag klickar på en knapp 
+
+    for(let i = 0; i < donutCards.length; i++){ // loopa igenom alla donuts i vår array så vi kan hitta den med amount som är större än 0
+         if(donutCards[i].amount >= 1){ //Om värdet av amount i vår array av donuts är 1 eller mer lägger vi till vår html stuktur i basket. i för att den inte ska lägga till alla utan bara enskilda. Första gången den lopas inget, andra inget, trejde träff och den skrivs ut
+        basketDonuts.innerHTML +=
+        `<div class="basketDonuts">
+        <div class="basketHeaderDonuts">
+            <h3>${donutCards[i].donutTitle}</h3>
+        </div>
+        <section>
+            <div>
+                <img src="${donutCards[i].donutImg1}" alt="">
+            </div>
+            <div class="basketDonutsflex">
+                <div>
+                    <h4>Antal</h4>
+                    <h4>Delsumma</h4>
+                </div>
+                <div>
+                    <p>${donutCards[i].amount}</p>
+                    <p></p>
+                </div>
+            </div>
+        </section>
+    </div>`
+    }}
 }
 
 /**
  * TODO
- * Skapa html struktur för varukorsmunkarna
- * koppla de ihop med arrayen ungefär som med korten som skrevs ut
- * koppla det med att rätt munk ska visas när vi klickar på knapparna
- * Antalet ska ändras när vi klickar på knapparna
+ * [x]Skapa html struktur för varukorsmunkarna
+ * [x]när jag klickar på knappen ska min struktur hopppa upp i varukorgen
+ * [x]Bara den jag ska klicka på ska hopppa upp
+ * [x]Ska bara komma en gång
+ * [x]när värdet är större än 0 ska html stukturen läggas till i varukorgen
+ * [x] Använd sedan index för att rätt donut ska hamna där
+ * [x]när den är 0 ska de inte finnas i varukorgen
+ * [x]koppla det med att rätt munk ska visas när vi klickar på knapparna
+ * [x]Antalet ska ändras när vi klickar på knapparna
  * 
  */
 
