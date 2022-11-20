@@ -17,60 +17,70 @@ const donutCards = [ // En array med varje donut kort som objekt
     donutImg2: './images/apelsinmunk2.jpg',
     donutAlt: 'Apelsinmunk',
     donutPrice: '15 kr/st',
+    amount: 0
 }, {
     donutTitle: 'Banana suprice',
     donutImg1: './images/banansuprice.jpg',
     donutImg2: './images/banansuprice2.jpg',
     donutAlt: 'munk med banansmak',
     donutPrice: '20 kr/st',
+    amount: 0
 },{
     donutTitle: 'Blåbär',
     donutImg1: './images/blueberry.jpg',
     donutImg2: './images/blueberry2.jpg',
     donutAlt: 'munk med blåbärssmak',
     donutPrice: '15 kr/st',
+    amount: 0
 },{
     donutTitle: 'Karamellchoklad',
     donutImg1: './images/caramellchoklad.jpg',
     donutImg2: './images/caramellchoklad2.jpg',
     donutAlt: 'munk med karamellchoklad smak',
     donutPrice: '18 kr/st',
+    amount: 0
 },{
     donutTitle: 'Chunky monkey',
     donutImg1: './images/chunkymonkey.jpg',
     donutImg2: './images/chunkymonkey2.jpg',
     donutAlt: 'munk med Chunky munky smak',
     donutPrice: '25 kr/st',
+    amount: 0
 },{
     donutTitle: 'Citronfromage',
     donutImg1: './images/citronfromage.jpg',
     donutImg2: './images/citronfromage2.jpg',
     donutAlt: 'munk med citron smak',
     donutPrice: '18 kr/st',
+    amount: 0
 },{
     donutTitle: 'Hallon-choklad',
     donutImg1: './images/hallonchoklad.jpg',
     donutImg2: './images/hallonchoklad2.jpg',
     donutAlt: 'munk med citron hallon och choklad smak',
     donutPrice: '20 kr/st',
+    amount: 0
 },{
     donutTitle: 'Jordgrubbsdröm',
     donutImg1: './images/strawberrydream.jpg',
     donutImg2: './images/strawberrydream2.jpg',
     donutAlt: 'munk med jordgubbs smak',
     donutPrice: '15 kr/st',
+    amount: 0
 },{
     donutTitle: 'Laktris',
     donutImg1: './images/lakrits.jpg',
     donutImg2: './images/lakrits2.jpg',
     donutAlt: 'munk med laktris smak',
     donutPrice: '15 kr/st',
+    amount: 0
 },{
     donutTitle: 'Mandelknäck',
     donutImg1: './images/caramell.jpg',
     donutImg2: './images/caramell.jpg',
     donutAlt: 'munk med mandel och knäck smak',
     donutPrice: '15 kr/st',
+    amount: 0
 }];
 
 for(let i = 0; i < donutCards.length; i++){ // Varje gång loopen körs kommer vår artikel läggas in i vår html struktur i vår section och alla 10 korten kommer upp i webben
@@ -88,13 +98,13 @@ donutCardsContainer.innerHTML +=
         <div class='donutCardRating'></div>
         <br>
         <div class="donutCardButtonContainer">
-            <button data-operator="minus" id="donutCardMinusBtn">-</button>
+            <button data-operator="minus" data-id="${i}">-</button>
             <input type="number" value="0">
-            <button data-operator="plus" id="donutCardPlusBtn">+</button>
+            <button data-operator="plus" data-id="${i}">+</button>
         </div>
     </section>
 </article>`
-};
+};// data id i är för att knapparna ska få index som id 0123456789 så vi vet vilken av knapparna i arrayen vi klickat på
 
 /*
 *Få våra + och - knappar att fungera
@@ -110,6 +120,9 @@ for (let i = 0; i < addBtns.length; i++){
  /* När vi klickar på + ökar vi antal med 1*/
 function addNumber (e) {
 
+    const clickedDonut = e.currentTarget.dataset.id; // Gör så jag får ut indexet av knappen som jag klickar på
+    donutCards[clickedDonut].amount += 1; // [] de skrivet vi in för att komma åt de vi klickade på. Och de andra länkar till vår lista och amount, de gör att när vi klickar ökar amount med 1 varje gång på rätt donut
+    
     const amountEl = e.currentTarget.parentElement.querySelector('input')
     let amount = Number(amountEl.value);
    
@@ -118,6 +131,9 @@ function addNumber (e) {
 }   
  /* När vi klickar på - minskar vi antalet med 1*/
 function removeNumber(e){
+
+    const clickedDonut = e.currentTarget.dataset.id; // Gör så jag får ut indexet av knappen som jag klickar på
+    donutCards[clickedDonut].amount -= 1; // [] de skrivet vi in för att komma åt de vi klickade på. Och de andra länkar till vår lista och amount, de gör att när vi klickar ökar amount med 1 varje gång på rätt donut
 
     const amountEl = e.currentTarget.parentElement.querySelector('input')
     if(amountEl.value > 0){
