@@ -164,6 +164,251 @@ Lägg gärna in om ni hittar mer som ska in här???????
 ------------------- Form ------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------*/
 
+
+
+
+
+/*----------------------------------------------------------------------------------------------
+------------JS koden för att hantera beställningsknappen.---------------------------------------
+-----------------------------------------------------------------------------------------------*/ 
+const orderButton = document.querySelector('.submit_form_button');
+const nameInput = document.querySelector('#name');
+const lastNameInput = document.querySelector('#lastname');
+const adress = document.querySelector('#adress');
+const postNumber = document.querySelector('#postnumber');
+const city = document.querySelector('#city');
+const phoneNumber = document.querySelector('#phonenumber');
+const eMail = document.querySelector('#email');
+const gdpr = document.querySelector('#gdpr');
+const creditCard = document.querySelector('#creditcard');
+const cardNumber = document.querySelector('#cardnr');
+const monthYear = document.querySelector('#dateyear');
+const cvc = document.querySelector('#CVC');
+const inVoice = document.querySelector('#invoice');
+const personNR = document.querySelector('#personNr');
+
+nameInput.addEventListener('change', checkNameInput);
+let checkNameInputOk = false;
+
+function checkNameInput(){
+    const exp = new RegExp('^[A-Za-zÅÄÖåäö\-]{1,}$');
+    const errorMessage = document.querySelector('#errorMessageName');
+
+    if (exp.test(nameInput.value)){
+        errorMessage.setAttribute('hidden', '');
+        checkNameInputOk = true;
+    } else {
+        errorMessage.innerHTML = 'Endast bostäver och bindelsträck';
+        errorMessage.removeAttribute('hidden');
+        checkNameInputOk = false;
+    }
+    activateOrderButton();
+}
+
+lastNameInput.addEventListener('change', checklastNameInput);
+let checklastNameInputOk = false;
+
+function checklastNameInput(){
+    const exp = new RegExp('^[A-Za-zÅÄÖåäö\-]{1,}$');
+    const errorMessage = document.querySelector('#errorMessageLastname');
+
+    if (exp.test(lastNameInput.value)){
+        errorMessage.setAttribute('hidden', '');
+        checklastNameInputOk = true;
+    } else {
+        errorMessage.innerHTML = 'Endast bostäver och bindelsträck';
+        errorMessage.removeAttribute('hidden');
+        checklastNameInputOk = false;
+    }
+    activateOrderButton();
+}
+
+adress.addEventListener('change', errorMessageAdress);
+let errorMessageAdressOk = false;
+
+function errorMessageAdress(){
+    const exp = new RegExp('^[A-Za-zÅÄÖåäö0-9 ]{1,}$');
+    const errorMessage = document.querySelector('#errorMessageAdress');
+
+    if (exp.test(adress.value)){
+        errorMessage.setAttribute('hidden', '');
+        errorMessageAdressOk = true;
+    } else {
+        errorMessage.innerHTML = 'Endast bostäver, siffor och mellanslag';
+        errorMessage.removeAttribute('hidden');
+        errorMessageAdressOk = false;
+    }
+    activateOrderButton();
+}
+
+postNumber.addEventListener('change', errorMessagePostnumber);
+let errorMessagePostnumberOk = false;
+
+function errorMessagePostnumber(){
+    const exp = new RegExp('^[0-9]{5}$');
+    const errorMessage = document.querySelector('#errorMessagePostnumber');
+
+    if (exp.test(postNumber.value)){
+        errorMessage.setAttribute('hidden', '');
+        errorMessagePostnumberOk = true;
+    } else {
+        errorMessage.innerHTML = 'Endast fem siffror';
+        errorMessage.removeAttribute('hidden');
+        errorMessagePostnumberOk = false;
+    }
+    activateOrderButton();
+}
+
+city.addEventListener('change', errorMessageCity);
+let errorMessageCityOk = false;
+
+function errorMessageCity(){
+    const exp = new RegExp('^[A-Za-zÅÄÖåäö \-]{1,}$');
+    const errorMessage = document.querySelector('#errorMessageCity');
+
+    if (exp.test(city.value)){
+        errorMessage.setAttribute('hidden', '');
+        errorMessageCityOk = true;
+    } else {
+        errorMessage.innerHTML = 'Endast bokstäver, bindelsträck och mellanslag';
+        errorMessage.removeAttribute('hidden');
+        errorMessageCityOk = false;
+    }
+    activateOrderButton();
+}
+
+phoneNumber.addEventListener('change', errorMessagePhoneNumber);
+let errorMessagePhoneNumberOk = false;
+
+function errorMessagePhoneNumber(){
+    const exp = new RegExp('^[0-9]{10}$');
+    const errorMessage = document.querySelector('#errorMessagePhoneNumber');
+
+    if (exp.test(phoneNumber.value)){
+        errorMessage.setAttribute('hidden', '');
+        errorMessagePhoneNumberOk = true;
+    } else {
+        errorMessage.innerHTML = 'Endast 10 siffror';
+        errorMessage.removeAttribute('hidden');
+        errorMessagePhoneNumberOk = false;
+    }
+    activateOrderButton();
+}
+
+
+eMail.addEventListener('change', errorMessageeMail);
+let errorMessageeMailOk = false;
+
+function errorMessageeMail(){
+    const exp = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
+    const errorMessage = document.querySelector('#errorMassageeMail');
+
+    if (exp.test(eMail.value)){
+        errorMessage.setAttribute('hidden', '');
+        errorMessageeMailOk = true;
+    } else {
+        errorMessage.innerHTML = 'Fyll i en giltlig E-post';
+        errorMessage.removeAttribute('hidden');
+        errorMessageeMailOk = false;
+    }
+    activateOrderButton();
+}
+
+gdpr.addEventListener('click', errorMessagegdpr);
+let errorMessagegdprOk = false;
+
+function errorMessagegdpr(){
+    errorMessagegdprOk = gdpr.checked;
+    activateOrderButton();
+}
+
+cardNumber.addEventListener('change', errorMessageCardNR);
+let errorMessageCardNROk = false;
+
+function errorMessageCardNR(){
+    const exp = new RegExp('^[0-9]{16}$');
+    const errorMessage = document.querySelector('#errorMessageCardNR');
+
+    if (exp.test(cardNumber.value)){
+        errorMessage.setAttribute('hidden', '');
+        errorMessageCardNROk = true;
+    } else {
+        errorMessage.innerHTML = 'Fyll kornummer 16 siffror';
+        errorMessage.removeAttribute('hidden');
+        errorMessageCardNROk = false;
+    }
+    activateOrderButton();
+}
+
+monthYear.addEventListener('change', errorMessageMonthyear);
+let errorMessageMonthyearOk = false;
+
+function errorMessageMonthyear(){
+    const exp = new RegExp('^[0-9]{4}$');
+    const errorMessage = document.querySelector('#errorMessageDateyear');
+
+    if (exp.test(monthYear.value)){
+        errorMessage.setAttribute('hidden', '');
+        errorMessageMonthyearOk = true;
+    } else {
+        errorMessage.innerHTML = 'Fyll i 4 siffor för månad och år';
+        errorMessage.removeAttribute('hidden');
+        errorMessageMonthyearOk = false;
+    }
+    activateOrderButton();
+}
+
+
+cvc.addEventListener('change', errorMessageCVC);
+let errorMessageCVCOk = false;
+
+function errorMessageCVC(){
+    const exp = new RegExp('^[0-9]{3}$');
+    const errorMessage = document.querySelector('#errorMessageCVC');
+
+    if (exp.test(cvc.value)){
+        errorMessage.setAttribute('hidden', '');
+        errorMessageCVCOk = true;
+    } else {
+        errorMessage.innerHTML = 'Fyll i 3 siffrig kod';
+        errorMessage.removeAttribute('hidden');
+        errorMessageCVCOk = false;
+    }
+    activateOrderButton();
+}
+
+personNR.addEventListener('change', errorMessagePersonNR);
+let personNROk = false;
+
+function errorMessagePersonNR(){
+    const exp = new RegExp('^[0-9]{10}$');
+    const errorMessage = document.querySelector('#errorMessagePersonNR');
+
+    if (exp.test(personNR.value)){
+        errorMessage.setAttribute('hidden', '');
+        personNROk = true;
+    } else {
+        errorMessage.innerHTML = 'Fyll i 10 siffrigt personnummer';
+        errorMessage.removeAttribute('hidden');
+        personNROk = false;
+    }
+
+    activateOrderButton();
+}
+
+
+function activateOrderButton(){
+    if (checkNameInputOk && checklastNameInputOk && errorMessageAdressOk && errorMessagePostnumberOk && errorMessageCityOk && errorMessagePhoneNumberOk && errorMessageeMailOk && errorMessagegdprOk){
+        if ((creditCard.checked && errorMessageCardNROk && errorMessageMonthyearOk && errorMessageCVCOk) || (inVoice.checked && personNROk)){
+            orderButton.removeAttribute('disabled', '')    
+        }
+    }
+}
+
+/*----------------------------------------------------------------------------------------------
+------------JS koden för att hantera beställningsknappen.---------------------------------------
+-----------------------------------------------------------------------------------------------*/ 
+
 /**
  * När vi klickar på kort ska korinformation visas och när vi klickar på form ska personnr visas
  */
@@ -176,12 +421,14 @@ invoiceBtn.addEventListener('click', showPersonNr);
 /* När vi klivkar på kort visas kortinformationen*/
 function showCardInfo(){
     document.querySelector('#cardpay').style.display = 'block';
+    document.querySelector('#cardpay').ariaRequired;
     document.querySelector('#ssn').style.display = 'none';
 }
 
 /*När vi klickar på faktura kommer personnr visas*/
 function showPersonNr(){
     document.querySelector('#ssn').style.display = 'block';
+    document.querySelector('#ssn').ariaRequired;
     document.querySelector('#cardpay').style.display = 'none';
 }
 
