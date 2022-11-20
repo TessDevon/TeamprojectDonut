@@ -113,7 +113,7 @@
                         <form action="">
                             <label for="">
                                 <span>Förnamn</span>  
-                                <input pattern="[A-Za-zÅÄÖåäö\-]{1,}" required class="input_group" type="text" id="name"> 
+                                <input placeholder="endast tilltalsnamn" pattern="[A-Za-zÅÄÖåäö\-]{1,}" required class="input_group" type="text" id="name"> 
                             </label>
                             <br>
                             <label for="">
@@ -123,17 +123,17 @@
                             <br>
                             <label for=""> 
                                 <span>Gatuadress</span> 
-                                <input pattern="[A-Za-zÅÄÖåäö0-9 ]{1,}" required class="input_group" type="text" id="adress">
+                                <input placeholder="gata och nummer" pattern="[A-Za-zÅÄÖåäö0-9 ]{1,}" required class="input_group" type="text" id="adress">
                             </label>
                             <br>
                             <label for="">
                                     <span>Postnummer</span> 
-                                <input pattern="[0-9]{5}" required class="input_group" type="text" id="postnumber">
+                                <input placeholder="00000" pattern="[0-9]{5}" required class="input_group" type="text" id="postnumber">
                             </label>
                             <br>
                             <label for="">
                                 <span>Postort</span> 
-                                <input pattern="[A-Za-zÅÄÖåäö\- ]{1,}" required class="input_group" type="text" id="city">
+                                <input placeholder="stad" pattern="[A-Za-zÅÄÖåäö\- ]{1,}" required class="input_group" type="text" id="city">
                             </label>
                             <br>
                             <label for="">
@@ -142,8 +142,8 @@
                             </label>
                             <br>
                             <label for="">
-                                <span>Telefonnummer</span> 
-                                <input required class="input_group" type="number" id="phonenumber">
+                                <span>Mobilnummer</span> 
+                                <input placeholder="0000000000" pattern="[0-9]{10}" required class="input_group" type="text" id="phonenumber">
                             </label>
                             <br>
                             <label for="">
@@ -174,21 +174,21 @@
                             <div id="ssn" class="display-none">
                                 <label for="">
                                     <span>Personnummer</span> 
-                                    <input pattern="[0-9]{10}" required class="input_group" type="text" >
+                                    <input placeholder="YYMMDD0000" pattern="[0-9]{10}" required class="input_group" type="text" >
                                 </label>
                             </div>
                             <div id="cardpay" class="display-none">
                                 <label for="">
                                     <span>Kortnummer</span> 
-                                    <input required class="input_group" type="number" id="cardnr">
+                                    <input required placeholder="0000000000000000" class="input_group" type="number" id="cardnr">
                                 </label>
                                 <label for="">
                                     <span>datum/år</span> 
-                                    <input required class="input_group" type="number" id="dateyear">
+                                    <input required placeholder="0000" class="input_group" type="number" id="dateyear">
                                 </label>
                                 <label for="">
                                     <span>CVC</span> 
-                                    <input required class="input_group" type="number" id="CVC">
+                                    <input required placeholder="000" class="input_group" type="number" id="CVC">
                                 </label>
                             </div>
                             <input class="reset_form_button" type="reset" value="Rensa formulär">
