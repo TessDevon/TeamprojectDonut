@@ -87,7 +87,7 @@ for(let i = 0; i < donutCards.length; i++){ // Varje gång loopen körs kommer v
 donutCardsContainer.innerHTML += 
 `<article class="donutCard">
     <div class="donutCardHeaderContainer">
-        <h3>${donutCards[i].donutTitle}</h3 id="donutCardHeader"> <!-- .checked {  color: orange;  } -->
+        <h3>${donutCards[i].donutTitle}</h3 id="donutCardHeader">
     </div>
     <section class="donutCardContainer">
         <div class="donutCardImgContainer">
@@ -121,7 +121,7 @@ for (let i = 0; i < addBtns.length; i++){
 function addNumber (e) {
 
     const clickedDonut = e.currentTarget.dataset.id; // Gör så jag får ut indexet av knappen som jag klickar på
-    donutCards[clickedDonut].amount += 1; // [] de skrivet vi in för att komma åt de vi klickade på. Och de andra länkar till vår lista och amount, de gör att när vi klickar ökar amount med 1 varje gång på rätt donut
+    donutCards[clickedDonut].amount += 1; // [] de skrivet vi in för att komma åt de vi klickade på, alltså vilket objekt vi klickat på. Och de andra länkar till vår lista och amount, de gör att när vi klickar ökar amount med 1 varje gång på rätt donut
     
     const amountEl = e.currentTarget.parentElement.querySelector('input')
     let amount = Number(amountEl.value);
@@ -141,6 +141,15 @@ function removeNumber(e){
         amountEl.value -= 1;
     }
 }
+
+/**
+ * TODO
+ * Skapa html struktur för varukorsmunkarna
+ * koppla de ihop med arrayen ungefär som med korten som skrevs ut
+ * koppla det med att rätt munk ska visas när vi klickar på knapparna
+ * Antalet ska ändras när vi klickar på knapparna
+ * 
+ */
 
 /*-----------------------------------------------------------------------------------------------
 ------------------ Basket -----------------------------------------------------------------------
