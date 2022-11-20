@@ -113,27 +113,32 @@
                         <form action="">
                             <label for="">
                                 <span>Förnamn</span>  
-                                <input pattern="[A-Za-zÅÄÖåäö\-]{1,}" required class="input_group" type="text" id="name"> 
+                                <span class="errorMessage" id="errorMessageName" hidden></span>
+                                <input placeholder="tilltalsnamn" required class="input_group" type="text" id="name"> 
                             </label>
                             <br>
                             <label for="">
                                 <span>Efternamn</span>  
-                                <input pattern="[A-Za-zÅÄÖåäö\-]{1,}" required class="input_group" type="text" id="lastname">
+                                <span class="errorMessage" id="errorMessageLastname" hidden></span>
+                                <input required class="input_group" type="text" id="lastname">
                             </label>
                             <br>
                             <label for=""> 
                                 <span>Gatuadress</span> 
-                                <input pattern="[A-Za-zÅÄÖåäö0-9 ]{1,}" required class="input_group" type="text" id="adress">
+                                <span class="errorMessage" id="errorMessageAdress" hidden></span>
+                                <input placeholder="gata och nummer" required class="input_group" type="text" id="adress">
                             </label>
                             <br>
                             <label for="">
                                     <span>Postnummer</span> 
-                                <input pattern="[0-9]{5}" required class="input_group" type="text" id="postnumber">
+                                    <span class="errorMessage" id="errorMessagePostnumber" hidden></span>
+                                <input required class="input_group" type="text" id="postnumber">
                             </label>
                             <br>
                             <label for="">
                                 <span>Postort</span> 
-                                <input pattern="[A-Za-zÅÄÖåäö\- ]{1,}" required class="input_group" type="text" id="city">
+                                <span class="errorMessage" id="errorMessageCity" hidden></span>
+                                <input placeholder="stad" required class="input_group" type="text" id="city">
                             </label>
                             <br>
                             <label for="">
@@ -142,13 +147,15 @@
                             </label>
                             <br>
                             <label for="">
-                                <span>Telefonnummer</span> 
-                                <input required class="input_group" type="number" id="phonenumber">
+                                <span>Mobilnummer</span> 
+                                <span class="errorMessage" id="errorMessagePhoneNumber" hidden></span>
+                                <input required class="input_group" type="text" id="phonenumber">
                             </label>
                             <br>
                             <label for="">
                                 <span>Epost</span> 
-                                <input required class="input_group" type="email" id="email">
+                                <span class="errorMessage" id="errorMassageeMail" hidden></span>
+                                <input required class="input_group" type="text" id="email">
                             </label>
                             <br>
                             <label for="">
@@ -171,26 +178,32 @@
                             </label> <!--vid faktura fält med personnr, ska valideras-->
                             <br>
                             <br>
-                            <label id="ssn" class="display-none" for="">
-                                <span>Personnummer</span> 
-                            <input pattern="[0-9]{10}" required class="input_group" type="text" >
-                            </label>
+                            <div id="ssn" class="display-none">
+                                <label for="">
+                                    <span>Personnummer</span> 
+                                    <span class="errorMessage" id="errorMessagePersonNR" hidden></span>
+                                    <input id="personNr" placeholder="YYMMDD0000" class="input_group" type="text" >
+                                </label>
+                            </div>
                             <div id="cardpay" class="display-none">
                                 <label for="">
                                     <span>Kortnummer</span> 
-                                    <input required class="input_group" type="number" id="cardnr">
+                                    <span class="errorMessage" id="errorMessageCardNR" hidden></span>
+                                    <input placeholder="0000000000000000" class="input_group" type="number" id="cardnr">
                                 </label>
                                 <label for="">
-                                    <span>datum/år</span> 
-                                    <input required class="input_group" type="number" id="dateyear">
+                                    <span>mån/år</span> 
+                                    <span class="errorMessage" id="errorMessageDateyear" hidden></span>
+                                    <input placeholder="MMYY" class="input_group" type="number" id="dateyear">
                                 </label>
                                 <label for="">
                                     <span>CVC</span> 
-                                    <input required class="input_group" type="number" id="CVC">
+                                    <span class="errorMessage" id="errorMessageCVC" hidden></span>
+                                    <input placeholder="000" class="input_group" type="number" id="CVC">
                                 </label>
                             </div>
                             <input class="reset_form_button" type="reset" value="Rensa formulär">
-                            <input class="submit_form_button" type="submit" value="Skicka">
+                            <input class="submit_form_button" disabled type="submit" value="Beställ">
                         </form>
                     </div>
                 </section>

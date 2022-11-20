@@ -434,6 +434,7 @@ label{
 
 .display-none {
     display: none;
+    margin-bottom: 20px;
 }
 
 .submit_form_button{
@@ -448,7 +449,11 @@ form p {
     font-weight: bold;
 }
 
-
+.errorMessage{
+    color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+}
 /*Så gott som klart.
 
 Men är en del att fixa i JS sen. Se i JS- filen.*/
