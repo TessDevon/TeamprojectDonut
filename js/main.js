@@ -142,7 +142,7 @@ function removeNumber(e){
         donutCards[clickedDonut].amount -= 1; // [] de skrivet vi in för att komma åt de vi klickade på. Och de andra länkar till vår lista och amount, de gör att när vi klickar ökar amount med 1 varje gång på rätt donut
 
         amountEl.value = donutCards[clickedDonut].amount; //Gör så att value i input = amount i våra objekt
-    }
+    }console.dir(amountEl.value)
     
     UpdatedonutsBasket();// kallar på min funktion som lägger till och tar bort donuts från basket
 }
@@ -177,18 +177,19 @@ function UpdatedonutsBasket(){
                 </div>
             </div>
         </section>
-    </div>`
-    totalPrice();
-    }}
+    </div>`}
+    totalPrice();// sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
+}
 } // På priset har jag satt att priset ska multipliceras med värdet i amount
 
 /*Uppdaterar totalsumman*/
 function totalPrice(){ //Uppdatera totalsumman i varukorgen
+    totalPriceBasket.innerHTML = ''; // Rensar varje gång loopen körs och den uppdateras igenl
     let sum = 0; // sätter en startsumma till 0
-    totalPriceBasket.innerHTML = ''; // Rensar varje gång loopen körs och den uppdateras igen
+    
     for(let i = 0; i < donutCards.length; i++){// loopar igenom alla så jag hittar vilka som har värde över 0
         sum += (donutCards[i].amount * donutCards[i].donutPrice)//sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
-    }
+    console.dir(donutCards[i].amount)}
     totalPriceBasket.innerHTML += // lägger till summan
     `<span>${sum}</span>`
 } 
@@ -207,7 +208,8 @@ function totalPrice(){ //Uppdatera totalsumman i varukorgen
  * [] Tabort knapp
  * [] När man väljer att skriva i en siffra ska amount uppdateras
  * 
- * [] totalsumman ska uppdateras efter varje ny munk
+ * [x] totalsumman ska uppdateras efter varje ny munk
+ * När alla är noll ska även summan va 0
  * 
  * 
  * 
