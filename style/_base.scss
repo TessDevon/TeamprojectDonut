@@ -372,10 +372,6 @@ input[type=number] {
     font-size: 9vw;
 }
 
-.summery {
-    font-size: 5.5vw;
-}
-
 .discount_button{  
     cursor: pointer;
     font-size: smaller;
@@ -394,11 +390,28 @@ input[type=number] {
     margin: 5px;
     padding: 15px;
     font-family: Arial, Helvetica, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .main_heading_basket{
     display: flex;
     justify-content: space-between;
+}
+
+.basket_sum div{
+    display: flex;
+    align-items: center;
+}
+
+.total_amount{
+    margin-left: 30px;
+    font-size: 1.7rem;
+}
+
+.total_amount span{
+    margin-right: 5px;
+    font-size: 1.7rem;
 }
 
 .basket_heading{
@@ -407,11 +420,74 @@ input[type=number] {
 }
 
 .basket_heading_none{
-    display: none;         /*Rubrikerna dolts i mobil*/
+    display: none;      
+}
+
+.basketDonuts {
+    min-width: 200px;
+    max-width: 400px;
+    min-height: 170px;
+    margin: 0 auto;
+    background-color: pink;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.basketHeaderDonuts{
+    height: 60px;
+}
+
+.basketDonuts h3{
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Dosis', sans-serif;
+    text-shadow: 1px 1px #ffffff;
+    line-height: 60px;
+    font-size: 1.6rem;
+}
+
+.basketDonuts section{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.basketDonutsflex{
+    display: flex;
+    flex-direction: column;
+}
+
+.basketDonutsflex div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.basketDonuts h4{
+    margin: 0;
+    font-family: 'Dosis', sans-serif;
+    text-shadow: 1px 1px #ffffff;
+    font-size: 1.3rem;
+}
+
+.basketDonuts img{
+    width: 70px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+}
+
+.basketDonuts p{
+    font-size: 1.2rem;
+    margin-top: 15px;
 }
 
 .summery{
     font-weight: 600;
+    font-size: 5.5vw;
 }
 
 /* I varukorgen i mobil kommer vi nog få hoppa rubriker och infon på munkarna, 
@@ -457,6 +533,8 @@ Summa att betala:
     margin: 5px;
     padding: 15px;
     font-family: Arial, Helvetica, sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 label{
