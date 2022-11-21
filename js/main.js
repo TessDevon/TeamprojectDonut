@@ -10,6 +10,7 @@
  */
 const donutCardsContainer = document.querySelector('#donutCards') //Kallar på section för våra donut kort för att kunna lägga in våra kort
 const basketDonuts = document.querySelector('#basketDonuts') // kallar på html strukturen till donutsen som ska ligga i vår varukorg
+const totalPriceBasket = document.querySelector('#totalAmountBasket');// Kallar på diven där html sturkturen för totalsumman ska ligga
 
 const donutCards = [ // En array med varje donut kort som objekt
 {
@@ -125,7 +126,7 @@ function addNumber (e) {
     donutCards[clickedDonut].amount += 1; // [] de skrivet vi in för att komma åt de vi klickade på, alltså vilket objekt vi klickat på. Och de andra länkar till vår lista och amount, de gör att när vi klickar ökar amount med 1 varje gång på rätt donut
     
     const amountEl = e.currentTarget.parentElement.querySelector('input')
-    amountEl.value = donutCards[clickedDonut].amount;
+    amountEl.value = donutCards[clickedDonut].amount; //Gör så att value i input = amount i våra objekt
     
     UpdatedonutsBasket();// kallar på min funktion som lägger till och tar bort donuts från basket
 }   
@@ -140,16 +141,20 @@ function removeNumber(e){
 
         donutCards[clickedDonut].amount -= 1; // [] de skrivet vi in för att komma åt de vi klickade på. Och de andra länkar till vår lista och amount, de gör att när vi klickar ökar amount med 1 varje gång på rätt donut
 
-        amountEl.value = donutCards[clickedDonut].amount;
+        amountEl.value = donutCards[clickedDonut].amount; //Gör så att value i input = amount i våra objekt
     }
     
     UpdatedonutsBasket();// kallar på min funktion som lägger till och tar bort donuts från basket
 }
 
+/**
+ * Lägger till donuts i varukorgen när vi väljer antal
+ */
+
+/*Lägger in rätt donuts i varukorgen*/
 function UpdatedonutsBasket(){
 
     basketDonuts.innerHTML = ''; // rensar formuläret varje gång jag klickar på en knapp 
-
     for(let i = 0; i < donutCards.length; i++){ // loopa igenom alla donuts i vår array så vi kan hitta den med amount som är större än 0
          if(donutCards[i].amount >= 1){ //Om värdet av amount i vår array av donuts är 1 eller mer lägger vi till vår html stuktur i basket. i för att den inte ska lägga till alla utan bara enskilda. Första gången den lopas inget, andra inget, trejde träff och den skrivs ut
         basketDonuts.innerHTML +=
@@ -173,11 +178,22 @@ function UpdatedonutsBasket(){
             </div>
         </section>
     </div>`
+    totalPrice();
     }}
 } // På priset har jag satt att priset ska multipliceras med värdet i amount
 
+/*Uppdaterar totalsumman*/
+function totalPrice(){ //Uppdatera totalsumman i varukorgen
+    let sum = 0; // sätter en startsumma till 0
+    totalPriceBasket.innerHTML = ''; // Rensar varje gång loopen körs och den uppdateras igen
+    for(let i = 0; i < donutCards.length; i++){// loopar igenom alla så jag hittar vilka som har värde över 0
+        sum += (donutCards[i].amount * donutCards[i].donutPrice)//sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
+    }
+    totalPriceBasket.innerHTML += // lägger till summan
+    `<span>${sum}</span>`
+} 
 /**
- * TODO
+ * TODO Varukorg
  * [x]Skapa html struktur för varukorsmunkarna
  * [x]när jag klickar på knappen ska min struktur hopppa upp i varukorgen
  * [x]Bara den jag ska klicka på ska hopppa upp
@@ -188,7 +204,15 @@ function UpdatedonutsBasket(){
  * [x]koppla det med att rätt munk ska visas när vi klickar på knapparna
  * [x]Antalet ska ändras när vi klickar på knapparna
  * [x] Delsumman ska uppdateras
+ * [] Tabort knapp
+ * [] När man väljer att skriva i en siffra ska amount uppdateras
  * 
+ * [] totalsumman ska uppdateras efter varje ny munk
+ * 
+ * 
+ * 
+ * []När jag klickar på rabattkod ska en ruta dyka upp
+ * []När jag fyller i rutan ska totalsumman bli 0
  */
 
 /*-----------------------------------------------------------------------------------------------

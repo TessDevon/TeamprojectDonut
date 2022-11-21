@@ -352,6 +352,21 @@ input[type=number] {
     justify-content: space-between;
 }
 
+.basket_sum div{
+    display: flex;
+    align-items: center;
+}
+
+.total_amount{
+    margin-left: 30px;
+    font-size: 1.7rem;
+}
+
+.total_amount span{
+    margin-right: 5px;
+    font-size: 1.7rem;
+}
+
 .basket_heading{
     font-size: 4.5vw;
     
