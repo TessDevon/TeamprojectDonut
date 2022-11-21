@@ -161,6 +161,46 @@ nav i {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+
+/*Slideshow*/
+.controlsImgSlideshow{
+    position: relative;
+}
+
+.left{
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    position: absolute;
+    background-color: transparent;
+    color: black;
+    border: none;
+    top: 60px;
+    cursor: pointer;
+}
+
+.right{
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    position: absolute;
+    background-color: transparent;
+    color: black;
+    border: none;
+    top: 60px;
+    right: 0px;
+    cursor: pointer;
+}
+/*Slideshow*/
+
+
+/*
+.left{                 
+    background-color: pink;
+    border: none;
+}
+
+    background-color: pink;
+    border: none;
+    margin-left: 8px;   La till margin för att knappen inte ska störa skuggningen av bilden till vänster.
+}*/
+
 .donutCardHeaderContainer{
    height: 100px;
    text-align: center;
