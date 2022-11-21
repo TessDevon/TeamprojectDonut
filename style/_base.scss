@@ -440,6 +440,7 @@ label{
 
 .display-none {
     display: none;
+    margin-bottom: 20px;
 }
 
 .submit_form_button{
@@ -452,6 +453,12 @@ label{
 form p {
     font-size: 5vw;
     font-weight: bold;
+}
+
+.errorMessage{
+    color: red;
+    border: 1px solid red;
+    border-radius: 5px;
 }
 
 /*Så gott som klart.
