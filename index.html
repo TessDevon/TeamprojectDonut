@@ -158,15 +158,6 @@
                                 <input required class="input_group" type="text" id="email">
                             </label>
                             <br>
-                            <label for="">
-                                Godkännande av behandling av personuppgifter
-                                <input required class="input_group" type="checkbox" name="gdpr" id="gdpr">
-                            </label>
-                            <br>
-                            <label for="">
-                                Prenumerera på vårt nyhetsbrev
-                                <input checked type="checkbox" name="news" id="news">
-                            </label>
                             <p>Betalsätt</p>
                             <label for="">
                                 Kort
@@ -176,7 +167,6 @@
                                 Faktura
                                 <input type="radio" id="invoice" name="waysToPay" value="invoice"> 
                             </label> <!--vid faktura fält med personnr, ska valideras-->
-                            <br>
                             <br>
                             <div id="ssn" class="display-none">
                                 <label for="">
@@ -202,6 +192,16 @@
                                     <input placeholder="000" class="input_group" type="number" id="CVC">
                                 </label>
                             </div>
+                            <br>
+                            <label for="">
+                                Prenumerera på vårt nyhetsbrev
+                                <input checked type="checkbox" name="news" id="news">
+                            </label>
+                            <label for="">
+                                Godkännande av behandling av personuppgifter
+                                <input required class="input_group" type="checkbox" name="gdpr" id="gdpr">
+                            </label>
+                            <br><br>
                             <input class="reset_form_button" type="reset" value="Rensa formulär">
                             <input class="submit_form_button" disabled type="submit" value="Beställ">
                         </form>
