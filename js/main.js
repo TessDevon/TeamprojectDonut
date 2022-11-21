@@ -147,8 +147,12 @@ function removeNumber(e){
     UpdatedonutsBasket();// kallar på min funktion som lägger till och tar bort donuts från basket
 }
 
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------- Basket -------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 /**
- * Lägger till donuts i varukorgen när vi väljer antal
+ * Lägger till donuts i varukorgen när vi klickar på +
  */
 
 /*Lägger in rätt donuts i varukorgen*/
@@ -209,7 +213,7 @@ function totalPrice(){ //Uppdatera totalsumman i varukorgen
  * [] När man väljer att skriva i en siffra ska amount uppdateras
  * 
  * [x] totalsumman ska uppdateras efter varje ny munk
- * När alla är noll ska även summan va 0
+ * [x]När alla är noll ska även summan va 0
  * 
  * 
  * 
