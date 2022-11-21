@@ -68,7 +68,7 @@ const donutCards = [ // En array med varje donut kort som objekt
 },{
     donutTitle: 'Mandelknäck',
     donutImg1: './images/caramell.jpg',
-    donutImg2: './images/caramell.jpg',
+    donutImg2: './images/caramell2.jpg',
     donutAlt: 'munk med mandel och knäck smak',
     donutPrice: '15 kr/st',
 }];
@@ -81,8 +81,20 @@ donutCardsContainer.innerHTML +=
     </div>
     <section class="donutCardContainer">
         <div class="donutCardImgContainer">
-            <img src="${donutCards[i].donutImg1}" alt="" class="donutCardImg1" id="donutcardImg1">
-            <img src="${donutCards[i].donutImg2}" alt="" class="donutCardImg2" id="donutCardImg2">
+            <div class="controlsImgSlideshow" id="controlsImgSlideshow">
+                <div class="images">
+                    <img src="${donutCards[i].donutImg1}" alt="" class="donutCardImg1" id="donutcardImg1">
+                    <img src="${donutCards[i].donutImg2}" alt="" class="donutCardImg2" id="donutCardImg2">                                 
+                </div>
+                <div class="controls">
+                    <button class="left" id="prevImage">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    <button class="right" id="nextImage">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </div>
             <p id="donutCardPrice">${donutCards[i].donutPrice}</p>
         </div>
         <div class='donutCardRating'></div>
@@ -125,6 +137,31 @@ function removeNumber(e){
         amountEl.value -= 1;
     }
 }
+
+/*------------------------------ Start växling av bilder i munksection -----------------------------*/
+
+const prevImageBtn = document.querySelectorAll('#prevImage');        //Har adderat två knappar i HTML ovanför och kallat på dessa.
+const nextImageBtn = document.querySelectorAll('#nextImage');
+
+for (let i = 0; i < prevImageBtn.length; i++){
+    prevImageBtn[i].addEventListener('click', swapImages)
+    nextImageBtn[i].addEventListener('click', swapImages)
+}
+
+function swapImages(e){
+    const donutcardImg1Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutcardImg1');
+    const donutCardImg2Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutCardImg2');
+
+    const firstDonut = donutcardImg1Slideshow.getAttribute('src');
+    const secondDonut = donutCardImg2Slideshow.getAttribute('src');
+
+    donutcardImg1Slideshow.setAttribute('src', secondDonut);
+    donutCardImg2Slideshow.setAttribute('src', firstDonut);
+};
+
+/*------------------------------ Stop växling av bilder i munksection ------------------------------*/
+
+
 
 /*-----------------------------------------------------------------------------------------------
 ------------------ Basket -----------------------------------------------------------------------
