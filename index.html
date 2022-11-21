@@ -16,23 +16,28 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
-    <script src="https://kit.fontawesome.com/364f1f7cab.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/364f1f7cab.js" crossorigin="anonymous" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
 <body>
     <header>
        <h1>Gottfrids<br>munkar</h1>
    </header>
     <nav>
-        <ul>
-            <a href="#ourdonuts">Våra munkar</a>
-            <a href="#info">Övrig info</a>
-            <a href="#shopping-basket">Varukorg</a> <!--Ikon för varukorg samt summa-->
-            <a href="#shopping-basket">
-                <i class="fa fa-shopping-cart" style="font-size:36px;color:rgb(182, 19, 146)"></i>
-            </a>
-          <!--  <li>Kunduppgifter</li>   -->
-        </ul>
+        <div class="navLinks">
+            <ul>
+                <li class="menuList"><a class=" navLinks_a" href="#ourdonuts">Våra munkar</a></li>
+                <li class="menuList"></liclass><a class=" navLinks_a"href="#info">Övrig info</a></li>
+                <li class="menuList"></li><a class=" navLinks_a"href="#shopping-basket">Varukorg</a></li> <!--Ikon för varukorg samt summa-->
+                    <a href="#shopping-basket">
+                        <i class="fa fa-shopping-cart" style="font-size:36px;color:rgb(182, 19, 146)"></i>
+                    </a>                          
+            </ul>
+        </div>
     </nav>
     <main>
         <section>
@@ -116,27 +121,32 @@
                         <form action="">
                             <label for="">
                                 <span>Förnamn</span>  
-                                <input pattern="[A-Za-zÅÄÖåäö\-]{1,}" required class="input_group" type="text" id="name"> 
+                                <span class="errorMessage" id="errorMessageName" hidden></span>
+                                <input placeholder="tilltalsnamn" required class="input_group" type="text" id="name"> 
                             </label>
                             <br>
                             <label for="">
                                 <span>Efternamn</span>  
-                                <input pattern="[A-Za-zÅÄÖåäö\-]{1,}" required class="input_group" type="text" id="lastname">
+                                <span class="errorMessage" id="errorMessageLastname" hidden></span>
+                                <input required class="input_group" type="text" id="lastname">
                             </label>
                             <br>
                             <label for=""> 
                                 <span>Gatuadress</span> 
-                                <input pattern="[A-Za-zÅÄÖåäö0-9 ]{1,}" required class="input_group" type="text" id="adress">
+                                <span class="errorMessage" id="errorMessageAdress" hidden></span>
+                                <input placeholder="gata och nummer" required class="input_group" type="text" id="adress">
                             </label>
                             <br>
                             <label for="">
                                     <span>Postnummer</span> 
-                                <input pattern="[0-9]{5}" required class="input_group" type="text" id="postnumber">
+                                    <span class="errorMessage" id="errorMessagePostnumber" hidden></span>
+                                <input required class="input_group" type="text" id="postnumber">
                             </label>
                             <br>
                             <label for="">
                                 <span>Postort</span> 
-                                <input pattern="[A-Za-zÅÄÖåäö\- ]{1,}" required class="input_group" type="text" id="city">
+                                <span class="errorMessage" id="errorMessageCity" hidden></span>
+                                <input placeholder="stad" required class="input_group" type="text" id="city">
                             </label>
                             <br>
                             <label for="">
@@ -145,24 +155,17 @@
                             </label>
                             <br>
                             <label for="">
-                                <span>Telefonnummer</span> 
-                                <input required class="input_group" type="number" id="phonenumber">
+                                <span>Mobilnummer</span> 
+                                <span class="errorMessage" id="errorMessagePhoneNumber" hidden></span>
+                                <input required class="input_group" type="text" id="phonenumber">
                             </label>
                             <br>
                             <label for="">
                                 <span>Epost</span> 
-                                <input required class="input_group" type="email" id="email">
+                                <span class="errorMessage" id="errorMassageeMail" hidden></span>
+                                <input required class="input_group" type="text" id="email">
                             </label>
                             <br>
-                            <label for="">
-                                Godkännande av behandling av personuppgifter
-                                <input required class="input_group" type="checkbox" name="gdpr" id="gdpr">
-                            </label>
-                            <br>
-                            <label for="">
-                                Prenumerera på vårt nyhetsbrev
-                                <input checked type="checkbox" name="news" id="news">
-                            </label>
                             <p>Betalsätt</p>
                             <label for="">
                                 Kort
@@ -173,27 +176,42 @@
                                 <input type="radio" id="invoice" name="waysToPay" value="invoice"> 
                             </label> <!--vid faktura fält med personnr, ska valideras-->
                             <br>
-                            <br>
-                            <label id="ssn" class="display-none" for="">
-                                <span>Personnummer</span> 
-                            <input pattern="[0-9]{10}" required class="input_group" type="text" >
-                            </label>
+                            <div id="ssn" class="display-none">
+                                <label for="">
+                                    <span>Personnummer</span> 
+                                    <span class="errorMessage" id="errorMessagePersonNR" hidden></span>
+                                    <input id="personNr" placeholder="YYMMDD0000" class="input_group" type="text" >
+                                </label>
+                            </div>
                             <div id="cardpay" class="display-none">
                                 <label for="">
                                     <span>Kortnummer</span> 
-                                    <input required class="input_group" type="number" id="cardnr">
+                                    <span class="errorMessage" id="errorMessageCardNR" hidden></span>
+                                    <input placeholder="0000000000000000" class="input_group" type="number" id="cardnr">
                                 </label>
                                 <label for="">
-                                    <span>datum/år</span> 
-                                    <input required class="input_group" type="number" id="dateyear">
+                                    <span>mån/år</span> 
+                                    <span class="errorMessage" id="errorMessageDateyear" hidden></span>
+                                    <input placeholder="MMYY" class="input_group" type="number" id="dateyear">
                                 </label>
                                 <label for="">
                                     <span>CVC</span> 
-                                    <input required class="input_group" type="number" id="CVC">
+                                    <span class="errorMessage" id="errorMessageCVC" hidden></span>
+                                    <input placeholder="000" class="input_group" type="number" id="CVC">
                                 </label>
                             </div>
+                            <br>
+                            <label for="">
+                                Prenumerera på vårt nyhetsbrev
+                                <input checked type="checkbox" name="news" id="news">
+                            </label>
+                            <label for="">
+                                Godkännande av behandling av personuppgifter
+                                <input required class="input_group" type="checkbox" name="gdpr" id="gdpr">
+                            </label>
+                            <br><br>
                             <input class="reset_form_button" type="reset" value="Rensa formulär">
-                            <input class="submit_form_button" type="submit" value="Skicka">
+                            <input class="submit_form_button" disabled type="submit" value="Beställ">
                         </form>
                     </div>
                 </section>
