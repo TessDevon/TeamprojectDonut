@@ -238,20 +238,20 @@ function totalPrice(){ //Uppdatera totalsumman i varukorgen
 const prevImageBtn = document.querySelectorAll('#prevImage');        //Har adderat två knappar i HTML ovanför och kallat på dessa.
 const nextImageBtn = document.querySelectorAll('#nextImage');
 
-for (let i = 0; i < prevImageBtn.length; i++){
-    prevImageBtn[i].addEventListener('click', swapImages)
-    nextImageBtn[i].addEventListener('click', swapImages)
+for (let i = 0; i < prevImageBtn.length; i++){                      //Loopar igenom knapparna på alla munkar
+    prevImageBtn[i].addEventListener('click', swapImages)           //adventlisner på backåtknappen som triggar funktionen nedan
+    nextImageBtn[i].addEventListener('click', swapImages)           //adventlisner på framåtknappen som triggar funktionen nedan 
 }
 
 function swapImages(e){
-    const donutcardImg1Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutcardImg1');
-    const donutCardImg2Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutCardImg2');
+    const donutcardImg1Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutcardImg1');         //Hämtat bild1 
+    const donutCardImg2Slideshow = e.currentTarget.parentElement.parentElement.querySelector('#donutCardImg2');         //Hämtat bild2
 
-    const firstDonut = donutcardImg1Slideshow.getAttribute('src');
-    const secondDonut = donutCardImg2Slideshow.getAttribute('src');
+    const firstDonut = donutcardImg1Slideshow.getAttribute('src');                  //Hämtar urlen till bild1
+    const secondDonut = donutCardImg2Slideshow.getAttribute('src');                 //Hämtar urlen till bild2
 
-    donutcardImg1Slideshow.setAttribute('src', secondDonut);
-    donutCardImg2Slideshow.setAttribute('src', firstDonut);
+    donutcardImg1Slideshow.setAttribute('src', secondDonut);                        //Första munken byts till andra
+    donutCardImg2Slideshow.setAttribute('src', firstDonut);                         //Andra munken byts till första
 };
 
 /*------------------------------ Stop växling av bilder i munksection ------------------------------*/
@@ -301,41 +301,41 @@ Lägg gärna in om ni hittar mer som ska in här???????
 /*----------------------------------------------------------------------------------------------
 ------------JS koden för att hantera beställningsknappen. START---------------------------------
 -----------------------------------------------------------------------------------------------*/ 
-const orderButton = document.querySelector('.submit_form_button');
-const nameInput = document.querySelector('#name');
-const lastNameInput = document.querySelector('#lastname');
-const adress = document.querySelector('#adress');
-const postNumber = document.querySelector('#postnumber');
-const city = document.querySelector('#city');
-const phoneNumber = document.querySelector('#phonenumber');
-const eMail = document.querySelector('#email');
-const gdpr = document.querySelector('#gdpr');
-const creditCard = document.querySelector('#creditcard');
-const cardNumber = document.querySelector('#cardnr');
-const monthYear = document.querySelector('#dateyear');
-const cvc = document.querySelector('#CVC');
-const inVoice = document.querySelector('#invoice');
-const personNR = document.querySelector('#personNr');
+const orderButton = document.querySelector('.submit_form_button');              //hämtar beställningsknapp
+const nameInput = document.querySelector('#name');                              //hämtar namn i html
+const lastNameInput = document.querySelector('#lastname');                      //hämtar efternamnet i html
+const adress = document.querySelector('#adress');                               //hämtar adress
+const postNumber = document.querySelector('#postnumber');                       //hämtar postnummer
+const city = document.querySelector('#city');                                   //hämtar stad
+const phoneNumber = document.querySelector('#phonenumber');                     //hämtar telefonnummer
+const eMail = document.querySelector('#email');                                 //hämtar email
+const gdpr = document.querySelector('#gdpr');                                   //hämtar gdpr
+const creditCard = document.querySelector('#creditcard');                       //hämtar kreditkort
+const cardNumber = document.querySelector('#cardnr');                           //hämtar kortnummer
+const monthYear = document.querySelector('#dateyear');                          //hämtar MM/ÅÅ
+const cvc = document.querySelector('#CVC');                                     //hämtar CVC
+const inVoice = document.querySelector('#invoice');                             //hämtar fakturafältet
+const personNR = document.querySelector('#personNr');                           //hämta personnummer
 
-nameInput.addEventListener('change', checkNameInput);
-let checkNameInputOk = false;
+nameInput.addEventListener('change', checkNameInput);                           // när något ändras i namnrutan så triggas funktionen under. 
+let checkNameInputOk = false;                                                   // grundvärdet är falskt     
 
-function checkNameInput(){
-    const exp = new RegExp('^[A-Za-zÅÄÖåäö\-]{1,}$');
-    const errorMessage = document.querySelector('#errorMessageName');
+function checkNameInput(){          
+    const exp = new RegExp('^[A-Za-zÅÄÖåäö\-]{1,}$');                           //Vad fältet får innehålla, A-ö a-ö - 
+    const errorMessage = document.querySelector('#errorMessageName');           //kallar upp f'ltet för felmedelande
 
-    if (exp.test(nameInput.value)){
+    if (exp.test(nameInput.value)){                                             //Om värdet stämmer med const exp så döljs felmeddelanderutan och functionen skickar true
         errorMessage.setAttribute('hidden', '');
         checkNameInputOk = true;
     } else {
-        errorMessage.innerHTML = 'Endast bostäver och bindelsträck';
+        errorMessage.innerHTML = 'Endast bostäver och bindelsträck';            //Om värdet inte stämmer visas felmeddelanderutan med denna text och functionen skickar false. 
         errorMessage.removeAttribute('hidden');
         checkNameInputOk = false;
     }
     activateOrderButton();
 }
 
-lastNameInput.addEventListener('change', checklastNameInput);
+lastNameInput.addEventListener('change', checklastNameInput);                   //Som ovan men med inställningar till efternamn
 let checklastNameInputOk = false;
 
 function checklastNameInput(){
@@ -357,7 +357,7 @@ adress.addEventListener('change', errorMessageAdress);
 let messageAdressOk = false;
 
 function errorMessageAdress(){
-    const exp = new RegExp('^[A-Za-zÅÄÖåäö0-9 ]{1,}$');
+    const exp = new RegExp('^[A-Za-zÅÄÖåäö0-9 ]{1,}$');                         //A-Ö a-ö 0-9 och mellanslag är okej. Minst ett tecken eller fler. 
     const errorMessage = document.querySelector('#errorMessageAdress');
 
     if (exp.test(adress.value)){
@@ -375,7 +375,7 @@ postNumber.addEventListener('change', errorMessagePostnumber);
 let messagePostnumberOk = false;
 
 function errorMessagePostnumber(){
-    const exp = new RegExp('^[0-9]{5}$');
+    const exp = new RegExp('^[0-9]{5}$');                                       // Ska innehålla fem siffor 0-9
     const errorMessage = document.querySelector('#errorMessagePostnumber');
 
     if (exp.test(postNumber.value)){
@@ -393,7 +393,7 @@ city.addEventListener('change', errorMessageCity);
 let messageCityOk = false;
 
 function errorMessageCity(){
-    const exp = new RegExp('^[A-Za-zÅÄÖåäö \-]{1,}$');
+    const exp = new RegExp('^[A-Za-zÅÄÖåäö \-]{1,}$');                          // A-Ö a-ö mellanslag och bindelstreck
     const errorMessage = document.querySelector('#errorMessageCity');
 
     if (exp.test(city.value)){
@@ -411,7 +411,7 @@ phoneNumber.addEventListener('change', errorMessagePhoneNumber);
 let messagePhoneNumberOk = false;
 
 function errorMessagePhoneNumber(){
-    const exp = new RegExp('^[0-9]{10}$');
+    const exp = new RegExp('^[0-9]{10}$');                                      // Tio siffror 0-9
     const errorMessage = document.querySelector('#errorMessagePhoneNumber');
 
     if (exp.test(phoneNumber.value)){
@@ -431,7 +431,7 @@ let messageeMailOk = false;
 
 function errorMessageeMail(){
     const exp = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
-    const errorMessage = document.querySelector('#errorMassageeMail');
+    const errorMessage = document.querySelector('#errorMassageeMail');                      //SpecialRegExp för epost
 
     if (exp.test(eMail.value)){
         errorMessage.setAttribute('hidden', '');
@@ -445,10 +445,10 @@ function errorMessageeMail(){
 }
 
 gdpr.addEventListener('click', errorMessagegdpr);
-let messagegdprOk = false;
+let messagegdprOk = false;                                                  //Denna ruta är false då den är tom
 
 function errorMessagegdpr(){
-    messagegdprOk = gdpr.checked;
+    messagegdprOk = gdpr.checked;                                           //Denna ruta är sant om den är checkad
     activateOrderButton();
 }
 
@@ -456,7 +456,7 @@ cardNumber.addEventListener('change', errorMessageCardNR);
 let messageCardNROk = false;
 
 function errorMessageCardNR(){
-    const exp = new RegExp('^[0-9]{16}$');
+    const exp = new RegExp('^[0-9]{16}$');                                  // Sexton siffror 0-9
     const errorMessage = document.querySelector('#errorMessageCardNR');
 
     if (exp.test(cardNumber.value)){
@@ -474,7 +474,7 @@ monthYear.addEventListener('change', errorMessageMonthyear);
 let messageMonthyearOk = false;
 
 function errorMessageMonthyear(){
-    const exp = new RegExp('^[0-9]{4}$');
+    const exp = new RegExp('^[0-9]{4}$');                                   // Fyra siffror 0-9
     const errorMessage = document.querySelector('#errorMessageDateyear');
 
     if (exp.test(monthYear.value)){
@@ -493,7 +493,7 @@ cvc.addEventListener('change', errorMessageCVC);
 let messageCVCOk = false;
 
 function errorMessageCVC(){
-    const exp = new RegExp('^[0-9]{3}$');
+    const exp = new RegExp('^[0-9]{3}$');                                   //Tre siffror 0-9
     const errorMessage = document.querySelector('#errorMessageCVC');
 
     if (exp.test(cvc.value)){
@@ -511,7 +511,7 @@ personNR.addEventListener('change', errorMessagePersonNR);
 let personNROk = false;
 
 function errorMessagePersonNR(){
-    const exp = new RegExp('^[0-9]{10}$');
+    const exp = new RegExp('^[0-9]{10}$');                                  //Tio siffror 0-9
     const errorMessage = document.querySelector('#errorMessagePersonNR');
 
     if (exp.test(personNR.value)){
@@ -527,7 +527,7 @@ function errorMessagePersonNR(){
 }
 
 
-function activateOrderButton(){
+function activateOrderButton(){                             //Om alla dessa värde innan paraneserna är sanna, och det första värdena inom den första parantesen eller den andra parantesen är sanna så tas attributet disable bort. Om inte detta uppfylls sätts attributet disabled.
     if (checkNameInputOk && checklastNameInputOk && messageAdressOk && messagePostnumberOk && messageCityOk && messagePhoneNumberOk && messageeMailOk && messagegdprOk && ((creditCard.checked && messageCardNROk && messageMonthyearOk && messageCVCOk) || (inVoice.checked && personNROk))){
         orderButton.removeAttribute('disabled');    
     } else {
