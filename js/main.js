@@ -235,12 +235,12 @@ function totalPrice(){ //Uppdatera totalsumman i varukorgen
 
 /*------------------------------ Start växling av bilder i munksection -----------------------------*/
 
-const prevImageBtn = document.querySelectorAll('#prevImage');        //Har adderat två knappar i HTML ovanför och kallat på dessa.
+const prevImageBtn = document.querySelectorAll('#prevImage');        //Har adderat två knappar per munk i HTML ovanför och kallat på dessa.
 const nextImageBtn = document.querySelectorAll('#nextImage');
 
 for (let i = 0; i < prevImageBtn.length; i++){                      //Loopar igenom knapparna på alla munkar
-    prevImageBtn[i].addEventListener('click', swapImages)           //adventlisner på backåtknappen som triggar funktionen nedan
-    nextImageBtn[i].addEventListener('click', swapImages)           //adventlisner på framåtknappen som triggar funktionen nedan 
+    prevImageBtn[i].addEventListener('click', swapImages)           //adventlisner klick på backåtknappen som triggar funktionen nedan
+    nextImageBtn[i].addEventListener('click', swapImages)           //adventlisner klick på framåtknappen som triggar funktionen nedan 
 }
 
 function swapImages(e){
@@ -322,7 +322,7 @@ let checkNameInputOk = false;                                                   
 
 function checkNameInput(){          
     const exp = new RegExp('^[A-Za-zÅÄÖåäö\-]{1,}$');                           //Vad fältet får innehålla, A-ö a-ö - 
-    const errorMessage = document.querySelector('#errorMessageName');           //kallar upp f'ltet för felmedelande
+    const errorMessage = document.querySelector('#errorMessageName');           //kallar upp diven för felmedelande
 
     if (exp.test(nameInput.value)){                                             //Om värdet stämmer med const exp så döljs felmeddelanderutan och functionen skickar true
         errorMessage.setAttribute('hidden', '');
@@ -332,7 +332,7 @@ function checkNameInput(){
         errorMessage.removeAttribute('hidden');
         checkNameInputOk = false;
     }
-    activateOrderButton();
+    activateOrderButton();                                                      //Kör denna funnktion för att uppdatera beställknappen eftersom jag ändrat ckeckputImputOk.  
 }
 
 lastNameInput.addEventListener('change', checklastNameInput);                   //Som ovan men med inställningar till efternamn
@@ -527,7 +527,7 @@ function errorMessagePersonNR(){
 }
 
 
-function activateOrderButton(){                             //Om alla dessa värde innan paraneserna är sanna, och det första värdena inom den första parantesen eller den andra parantesen är sanna så tas attributet disable bort. Om inte detta uppfylls sätts attributet disabled.
+function activateOrderButton(){                             //Om alla dessa värde innan paraneserna är sanna, och de första värdena inom den första parantesen eller den andra parantesen är sanna så tas attributet disable bort. Om inte detta uppfylls sätts attributet disabled.
     if (checkNameInputOk && checklastNameInputOk && messageAdressOk && messagePostnumberOk && messageCityOk && messagePhoneNumberOk && messageeMailOk && messagegdprOk && ((creditCard.checked && messageCardNROk && messageMonthyearOk && messageCVCOk) || (inVoice.checked && personNROk))){
         orderButton.removeAttribute('disabled');    
     } else {
