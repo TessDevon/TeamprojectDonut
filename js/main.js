@@ -196,7 +196,43 @@ function UpdatedonutsBasket(){
     </div>`}
     totalPrice();// sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
 }
+/*------------------- Luciamunk-------------------------*/    
+//const today = new Date('December 13, 69 00:20:18');                       //För testning av Luciamunken
+
+const today = new Date();                                                   //Dagens datum
+if(today.getDate() == 13 && today.getMonth() == 11)                         //Om dagens datum är 13 dec
+{
+    basketDonuts.innerHTML += luciaDonutHtml();                             //Så triggas funktionen luciaDonutHtml
+}
+/*--------------------Luciamunk------------------------*/    
+
 } // På priset har jag satt att priset ska multipliceras med värdet i amount
+
+/*-------------------- Luciamunk --------------------------------*/
+UpdatedonutsBasket();                                                       //Körs för att Luciamunken ska läggas i varukorgen.
+function luciaDonutHtml(){                                                  //Skapar strängen för Luciamunken
+    return `<div class="basketDonuts">
+    <div class="basketHeaderDonuts">
+        <h3>Lucia Munk</h3>
+    </div>
+    <section>
+        <div>
+            <img src="./images/nutDounat.jpg" alt="">
+        </div>
+        <div class="basketDonutsflex">
+            <div>
+                <h4>Antal</h4>
+                <h4>Delsumma</h4>
+            </div>
+            <div>
+                <p>1</p>
+                <p>0 kr</p>
+            </div>
+        </div>
+    </section>
+    </div>`;
+}
+/*---------------------Luciamunkslut ----------------------------*/
 
 /*Uppdaterar totalsumman*/
 function totalPrice(){ //Uppdatera totalsumman i varukorgen
