@@ -599,6 +599,27 @@ function showPersonNr(){
 }
 
 
+/*--------------------- Jultemat ------------------------------------------------------------*/
+
+//const today = new Date('December 24, 69 00:20:18');                         //För test av julafton
+const today = new Date();                                                 //Dagens datum
+if(today.getDate() == 24 && today.getMonth() == 11)                         //Om dagens datum är 24 dec
+{
+    const santaVagon = document.querySelector('.fa-shopping-cart');  
+    santaVagon.style.color = 'red';    //Ändra Color
+    santaVagon.style.textShadow = '2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff';
+    const santaH1 = document.querySelector('h1');                           //Ändra färg på text
+    santaH1.style.color = 'black';
+    santaH1.style.paddingTop = '100px';
+    santaH1.style.textShadow = '2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff';
+    const santaheader = document.querySelector('header').style.backgroundImage = 'url("images/santaDonuts.jpg")';                   //Ändra bakgrundsbild
+    const santaPrice = document.querySelectorAll('#donutCardPrice');
+    for (let i = 0 ; i < santaPrice.length ; i++){
+      santaPrice[i].style.color = 'red';  
+    }
+    const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bagrundfärg röd
+    const santaForm = document.querySelector('.section-form').style.backgroundImage = 'url("images/hallonchokladInzoom.jpg")';                  //Byta balgrundsbild
+}
 /*
 Att lägga till i js designmässigt/användarvänligt. 
 * krav på bokstäver i text
