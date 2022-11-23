@@ -113,7 +113,7 @@ donutCardsContainer.innerHTML +=
         <br>
         <div class="donutCardButtonContainer">
             <button data-operator="minus" data-id="${i}">-</button>
-            <input type="number" value="0">
+            <input type="number" value="0" data-operator="amount" data-id="${i}">
             <button data-operator="plus" data-id="${i}">+</button>
         </div>
     </section>
@@ -123,12 +123,14 @@ donutCardsContainer.innerHTML +=
 /*
 *Få våra + och - knappar att fungera
 */
-const addBtns = document.querySelectorAll('button[data-operator="plus"]');
-const subtractBtns = document.querySelectorAll('button[data-operator="minus"]');
+const addBtns = document.querySelectorAll('button[data-operator="plus"]');// kallar på plus knappen
+const subtractBtns = document.querySelectorAll('button[data-operator="minus"]'); // Kallar på minus knappen
+const typeAmountInput = document.querySelectorAll('input[data-operator="amount"]') //Kallar på inputen med antal
 
 for (let i = 0; i < addBtns.length; i++){
     addBtns[i].addEventListener('click', addNumber)
     subtractBtns[i].addEventListener('click', removeNumber)
+    typeAmountInput[i].addEventListener('input', updateAmount)
 }
 
  /* När vi klickar på + ökar vi antal med 1*/
@@ -154,9 +156,19 @@ function removeNumber(e){
         donutCards[clickedDonut].amount -= 1; // [] de skrivet vi in för att komma åt de vi klickade på. Och de andra länkar till vår lista och amount, de gör att när vi klickar ökar amount med 1 varje gång på rätt donut
 
         amountEl.value = donutCards[clickedDonut].amount; //Gör så att value i input = amount i våra objekt
-    }console.dir(amountEl.value)
+    }
     
     UpdatedonutsBasket();// kallar på min funktion som lägger till och tar bort donuts från basket
+}
+
+/*Gör det möjligt att skriva in antal i inputrutan*/
+function updateAmount(e){
+    
+    const changedDonutId = e.currentTarget.dataset.id; // Gör så jag får ut indexet det inputfältet som ändras
+    const donutValue = e.currentTarget.value;
+    donutCards[changedDonutId].amount = donutValue;// säger att värdet i value ska vara samma som i amount
+
+    UpdatedonutsBasket(); // Kallar på funktionen så våra donuts skrivs ut
 }
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -241,32 +253,22 @@ function totalPrice(){ //Uppdatera totalsumman i varukorgen
     
     for(let i = 0; i < donutCards.length; i++){// loopar igenom alla så jag hittar vilka som har värde över 0
         sum += (donutCards[i].amount * donutCards[i].donutPrice)//sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
-    console.dir(donutCards[i].amount)}
+    }
     totalPriceBasket.innerHTML += // lägger till summan
     `<span>${sum}</span>`
 } 
 /**
  * TODO Varukorg
- * [x]Skapa html struktur för varukorsmunkarna
- * [x]när jag klickar på knappen ska min struktur hopppa upp i varukorgen
- * [x]Bara den jag ska klicka på ska hopppa upp
- * [x]Ska bara komma en gång
- * [x]när värdet är större än 0 ska html stukturen läggas till i varukorgen
- * [x] Använd sedan index för att rätt donut ska hamna där
- * [x]när den är 0 ska de inte finnas i varukorgen
- * [x]koppla det med att rätt munk ska visas när vi klickar på knapparna
- * [x]Antalet ska ändras när vi klickar på knapparna
- * [x] Delsumman ska uppdateras
- * [] Tabort knapp
+ 
  * [] När man väljer att skriva i en siffra ska amount uppdateras
- * 
- * [x] totalsumman ska uppdateras efter varje ny munk
- * [x]När alla är noll ska även summan va 0
- * 
- * 
- * 
+ * [] Skapa en töm varukorg knapp
+ * []När töm varukorgknappen klickas på ska amount bli 0 och pris bli 0
+ * [] Skapa en rabattkodsruta
  * []När jag klickar på rabattkod ska en ruta dyka upp
- * []När jag fyller i rutan ska totalsumman bli 0
+ * []När jag fyller i rutan med en viss kod ska totalsumman bli 0
+ * []Varje donut som lägg i varukorgen ska ha en ta bort knapp
+ * []Varje donut i varukorgen ska ha + och - knappar
+ * [] Visuell feedback i varukorgiconen
  */
 
 /*------------------------------ Start växling av bilder i munksection -----------------------------*/
