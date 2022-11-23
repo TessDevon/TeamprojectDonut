@@ -163,7 +163,7 @@ function removeNumber(e){
 
 /*Gör det möjligt att skriva in antal i inputrutan*/
 function updateAmount(e){
-    
+
     const changedDonutId = e.currentTarget.dataset.id; // Gör så jag får ut indexet det inputfältet som ändras
     const donutValue = e.currentTarget.value;
     donutCards[changedDonutId].amount = donutValue;// säger att värdet i value ska vara samma som i amount
@@ -207,7 +207,23 @@ function UpdatedonutsBasket(){
         </section>
     </div>`}
     totalPrice();// sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
-}
+}}
+
+/*Töm varukorgen*/
+
+const emptyBasketBtn = document.querySelector('#emptyBasketBtn') // kallar på töm varukotgknappen
+emptyBasketBtn.addEventListener('click', emptyBasket)
+
+function emptyBasket (e){ 
+
+    for(let i = 0; i < donutCards.length; i++){// loopar igenom och kollar alla amount
+        donutCards[i].amount = 0; //ändrar alla amount till 0
+        typeAmountInput[i].value = 0; // ändrar alla inputfält till 0
+    } 
+
+UpdatedonutsBasket(); // gör så att jag tar bort kortet i varukorgen
+} 
+
 /*------------------- Luciamunk-------------------------*/    
 //const today = new Date('December 13, 69 00:20:18');                       //För testning av Luciamunken
 
@@ -218,7 +234,7 @@ if(today.getDate() == 13 && today.getMonth() == 11)                         //Om
 }
 /*--------------------Luciamunk------------------------*/    
 
-} // På priset har jag satt att priset ska multipliceras med värdet i amount
+ // På priset har jag satt att priset ska multipliceras med värdet i amount
 
 /*-------------------- Luciamunk --------------------------------*/
 UpdatedonutsBasket();                                                       //Körs för att Luciamunken ska läggas i varukorgen.
@@ -260,8 +276,8 @@ function totalPrice(){ //Uppdatera totalsumman i varukorgen
 /**
  * TODO Varukorg
  
- * [] När man väljer att skriva i en siffra ska amount uppdateras
- * [] Skapa en töm varukorg knapp
+ * [x] När man väljer att skriva i en siffra ska amount uppdateras
+ * [x] Skapa en töm varukorg knapp
  * []När töm varukorgknappen klickas på ska amount bli 0 och pris bli 0
  * [] Skapa en rabattkodsruta
  * []När jag klickar på rabattkod ska en ruta dyka upp
@@ -604,7 +620,7 @@ function showPersonNr(){
 /*--------------------- Jultemat ------------------------------------------------------------*/
 
 //const today = new Date('December 24, 69 00:20:18');                         //För test av julafton
-const today = new Date();                                                 //Dagens datum
+                                           //Dagens datum
 if(today.getDate() == 24 && today.getMonth() == 11)                         //Om dagens datum är 24 dec
 {
     const santaVagon = document.querySelector('.fa-shopping-cart');  
