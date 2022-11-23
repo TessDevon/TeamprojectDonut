@@ -4,6 +4,8 @@
 --------------------------------------- Donut cards -------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+/*const { doc } = require("prettier");*/
+
 
 /**
  * Få våra donut kort att komma upp genom att ligger i en array och körs genom en loop
@@ -209,7 +211,40 @@ function UpdatedonutsBasket(){
     totalPrice();// sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
 }}
 
-/*Töm varukorgen*/
+/**
+ * Lägg till rabattkod och gör priset till 0
+ */
+
+const discountBtn = document.querySelector('#discountBtn')//kallar på rabattkodsknappen
+const totalSum = 0; // skriver totalsumman som en variabel så jag kan spara värdet av totalsumman när den ändras till 0
+discountBtn.addEventListener('click', totalpriceZero)
+
+function totalpriceZero(){
+    const discountInput = document.querySelector('#discountCode') // kallar på inputrutan jag ska skriva in  min kod i
+    if (discountInput.value === 'a_damn_fine-cup_of-coffee'){// om value är lika med vår kod kommer totalsumman bli 0
+        totalPriceBasket.innerHTML = ''; // måste tömma vårt totala pris innan vi lägger upp de nya
+        totalPriceBasket.innerHTML += // säger att vi ska skicka in en span med 0 i vår html
+    `<span>${totalSum}</span>` // skickar in värdet 0 i totalsumman
+    }
+}
+
+/**
+ * Uppdaterar totalsumman
+ */
+function totalPrice(){ //Uppdatera totalsumman i varukorgen
+    totalPriceBasket.innerHTML = ''; // Rensar varje gång loopen körs och den uppdateras igenl
+    let sum = 0; // sätter en startsumma till 0
+    
+    for(let i = 0; i < donutCards.length; i++){// loopar igenom alla så jag hittar vilka som har värde över 0
+        sum += (donutCards[i].amount * donutCards[i].donutPrice)//sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
+    }
+    totalPriceBasket.innerHTML += // lägger till summan
+    `<span>${sum}</span>`
+}
+
+/**
+ * Töm varukorgen
+ */
 
 const emptyBasketBtn = document.querySelector('#emptyBasketBtn') // kallar på töm varukotgknappen
 emptyBasketBtn.addEventListener('click', emptyBasket)
@@ -223,6 +258,11 @@ function emptyBasket (e){
 
 UpdatedonutsBasket(); // gör så att jag tar bort kortet i varukorgen
 } 
+
+
+
+
+
 
 /*------------------- Luciamunk-------------------------*/    
 //const today = new Date('December 13, 69 00:20:18');                       //För testning av Luciamunken
@@ -262,25 +302,14 @@ function luciaDonutHtml(){                                                  //Sk
 }
 /*---------------------Luciamunkslut ----------------------------*/
 
-/*Uppdaterar totalsumman*/
-function totalPrice(){ //Uppdatera totalsumman i varukorgen
-    totalPriceBasket.innerHTML = ''; // Rensar varje gång loopen körs och den uppdateras igenl
-    let sum = 0; // sätter en startsumma till 0
-    
-    for(let i = 0; i < donutCards.length; i++){// loopar igenom alla så jag hittar vilka som har värde över 0
-        sum += (donutCards[i].amount * donutCards[i].donutPrice)//sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
-    }
-    totalPriceBasket.innerHTML += // lägger till summan
-    `<span>${sum}</span>`
-} 
+ 
 /**
  * TODO Varukorg
  
  * [x] När man väljer att skriva i en siffra ska amount uppdateras
  * [x] Skapa en töm varukorg knapp
- * []När töm varukorgknappen klickas på ska amount bli 0 och pris bli 0
- * [] Skapa en rabattkodsruta
- * []När jag klickar på rabattkod ska en ruta dyka upp
+ * [x]När töm varukorgknappen klickas på ska amount bli 0 och pris bli 0
+ * [x] Skapa en rabattkodsruta
  * []När jag fyller i rutan med en viss kod ska totalsumman bli 0
  * []Varje donut som lägg i varukorgen ska ha en ta bort knapp
  * []Varje donut i varukorgen ska ha + och - knappar
