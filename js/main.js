@@ -215,7 +215,7 @@ function UpdatedonutsBasket(){
 
     const lokalToday = new Date();                                                   //Dagens datum
     if(lokalToday.getDate() == 13 && lokalToday.getMonth() == 11)                         //Om dagens datum är 13 dec
-{
+    {
     basketDonuts.innerHTML += luciaDonutHtml();                             //Så triggas funktionen luciaDonutHtml
     }
 /*--------------------Luciamunk------------------------*/    
@@ -300,7 +300,6 @@ function luciaDonutHtml(){                                                  //Sk
     </div>`;
 }
 /*---------------------Luciamunkslut ----------------------------*/
-
  
 /**
  * TODO Varukorg
@@ -370,15 +369,8 @@ Summa att betala:
 Lägg gärna in om ni hittar mer som ska in här???????
 */
 
-/*-----------------------------------------------------------------------------------------------
-------------------- Form ------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------*/
 
-
-
-
-
-/*----------------------------------------------------------------------------------------------
+/*-----------------------------Form-------------------------------------------------------------
 ------------JS koden för att hantera beställningsknappen. START---------------------------------
 -----------------------------------------------------------------------------------------------*/ 
 const orderButton = document.querySelector('.submit_form_button');              //hämtar beställningsknapp
