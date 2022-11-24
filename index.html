@@ -175,9 +175,10 @@
                                 Kort
                                 <input type="radio" id="creditcard" name="waysToPay" value="creditcard">
                             </label>
-                            <label for="">
+                            <label id="labelInvoice" for="">
                                 Faktura
                                 <input type="radio" id="invoice" name="waysToPay" value="invoice"> 
+                                <br><span class="errorMessage" id="errorMessageInvoice" hidden></span>
                             </label> <!--vid faktura fält med personnr, ska valideras-->
                             <br>
                             <div id="ssn" class="display-none">

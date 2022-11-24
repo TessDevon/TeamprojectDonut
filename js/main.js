@@ -209,6 +209,7 @@ function UpdatedonutsBasket(){
         </section>
     </div>`}
     totalPrice();// sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
+    maxSummaryNoInvoice();  // Körs för funktionen Ta bort Faktura över 800 kr. Bytes till Summery senare.
     }
     /*------------------- Luciamunk--Start-----------------------*/    
     //const lokalToday = new Date('December 13, 69 00:20:18');                       //För testning av Luciamunken
@@ -334,6 +335,7 @@ function swapImages(e){
 };
 
 /*------------------------------ Stop växling av bilder i munksection ------------------------------*/
+
 
 
 /*-----------------------------Form-------------------------------------------------------------
@@ -463,7 +465,6 @@ function errorMessagePhoneNumber(){
     activateOrderButton();
 }
 
-
 eMail.addEventListener('change', errorMessageeMail);
 let messageeMailOk = false;
 
@@ -564,7 +565,6 @@ function errorMessagePersonNR(){
     activateOrderButton();
 }
 
-
 function activateOrderButton(){                             //Om alla dessa värde innan paraneserna är sanna, och de första värdena inom den första parantesen eller den andra parantesen är sanna så tas attributet disable bort. Om inte detta uppfylls sätts attributet disabled.
     if (checkNameInputOk && checklastNameInputOk && messageAdressOk && messagePostnumberOk && messageCityOk && messagePhoneNumberOk && messageeMailOk && messagegdprOk && ((creditCard.checked && messageCardNROk && messageMonthyearOk && messageCVCOk) || (inVoice.checked && personNROk))){
         orderButton.removeAttribute('disabled');    
@@ -576,6 +576,38 @@ function activateOrderButton(){                             //Om alla dessa vär
 /*----------------------------------------------------------------------------------------------
 ------------JS koden för att hantera beställningsknappen.  STOP---------------------------------
 -----------------------------------------------------------------------------------------------*/ 
+
+
+
+/*-------------------------------------------------------------------------------------------------
+------------ Faktura försvinner som betalsätt om man handlar för mer än 800 kr --------------------
+-------------------------------------------------------------------------------------------------*/ 
+
+
+
+function maxSummaryNoInvoice(){
+    const totalSumInvoice = document.querySelector('#totalAmountBasket');    //Hämtar totalsumman att testa på.
+    //const maxSummary = document.querySelector('');               //Detta värde är funktionen till för. 
+    const invoiceStop = document.querySelector('#invoice');              //Kanppen till fakturan. 
+    const errorMessageInvoice = document.querySelector('#errorMessageInvoice')
+    const cardRadioButton = document.querySelector('#creditcard')
+
+    if (totalSumInvoice.children[0].innerHTML > 800){                               //Om summan är över 800 
+        invoiceStop.setAttribute('disabled', '');                                   //Döljs knappen     
+        invoiceStop.checked = false;
+        activateOrderButton();
+        cardRadioButton.checked = true;
+        showCardInfo();
+        errorMessageInvoice.innerHTML = 'Faktura ej tillåten vid köp över 800 kr';    
+        errorMessageInvoice.removeAttribute('hidden');                 
+    } else {
+        invoiceStop.removeAttribute('disabled');              //Annars syns den
+        errorMessageInvoice.setAttribute('hidden', '');
+    }
+}
+
+/*--------------Faktura försbinner Stop ------------------------------------------------------------*/
+
 
 /**
  * När vi klickar på kort ska korinformation visas och när vi klickar på form ska personnr visas
@@ -599,6 +631,28 @@ function showPersonNr(){
     document.querySelector('#ssn').ariaRequired;
     document.querySelector('#cardpay').style.display = 'none';
 }
+
+
+/*-------------------------------------------------------------------------------------------------
+------------- Tidsbegränsningen på 15 min ---------------------------------------------------------
+---------------------------------------------------------------------------------------------------*/
+
+const ResetButtonResetInTime = document.querySelector('.reset_form_button')
+const ResetDonutBasketInTime = document.querySelector('#emptyBasketBtn')
+
+function startTimer(){}
+/*När något av fälten rörs startas timern*/
+
+function ResetAllInTime(){
+/*När timern når 15 min, */ 
+}
+
+
+
+
+
+
+
 
 /*
 Lägga till från uppgiften: 
@@ -648,7 +702,7 @@ if(today.getDate() == 24 && today.getMonth() == 11)                         //Om
 
 
 /*---------------------------------------------------------------------------------------------------
----------------------- Delivery Code ----------------------------------------------------------------
+---------------------- Delivery Time Code -----------------------------------------------------------
 ---------------------------------------------------------------------------------------------------*/
 
 
