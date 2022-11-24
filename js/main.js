@@ -167,7 +167,7 @@ function removeNumber(e){
 function updateAmount(e){
 
     const changedDonutId = e.currentTarget.dataset.id; // Gör så jag får ut indexet det inputfältet som ändras
-    const donutValue = e.currentTarget.value;
+    const donutValue = Number(e.currentTarget.value); // Gör om värdet i input till number
     donutCards[changedDonutId].amount = donutValue;// säger att värdet i value ska vara samma som i amount
 
     UpdatedonutsBasket(); // Kallar på funktionen så våra donuts skrivs ut
