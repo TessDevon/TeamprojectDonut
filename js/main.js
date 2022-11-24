@@ -210,7 +210,7 @@ function UpdatedonutsBasket(){
     </div>`}
     totalPrice();// sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
     }
-    /*------------------- Luciamunk-------------------------*/    
+    /*------------------- Luciamunk--Start-----------------------*/    
     //const lokalToday = new Date('December 13, 69 00:20:18');                       //För testning av Luciamunken
 
     const lokalToday = new Date();                                                   //Dagens datum
@@ -218,7 +218,7 @@ function UpdatedonutsBasket(){
     {
     basketDonuts.innerHTML += luciaDonutHtml();                             //Så triggas funktionen luciaDonutHtml
     }
-/*--------------------Luciamunk------------------------*/    
+/*--------------------Luciamunk--Slut----------------------*/    
 }
 
 /**
@@ -275,7 +275,7 @@ UpdatedonutsBasket(); // gör så att jag tar bort kortet i varukorgen
 
  // På priset har jag satt att priset ska multipliceras med värdet i amount
 
-/*-------------------- Luciamunk --------------------------------*/
+/*-------------------- Luciamunk start--------------------------------*/
 UpdatedonutsBasket();                                                       //Körs för att Luciamunken ska läggas i varukorgen.
 function luciaDonutHtml(){                                                  //Skapar strängen för Luciamunken
     return `<div class="basketDonuts">
@@ -299,7 +299,7 @@ function luciaDonutHtml(){                                                  //Sk
     </section>
     </div>`;
 }
-/*---------------------Luciamunkslut ----------------------------*/
+/*---------------------Luciamunk slut ----------------------------*/
  
 /**
  * TODO Varukorg
@@ -334,40 +334,6 @@ function swapImages(e){
 };
 
 /*------------------------------ Stop växling av bilder i munksection ------------------------------*/
-
-/*-----------------------------------------------------------------------------------------------
------------------- Basket -----------------------------------------------------------------------
--------------------------------------------------------------------------------------------------*/
-
-/*
-Att göra i JS under varukorg efter cssen:
-* Valda munkar ska in under namn, bild, antal, summa. 
-* rabattkod ska kunna läggas in. 
-* totalsumma, rabatt och summa att betala ska läggas in. 
-
-Varukorg:               Delsumma:
-Namn på munk
-bild
-antal                   Summa
-
-Namn på munk
-bild
-antal                   Summa
-
-Namn på munk
-bild 
-antal                   Summa
-
-Använd rabattkod 
-
-Totalsumma:
-Dragen rabatt:
-Summa att betala:
-
-
-<Lägga in från uppgiften:
-Lägg gärna in om ni hittar mer som ska in här???????
-*/
 
 
 /*-----------------------------Form-------------------------------------------------------------
@@ -634,8 +600,28 @@ function showPersonNr(){
     document.querySelector('#cardpay').style.display = 'none';
 }
 
+/*
+Lägga till från uppgiften: 
+[x]Om faktura valts som betalsätt ska ett formulärfält för svenskt personnummer visas. 
+[x]Även detta fält ska valideras innan formuläret går att skicka iväg, dvs. 
+att man fyllt i korrekt personnummer.
+[x] Om kort väljs som betalsätt, visas fält för kortnummer, datum/år och CVC. Dessa behöver 
+inte valideras!
+[x] Checkbox för godkännande av behandling av personuppgifter
+[x]Checkbox för beställning av nyhetsbrev (ska vara iklickad som default)
+[x]Samtliga formulärfält ska valideras och formuläret/beställningen ska inte gå att skicka 
+om det finns några fel
+[x]Felen ska markeras och kommuniceras tydligt (t.ex. ej enbart med röd färg, tag i beaktande a11y)
+[x]När formuläret är korrekt ifyllt ska Skicka-/Beställ-knappen aktiveras, innan det är den utgråad
+[x]Det ska finnas en "Rensa beställning"-knapp som återställer samtliga formulärfält liksom 
+  eventuella beställda munkar/produkter (alltså antalet återställs till 0) 
+  (Det ska finnas ett fält för att mata in en rabattkod.)*/
 
-/*--------------------- Jultemat ------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------------------------------
+--------------------- Jultemat ----------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------*/
+
 
 //const today = new Date('December 24, 69 00:20:18');                         //För test av julafton
 const today = new Date();                                             //Dagens datum
@@ -656,26 +642,17 @@ if(today.getDate() == 24 && today.getMonth() == 11)                         //Om
     const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bagrundfärg röd
     const santaForm = document.querySelector('.section-form').style.backgroundImage = 'url("images/hallonchokladInzoom.jpg")';                  //Byta balgrundsbild
 }
-/*
-Att lägga till i js designmässigt/användarvänligt. 
-* krav på bokstäver i text
-* Krav på att något av betalsätten ska fyllas i.
-* Nyhetbrev ska vara ifyllt från början. 
-* Gatuaderss ska innehålla både bokstäver och siffror? 
-* postnummer innehålla 5 siffror 
 
-Lägga till från uppgiften: 
-[x]Om faktura valts som betalsätt ska ett formulärfält för svenskt personnummer visas. 
-[]Även detta fält ska valideras innan formuläret går att skicka iväg, dvs. 
-att man fyllt i korrekt personnummer.
-* Om kort väljs som betalsätt, visas fält för kortnummer, datum/år och CVC. Dessa behöver 
-inte valideras!
-* Checkbox för godkännande av behandling av personuppgifter
-* Checkbox för beställning av nyhetsbrev (ska vara iklickad som default)
-* Samtliga formulärfält ska valideras och formuläret/beställningen ska inte gå att skicka 
-om det finns några fel
-* Felen ska markeras och kommuniceras tydligt (t.ex. ej enbart med röd färg, tag i beaktande a11y)
-* När formuläret är korrekt ifyllt ska Skicka-/Beställ-knappen aktiveras, innan det är den utgråad
-* Det ska finnas en "Rensa beställning"-knapp som återställer samtliga formulärfält liksom 
-  eventuella beställda munkar/produkter (alltså antalet återställs till 0) 
-  (Det ska finnas ett fält för att mata in en rabattkod.)*/
+
+/*---------------------------------------------------------------------------------------------------
+---------------------- Delivery Code ----------------------------------------------------------------
+---------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
