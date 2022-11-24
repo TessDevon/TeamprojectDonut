@@ -186,27 +186,36 @@ function UpdatedonutsBasket(){
          if(donutCards[i].amount >= 1){                                                 //Om värdet av amount i vår array av donuts är 1 eller mer lägger vi till vår html stuktur i basket. i för att den inte ska lägga till alla utan bara enskilda. Första gången den lopas inget, andra inget, trejde träff och den skrivs ut
         basketDonuts.innerHTML +=
         `<div class="basketDonuts">
-        <div class="basketHeaderDonuts">
-            <h3>${donutCards[i].donutTitle}</h3>
-        </div>
-        <section>
-            <div>
-                <img src="${donutCards[i].donutImg1}" alt="">
+            <div class="basketHeaderDonuts">
+                <h3>${donutCards[i].donutTitle}</h3>
             </div>
-            <div class="basketDonutsflex">
+            <section>
                 <div>
-                    <h4>Antal</h4>
-                    <h4>Delsumma</h4>
+                    <img src="${donutCards[i].donutImg1}" alt="">
                 </div>
-                <div>
-                    <p>${donutCards[i].amount}</p>
-                    <p>${(donutCards[i].donutPrice * donutCards[i].amount)} kr</p>
+                <div class="basketDonutsflex">
+                    <div>
+                        <h4>Antal</h4>
+                        <h4>Delsumma</h4>
+                    </div>
+                    <div>
+                        <p>${donutCards[i].amount}</p>
+                        <p>${(donutCards[i].donutPrice * donutCards[i].amount)} kr</p>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </div>`}
+            </section>
+        </div>`}
+
+        
     totalPrice();                                                                      // sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
 }}
+
+/*------------------------Specialregler gällande rabatt -------------------------------*/ 
+
+/** TODO
+ * [] Om en munk med samma index har amount 10 eller större ska priset på den munksorten bli * 0.9
+ * [] 10% rabatt ska då skrivas ut i dragen rabatt
+ */
 
 /*------------------------ Lägg till rabattkod och gör priset till 0------------------*/
 
@@ -237,14 +246,26 @@ function wrongCode(){
 
 /*-------------------------------Uppdaterar totalsumman-------------------------------*/
 
-function totalPrice(){ //Uppdatera totalsumman i varukorgen
-    let sum = 0;                                                      // sätter en startsumma till 0
-    
+//Uppdatera totalsumman i varukorgen
+function totalPrice(){ 
+    let sum = 0;  // sätter en startsumma till 0
+                                                      
     for(let i = 0; i < donutCards.length; i++){                       // loopar igenom alla så jag hittar vilka som har värde över 0
-        sum += (donutCards[i].amount * donutCards[i].donutPrice)      //sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
+        
+        // Om man beställer 10 eller fler av en sort ska den munksorten få 10% rabatt
+        if(donutCards[i].amount >= 10){
+            sum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9)
+
+        //Annars skriv ut totalsumma utan rabatt
+        } else{
+            sum += (donutCards[i].amount * donutCards[i].donutPrice)      //sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
+    
+        }
+
+        // lägger till summan
+        totalPriceBasket.innerHTML =                                      
+        `<span>${sum}</span>`
     }
-    totalPriceBasket.innerHTML =                                      // lägger till summan
-    `<span>${sum}</span>`
     
     //Uppdatera totalsumman i iconen längst upp till höger på skärmen
     const shoppingCart = document.querySelector('#shoppingCart')      //kallar på shopping vagnen i html strukturen
@@ -266,11 +287,6 @@ function emptyBasket (e){
 
 UpdatedonutsBasket();                                               // gör så att jag tar bort kortet i varukorgen
 } 
-
-
-
-
-
 
 /*------------------- Luciamunk-------------------------*/    
 //const today = new Date('December 13, 69 00:20:18');                       //För testning av Luciamunken
