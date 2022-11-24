@@ -209,7 +209,17 @@ function UpdatedonutsBasket(){
         </section>
     </div>`}
     totalPrice();// sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
-}}
+    }
+    /*------------------- Luciamunk-------------------------*/    
+    //const lokalToday = new Date('December 13, 69 00:20:18');                       //För testning av Luciamunken
+
+    const lokalToday = new Date();                                                   //Dagens datum
+    if(lokalToday.getDate() == 13 && lokalToday.getMonth() == 11)                         //Om dagens datum är 13 dec
+{
+    basketDonuts.innerHTML += luciaDonutHtml();                             //Så triggas funktionen luciaDonutHtml
+    }
+/*--------------------Luciamunk------------------------*/    
+}
 
 /**
  * Lägg till rabattkod och gör priset till 0
@@ -262,21 +272,6 @@ function emptyBasket (e){
 
 UpdatedonutsBasket(); // gör så att jag tar bort kortet i varukorgen
 } 
-
-
-
-
-
-
-/*------------------- Luciamunk-------------------------*/    
-//const today = new Date('December 13, 69 00:20:18');                       //För testning av Luciamunken
-
-const today = new Date();                                                   //Dagens datum
-if(today.getDate() == 13 && today.getMonth() == 11)                         //Om dagens datum är 13 dec
-{
-    basketDonuts.innerHTML += luciaDonutHtml();                             //Så triggas funktionen luciaDonutHtml
-}
-/*--------------------Luciamunk------------------------*/    
 
  // På priset har jag satt att priset ska multipliceras med värdet i amount
 
@@ -651,7 +646,7 @@ function showPersonNr(){
 /*--------------------- Jultemat ------------------------------------------------------------*/
 
 //const today = new Date('December 24, 69 00:20:18');                         //För test av julafton
-                                           //Dagens datum
+const today = new Date();                                             //Dagens datum
 if(today.getDate() == 24 && today.getMonth() == 11)                         //Om dagens datum är 24 dec
 {
     const santaVagon = document.querySelector('.fa-shopping-cart');  
