@@ -213,8 +213,9 @@ function UpdatedonutsBasket(){
 /*------------------------Specialregler gällande rabatt -------------------------------*/ 
 
 /** TODO
- * [] Om en munk med samma index har amount 10 eller större ska priset på den munksorten bli * 0.9
- * [] 10% rabatt ska då skrivas ut i dragen rabatt
+ * [x] Om en munk med samma index har amount 10 eller större ska priset på den munksorten bli * 0.9
+ * [x] 10% rabatt ska då skrivas ut i dragen rabatt
+ * [] delsumma ska också minskas
  */
 
 /*------------------------ Lägg till rabattkod och gör priset till 0------------------*/
@@ -244,13 +245,13 @@ function wrongCode(){
     }
 }
 
-/*-------------------------------Uppdaterar totalsumman-------------------------------*/
+/*-------------------------------Uppdaterar totalsumman och rabatter-------------------------------*/
 
 //Uppdatera totalsumman i varukorgen
 function totalPrice(){ 
     let sum = 0;  // sätter en startsumma till 0
                                                       
-    for(let i = 0; i < donutCards.length; i++){                       // loopar igenom alla så jag hittar vilka som har värde över 0
+    for(let i = 0; i < donutCards.length; i++){                                            // loopar igenom alla så jag hittar vilka som har värde över 0
         
         // Om man beställer 10 eller fler av en sort ska den munksorten få 10% rabatt
         if(donutCards[i].amount >= 10){
@@ -258,7 +259,7 @@ function totalPrice(){
 
         //Annars skriv ut totalsumma utan rabatt
         } else{
-            sum += (donutCards[i].amount * donutCards[i].donutPrice)      //sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
+            sum += (donutCards[i].amount * donutCards[i].donutPrice)                      //sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
     
         }
 
@@ -268,7 +269,7 @@ function totalPrice(){
     }
     
     //Uppdatera totalsumman i iconen längst upp till höger på skärmen
-    const shoppingCart = document.querySelector('#shoppingCart')      //kallar på shopping vagnen i html strukturen
+    const shoppingCart = document.querySelector('#shoppingCart')                         //kallar på shopping vagnen i html strukturen
     shoppingCart.innerHTML =
     `<span class="colorWhite">${sum} sek</span>`
 }
