@@ -4,6 +4,8 @@
 --------------------------------------- Donut cards -------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+/*const { doc } = require("prettier");*/
+
 
 /**
  * Få våra donut kort att komma upp genom att ligger i en array och körs genom en loop
@@ -113,7 +115,7 @@ donutCardsContainer.innerHTML +=
         <br>
         <div class="donutCardButtonContainer">
             <button data-operator="minus" data-id="${i}">-</button>
-            <input type="number" value="0">
+            <input type="number" value="0" data-operator="amount" data-id="${i}">
             <button data-operator="plus" data-id="${i}">+</button>
         </div>
     </section>
@@ -123,12 +125,14 @@ donutCardsContainer.innerHTML +=
 /*
 *Få våra + och - knappar att fungera
 */
-const addBtns = document.querySelectorAll('button[data-operator="plus"]');
-const subtractBtns = document.querySelectorAll('button[data-operator="minus"]');
+const addBtns = document.querySelectorAll('button[data-operator="plus"]');// kallar på plus knappen
+const subtractBtns = document.querySelectorAll('button[data-operator="minus"]'); // Kallar på minus knappen
+const typeAmountInput = document.querySelectorAll('input[data-operator="amount"]') //Kallar på inputen med antal
 
 for (let i = 0; i < addBtns.length; i++){
     addBtns[i].addEventListener('click', addNumber)
     subtractBtns[i].addEventListener('click', removeNumber)
+    typeAmountInput[i].addEventListener('input', updateAmount)
 }
 
  /* När vi klickar på + ökar vi antal med 1*/
@@ -154,9 +158,19 @@ function removeNumber(e){
         donutCards[clickedDonut].amount -= 1; // [] de skrivet vi in för att komma åt de vi klickade på. Och de andra länkar till vår lista och amount, de gör att när vi klickar ökar amount med 1 varje gång på rätt donut
 
         amountEl.value = donutCards[clickedDonut].amount; //Gör så att value i input = amount i våra objekt
-    }console.dir(amountEl.value)
+    }
     
     UpdatedonutsBasket();// kallar på min funktion som lägger till och tar bort donuts från basket
+}
+
+/*Gör det möjligt att skriva in antal i inputrutan*/
+function updateAmount(e){
+
+    const changedDonutId = e.currentTarget.dataset.id; // Gör så jag får ut indexet det inputfältet som ändras
+    const donutValue = e.currentTarget.value;
+    donutCards[changedDonutId].amount = donutValue;// säger att värdet i value ska vara samma som i amount
+
+    UpdatedonutsBasket(); // Kallar på funktionen så våra donuts skrivs ut
 }
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -195,7 +209,65 @@ function UpdatedonutsBasket(){
         </section>
     </div>`}
     totalPrice();// sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
+}}
+
+/**
+ * Lägg till rabattkod och gör priset till 0
+ */
+
+const discountBtn = document.querySelector('#discountBtn')//kallar på rabattkodsknappen
+const totalSum = 0; // skriver totalsumman som en variabel så jag kan spara värdet av totalsumman när den ändras till 0
+discountBtn.addEventListener('click', totalpriceZero)
+
+function totalpriceZero(){
+    const discountInput = document.querySelector('#discountCode') // kallar på inputrutan jag ska skriva in  min kod i
+    if (discountInput.value === 'a_damn_fine-cup_of-coffee'){// om value är lika med vår kod kommer totalsumman bli 0
+        totalPriceBasket.innerHTML = ''; // måste tömma vårt totala pris innan vi lägger upp de nya
+        totalPriceBasket.innerHTML += // säger att vi ska skicka in en span med 0 i vår html
+    `<span>${totalSum}</span>` // skickar in värdet 0 i totalsumman
+    }
 }
+
+/**
+ * Uppdaterar totalsumman
+ */
+function totalPrice(){ //Uppdatera totalsumman i varukorgen
+    let sum = 0; // sätter en startsumma till 0
+    
+    for(let i = 0; i < donutCards.length; i++){// loopar igenom alla så jag hittar vilka som har värde över 0
+        sum += (donutCards[i].amount * donutCards[i].donutPrice)//sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
+    }
+    totalPriceBasket.innerHTML = // lägger till summan
+    `<span>${sum}</span>`
+    
+    //Uppdatera totalsumman i iconen längst upp till höger på skärmen
+    const shoppingCart = document.querySelector('#shoppingCart') //kallar på shopping vagnen i html strukturen
+    shoppingCart.innerHTML =
+    `<span class="colorWhite">${sum} sek</span>`
+}
+
+/**
+ * Töm varukorgen
+ */
+
+const emptyBasketBtn = document.querySelector('#emptyBasketBtn') // kallar på töm varukotgknappen
+emptyBasketBtn.addEventListener('click', emptyBasket)
+
+function emptyBasket (e){ 
+
+    for(let i = 0; i < donutCards.length; i++){// loopar igenom och kollar alla amount
+        donutCards[i].amount = 0; //ändrar alla amount till 0
+        typeAmountInput[i].value = 0; // ändrar alla inputfält till 0
+    } 
+
+UpdatedonutsBasket(); // gör så att jag tar bort kortet i varukorgen
+} 
+
+
+
+
+
+
 /*------------------- Luciamunk-------------------------*/    
 //const today = new Date('December 13, 69 00:20:18');                       //För testning av Luciamunken
 
@@ -206,7 +278,7 @@ if(today.getDate() == 13 && today.getMonth() == 11)                         //Om
 }
 /*--------------------Luciamunk------------------------*/    
 
-} // På priset har jag satt att priset ska multipliceras med värdet i amount
+ // På priset har jag satt att priset ska multipliceras med värdet i amount
 
 /*-------------------- Luciamunk --------------------------------*/
 UpdatedonutsBasket();                                                       //Körs för att Luciamunken ska läggas i varukorgen.
@@ -234,39 +306,16 @@ function luciaDonutHtml(){                                                  //Sk
 }
 /*---------------------Luciamunkslut ----------------------------*/
 
-/*Uppdaterar totalsumman*/
-function totalPrice(){ //Uppdatera totalsumman i varukorgen
-    totalPriceBasket.innerHTML = ''; // Rensar varje gång loopen körs och den uppdateras igenl
-    let sum = 0; // sätter en startsumma till 0
-    
-    for(let i = 0; i < donutCards.length; i++){// loopar igenom alla så jag hittar vilka som har värde över 0
-        sum += (donutCards[i].amount * donutCards[i].donutPrice)//sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
-    console.dir(donutCards[i].amount)}
-    totalPriceBasket.innerHTML += // lägger till summan
-    `<span>${sum}</span>`
-} 
+ 
 /**
  * TODO Varukorg
- * [x]Skapa html struktur för varukorsmunkarna
- * [x]när jag klickar på knappen ska min struktur hopppa upp i varukorgen
- * [x]Bara den jag ska klicka på ska hopppa upp
- * [x]Ska bara komma en gång
- * [x]när värdet är större än 0 ska html stukturen läggas till i varukorgen
- * [x] Använd sedan index för att rätt donut ska hamna där
- * [x]när den är 0 ska de inte finnas i varukorgen
- * [x]koppla det med att rätt munk ska visas när vi klickar på knapparna
- * [x]Antalet ska ändras när vi klickar på knapparna
- * [x] Delsumman ska uppdateras
- * [] Tabort knapp
- * [] När man väljer att skriva i en siffra ska amount uppdateras
- * 
- * [x] totalsumman ska uppdateras efter varje ny munk
- * [x]När alla är noll ska även summan va 0
- * 
- * 
- * 
- * []När jag klickar på rabattkod ska en ruta dyka upp
- * []När jag fyller i rutan ska totalsumman bli 0
+ 
+ * [x] När man väljer att skriva i en siffra ska amount uppdateras
+ * [x] Skapa en töm varukorg knapp
+ * [x]När töm varukorgknappen klickas på ska amount bli 0 och pris bli 0
+ * [x] Skapa en rabattkodsruta
+ * [x]När jag fyller i rutan med en viss kod ska totalsumman bli 0
+ * [] Visuell feedback i varukorgiconen
  */
 
 /*------------------------------ Start växling av bilder i munksection -----------------------------*/
@@ -602,7 +651,7 @@ function showPersonNr(){
 /*--------------------- Jultemat ------------------------------------------------------------*/
 
 //const today = new Date('December 24, 69 00:20:18');                         //För test av julafton
-const today = new Date();                                                 //Dagens datum
+                                           //Dagens datum
 if(today.getDate() == 24 && today.getMonth() == 11)                         //Om dagens datum är 24 dec
 {
     const santaVagon = document.querySelector('.fa-shopping-cart');  
