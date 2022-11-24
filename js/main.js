@@ -176,14 +176,23 @@ function updateAmount(e){
 --------------------------------------- Basket -------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-/*----------------------Lägger till donuts i varukorgen när vi klickar på + ------------------*/
+/*---------------------- Lägger till donuts i varukorgen när värdet är över 0 ------------------*/
 
-/*Lägger in rätt donuts i varukorgen*/
+/*Lägger in rätt donuts i varukorgen och drar av ev rabatt på delsumman*/
 function UpdatedonutsBasket(){
-
     basketDonuts.innerHTML = '';                                                        // rensar formuläret varje gång jag klickar på en knapp 
+    let sum = 0;
+   
+    // Gör så att delsumman drar av rabatt när man beställer 10 eller fler donuts
     for(let i = 0; i < donutCards.length; i++){                                         // loopa igenom alla donuts i vår array så vi kan hitta den med amount som är större än 0
-         if(donutCards[i].amount >= 1){                                                 //Om värdet av amount i vår array av donuts är 1 eller mer lägger vi till vår html stuktur i basket. i för att den inte ska lägga till alla utan bara enskilda. Första gången den lopas inget, andra inget, trejde träff och den skrivs ut
+        if(donutCards[i].amount >= 10){
+            sum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9);
+        } else{
+            sum += (donutCards[i].amount * donutCards[i].donutPrice);
+        }
+       
+        //Lägger in rätt donut i varukorgen
+        if(donutCards[i].amount >= 1){                                                 //Om värdet av amount i vår array av donuts är 1 eller mer lägger vi till vår html stuktur i basket. i för att den inte ska lägga till alla utan bara enskilda. Första gången den lopas inget, andra inget, trejde träff och den skrivs ut
         basketDonuts.innerHTML +=
         `<div class="basketDonuts">
             <div class="basketHeaderDonuts">
@@ -200,15 +209,15 @@ function UpdatedonutsBasket(){
                     </div>
                     <div>
                         <p>${donutCards[i].amount}</p>
-                        <p>${(donutCards[i].donutPrice * donutCards[i].amount)} kr</p>
+                        <p>${sum} kr</p>
                     </div>
                 </div>
             </section>
-        </div>`}
+        </div>`}  
+        }                                                                              // Skriver sum eftersom jag vill att om vi har rabatt ska delsumman va anorlunda 
 
-        
     totalPrice();                                                                      // sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
-}}
+};
 
 /*------------------------Specialregler gällande rabatt -------------------------------*/ 
 
