@@ -232,14 +232,18 @@ function totalpriceZero(){
  * Uppdaterar totalsumman
  */
 function totalPrice(){ //Uppdatera totalsumman i varukorgen
-    totalPriceBasket.innerHTML = ''; // Rensar varje gång loopen körs och den uppdateras igenl
     let sum = 0; // sätter en startsumma till 0
     
     for(let i = 0; i < donutCards.length; i++){// loopar igenom alla så jag hittar vilka som har värde över 0
         sum += (donutCards[i].amount * donutCards[i].donutPrice)//sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
     }
-    totalPriceBasket.innerHTML += // lägger till summan
+    totalPriceBasket.innerHTML = // lägger till summan
     `<span>${sum}</span>`
+    
+    //Uppdatera totalsumman i iconen längst upp till höger på skärmen
+    const shoppingCart = document.querySelector('#shoppingCart') //kallar på shopping vagnen i html strukturen
+    shoppingCart.innerHTML =
+    `<span class="colorWhite">${sum} sek</span>`
 }
 
 /**
@@ -310,9 +314,7 @@ function luciaDonutHtml(){                                                  //Sk
  * [x] Skapa en töm varukorg knapp
  * [x]När töm varukorgknappen klickas på ska amount bli 0 och pris bli 0
  * [x] Skapa en rabattkodsruta
- * []När jag fyller i rutan med en viss kod ska totalsumman bli 0
- * []Varje donut som lägg i varukorgen ska ha en ta bort knapp
- * []Varje donut i varukorgen ska ha + och - knappar
+ * [x]När jag fyller i rutan med en viss kod ska totalsumman bli 0
  * [] Visuell feedback i varukorgiconen
  */
 

@@ -66,16 +66,34 @@ nav ul {
     padding: 20px;
 }
 
-nav a:hover {
-    color: rgb(26, 108, 111);
+.iconContainer {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    height: 50px;
 }
 
-nav i {
-    text-align: right; 
-    position: fixed;
-    right: 25px;
-    top: 20px;
+nav a i{
+    border: black solid 2px;
+    background-color: rgb(5, 54, 71);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+nav a i.fa  {
+    
     z-index: 2;
+    font-size:2rem;
+    color:rgb(182, 19, 146);
+    line-height: 50px;
+}
+
+.colorWhite{
+    color: white;
+    margin-left: 10px;
+    font-size: 1rem;
+    line-height: 50px;
+    
 }
 
 /*---------------------------------------------------------
