@@ -629,7 +629,6 @@ if(today.getDate() == 24 && today.getMonth() == 11)                         //Om
 {
     const santaVagon = document.querySelector('.fa-shopping-cart');  
     santaVagon.style.color = 'red';    //Ändra Color
-    santaVagon.style.textShadow = '2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff';
     const santaH1 = document.querySelector('h1');                           //Ändra färg på text
     santaH1.style.color = 'black';
     santaH1.style.paddingTop = '100px';
@@ -641,6 +640,10 @@ if(today.getDate() == 24 && today.getMonth() == 11)                         //Om
     }
     const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bagrundfärg röd
     const santaForm = document.querySelector('.section-form').style.backgroundImage = 'url("images/hallonchokladInzoom.jpg")';                  //Byta balgrundsbild
+    const santaInfo = document.querySelector('.informationUlContainer').style.backgroundColor = 'green';
+    const Santafooter = document.querySelector('footer');
+    Santafooter.style.backgroundColor = 'green';
+    Santafooter.style.color = 'white';
 }
 
 
