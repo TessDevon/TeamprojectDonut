@@ -592,25 +592,27 @@ function maxSummaryNoInvoice(){
     const errorMessageInvoice = document.querySelector('#errorMessageInvoice')
     const cardRadioButton = document.querySelector('#creditcard')
 
-    if (totalSumInvoice.children[0].innerHTML > 800){                               //Om summan är över 800 
-        invoiceStop.setAttribute('disabled', '');                                   //Döljs knappen     
-        invoiceStop.checked = false;
-        activateOrderButton();
-        cardRadioButton.checked = true;
-        showCardInfo();
-        errorMessageInvoice.innerHTML = 'Faktura ej tillåten vid köp över 800 kr';    
-        errorMessageInvoice.removeAttribute('hidden');                 
+    if (totalSumInvoice.children[0].innerHTML > 800){                    //Om summan är över 800 
+        invoiceStop.setAttribute('disabled', '');                        //är inte knappen längre klickabar     
+        invoiceStop.checked = false;               //Värdet radiobutton = falsk
+        activateOrderButton();                      
+        //Skickar det falska värdet till Sublit så den gråas om värdet i VK går ner under 800 igen. 
+        //Om inte så skickas uppgifterna i det dolda iväg om man skrivit i dem och sänker priset.
+        cardRadioButton.checked = true;             //Kort radiobutton blir ikryssad
+        showCardInfo();                             //Fälten för kortinfo visas.
+        errorMessageInvoice.innerHTML = 'Faktura ej tillåten vid köp över 800 kr';  //Meddelande till kunden.  
+        errorMessageInvoice.removeAttribute('hidden');      //Meddelander syns på skärmen           
     } else {
-        invoiceStop.removeAttribute('disabled');              //Annars syns den
-        errorMessageInvoice.setAttribute('hidden', '');
+        invoiceStop.removeAttribute('disabled');              //Fakturaknappen syns
+        errorMessageInvoice.setAttribute('hidden', '');       //Felmeddelandet döljs. 
     }
 }
 
-/*--------------Faktura försbinner Stop ------------------------------------------------------------*/
+/*--------------Faktura försvinner Slut ------------------------------------------------------------*/
 
 
 /**
- * När vi klickar på kort ska korinformation visas och när vi klickar på form ska personnr visas
+ * När man klickar på kort ska korinformation visas och när vi klickar på form ska personnr visas
  */
 const creditcardBtn = document.querySelector('#creditcard')
 const invoiceBtn = document.querySelector('#invoice')
@@ -618,14 +620,14 @@ const invoiceBtn = document.querySelector('#invoice')
 creditcardBtn.addEventListener('click', showCardInfo);
 invoiceBtn.addEventListener('click', showPersonNr);
 
-/* När vi klivkar på kort visas kortinformationen*/
+/* När man klickar på kort visas kortinformationen*/
 function showCardInfo(){
     document.querySelector('#cardpay').style.display = 'block';
     document.querySelector('#cardpay').ariaRequired;
     document.querySelector('#ssn').style.display = 'none';
 }
 
-/*När vi klickar på faktura kommer personnr visas*/
+/*När man klickar på faktura kommer personnr visas*/
 function showPersonNr(){
     document.querySelector('#ssn').style.display = 'block';
     document.querySelector('#ssn').ariaRequired;
@@ -636,16 +638,32 @@ function showPersonNr(){
 /*-------------------------------------------------------------------------------------------------
 ------------- Tidsbegränsningen på 15 min ---------------------------------------------------------
 ---------------------------------------------------------------------------------------------------*/
-
+/*
 const ResetButtonResetInTime = document.querySelector('.reset_form_button')
 const ResetDonutBasketInTime = document.querySelector('#emptyBasketBtn')
+*/
+/*
+function eventListnerToForm(){
 
-function startTimer(){}
-/*När något av fälten rörs startas timern*/
+
+
+
+}
+
+let ticker;
+
+function Timer(){
+    ticker = setInterval(ResetAllInTime, 900 * 1000);
+    
+    
+}
+
+
 
 function ResetAllInTime(){
-/*När timern når 15 min, */ 
-}
+När timern når 15 min,  
+console.log(ResetAllInTime);
+}*/
 
 
 
