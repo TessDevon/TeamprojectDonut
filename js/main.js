@@ -565,12 +565,25 @@ function errorMessagePersonNR(){
     activateOrderButton();
 }
 
-function activateOrderButton(){                             //Om alla dessa värde innan paraneserna är sanna, och de första värdena inom den första parantesen eller den andra parantesen är sanna så tas attributet disable bort. Om inte detta uppfylls sätts attributet disabled.
+function activateOrderButton(){                             // Om alla dessa värde innan paraneserna är sanna, och de första värdena inom den första parantesen eller den andra parantesen är sanna så tas attributet disable bort. Om inte detta uppfylls sätts attributet disabled.
     if (checkNameInputOk && checklastNameInputOk && messageAdressOk && messagePostnumberOk && messageCityOk && messagePhoneNumberOk && messageeMailOk && messagegdprOk && ((creditCard.checked && messageCardNROk && messageMonthyearOk && messageCVCOk) || (inVoice.checked && personNROk))){
         orderButton.removeAttribute('disabled');    
     } else {
         orderButton.setAttribute('disabled', ''); 
     }
+}
+
+orderButton.addEventListener('klick', sendOrder);           // Eventlister till Beställknapp. När den klickas triggas funktionen sendOrder.
+
+function sendOrder(){                                       // Funktion som innehåller alla funktioner som triggas när Beställknappen klickas.   
+
+    stopClearFormTimer()                                    //Timern stängs av.
+    // Bekräftelserutans funktion för köpet ska köras.
+    emptyBasket();                                                          // Varukorgen töms.
+    document.getElementById('custumerForm').reset();                        // Formen resetas.
+
+
+
 }
 
 /*----------------------------------------------------------------------------------------------
@@ -638,38 +651,50 @@ function showPersonNr(){
 /*-------------------------------------------------------------------------------------------------
 ------------- Tidsbegränsningen på 15 min ---------------------------------------------------------
 ---------------------------------------------------------------------------------------------------*/
-/*
-const ResetButtonResetInTime = document.querySelector('.reset_form_button')
-const ResetDonutBasketInTime = document.querySelector('#emptyBasketBtn')
-*/
-/*
-function eventListnerToForm(){
+
+// Sätter EventListner till change på alla delar i form. När någon av dessa triggas startar funktionen Start timer.     
+nameInput.addEventListener('change', startTimer);                            
+lastNameInput.addEventListener('change', startTimer); 
+adress.addEventListener('change', startTimer);                          
+postNumber.addEventListener('change', startTimer);          
+city.addEventListener('change', startTimer);                              
+phoneNumber.addEventListener('change', startTimer);            
+eMail.addEventListener('change', startTimer);                    
+gdpr.addEventListener('change', startTimer);                     
+creditCard.addEventListener('change', startTimer);    
+cardNumber.addEventListener('change', startTimer);                   
+monthYear.addEventListener('change', startTimer);                    
+cvc.addEventListener('change', startTimer);                                   
+inVoice.addEventListener('change', startTimer);            
+personNR.addEventListener('change', startTimer);   
 
 
+const infoAboutTimeDiv = document.querySelector('#infoAboutTime');          // Hämtar platsen där texten med info ska visas.
+infoAboutTimeDiv.style.color ='red';                                        // Stylar infotexten om tidsbegränsningen till röd.
+infoAboutTimeDiv.style.fontSize = '1.5rem';                                 // Ändrar storlek på infotexten om tidsbegräsningen.
 
+let clearFormTimer = null;                                                  // Variabel med värde noll. 
 
+function startTimer(){                                                      // Funktionen som startar timern om värdet är noll annars inte. 
+    if (clearFormTimer == null) {                                           // Om värdet på variabeln är noll 
+        infoAboutTimeDiv.innerHTML = 'Du har 15 min på dig för att fullfölja din beställning!';         //Visar infomeddelandet om tidsbegräsningen. 
+        clearFormTimer = setTimeout(clearForms, 15 * 60 * 1000);            // Timern startar, när den tar slut triggas funktionen clearForm.
+    }                                                                                       
 }
 
-let ticker;
-
-function Timer(){
-    ticker = setInterval(ResetAllInTime, 900 * 1000);
-    
-    
+function clearForms(){                                                      // Funktion som bland annat rensar formsen när tiden går ut.
+    clearFormTimer = null;                                                  // När tiden går ut sätts värdet på varabeln åter till noll.
+    infoAboutTimeDiv.innerHTML = '';                                        // Meddelandet om tidsbegränsningen tas bort. 
+    emptyBasket();                                                          // Varukorgen töms.
+    document.getElementById('custumerForm').reset();                        // Formen resetas. 
 }
 
+function stopClearFormTimer(){                                              // Funktion som stoppar timer. 
+    clearTimeout(clearFormTimer);                                           // Timern stoppas.
+    clearFormTimer = null;                                                  // Timern nollställs.
+    infoAboutTimeDiv.innerHTML = '';                                        // Meddelandet om tidsbeställning tas bort. 
 
-
-function ResetAllInTime(){
-När timern når 15 min,  
-console.log(ResetAllInTime);
-}*/
-
-
-
-
-
-
+}
 
 
 /*
@@ -724,10 +749,16 @@ if(today.getDate() == 24 && today.getMonth() == 11)                         //Om
 ---------------------------------------------------------------------------------------------------*/
 
 
-
-
-
-
-
-
-
+//const lokalToday = new Date();                                                //Den körs globalt redan, sparat denna för att testa koden nedan. 
+    
+function deliveryTime() {                                                       //Ska triggas när man trycker på Submit-knappen 
+    if(lokalToday.getDay() == 5 && lokalToday.getHours() >= 11 && lokalToday.getHours() <= 13){               //Om det är fredag mellan 11-13  
+    // Leverandtiden kl 15.00   
+    } else if(lokalToday.getDay() == 6 || lokalToday.getDay() == 0){                                          //Om det är helg (borde vara mellan kl00 fred natten till lördag-00 natten mot måndag?)
+    // Leveranstid 1.5 h                                                                                
+    } else if (lokalToday.getHours() >= 0 && lokalToday.getHours() <= 5){                                   //Om klockan är 00.00-05.00                                             
+    // 45 min                       
+    } else {                                                                        // I andra fall... 
+    //Leveranstid 30 min
+    }
+}

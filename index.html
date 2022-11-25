@@ -122,7 +122,8 @@
                 <section class="section-form">
                     <div class="checkout_form">
                         <h2 class="middlepart_h2">Kundformulär</h2>
-                        <form action="">
+                        <form id="custumerForm" action="">
+                            <br><div id="infoAboutTime"></div><br><br>
                             <label for="">
                                 <span>Förnamn</span>  
                                 <span class="errorMessage" id="errorMessageName" hidden></span>
@@ -220,7 +221,7 @@
                         </form>
                     </div>
                 </section>
-            </div>
+            </div>    
     </main>
     <footer>
         <address>
@@ -229,6 +230,16 @@
             E-post: <a href="#">gottfridsmunkar@gmail.com</a>
         </address>
     </footer>
+    <div class="stopArea" id="stopArea">
+        <div class="stopAreaTestArea">
+        <h2 class="stopAreah2">Tack för din beställning! </h2>
+        <p class="stopAreaP">Du har beställt för totalt <span class="stopAreaP" id="summaryArea"></span> kr. </p>
+        <p class="stopAreaP" id="textAboutDeliveryTime"></p><br>
+        <p class="stopAreaP"> Hoppas det smakar och välkommen åter! <br><br><br>
+        Mvh Gottfrid med personal</p><br><br>
+        <button class="stopAreaButton" id="stopAreaButton">Stäng</button>
+    </div>
+
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
