@@ -758,8 +758,8 @@ function showPopupArea() {                                                      
     popupArea.removeAttribute('hidden');                                                                 // Kör popupen synlig   
 }
 
-const stopAreaButton = document.querySelector('#stopAreaButton')                                         // Stängknapp för popupen
-    stopAreaButton.addEventListener('click', closePopUpArea)                                             // När stängknappen för popupen triggas startar funktionen nedan
+const stopAreaButton = document.querySelector('#stopAreaButton');                                         // Stängknapp för popupen
+stopAreaButton.addEventListener('click', closePopUpArea);                                             // När stängknappen för popupen triggas startar funktionen nedan
 
 function closePopUpArea() {                                                                                 
     emptyBasket();                                                          // Varukorgen töms.
