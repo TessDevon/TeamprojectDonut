@@ -573,30 +573,23 @@ function activateOrderButton(){                             // Om alla dessa vä
     }
 }
 
-orderButton.addEventListener('klick', sendOrder);           // Eventlister till Beställknapp. När den klickas triggas funktionen sendOrder.
+orderButton.addEventListener('click', sendOrder);           // Eventlister till Beställknapp. När den klickas triggas funktionen sendOrder. Har även testat 'sublit i fältet istället för 'click'.
 
 function sendOrder(){                                       // Funktion som innehåller alla funktioner som triggas när Beställknappen klickas.   
-
-    stopClearFormTimer()                                    //Timern stängs av.
-    // Bekräftelserutans funktion för köpet ska köras.
-    emptyBasket();                                                          // Varukorgen töms.
-    document.getElementById('custumerForm').reset();                        // Formen resetas.
-
-
-
+    showPopupArea();                                                        // Kör funktionen som visar popuprutan med sammanställningen. 
+                                                                            // Antal munkar
+                                                                            // Totalsumma (Att betala)
+    deliveryTime();                                                         // Funktionen som visar texten med leveranstiden
+    stopClearFormTimer();                                                   //Timern stängs av.
 }
 
-/*----------------------------------------------------------------------------------------------
-------------JS koden för att hantera beställningsknappen.  STOP---------------------------------
------------------------------------------------------------------------------------------------*/ 
+/*------------JS koden för att hantera beställningsknappen.  STOP-------------------------------*/ 
 
 
 
 /*-------------------------------------------------------------------------------------------------
 ------------ Faktura försvinner som betalsätt om man handlar för mer än 800 kr --------------------
 -------------------------------------------------------------------------------------------------*/ 
-
-
 
 function maxSummaryNoInvoice(){
     const totalSumInvoice = document.querySelector('#totalAmountBasket');    //Hämtar totalsumman att testa på.
@@ -693,9 +686,7 @@ function stopClearFormTimer(){                                              // F
     clearTimeout(clearFormTimer);                                           // Timern stoppas.
     clearFormTimer = null;                                                  // Timern nollställs.
     infoAboutTimeDiv.innerHTML = '';                                        // Meddelandet om tidsbeställning tas bort. 
-
 }
-
 
 /*
 Lägga till från uppgiften: 
@@ -714,11 +705,9 @@ om det finns några fel
   eventuella beställda munkar/produkter (alltså antalet återställs till 0) 
   (Det ska finnas ett fält för att mata in en rabattkod.)*/
 
-
 /*---------------------------------------------------------------------------------------------------
 --------------------- Jultemat ----------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------*/
-
 
 //const today = new Date('December 24, 69 00:20:18');                         //För test av julafton
 const today = new Date();                                             //Dagens datum
@@ -743,22 +732,39 @@ if(today.getDate() == 24 && today.getMonth() == 11)                         //Om
     Santafooter.style.color = 'white';                                      //Ändrar färg på text till vit. Bättre kontrast.
 }
 
-
 /*---------------------------------------------------------------------------------------------------
 ---------------------- Delivery Time Code -----------------------------------------------------------
 ---------------------------------------------------------------------------------------------------*/
+  
+const textToDelivery = document.querySelector('#textAboutDeliveryTime');        //Hämtar span där texten ska stå i HTMLen. 
 
-
-//const lokalToday = new Date();                                                //Den körs globalt redan, sparat denna för att testa koden nedan. 
-    
 function deliveryTime() {                                                       //Ska triggas när man trycker på Submit-knappen 
-    if(lokalToday.getDay() == 5 && lokalToday.getHours() >= 11 && lokalToday.getHours() <= 13){               //Om det är fredag mellan 11-13  
-    // Leverandtiden kl 15.00   
-    } else if(lokalToday.getDay() == 6 || lokalToday.getDay() == 0){                                          //Om det är helg (borde vara mellan kl00 fred natten till lördag-00 natten mot måndag?)
-    // Leveranstid 1.5 h                                                                                
-    } else if (lokalToday.getHours() >= 0 && lokalToday.getHours() <= 5){                                   //Om klockan är 00.00-05.00                                             
-    // 45 min                       
-    } else {                                                                        // I andra fall... 
-    //Leveranstid 30 min
+    const lokalToday = new Date();
+
+    if(lokalToday.getDay() == 5 && lokalToday.getHours() >= 11 && lokalToday.getHours() <= 13){          // Om det är fredag mellan 11-13  
+        textToDelivery.innerHTML = 'kl 15.00.';                                                          // så är leveranstiden kl 15.00.
+    } else if (lokalToday.getDay() == 6 || lokalToday.getDay() == 0){                                    // Om det är helg (borde vara mellan kl00 fred natten till lördag-00 natten mot måndag?)
+        textToDelivery.innerHTML = 'är om ca 1,5 h.';                                                    // så är beräknad leveranstid ca 1,5 h                       
+    } else if (lokalToday.getHours() >= 0 && lokalToday.getHours() <= 5){                                // Om klockan är 00.00-05.00                                             
+        textToDelivery.innerHTML = 'är om ca 45 min.';                                                   // så är leveransen om ca 45 min.
+    } else {                                                                                             // I andra fall... 
+        textToDelivery.innerHTML = 'är om ca 30 min.';                                                   // är det om 30 min.
     }
 }
+
+const popupArea = document.querySelector('#stopArea');                                                   // Diven med popupen
+
+function showPopupArea() {                                                                               // Funktion som visar popUparea   
+    popupArea.removeAttribute('hidden');                                                                 // Kör popupen synlig   
+}
+
+const stopAreaButton = document.querySelector('#stopAreaButton')                                         // Stängknapp för popupen
+    stopAreaButton.addEventListener('click', closePopUpArea)                                             // När stängknappen för popupen triggas startar funktionen nedan
+
+function closePopUpArea() {                                                                                 
+    emptyBasket();                                                          // Varukorgen töms.
+    document.getElementById('custumerForm').reset();                        // Formen resetas.
+    popupArea.setAttribute('hidden', '');                                   // Inforutan blir hidden och hemsidan syns igen. 
+}
+
+

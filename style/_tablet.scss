@@ -182,7 +182,7 @@ form p {
 /*------------------------------------------------------------------------------------------------------------------
 --------------------------  Popup Area  ----------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------*/
-/*
+
 .stopArea{
     background-image: url(../images/aLotOfDounats.jpg); 
     width: 100%;
@@ -193,12 +193,12 @@ form p {
     background-size: cover;
 }
 
-.stopAreaTestArea{
+.stopAreaTextArea{
     z-index: 2;
     width: 80vw;
     margin-left: 10vw;
-    margin-top: 10vW;
-    height: 120vw;
+    margin-top: 5vW;
+    height: 60vw;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -206,21 +206,22 @@ form p {
 
 .stopAreah2 {
     padding-top: 25px;
-    margin-left: 25px;
+    margin-left: 45px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: xx-large;
+    font-size: 3.7vw;
 }
 
 .stopAreaP {
-    margin-left: 25px;
+    margin-left: 45px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: larger;
+    font-size: 2.5vw;
 }
 
 .stopAreaButton {
     position: relative;
     left:60vw;
-    width: 60px;
+    width: 100px;
+    height: 50px;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
 }
-*/

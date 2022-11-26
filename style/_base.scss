@@ -620,7 +620,7 @@ footer {
 /*------------------------------------------------------------------------------------------------------------------
 --------------------------  Popup Area  ----------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------*/
-/*
+
 .stopArea{
     background-image: url(../images/aLotOfDounats.jpg); 
     width: 100%;
@@ -631,12 +631,12 @@ footer {
     background-size: cover;
 }
 
-.stopAreaTestArea{
+.stopAreaTextArea{
     z-index: 2;
     width: 80vw;
     margin-left: 10vw;
-    margin-top: 10vW;
-    height: 120vw;
+    margin-top: 20vw;
+    height: 100vw;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -644,15 +644,15 @@ footer {
 
 .stopAreah2 {
     padding-top: 25px;
-    margin-left: 25px;
+    margin-left: 15px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: xx-large;
+    font-size: 4.1vw;
 }
 
 .stopAreaP {
-    margin-left: 25px;
+    margin-left: 15px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: larger;
+    font-size: 4vw;
 }
 
 .stopAreaButton {
@@ -661,4 +661,3 @@ footer {
     width: 60px;
     font-family: Arial, Helvetica, sans-serif;
 }
-*/

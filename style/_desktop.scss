@@ -192,7 +192,7 @@ label span {
 /*------------------------------------------------------------------------------------------------------------------
 --------------------------  Popup Area  ----------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------*/
-/*
+
 .stopArea{
     background-image: url(../images/aLotOfDounats.jpg); 
     width: 100%;
@@ -203,36 +203,38 @@ label span {
     background-size: cover;
 }
 
-.stopAreaTestArea{
+.stopAreaTextArea{
     z-index: 2;
-    width: 80vw;
-    margin-left: 10vw;
-    margin-top: 10vW;
-    height: 120vw;
+    width: 1000px;
+    margin-left: 15vw;
+    margin-top: 5vW;
+    height: 750px;
     background-color: white;
     display: flex;
     flex-direction: column;
 }
 
 .stopAreah2 {
-    padding-top: 25px;
-    margin-left: 25px;
+    padding-top: 10px;
+    margin-left: 50px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: xx-large;
+    font-size: 4rem;
 }
 
 .stopAreaP {
-    margin-left: 25px;
+    margin-left: 50px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: larger;
+    font-size: 2rem;
 }
 
 .stopAreaButton {
     position: relative;
-    left:60vw;
-    width: 60px;
+    left:48vw;
+    width: 80px;
+    height: 60px;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
 }
 
-*/
+
 
