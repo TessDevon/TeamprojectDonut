@@ -710,9 +710,9 @@ om det finns några fel
 --------------------- Jultemat ----------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------*/
 
-//const today = new Date('December 24, 69 00:20:18');                         //För test av julafton
-const today = new Date();                                             //Dagens datum
-if(today.getDate() == 24 && today.getMonth() == 11)                         //Om dagens datum är 24 dec
+//const today2 = new Date('December 24, 69 00:20:18');                         //För test av julafton
+const today2 = new Date();                                             //Dagens datum
+if(today2.getDate() == 24 && today2.getMonth() == 11)                         //Om dagens datum är 24 dec
 {
     const santaVagon = document.querySelector('.fa-shopping-cart');     //Hämtar vagnen
     santaVagon.style.color = 'red';                                     //Ändra Color på vagnen
