@@ -575,7 +575,7 @@ function activateOrderButton(){                             // Om alla dessa vä
 
 orderButton.addEventListener('click', sendOrder);           // Eventlister till Beställknapp. När den klickas triggas funktionen sendOrder. Har även testat 'sublit i fältet istället för 'click'.
 
-function sendOrder(){                                       // Funktion som innehåller alla funktioner som triggas när Beställknappen klickas.   
+function sendOrder(e){                                       // Funktion som innehåller alla funktioner som triggas när Beställknappen klickas.   
     e.preventDefault();
     showPopupArea();                                                        // Kör funktionen som visar popuprutan med sammanställningen. 
                                                                             // Antal munkar
