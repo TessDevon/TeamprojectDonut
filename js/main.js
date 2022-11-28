@@ -92,7 +92,7 @@ const donutCards = [                                                        // E
 for(let i = 0; i < donutCards.length; i++){ 
     let price = donutCards[i].donutPrice;
     let today = new Date();                                   // för att testa 
-    console.log(today.getDay(), today.getHours());
+    
     if(((today.getDay() == 5 && today.getHours() >= 15) || (today.getDay() > 5 || today.getDay() <= 1)) && ((today.getDay() == 1 && today.getHours() <= 2) || (today.getDay() < 1 || today.getDay() >= 5))) {
         (price *= 1.15)
     } else {
@@ -263,18 +263,23 @@ function wrongCode(){
 function totalPrice(){ 
     let sum = 0;  // sätter en startsumma till 0
     let startShippingSum = 25;
+    let today = new Date();                                                   
                                                   
     for(let i = 0; i < donutCards.length; i++){                                            // loopar igenom alla så jag hittar vilka som har värde över 0
         
-        // Om man beställer 10 eller fler av en sort ska den munksorten få 10% rabatt
-        if(donutCards[i].amount >= 10){
-            sum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9)
+        // Om man beställer 10 eller fler av en sort och det är måndag innan kl 10 ska den munksorten få 10% rabatt och de ska tillkomma ytterliggare 10% rabbat på hela beställningen
+        if((donutCards[i].amount >= 10) && (today.getDay() == 1 && today.getHours() <= 9)){
+            sum += (((donutCards[i].amount * donutCards[i].donutPrice) * 0.9) * 0.9)
 
-        //Annars skriv ut totalsumma utan rabatt
-        } else{
+        // Om man beställer 10 eller fler av samma sort eller det är måndag innan kl 10 ska antingen munksorten få 10% rabatt eller hela totalsumman få 10% rabatt
+        } else if (donutCards[i].amount >= 10 || (today.getDay() == 1 && today.getHours() <= 9)){
+            sum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9)
+        
+        //Annars skriv ut totalsumma utan rabatter
+        } else {
             sum += (donutCards[i].amount * donutCards[i].donutPrice)                      //sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
         }
-
+       
         // Frakt priset
         if(donutCards[i].amount >= 16){
             (startShippingSum *= 0);
@@ -290,7 +295,7 @@ function totalPrice(){
     // lägger till totalsumman
     totalPriceBasket.innerHTML =                                      
     `<span>${sum}</span>`
-
+    
     //Gör så vi har ett startvärde på 0 i fraktsumman
     if (startShippingSum == 25) {
         startShippingSum = 0;
@@ -691,7 +696,7 @@ function showPersonNr(){
 /*--------------------- Jultemat ------------------------------------------------------------*/
 
 //const today2 = new Date('December 24, 69 00:20:18');                         //För test av julafton
-                                           //Dagens datum
+const today2 = new Date();                                           //Dagens datum
 if(today2.getDate() == 24 && today2.getMonth() == 11)                         //Om dagens datum är 24 dec
 {
     const santaVagon = document.querySelector('.fa-shopping-cart');  
