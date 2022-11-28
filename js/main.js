@@ -187,7 +187,7 @@ function updateAmount(e){
 --------------------------------------- Basket -------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-/*---------------------- Lägger till donuts i varukorgen när värdet är över 0 och eventuella rabatter ------------------*/
+/*---------------------- Lägger till donuts i varukorgen när värdet är över 0 och rabatter ------------------*/
 
 /*Lägger in rätt donuts i varukorgen och drar av ev rabatt på delsumman*/
 function UpdatedonutsBasket(){
@@ -246,14 +246,14 @@ function totalpriceZero(){
         totalPriceBasket.innerHTML +=                                      // säger att vi ska skicka in en span med 0 i vår html
     `<span>${totalSum}</span>`                                             // skickar in värdet 0 i totalsumman
     } else if (discountInput.value != 'a_damn_fine-cup_of-coffee'){
-        UpdatedonutsBasket()
+        UpdatedonutsBasket();
     }
 }
 
 //Gör så att om vi tar bort en bokstav ur rätt rabattkod kommer hela summan visas igen
 function wrongCode(){ 
     if (discountInput.value != 'a_damn_fine-cup_of-coffee'){
-        UpdatedonutsBasket()
+        UpdatedonutsBasket();
     }
 }
 
@@ -262,44 +262,52 @@ function wrongCode(){
 //Uppdatera totalsumman i varukorgen
 function totalPrice(){ 
     let sum = 0;  // sätter en startsumma till 0
-    let startShippingSum = 25;
-    let today = new Date();                                                   
-                                                  
+    let startShippingSum = 0;
+    let today = new Date('November 28, 2022 02:00:00'); 
+    let amount = 0;
+    
+    // Gör så att jag får ut att weekNumber är veckans nummer                                              
+    startDate = new Date(today.getFullYear(), 0, 1);        
+    var days = Math.floor((today - startDate) /
+    (24 * 60 * 60 * 1000));
+    var weekNumber = Math.ceil(days / 7);         
+                                  
     for(let i = 0; i < donutCards.length; i++){                                            // loopar igenom alla så jag hittar vilka som har värde över 0
-        
-        // Om man beställer 10 eller fler av en sort och det är måndag innan kl 10 ska den munksorten få 10% rabatt och de ska tillkomma ytterliggare 10% rabbat på hela beställningen
-        if((donutCards[i].amount >= 10) && (today.getDay() == 1 && today.getHours() <= 9)){
-            sum += (((donutCards[i].amount * donutCards[i].donutPrice) * 0.9) * 0.9)
-
-        // Om man beställer 10 eller fler av samma sort eller det är måndag innan kl 10 ska antingen munksorten få 10% rabatt eller hela totalsumman få 10% rabatt
-        } else if (donutCards[i].amount >= 10 || (today.getDay() == 1 && today.getHours() <= 9)){
-            sum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9)
-        
+        amount += donutCards[i].amount;
+       // Om man beställer 10 eller fler av en sort ska den munksorten få 10% rabatt 
+        if(donutCards[i].amount >= 10){
+            sum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9);
+    
         //Annars skriv ut totalsumma utan rabatter
         } else {
-            sum += (donutCards[i].amount * donutCards[i].donutPrice)                      //sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
+            sum += (donutCards[i].amount * donutCards[i].donutPrice);                   //sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
         }
-       
-        // Frakt priset
-        if(donutCards[i].amount >= 16){
-            (startShippingSum *= 0);
+    } 
 
-        } else if (donutCards[i].amount >= 10){
-            startShippingSum += (((donutCards[i].amount * donutCards[i].donutPrice) * 0.9) * 0.1) 
-
-        }  else {
-            startShippingSum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.1)
-        }
+    // Om det är måndag innan kl 10 blir det 10% rabatt på hela beställningen
+    if(today.getDay() == 1 && today.getHours() <= 9){
+        sum *= 0.9;
+        mondayText = document.querySelector('#mondayDiscount')
+        mondayText.innerHTML +=
+        `<span>Måndagsrabatt: 10% på hela beställningen</span>`
     }
+
+    // Om det är jämn vecka och tisdag får man 25 kr rabatt
+   if(weekNumber % 2 == 0 && sum >= 25 && today.getDay() == 2){
+        sum -= 25;
+    } 
+    
+    // Frakt priset
+    if(amount >= 16 || amount == 0){
+            (startShippingSum = 0);
+
+        } else {
+            startShippingSum = (sum * 0.1) +25
+        }
 
     // lägger till totalsumman
     totalPriceBasket.innerHTML =                                      
-    `<span>${sum}</span>`
-    
-    //Gör så vi har ett startvärde på 0 i fraktsumman
-    if (startShippingSum == 25) {
-        startShippingSum = 0;
-    }
+    `<span>${sum}</span>`    
 
     // Lägger in fraktsumman i html strukturen
     shipping.innerHTML = `<span>${startShippingSum}</span>`
