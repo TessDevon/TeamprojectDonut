@@ -232,13 +232,14 @@ function UpdatedonutsBasket(){
 
     const lokalToday = new Date();                                                   //Dagens datum
     if(lokalToday.getDate() == 13 && lokalToday.getMonth() == 11)                         //Om dagens datum är 13 dec
-{
+    {
     basketDonuts.innerHTML += luciaDonutHtml();                             //Så triggas funktionen luciaDonutHtml
     }
-/*--------------------Luciamunk------------------------*/    
+/*--------------------Luciamunk--Slut----------------------*/    
 }
 
     totalPrice();                                                                      // sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
+    maxSummaryNoInvoice();  // Körs för funktionen Ta bort Faktura över 800 kr. Bytes till Summery senare.
 };
 
 /*------------------------ Lägg till rabattkod och gör priset till 0------------------*/
@@ -349,7 +350,7 @@ UpdatedonutsBasket();                                               // gör så 
 
  // På priset har jag satt att priset ska multipliceras med värdet i amount
 
-/*-------------------- Luciamunk --------------------------------*/
+/*-------------------- Luciamunk start--------------------------------*/
 UpdatedonutsBasket();                                                       //Körs för att Luciamunken ska läggas i varukorgen.
 function luciaDonutHtml(){                                                  //Skapar strängen för Luciamunken
     return `<div class="basketDonuts">
@@ -373,7 +374,9 @@ function luciaDonutHtml(){                                                  //Sk
     </section>
     </div>`;
 }
+
 /*---------------------Luciamunkslut ----------------------------*/
+
 
 /*------------------------------ Start växling av bilder i munksection -----------------------------*/
 
@@ -398,49 +401,9 @@ function swapImages(e){
 
 /*------------------------------ Stop växling av bilder i munksection ------------------------------*/
 
-/*-----------------------------------------------------------------------------------------------
------------------- Basket -----------------------------------------------------------------------
--------------------------------------------------------------------------------------------------*/
-
-/*
-Att göra i JS under varukorg efter cssen:
-* Valda munkar ska in under namn, bild, antal, summa. 
-* rabattkod ska kunna läggas in. 
-* totalsumma, rabatt och summa att betala ska läggas in. 
-
-Varukorg:               Delsumma:
-Namn på munk
-bild
-antal                   Summa
-
-Namn på munk
-bild
-antal                   Summa
-
-Namn på munk
-bild 
-antal                   Summa
-
-Använd rabattkod 
-
-Totalsumma:
-Dragen rabatt:
-Summa att betala:
 
 
-<Lägga in från uppgiften:
-Lägg gärna in om ni hittar mer som ska in här???????
-*/
-
-/*-----------------------------------------------------------------------------------------------
-------------------- Form ------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------*/
-
-
-
-
-
-/*----------------------------------------------------------------------------------------------
+/*-----------------------------Form-------------------------------------------------------------
 ------------JS koden för att hantera beställningsknappen. START---------------------------------
 -----------------------------------------------------------------------------------------------*/ 
 const orderButton = document.querySelector('.submit_form_button');              //hämtar beställningsknapp
@@ -567,7 +530,6 @@ function errorMessagePhoneNumber(){
     activateOrderButton();
 }
 
-
 eMail.addEventListener('change', errorMessageeMail);
 let messageeMailOk = false;
 
@@ -668,8 +630,7 @@ function errorMessagePersonNR(){
     activateOrderButton();
 }
 
-
-function activateOrderButton(){                             //Om alla dessa värde innan paraneserna är sanna, och de första värdena inom den första parantesen eller den andra parantesen är sanna så tas attributet disable bort. Om inte detta uppfylls sätts attributet disabled.
+function activateOrderButton(){                             // Om alla dessa värde innan paraneserna är sanna, och de första värdena inom den första parantesen eller den andra parantesen är sanna så tas attributet disable bort. Om inte detta uppfylls sätts attributet disabled.
     if (checkNameInputOk && checklastNameInputOk && messageAdressOk && messagePostnumberOk && messageCityOk && messagePhoneNumberOk && messageeMailOk && messagegdprOk && ((creditCard.checked && messageCardNROk && messageMonthyearOk && messageCVCOk) || (inVoice.checked && personNROk))){
         orderButton.removeAttribute('disabled');    
     } else {
@@ -677,12 +638,53 @@ function activateOrderButton(){                             //Om alla dessa vär
     }
 }
 
-/*----------------------------------------------------------------------------------------------
-------------JS koden för att hantera beställningsknappen.  STOP---------------------------------
------------------------------------------------------------------------------------------------*/ 
+orderButton.addEventListener('click', sendOrder);           // Eventlister till Beställknapp. När den klickas triggas funktionen sendOrder. Har även testat 'sublit i fältet istället för 'click'.
+
+function sendOrder(e){                                       // Funktion som innehåller alla funktioner som triggas när Beställknappen klickas.   
+    e.preventDefault();
+    showPopupArea();                                                        // Kör funktionen som visar popuprutan med sammanställningen. 
+                                                                            // Antal munkar
+                                                                            // Totalsumma (Att betala)
+    deliveryTime();                                                         // Funktionen som visar texten med leveranstiden
+    stopClearFormTimer();                                                   //Timern stängs av.
+}
+
+/*------------JS koden för att hantera beställningsknappen.  STOP-------------------------------*/ 
+
+
+
+/*-------------------------------------------------------------------------------------------------
+------------ Faktura försvinner som betalsätt om man handlar för mer än 800 kr --------------------
+-------------------------------------------------------------------------------------------------*/ 
+
+function maxSummaryNoInvoice(){
+    const totalSumInvoice = document.querySelector('#totalAmountBasket');    //Hämtar totalsumman att testa på.
+    //const maxSummary = document.querySelector('');               //Detta värde är funktionen till för. 
+    const invoiceStop = document.querySelector('#invoice');              //Kanppen till fakturan. 
+    const errorMessageInvoice = document.querySelector('#errorMessageInvoice')
+    const cardRadioButton = document.querySelector('#creditcard')
+
+    if (totalSumInvoice.children[0].innerHTML > 800){                    //Om summan är över 800 
+        invoiceStop.setAttribute('disabled', '');                        //är inte knappen längre klickabar     
+        invoiceStop.checked = false;               //Värdet radiobutton = falsk
+        activateOrderButton();                      
+        //Skickar det falska värdet till Sublit så den gråas om värdet i VK går ner under 800 igen. 
+        //Om inte så skickas uppgifterna i det dolda iväg om man skrivit i dem och sänker priset.
+        cardRadioButton.checked = true;             //Kort radiobutton blir ikryssad
+        showCardInfo();                             //Fälten för kortinfo visas.
+        errorMessageInvoice.innerHTML = 'Faktura ej tillåten vid köp över 800 kr';  //Meddelande till kunden.  
+        errorMessageInvoice.removeAttribute('hidden');      //Meddelander syns på skärmen           
+    } else {
+        invoiceStop.removeAttribute('disabled');              //Fakturaknappen syns
+        errorMessageInvoice.setAttribute('hidden', '');       //Felmeddelandet döljs. 
+    }
+}
+
+/*--------------Faktura försvinner Slut ------------------------------------------------------------*/
+
 
 /**
- * När vi klickar på kort ska korinformation visas och när vi klickar på form ska personnr visas
+ * När man klickar på kort ska korinformation visas och när vi klickar på form ska personnr visas
  */
 const creditcardBtn = document.querySelector('#creditcard')
 const invoiceBtn = document.querySelector('#invoice')
@@ -690,14 +692,14 @@ const invoiceBtn = document.querySelector('#invoice')
 creditcardBtn.addEventListener('click', showCardInfo);
 invoiceBtn.addEventListener('click', showPersonNr);
 
-/* När vi klivkar på kort visas kortinformationen*/
+/* När man klickar på kort visas kortinformationen*/
 function showCardInfo(){
     document.querySelector('#cardpay').style.display = 'block';
     document.querySelector('#cardpay').ariaRequired;
     document.querySelector('#ssn').style.display = 'none';
 }
 
-/*När vi klickar på faktura kommer personnr visas*/
+/*När man klickar på faktura kommer personnr visas*/
 function showPersonNr(){
     document.querySelector('#ssn').style.display = 'block';
     document.querySelector('#ssn').ariaRequired;
@@ -705,7 +707,53 @@ function showPersonNr(){
 }
 
 
-/*--------------------- Jultemat ------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------
+------------- Tidsbegränsningen på 15 min ---------------------------------------------------------
+---------------------------------------------------------------------------------------------------*/
+
+// Sätter EventListner till change på alla delar i form. När någon av dessa triggas startar funktionen Start timer.     
+nameInput.addEventListener('change', startTimer);                            
+lastNameInput.addEventListener('change', startTimer); 
+adress.addEventListener('change', startTimer);                          
+postNumber.addEventListener('change', startTimer);          
+city.addEventListener('change', startTimer);                              
+phoneNumber.addEventListener('change', startTimer);            
+eMail.addEventListener('change', startTimer);                    
+gdpr.addEventListener('change', startTimer);                     
+creditCard.addEventListener('change', startTimer);    
+cardNumber.addEventListener('change', startTimer);                   
+monthYear.addEventListener('change', startTimer);                    
+cvc.addEventListener('change', startTimer);                                   
+inVoice.addEventListener('change', startTimer);            
+personNR.addEventListener('change', startTimer);   
+
+
+const infoAboutTimeDiv = document.querySelector('#infoAboutTime');          // Hämtar platsen där texten med info ska visas.
+infoAboutTimeDiv.style.color ='red';                                        // Stylar infotexten om tidsbegränsningen till röd.
+infoAboutTimeDiv.style.fontSize = '1.5rem';                                 // Ändrar storlek på infotexten om tidsbegräsningen.
+
+let clearFormTimer = null;                                                  // Variabel med värde noll. 
+
+function startTimer(){                                                      // Funktionen som startar timern om värdet är noll annars inte. 
+    if (clearFormTimer == null) {                                           // Om värdet på variabeln är noll 
+        infoAboutTimeDiv.innerHTML = 'Du har 15 min på dig för att fullfölja din beställning!';         //Visar infomeddelandet om tidsbegräsningen. 
+        clearFormTimer = setTimeout(clearForms, 15 * 60 * 1000);            // Timern startar, när den tar slut triggas funktionen clearForm.
+    }                                                                                       
+}
+
+
+function clearForms(){                                                      // Funktion som bland annat rensar formsen när tiden går ut.
+    clearFormTimer = null;                                                  // När tiden går ut sätts värdet på varabeln åter till noll.
+    infoAboutTimeDiv.innerHTML = '';                                        // Meddelandet om tidsbegränsningen tas bort. 
+    emptyBasket();                                                          // Varukorgen töms.
+    document.getElementById('custumerForm').reset();                        // Formen resetas. 
+}
+
+function stopClearFormTimer(){                                              // Funktion som stoppar timer. 
+    clearTimeout(clearFormTimer);                                           // Timern stoppas.
+    clearFormTimer = null;                                                  // Timern nollställs.
+    infoAboutTimeDiv.innerHTML = '';                                        // Meddelandet om tidsbeställning tas bort. 
+}
 
 //const today = new Date('December 24, 69 00:20:18');                         //För test av julafton
 const today = new Date();                                             //Dagens datum
@@ -725,27 +773,86 @@ if(today.getDate() == 24 && today.getMonth() == 11)                         //Om
     }
     const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bagrundfärg röd
     const santaForm = document.querySelector('.section-form').style.backgroundImage = 'url("images/hallonchokladInzoom.jpg")';                  //Byta balgrundsbild
-}
-/*
-Att lägga till i js designmässigt/användarvänligt. 
-* krav på bokstäver i text
-* Krav på att något av betalsätten ska fyllas i.
-* Nyhetbrev ska vara ifyllt från början. 
-* Gatuaderss ska innehålla både bokstäver och siffror? 
-* postnummer innehålla 5 siffror 
 
+}
+
+/*
 Lägga till från uppgiften: 
 [x]Om faktura valts som betalsätt ska ett formulärfält för svenskt personnummer visas. 
-[]Även detta fält ska valideras innan formuläret går att skicka iväg, dvs. 
+[x]Även detta fält ska valideras innan formuläret går att skicka iväg, dvs. 
 att man fyllt i korrekt personnummer.
-* Om kort väljs som betalsätt, visas fält för kortnummer, datum/år och CVC. Dessa behöver 
+[x] Om kort väljs som betalsätt, visas fält för kortnummer, datum/år och CVC. Dessa behöver 
 inte valideras!
-* Checkbox för godkännande av behandling av personuppgifter
-* Checkbox för beställning av nyhetsbrev (ska vara iklickad som default)
-* Samtliga formulärfält ska valideras och formuläret/beställningen ska inte gå att skicka 
+[x] Checkbox för godkännande av behandling av personuppgifter
+[x]Checkbox för beställning av nyhetsbrev (ska vara iklickad som default)
+[x]Samtliga formulärfält ska valideras och formuläret/beställningen ska inte gå att skicka 
 om det finns några fel
-* Felen ska markeras och kommuniceras tydligt (t.ex. ej enbart med röd färg, tag i beaktande a11y)
-* När formuläret är korrekt ifyllt ska Skicka-/Beställ-knappen aktiveras, innan det är den utgråad
-* Det ska finnas en "Rensa beställning"-knapp som återställer samtliga formulärfält liksom 
+[x]Felen ska markeras och kommuniceras tydligt (t.ex. ej enbart med röd färg, tag i beaktande a11y)
+[x]När formuläret är korrekt ifyllt ska Skicka-/Beställ-knappen aktiveras, innan det är den utgråad
+[x]Det ska finnas en "Rensa beställning"-knapp som återställer samtliga formulärfält liksom 
   eventuella beställda munkar/produkter (alltså antalet återställs till 0) 
   (Det ska finnas ett fält för att mata in en rabattkod.)*/
+
+/*---------------------------------------------------------------------------------------------------
+--------------------- Jultemat ----------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------*/
+
+//const today2 = new Date('December 24, 69 00:20:18');                         //För test av julafton
+const today2 = new Date();                                             //Dagens datum
+if(today2.getDate() == 24 && today2.getMonth() == 11)                         //Om dagens datum är 24 dec
+{
+    const santaVagon = document.querySelector('.fa-shopping-cart');     //Hämtar vagnen
+    santaVagon.style.color = 'red';                                     //Ändra Color på vagnen
+    const santaH1 = document.querySelector('h1');                       //Hämtar H1    
+    santaH1.style.color = 'black';                                      //Ändra färg på text i H1
+    santaH1.style.paddingTop = '100px';                                 //Ändrad padding så texten passar ny bild
+    santaH1.style.textShadow = '2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff'; // Skugga gör mer kontrast
+    const santaheader = document.querySelector('header').style.backgroundImage = 'url("images/santaDonuts.jpg")';                  //Ändra bakgrundsbild headern
+    const santaPrice = document.querySelectorAll('#donutCardPrice');       //Röd färg på priset
+    for (let i = 0 ; i < santaPrice.length ; i++){                          //Loopar så alla munkar får rött pris
+      santaPrice[i].style.color = 'red';  
+    }
+    const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bagrundfärg i varukorg
+    const santaForm = document.querySelector('.section-form').style.backgroundImage = 'url("images/hallonchokladInzoom.jpg")';         //Byta balgrundsbild i form
+    const santaInfo = document.querySelector('.informationUlContainer').style.backgroundColor = 'green'; //Ändrad färg i info
+    const Santafooter = document.querySelector('footer');                   //Hämtar footern
+    Santafooter.style.backgroundColor = 'green';                            //Ändrad bakgrundsfärg i footern
+    Santafooter.style.color = 'white';                                      //Ändrar färg på text till vit. Bättre kontrast.
+}
+
+/*---------------------------------------------------------------------------------------------------
+---------------------- Delivery Time Code -----------------------------------------------------------
+---------------------------------------------------------------------------------------------------*/
+  
+const textToDelivery = document.querySelector('#textAboutDeliveryTime');        //Hämtar span där texten ska stå i HTMLen. 
+
+function deliveryTime() {                                                       //Ska triggas när man trycker på Submit-knappen 
+    const lokalToday = new Date();
+
+    if(lokalToday.getDay() == 5 && lokalToday.getHours() >= 11 && lokalToday.getHours() <= 13){          // Om det är fredag mellan 11-13  
+        textToDelivery.innerHTML = 'kl 15.00.';                                                          // så är leveranstiden kl 15.00.
+    } else if (lokalToday.getDay() == 6 || lokalToday.getDay() == 0){                                    // Om det är helg (borde vara mellan kl00 fred natten till lördag-00 natten mot måndag?)
+        textToDelivery.innerHTML = 'är om ca 1,5 h.';                                                    // så är beräknad leveranstid ca 1,5 h                       
+    } else if (lokalToday.getHours() >= 0 && lokalToday.getHours() <= 5){                                // Om klockan är 00.00-05.00                                             
+        textToDelivery.innerHTML = 'är om ca 45 min.';                                                   // så är leveransen om ca 45 min.
+    } else {                                                                                             // I andra fall... 
+        textToDelivery.innerHTML = 'är om ca 30 min.';                                                   // är det om 30 min.
+    }
+}
+
+const popupArea = document.querySelector('#stopArea');                                                   // Diven med popupen
+
+function showPopupArea() {                                                                               // Funktion som visar popUparea   
+    popupArea.removeAttribute('hidden');                                                                 // Kör popupen synlig   
+}
+
+const stopAreaButton = document.querySelector('#stopAreaButton');                                         // Stängknapp för popupen
+stopAreaButton.addEventListener('click', closePopUpArea);                                             // När stängknappen för popupen triggas startar funktionen nedan
+
+function closePopUpArea() {                                                                                 
+    emptyBasket();                                                          // Varukorgen töms.
+    document.getElementById('custumerForm').reset();                        // Formen resetas.
+    popupArea.setAttribute('hidden', '');                                   // Inforutan blir hidden och hemsidan syns igen. 
+}
+
+

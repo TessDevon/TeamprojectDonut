@@ -128,7 +128,8 @@
                 <section class="section-form">
                     <div class="checkout_form">
                         <h2 class="middlepart_h2">Kundformulär</h2>
-                        <form action="">
+                        <form id="custumerForm" action="">
+                            <br><div id="infoAboutTime"></div><br><br>
                             <label for="">
                                 <span>Förnamn</span>  
                                 <span class="errorMessage" id="errorMessageName" hidden></span>
@@ -181,9 +182,10 @@
                                 Kort
                                 <input type="radio" id="creditcard" name="waysToPay" value="creditcard">
                             </label>
-                            <label for="">
+                            <label id="labelInvoice" for="">
                                 Faktura
                                 <input type="radio" id="invoice" name="waysToPay" value="invoice"> 
+                                <br><span class="errorMessage" id="errorMessageInvoice" hidden></span>
                             </label> <!--vid faktura fält med personnr, ska valideras-->
                             <br>
                             <div id="ssn" class="display-none">
@@ -214,7 +216,7 @@
                             <label for="">
                                 Prenumerera på vårt nyhetsbrev
                                 <input checked type="checkbox" name="news" id="news">
-                            </label><br>
+                            </label><br><br>
                             <label for="">
                                 Godkännande av behandling av personuppgifter
                                 <input required class="input_group" type="checkbox" name="gdpr" id="gdpr">
@@ -225,7 +227,7 @@
                         </form>
                     </div>
                 </section>
-            </div>
+            </div>    
     </main>
     <footer>
         <address>
@@ -234,6 +236,16 @@
             E-post: <a href="#">gottfridsmunkar@gmail.com</a>
         </address>
     </footer>
+    <div class="stopArea" id="stopArea" hidden>
+        <div class="stopAreaTextArea">
+        <h2 class="stopAreah2">Tack för din beställning! </h2>
+        <p class="stopAreaP">Du har beställt <span class="stopAreaspan" id="summaryDonuts"></span> st munkar, för totalt <span class="stopAreaspan" id="summaryArea"></span> kr. </p>
+        <p class="stopAreaP">Beräknad leverans <span class="stopAreaspan" id="textAboutDeliveryTime"></span></p><br>
+        <p class="stopAreaP"> Hoppas det smakar och välkommen åter! <br><br><br>
+        Mvh Gottfrid med personal</p><br><br>
+        <button class="stopAreaButton" id="stopAreaButton">Stäng</button>
+    </div>
+
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
