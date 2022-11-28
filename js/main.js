@@ -230,13 +230,13 @@ function UpdatedonutsBasket(){
     /*------------------- Luciamunk-------------------------*/    
     //const lokalToday = new Date('December 13, 69 00:20:18');                       //För testning av Luciamunken
 
-    const lokalToday = new Date();                                                   //Dagens datum
+   const lokalToday = new Date();                                                   //Dagens datum
     if(lokalToday.getDate() == 13 && lokalToday.getMonth() == 11)                         //Om dagens datum är 13 dec
     {
     basketDonuts.innerHTML += luciaDonutHtml();                             //Så triggas funktionen luciaDonutHtml
     }
 /*--------------------Luciamunk--Slut----------------------*/    
-}
+
 
     totalPrice();                                                                      // sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
     maxSummaryNoInvoice();  // Körs för funktionen Ta bort Faktura över 800 kr. Bytes till Summery senare.
