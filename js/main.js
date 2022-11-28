@@ -288,7 +288,7 @@ function totalPrice(){
     if(today.getDay() == 1 && today.getHours() <= 9){
         sum *= 0.9;
         mondayText = document.querySelector('#mondayDiscount')
-        mondayText.innerHTML +=
+        mondayText.innerHTML =
         `<span>Måndagsrabatt: 10% på hela beställningen</span>`
     }
 
@@ -313,9 +313,12 @@ function totalPrice(){
     shipping.innerHTML = `<span>${startShippingSum}</span>`
 
     //Uppdatera totalsumman i iconen längst upp till höger på skärmen
-            const shoppingCart = document.querySelector('#shoppingCart')                         //kallar på shopping vagnen i html strukturen
-            shoppingCart.innerHTML =
-            `<span class="colorWhite">${sum} sek</span>`
+    const shoppingCart = document.querySelector('#shoppingCart')                         //kallar på shopping vagnen i html strukturen
+    shoppingCart.innerHTML =
+    `<span class="colorWhite">${sum} sek</span>`
+
+    // Skriver ut summa att betala som innehåller frakt och totalsumma
+    document.querySelector('#priceToPay').innerHTML = `<span>${sum + startShippingSum} SEK</span>`
 }
 
 /*---------------------------------------Töm varukorgen----------------------------------*/
