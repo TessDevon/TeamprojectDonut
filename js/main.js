@@ -226,21 +226,31 @@ function UpdatedonutsBasket(){
             </section>
         </div>`}  
         }                                                                              // Skriver sum eftersom jag vill att om vi har rabatt ska delsumman va anorlunda 
+
+    /*------------------ Total antal bunkar till popupen -----------------------------------*/    
+    totalNumberOfDonuts = 0;
     
+    for(let i = 0; i < donutCards.length; i++){
+        totalNumberOfDonuts += donutCards[i].amount;
+    }
+    
+
     /*------------------- Luciamunk-------------------------*/    
-    //const lokalToday = new Date('December 13, 69 00:20:18');                       //För testning av Luciamunken
+    //const lokalToday = new Date('December 13, 69 00:20:18');                      //För testning av Luciamunken
 
    const lokalToday = new Date();                                                   //Dagens datum
-    if(lokalToday.getDate() == 13 && lokalToday.getMonth() == 11)                         //Om dagens datum är 13 dec
+    if(lokalToday.getDate() == 13 && lokalToday.getMonth() == 11)                   //Om dagens datum är 13 dec
     {
-    basketDonuts.innerHTML += luciaDonutHtml();                             //Så triggas funktionen luciaDonutHtml
+    basketDonuts.innerHTML += luciaDonutHtml();                                     //Så triggas funktionen luciaDonutHtml
+        totalNumberOfDonuts += 1;                                                   //Luciamunken läggs till i total antal munkar den 13 dec.
     }
 /*--------------------Luciamunk--Slut----------------------*/    
 
-
-    totalPrice();                                                                      // sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
+    totalPrice();                                                                   // sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
     maxSummaryNoInvoice();  // Körs för funktionen Ta bort Faktura över 800 kr. Bytes till Summery senare.
 };
+
+let totalNumberOfDonuts = 0;
 
 /*------------------------ Lägg till rabattkod och gör priset till 0------------------*/
 
@@ -309,6 +319,8 @@ function totalPrice(){
         sum -= 25;
     } 
     
+    sum = Number(sum.toFixed());                                                        //Avrundat värdet till hela kronor
+
     // Frakt priset
     if(amount >= 16 || amount == 0){
             (startShippingSum = 0);
@@ -317,6 +329,8 @@ function totalPrice(){
             startShippingSum = (sum * 0.1) +25
         }
 
+    startShippingSum = Number(startShippingSum.toFixed());                              //Avrunda värdet för frakten    
+    
     // lägger till totalsumman
     totalPriceBasket.innerHTML =                                      
     `<span>${sum}</span>`    
@@ -329,9 +343,15 @@ function totalPrice(){
     shoppingCart.innerHTML =
     `<span class="colorWhite">${sum} sek</span>`
 
+  
+
     // Skriver ut summa att betala som innehåller frakt och totalsumma
-    document.querySelector('#priceToPay').innerHTML = `<span>${sum + startShippingSum} SEK</span>`
+    document.querySelector('#priceToPay').innerHTML = `<span>${sum+startShippingSum} SEK</span>`
+
+    totalSumToPay = sum + startShippingSum;                                  // Tilldelning för uträkning av totalsumma med frakt och rabatt och avrundar summan till hela kronor
 }
+
+let totalSumToPay = 0;                                                                  // Global variabel som nås på fler ställen. Till för över 800 kr och popupen.
 
 /*---------------------------------------Töm varukorgen----------------------------------*/
 
@@ -638,15 +658,17 @@ function activateOrderButton(){                             // Om alla dessa vä
     }
 }
 
+
+
 orderButton.addEventListener('click', sendOrder);           // Eventlister till Beställknapp. När den klickas triggas funktionen sendOrder. Har även testat 'sublit i fältet istället för 'click'.
 
-function sendOrder(e){                                       // Funktion som innehåller alla funktioner som triggas när Beställknappen klickas.   
+function sendOrder(e){                                      // Funktion som innehåller alla funktioner som triggas när Beställknappen klickas.   
     e.preventDefault();
-    showPopupArea();                                                        // Kör funktionen som visar popuprutan med sammanställningen. 
-                                                                            // Antal munkar
-                                                                            // Totalsumma (Att betala)
-    deliveryTime();                                                         // Funktionen som visar texten med leveranstiden
-    stopClearFormTimer();                                                   //Timern stängs av.
+    showPopupArea();                                        // Kör funktionen som visar popuprutan med sammanställningen. 
+    allDonuts();                                            // Antal munkar
+    totalPriceToPay();                                      // Totalsumma (Att betala)
+    deliveryTime();                                         // Funktionen som visar texten med leveranstiden
+    stopClearFormTimer();                                   //Timern stängs av.
 }
 
 /*------------JS koden för att hantera beställningsknappen.  STOP-------------------------------*/ 
@@ -658,25 +680,23 @@ function sendOrder(e){                                       // Funktion som inn
 -------------------------------------------------------------------------------------------------*/ 
 
 function maxSummaryNoInvoice(){
-    const totalSumInvoice = document.querySelector('#totalAmountBasket');    //Hämtar totalsumman att testa på.
-    //const maxSummary = document.querySelector('');               //Detta värde är funktionen till för. 
     const invoiceStop = document.querySelector('#invoice');              //Kanppen till fakturan. 
     const errorMessageInvoice = document.querySelector('#errorMessageInvoice')
     const cardRadioButton = document.querySelector('#creditcard')
 
-    if (totalSumInvoice.children[0].innerHTML > 800){                    //Om summan är över 800 
-        invoiceStop.setAttribute('disabled', '');                        //är inte knappen längre klickabar     
-        invoiceStop.checked = false;               //Värdet radiobutton = falsk
+    if (totalSumToPay > 800){                                   //Om summan med rabatt och frakt är över 800 
+        invoiceStop.setAttribute('disabled', '');               //är inte knappen längre klickabar     
+        invoiceStop.checked = false;                            //Värdet radiobutton = falsk
         activateOrderButton();                      
         //Skickar det falska värdet till Sublit så den gråas om värdet i VK går ner under 800 igen. 
         //Om inte så skickas uppgifterna i det dolda iväg om man skrivit i dem och sänker priset.
-        cardRadioButton.checked = true;             //Kort radiobutton blir ikryssad
-        showCardInfo();                             //Fälten för kortinfo visas.
+        cardRadioButton.checked = true;                         //Kort radiobutton blir ikryssad
+        showCardInfo();                                         //Fälten för kortinfo visas.
         errorMessageInvoice.innerHTML = 'Faktura ej tillåten vid köp över 800 kr';  //Meddelande till kunden.  
-        errorMessageInvoice.removeAttribute('hidden');      //Meddelander syns på skärmen           
+        errorMessageInvoice.removeAttribute('hidden');          //Meddelander syns på skärmen           
     } else {
-        invoiceStop.removeAttribute('disabled');              //Fakturaknappen syns
-        errorMessageInvoice.setAttribute('hidden', '');       //Felmeddelandet döljs. 
+        invoiceStop.removeAttribute('disabled');                //Fakturaknappen syns
+        errorMessageInvoice.setAttribute('hidden', '');         //Felmeddelandet döljs. 
     }
 }
 
@@ -776,23 +796,6 @@ if(today.getDate() == 24 && today.getMonth() == 11)                         //Om
 
 }
 
-/*
-Lägga till från uppgiften: 
-[x]Om faktura valts som betalsätt ska ett formulärfält för svenskt personnummer visas. 
-[x]Även detta fält ska valideras innan formuläret går att skicka iväg, dvs. 
-att man fyllt i korrekt personnummer.
-[x] Om kort väljs som betalsätt, visas fält för kortnummer, datum/år och CVC. Dessa behöver 
-inte valideras!
-[x] Checkbox för godkännande av behandling av personuppgifter
-[x]Checkbox för beställning av nyhetsbrev (ska vara iklickad som default)
-[x]Samtliga formulärfält ska valideras och formuläret/beställningen ska inte gå att skicka 
-om det finns några fel
-[x]Felen ska markeras och kommuniceras tydligt (t.ex. ej enbart med röd färg, tag i beaktande a11y)
-[x]När formuläret är korrekt ifyllt ska Skicka-/Beställ-knappen aktiveras, innan det är den utgråad
-[x]Det ska finnas en "Rensa beställning"-knapp som återställer samtliga formulärfält liksom 
-  eventuella beställda munkar/produkter (alltså antalet återställs till 0) 
-  (Det ska finnas ett fält för att mata in en rabattkod.)*/
-
 /*---------------------------------------------------------------------------------------------------
 --------------------- Jultemat ----------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------*/
@@ -855,4 +858,12 @@ function closePopUpArea() {
     popupArea.setAttribute('hidden', '');                                   // Inforutan blir hidden och hemsidan syns igen. 
 }
 
+/*------------------------------------------------------------------------------------------------------*/ 
 
+function totalPriceToPay() {
+    document.querySelector('#summaryArea').innerHTML=totalSumToPay;
+}
+
+function allDonuts() {
+    document.querySelector('#summaryDonuts').innerHTML=totalNumberOfDonuts;
+}
