@@ -12,6 +12,7 @@
 const donutCardsContainer = document.querySelector('#donutCards')           //Kallar på section för våra donut kort för att kunna lägga in våra kort
 const basketDonuts = document.querySelector('#basketDonuts')                // kallar på html strukturen till donutsen som ska ligga i vår varukorg
 const totalPriceBasket = document.querySelector('#totalAmountBasket');      // Kallar på diven där html sturkturen för totalsumman ska ligga
+const shipping = document.querySelector('#shippingPrice')                   // Kallar på html stukturen till frakt i varukorgen
 
 const donutCards = [                                                        // En array med varje donut kort som objekt
 {
@@ -87,9 +88,19 @@ const donutCards = [                                                        // E
 }];
 
 // Varje gång loopen körs kommer vår artikel läggas in i vår html struktur i vår section och alla 10 korten kommer upp i webben
+// GÖr även så att alla korts pris uppdateras mellan fre och måndag
 for(let i = 0; i < donutCards.length; i++){ 
-donutCardsContainer.innerHTML += 
-`<article class="donutCard">
+    let price = donutCards[i].donutPrice;
+    let today = new Date();                                   // för att testa 
+    console.log(today.getDay(), today.getHours());
+    if(((today.getDay() == 5 && today.getHours() >= 15) || (today.getDay() > 5 || today.getDay() <= 1)) && ((today.getDay() == 1 && today.getHours() <= 2) || (today.getDay() < 1 || today.getDay() >= 5))) {
+        (price *= 1.15)
+    } else {
+        price;
+    }
+
+    donutCardsContainer.innerHTML +=
+        `<article class="donutCard">
     <div class="donutCardHeaderContainer">
         <h3>${donutCards[i].donutTitle}</h3 id="donutCardHeader">
     </div>
@@ -109,7 +120,7 @@ donutCardsContainer.innerHTML +=
                     </button>
                 </div>
             </div>
-            <p id="donutCardPrice">${donutCards[i].donutPrice} kr/st</p>
+            <p id="donutCardPrice">${price} kr/st</p>
         </div>
         <div class='donutCardRating'></div>
         <br>
@@ -176,14 +187,14 @@ function updateAmount(e){
 --------------------------------------- Basket -------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-/*---------------------- Lägger till donuts i varukorgen när värdet är över 0 ------------------*/
+/*---------------------- Lägger till donuts i varukorgen när värdet är över 0 och eventuella rabatter ------------------*/
 
 /*Lägger in rätt donuts i varukorgen och drar av ev rabatt på delsumman*/
 function UpdatedonutsBasket(){
     basketDonuts.innerHTML = '';                                                        // rensar formuläret varje gång jag klickar på en knapp 
     let sum = 0;
    
-    // Gör så att delsumman drar av rabatt när man beställer 10 eller fler donuts
+    // Gör så att delsumman drar av 10% rabatt när man beställer 10 eller fler donuts
     for(let i = 0; i < donutCards.length; i++){                                         // loopa igenom alla donuts i vår array så vi kan hitta den med amount som är större än 0
         if(donutCards[i].amount >= 10){
             sum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9);
@@ -219,14 +230,6 @@ function UpdatedonutsBasket(){
     totalPrice();                                                                      // sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
 };
 
-/*------------------------Specialregler gällande rabatt -------------------------------*/ 
-
-/** TODO
- * [x] Om en munk med samma index har amount 10 eller större ska priset på den munksorten bli * 0.9
- * [x] 10% rabatt ska då skrivas ut i dragen rabatt
- * [] delsumma ska också minskas
- */
-
 /*------------------------ Lägg till rabattkod och gör priset till 0------------------*/
 
 const discountBtn = document.querySelector('#discountBtn')                 //kallar på rabattkodsknappen
@@ -259,7 +262,8 @@ function wrongCode(){
 //Uppdatera totalsumman i varukorgen
 function totalPrice(){ 
     let sum = 0;  // sätter en startsumma till 0
-                                                      
+    let startShippingSum = 25;
+                                                  
     for(let i = 0; i < donutCards.length; i++){                                            // loopar igenom alla så jag hittar vilka som har värde över 0
         
         // Om man beställer 10 eller fler av en sort ska den munksorten få 10% rabatt
@@ -269,18 +273,36 @@ function totalPrice(){
         //Annars skriv ut totalsumma utan rabatt
         } else{
             sum += (donutCards[i].amount * donutCards[i].donutPrice)                      //sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
-    
         }
 
-        // lägger till summan
-        totalPriceBasket.innerHTML =                                      
-        `<span>${sum}</span>`
+        // Frakt priset
+        if(donutCards[i].amount >= 16){
+            (startShippingSum *= 0);
+
+        } else if (donutCards[i].amount >= 10){
+            startShippingSum += (((donutCards[i].amount * donutCards[i].donutPrice) * 0.9) * 0.1) 
+
+        }  else {
+            startShippingSum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.1)
+        }
     }
-    
+
+    // lägger till totalsumman
+    totalPriceBasket.innerHTML =                                      
+    `<span>${sum}</span>`
+
+    //Gör så vi har ett startvärde på 0 i fraktsumman
+    if (startShippingSum == 25) {
+        startShippingSum = 0;
+    }
+
+    // Lägger in fraktsumman i html strukturen
+    shipping.innerHTML = `<span>${startShippingSum}</span>`
+
     //Uppdatera totalsumman i iconen längst upp till höger på skärmen
-    const shoppingCart = document.querySelector('#shoppingCart')                         //kallar på shopping vagnen i html strukturen
-    shoppingCart.innerHTML =
-    `<span class="colorWhite">${sum} sek</span>`
+            const shoppingCart = document.querySelector('#shoppingCart')                         //kallar på shopping vagnen i html strukturen
+            shoppingCart.innerHTML =
+            `<span class="colorWhite">${sum} sek</span>`
 }
 
 /*---------------------------------------Töm varukorgen----------------------------------*/
@@ -668,12 +690,12 @@ function showPersonNr(){
 
 /*--------------------- Jultemat ------------------------------------------------------------*/
 
-//const today = new Date('December 24, 69 00:20:18');                         //För test av julafton
+//const today2 = new Date('December 24, 69 00:20:18');                         //För test av julafton
                                            //Dagens datum
-if(today.getDate() == 24 && today.getMonth() == 11)                         //Om dagens datum är 24 dec
+if(today2.getDate() == 24 && today2.getMonth() == 11)                         //Om dagens datum är 24 dec
 {
     const santaVagon = document.querySelector('.fa-shopping-cart');  
-    santaVagon.style.color = 'red';    //Ändra Color
+    santaVagon.style.color = 'red';    //Ändra Color  
     santaVagon.style.textShadow = '2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff';
     const santaH1 = document.querySelector('h1');                           //Ändra färg på text
     santaH1.style.color = 'black';
