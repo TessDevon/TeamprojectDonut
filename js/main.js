@@ -123,6 +123,10 @@ function clickedSortBtn(e){
         donutCards.sort((a, b) => a.donutTitle.localeCompare(b.donutTitle));
     } else if (clickedBtn == 'rating'){
         donutCards.sort((a, b) => a.rating - b.rating)
+    } else if(clickedBtn == 'lowPrice'){
+        donutCards.sort((a, b) => a.donutPrice - b.donutPrice);
+    } else if(clickedBtn == 'highPrice'){
+        donutCards.sort((a, b) => b.donutPrice - a.donutPrice);
     } else if(clickedBtn == 'fruit'){
         const fruit = donutCards.filter(donutCard => donutCard.category === 'frukt');
         createDonuts(fruit);
@@ -140,7 +144,7 @@ function clickedSortBtn(e){
     createDonuts(donutCards);
 } 
 
-//donutCards.sort((a, b) => b.donutPrice - a.donutPrice);
+
 
 /*----------------------------------------------------------------------------------------------------------
 ----------------------------------filtrering på pris--------------------------------------------------------
@@ -202,7 +206,7 @@ function createDonuts(arr){
 donutCardsContainer.innerHTML = '';
     for(let i = 0; i < arr.length; i++){ 
         let price = arr[i].donutPrice;
-        let today = new Date();                                   // för att testa 
+        let today = new Date('november 26, 2022 10:00:00');                                   // för att testa 
         
         // Mellan fre och sön ökar priset på donuts med 15%
         if(((today.getDay() == 5 && today.getHours() >= 15) || (today.getDay() > 5 || today.getDay() <= 1)) && ((today.getDay() == 1 && today.getHours() <= 2) || (today.getDay() < 1 || today.getDay() >= 5))) {
@@ -210,6 +214,9 @@ donutCardsContainer.innerHTML = '';
         } else {
             price;
         }
+       price = Math.round(price)
+
+        
 
         // Skriver ut stjärnorna på donuts korten sammanlänkat med rating i vår array
         let rating = '';
@@ -258,7 +265,7 @@ donutCardsContainer.innerHTML = '';
         </section>
     </article>`
 };                                                                                         // data id i är för att knapparna ska få index som id 0123456789 så vi vet vilken av knapparna i arrayen vi klickat på
-}
+} 
 /*----------------Få våra + och - knappar att fungera-------------------------*/
 
 const addBtns = document.querySelectorAll('button[data-operator="plus"]');           // kallar på plus knappen
@@ -411,7 +418,7 @@ function wrongCode(){
 function totalPrice(){ 
     let sum = 0;  // sätter en startsumma till 0
     let startShippingSum = 0;
-    let today = new Date('November 28, 2022 02:00:00'); 
+    let today = new Date('November 26, 2022 06:00:00'); 
     let amount = 0;
     
     // Gör så att jag får ut att weekNumber är veckans nummer                                              
