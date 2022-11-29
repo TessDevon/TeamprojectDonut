@@ -25,7 +25,7 @@ const donutCards = [                                                        // E
     category: 'frukt',
     rating: 4,
 }, {
-    donutTitle: 'Banana suprice',
+    donutTitle: 'Banana surprise',
     donutImg1: './images/banansuprice.jpg',
     donutImg2: './images/banansuprice2.jpg',
     donutAlt: 'munk med banansmak',
@@ -79,7 +79,7 @@ const donutCards = [                                                        // E
     category: 'bär',
     rating: 4,
 },{
-    donutTitle: 'Jordgrubbsdröm',
+    donutTitle: 'Jordgubbsdröm',
     donutImg1: './images/strawberrydream.jpg',
     donutImg2: './images/strawberrydream2.jpg',
     donutAlt: 'munk med jordgubbs smak',
@@ -88,7 +88,7 @@ const donutCards = [                                                        // E
     category: 'bär',
     rating: 5,
 },{
-    donutTitle: 'Laktris',
+    donutTitle: 'Lakrits',
     donutImg1: './images/lakrits.jpg',
     donutImg2: './images/lakrits2.jpg',
     donutAlt: 'munk med laktris smak',
@@ -107,105 +107,76 @@ const donutCards = [                                                        // E
     rating: 4,
 }];
 
+
+
 /*---------------------------------------------Sortera donuts------------------------------------------*/
+// Dessa är 2 arrayer som är kopierade av vår donutCards
+let filterProducts = [...donutCards]
+let filterProductsInPriceRange = [...donutCards]
+
 const sortBtns = document.querySelectorAll('.ourDonutsDropdown input[type="radio"]');
 
 for(let i = 0; i < sortBtns.length; i++){
     sortBtns[i].addEventListener('click', clickedSortBtn);
 } 
+createDonuts(); // så den skriver ut våra kort från början
 
-createDonuts(donutCards);
-
-function clickedSortBtn(e){
+// Beroende på vilken sorteringsknapp vi klickar i kommer den sortera arrayen
+function clickedSortBtn(e){ 
+    filterProducts = [...donutCards] //arrayenm som kommer sorteras
     const clickedBtn = e.currentTarget.id
     
-    if(clickedBtn == 'name'){
-        donutCards.sort((a, b) => a.donutTitle.localeCompare(b.donutTitle));
+    if(clickedBtn == 'name' || clickedBtn == 'all'){
+        filterProducts.sort((a, b) => a.donutTitle.localeCompare(b.donutTitle));
     } else if (clickedBtn == 'rating'){
-        donutCards.sort((a, b) => a.rating - b.rating)
+        filterProducts.sort((a, b) => a.rating - b.rating)
     } else if(clickedBtn == 'lowPrice'){
-        donutCards.sort((a, b) => a.donutPrice - b.donutPrice);
+        filterProducts.sort((a, b) => a.donutPrice - b.donutPrice);
     } else if(clickedBtn == 'highPrice'){
-        donutCards.sort((a, b) => b.donutPrice - a.donutPrice);
+        filterProducts.sort((a, b) => b.donutPrice - a.donutPrice);
     } else if(clickedBtn == 'fruit'){
-        const fruit = donutCards.filter(donutCard => donutCard.category === 'frukt');
-        createDonuts(fruit);
-        return;
+        filterProducts = filterProducts.filter(donutCard => donutCard.category === 'frukt');
     } else if(clickedBtn == 'berrys'){
-        const berrys = donutCards.filter(donutCard => donutCard.category === 'bär');
-        createDonuts(berrys);
-        return;
+        filterProducts = filterProducts.filter(donutCard => donutCard.category === 'bär');
     } else if(clickedBtn == 'candy'){
-        const candy = donutCards.filter(donutCard => donutCard.category === 'godis');
-        createDonuts(candy);
-        return;
+        filterProducts = filterProducts.filter(donutCard => donutCard.category === 'godis');
     }
 
-    createDonuts(donutCards);
-} 
-
-
-
-/*----------------------------------------------------------------------------------------------------------
-----------------------------------filtrering på pris--------------------------------------------------------
-------------------------------------------------------------------------------------------------------------*/
-
-/*donutCards.sort((donutCard1, donutCard2) => donutCard2.donutPrice - donutCard1.donutPrice);  /* Filtrerar från högsta till lägsta pris
-console.table(donutCards);
-donutCards.sort((donutCard1, donutCard2) => donutCard1.donutPrice - donutCard2.donutPrice);  /* Filtrerar från lägsta till högsta pris 
-console.table(donutCards); */
-
-const productsListing = document.querySelector('#productsListing');
-const categoryFilterRadios = document.querySelectorAll('[name="categoryFilter"]');
-const priceRangeSlider = document.querySelector('#priceRange');
-const currentRangeValue = document.querySelector('#currentRangeValue');  
-
-let filteredProducts = [...donutCards];
-let filteredProductsInPriceRange = [...donutCards];
-
-
-
-function changePriceRange() {                       // funktion för aktuellt pris 
-    const currentPrice = priceRangeSlider.value;
-    currentRangeValue.innerHTML = currentPrice;
-
-    filteredProductsInPriceRange = filteredProducts.filter(donutCard => donutCard.price <= currentPrice);
+    createDonuts(); // kallar på våra kort igen så de skrivs ut sorterade
 }
 
+/*---------------------------------------------Filtrering på pris------------------------------------------*/
 
-function updateCategoryFilter(e) {
-   
-    const selectedCategory = e.currentTarget.value;   //Hämta radiobutton-värde
-    console.log(selectedCategory);
-  
-    if (selectedCategory === 25) {
-      filteredProducts = [...donutCards]; 
-    } else {
-      
-      filteredProducts = [];           //Töm tidigare filtrering
-  
-      for (let i = 0; i < donutCards.length; i++) {   //Loopa igenom alla donuts
-        const prod = donutCards[i];
-      }
-    }
+const priceRangeSlider = document.querySelector('#priceRange'); // Kallar på sliden
+const currentRangeValue = document.querySelector('#currentRangeValue') // kallar på prisets behållare i html strukturen
+
+priceRangeSlider.addEventListener('input', update)
+
+
+//Gör att värdet på den rosa texten är samma som värdet på vår slide samt skapar en array efter prisklass
+function update(e){
+
+    //uppdaterar värdet på rosa text är samma som value is liden
+    const priceRangeValue = e.currentTarget.value // värdet i vår slide
+
+    currentRangeValue.innerHTML =
+    `<span>${priceRangeValue} kr</span>` // Skriver ut värdet i rosa text, skickar in till vår html struktur
+
+    //Skapar en ny array för de donuts som ingår i prisspannet
+    filterProductsInPriceRange = [...donutCards]
+
+    filterProductsInPriceRange = filterProductsInPriceRange.filter(product => product.donutPrice <= priceRangeValue) // skapar en array med de donuts som ingår i spannet
+    createDonuts(); // Skriver ut rätt donuts
 }
-
-changePriceRange();
-
-priceRangeSlider.addEventListener('input', updateCategoryFilter);
-
-
-
-
-//donutCards.sort((a, b) => b.donutPrice - a.donutPrice);
 
 // Varje gång loopen körs kommer vår artikel läggas in i vår html struktur i vår section och alla 10 korten kommer upp i webben
 // GÖr även så att alla korts pris uppdateras mellan fre och måndag
-function createDonuts(arr){
+function createDonuts(){
 
 donutCardsContainer.innerHTML = '';
-    for(let i = 0; i < arr.length; i++){ 
-        let price = arr[i].donutPrice;
+    let filterProductsArrays = filterProducts.filter(value => filterProductsInPriceRange.includes(value)); // gör så de två array kopiorna vi skapar fungerar ihop, de värdet som ingår i båda sparas
+    for(let i = 0; i < filterProductsArrays.length; i++){ 
+        let price = filterProductsArrays[i].donutPrice;
         let today = new Date('november 26, 2022 10:00:00');                                   // för att testa 
         
         // Mellan fre och sön ökar priset på donuts med 15%
@@ -216,14 +187,12 @@ donutCardsContainer.innerHTML = '';
         }
        price = Math.round(price)
 
-        
-
         // Skriver ut stjärnorna på donuts korten sammanlänkat med rating i vår array
         let rating = '';
 
         for(let j = 0; j < 5; j++){
 
-            if (j < donutCards[i].rating){
+            if (j < filterProductsArrays[i].rating){
                 rating += '<span class="fa fa-star checked"></span>'
             } else{
                 rating += '<span class="fa fa-star"></span>'
@@ -234,14 +203,14 @@ donutCardsContainer.innerHTML = '';
         donutCardsContainer.innerHTML +=
             `<article class="donutCard">
         <div class="donutCardHeaderContainer">
-            <h3>${arr[i].donutTitle}</h3 id="donutCardHeader">
+            <h3>${filterProductsArrays[i].donutTitle}</h3 id="donutCardHeader">
         </div>
         <section class="donutCardContainer">
             <div class="donutCardImgContainer">
                 <div class="controlsImgSlideshow" id="controlsImgSlideshow">
                     <div class="images">
-                        <img src="${arr[i].donutImg1}" alt="" class="donutCardImg1" id="donutcardImg1">
-                        <img src="${arr[i].donutImg2}" alt="" class="donutCardImg2" id="donutCardImg2">                                 
+                        <img src="${filterProductsArrays[i].donutImg1}" alt="" class="donutCardImg1" id="donutcardImg1">
+                        <img src="${filterProductsArrays[i].donutImg2}" alt="" class="donutCardImg2" id="donutCardImg2">                                 
                     </div>
                     <span class="ratingClass" id="ratingId">${rating}</span>
                     <div class="controls">
