@@ -228,9 +228,9 @@ function UpdatedonutsBasket(){
         }                                                                              // Skriver sum eftersom jag vill att om vi har rabatt ska delsumman va anorlunda 
 
     /*------------------ Total antal bunkar till popupen -----------------------------------*/    
-    totalNumberOfDonuts = 0;
+    totalNumberOfDonuts = 0;                                                        //Inintialvärdet är noll
     
-    for(let i = 0; i < donutCards.length; i++){
+    for(let i = 0; i < donutCards.length; i++){                                     //Loop som summerar alla munkar på sidan.
         totalNumberOfDonuts += donutCards[i].amount;
     }
     
@@ -681,8 +681,8 @@ function sendOrder(e){                                      // Funktion som inne
 
 function maxSummaryNoInvoice(){
     const invoiceStop = document.querySelector('#invoice');              //Kanppen till fakturan. 
-    const errorMessageInvoice = document.querySelector('#errorMessageInvoice')
-    const cardRadioButton = document.querySelector('#creditcard')
+    const errorMessageInvoice = document.querySelector('#errorMessageInvoice') //Kallar på spantagen där felmedelandet ska synas. 
+    const cardRadioButton = document.querySelector('#creditcard')       //Kallar på knappen till fakturan
 
     if (totalSumToPay > 800){                                   //Om summan med rabatt och frakt är över 800 
         invoiceStop.setAttribute('disabled', '');               //är inte knappen längre klickabar     
@@ -860,10 +860,10 @@ function closePopUpArea() {
 
 /*------------------------------------------------------------------------------------------------------*/ 
 
-function totalPriceToPay() {
-    document.querySelector('#summaryArea').innerHTML=totalSumToPay;
+function totalPriceToPay() {                                                
+    document.querySelector('#summaryArea').innerHTML=totalSumToPay;          // Funktionen som redovisar totalpris i popupen
 }
 
 function allDonuts() {
-    document.querySelector('#summaryDonuts').innerHTML=totalNumberOfDonuts;
+    document.querySelector('#summaryDonuts').innerHTML=totalNumberOfDonuts;   // Funktionen som redovisar total antal munkar i popupen
 }
