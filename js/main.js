@@ -22,117 +22,243 @@ const donutCards = [                                                        // E
     donutAlt: 'Apelsinmunk',
     donutPrice: '15',
     amount: 0,
+    category: 'frukt',
+    rating: 4,
 }, {
     donutTitle: 'Banana suprice',
     donutImg1: './images/banansuprice.jpg',
     donutImg2: './images/banansuprice2.jpg',
     donutAlt: 'munk med banansmak',
     donutPrice: '20',
-    amount: 0
+    amount: 0,
+    category: 'frukt',
+    rating: 5,
 },{
     donutTitle: 'Blåbär',
     donutImg1: './images/blueberry.jpg',
     donutImg2: './images/blueberry2.jpg',
     donutAlt: 'munk med blåbärssmak',
     donutPrice: '15',
-    amount: 0
+    amount: 0,
+    category: 'bär',
+    rating: 3,
 },{
     donutTitle: 'Karamellchoklad',
     donutImg1: './images/caramellchoklad.jpg',
     donutImg2: './images/caramellchoklad2.jpg',
     donutAlt: 'munk med karamellchoklad smak',
     donutPrice: '18',
-    amount: 0
+    amount: 0,
+    category: 'godis',
+    rating: 4,
 },{
     donutTitle: 'Chunky monkey',
     donutImg1: './images/chunkymonkey.jpg',
     donutImg2: './images/chunkymonkey2.jpg',
     donutAlt: 'munk med Chunky munky smak',
     donutPrice: '25',
-    amount: 0
+    amount: 0,
+    category: 'godis',
+    rating: 5,
 },{
     donutTitle: 'Citronfromage',
     donutImg1: './images/citronfromage.jpg',
     donutImg2: './images/citronfromage2.jpg',
     donutAlt: 'munk med citron smak',
     donutPrice: '18',
-    amount: 0
+    amount: 0,
+    category: 'frukt',
+    rating: 3,
 },{
     donutTitle: 'Hallon-choklad',
     donutImg1: './images/hallonchoklad.jpg',
     donutImg2: './images/hallonchoklad2.jpg',
     donutAlt: 'munk med citron hallon och choklad smak',
     donutPrice: '20',
-    amount: 0
+    amount: 0,
+    category: 'bär',
+    rating: 4,
 },{
     donutTitle: 'Jordgrubbsdröm',
     donutImg1: './images/strawberrydream.jpg',
     donutImg2: './images/strawberrydream2.jpg',
     donutAlt: 'munk med jordgubbs smak',
     donutPrice: '15',
-    amount: 0
+    amount: 0,
+    category: 'bär',
+    rating: 5,
 },{
     donutTitle: 'Laktris',
     donutImg1: './images/lakrits.jpg',
     donutImg2: './images/lakrits2.jpg',
     donutAlt: 'munk med laktris smak',
     donutPrice: '15',
-    amount: 0
+    amount: 0,
+    category: 'godis',
+    rating: 2,
 },{
     donutTitle: 'Mandelknäck',
     donutImg1: './images/caramell.jpg',
     donutImg2: './images/caramell2.jpg',
     donutAlt: 'munk med mandel och knäck smak',
     donutPrice: '15',
-    amount: 0
+    amount: 0,
+    category: 'godis',
+    rating: 4,
 }];
+
+/*---------------------------------------------Sortera donuts------------------------------------------*/
+const sortBtns = document.querySelectorAll('.ourDonutsDropdown input[type="radio"]');
+
+for(let i = 0; i < sortBtns.length; i++){
+    sortBtns[i].addEventListener('click', clickedSortBtn);
+} 
+
+createDonuts(donutCards);
+
+function clickedSortBtn(e){
+    const clickedBtn = e.currentTarget.id
+    
+    if(clickedBtn == 'name'){
+        donutCards.sort((a, b) => a.donutTitle.localeCompare(b.donutTitle));
+    } else if (clickedBtn == 'rating'){
+        donutCards.sort((a, b) => a.rating - b.rating)
+    } else if(clickedBtn == 'fruit'){
+        const fruit = donutCards.filter(donutCard => donutCard.category === 'frukt');
+        createDonuts(fruit);
+        return;
+    } else if(clickedBtn == 'berrys'){
+        const berrys = donutCards.filter(donutCard => donutCard.category === 'bär');
+        createDonuts(berrys);
+        return;
+    } else if(clickedBtn == 'candy'){
+        const candy = donutCards.filter(donutCard => donutCard.category === 'godis');
+        createDonuts(candy);
+        return;
+    }
+
+    createDonuts(donutCards);
+} 
+
+//donutCards.sort((a, b) => b.donutPrice - a.donutPrice);
+
+/*----------------------------------------------------------------------------------------------------------
+----------------------------------filtrering på pris--------------------------------------------------------
+------------------------------------------------------------------------------------------------------------*/
+
+/*donutCards.sort((donutCard1, donutCard2) => donutCard2.donutPrice - donutCard1.donutPrice);  /* Filtrerar från högsta till lägsta pris
+console.table(donutCards);
+donutCards.sort((donutCard1, donutCard2) => donutCard1.donutPrice - donutCard2.donutPrice);  /* Filtrerar från lägsta till högsta pris 
+console.table(donutCards); */
+
+const productsListing = document.querySelector('#productsListing');
+const categoryFilterRadios = document.querySelectorAll('[name="categoryFilter"]');
+const priceRangeSlider = document.querySelector('#priceRange');
+const currentRangeValue = document.querySelector('#currentRangeValue');  
+
+let filteredProducts = [...donutCards];
+let filteredProductsInPriceRange = [...donutCards];
+
+
+
+function changePriceRange() {                       // funktion för aktuellt pris 
+    const currentPrice = priceRangeSlider.value;
+    currentRangeValue.innerHTML = currentPrice;
+
+    filteredProductsInPriceRange = filteredProducts.filter(donutCard => donutCard.price <= currentPrice);
+}
+
+
+function updateCategoryFilter(e) {
+   
+    const selectedCategory = e.currentTarget.value;   //Hämta radiobutton-värde
+    console.log(selectedCategory);
+  
+    if (selectedCategory === 25) {
+      filteredProducts = [...donutCards]; 
+    } else {
+      
+      filteredProducts = [];           //Töm tidigare filtrering
+  
+      for (let i = 0; i < donutCards.length; i++) {   //Loopa igenom alla donuts
+        const prod = donutCards[i];
+      }
+    }
+}
+
+changePriceRange();
+
+priceRangeSlider.addEventListener('input', updateCategoryFilter);
+
+
+
+
+//donutCards.sort((a, b) => b.donutPrice - a.donutPrice);
 
 // Varje gång loopen körs kommer vår artikel läggas in i vår html struktur i vår section och alla 10 korten kommer upp i webben
 // GÖr även så att alla korts pris uppdateras mellan fre och måndag
-for(let i = 0; i < donutCards.length; i++){ 
-    let price = donutCards[i].donutPrice;
-    let today = new Date();                                   // för att testa 
-    
-    if(((today.getDay() == 5 && today.getHours() >= 15) || (today.getDay() > 5 || today.getDay() <= 1)) && ((today.getDay() == 1 && today.getHours() <= 2) || (today.getDay() < 1 || today.getDay() >= 5))) {
-        (price *= 1.15)
-    } else {
-        price;
-    }
+function createDonuts(arr){
 
-    donutCardsContainer.innerHTML +=
-        `<article class="donutCard">
-    <div class="donutCardHeaderContainer">
-        <h3>${donutCards[i].donutTitle}</h3 id="donutCardHeader">
-    </div>
-    <section class="donutCardContainer">
-        <div class="donutCardImgContainer">
-            <div class="controlsImgSlideshow" id="controlsImgSlideshow">
-                <div class="images">
-                    <img src="${donutCards[i].donutImg1}" alt="" class="donutCardImg1" id="donutcardImg1">
-                    <img src="${donutCards[i].donutImg2}" alt="" class="donutCardImg2" id="donutCardImg2">                                 
+donutCardsContainer.innerHTML = '';
+    for(let i = 0; i < arr.length; i++){ 
+        let price = arr[i].donutPrice;
+        let today = new Date();                                   // för att testa 
+        
+        // Mellan fre och sön ökar priset på donuts med 15%
+        if(((today.getDay() == 5 && today.getHours() >= 15) || (today.getDay() > 5 || today.getDay() <= 1)) && ((today.getDay() == 1 && today.getHours() <= 2) || (today.getDay() < 1 || today.getDay() >= 5))) {
+            (price *= 1.15)
+        } else {
+            price;
+        }
+
+        // Skriver ut stjärnorna på donuts korten sammanlänkat med rating i vår array
+        let rating = '';
+
+        for(let j = 0; j < 5; j++){
+
+            if (j < donutCards[i].rating){
+                rating += '<span class="fa fa-star checked"></span>'
+            } else{
+                rating += '<span class="fa fa-star"></span>'
+            }
+        }
+        
+        // Lägger till donutcards på sidan
+        donutCardsContainer.innerHTML +=
+            `<article class="donutCard">
+        <div class="donutCardHeaderContainer">
+            <h3>${arr[i].donutTitle}</h3 id="donutCardHeader">
+        </div>
+        <section class="donutCardContainer">
+            <div class="donutCardImgContainer">
+                <div class="controlsImgSlideshow" id="controlsImgSlideshow">
+                    <div class="images">
+                        <img src="${arr[i].donutImg1}" alt="" class="donutCardImg1" id="donutcardImg1">
+                        <img src="${arr[i].donutImg2}" alt="" class="donutCardImg2" id="donutCardImg2">                                 
+                    </div>
+                    <span class="ratingClass" id="ratingId">${rating}</span>
+                    <div class="controls">
+                        <button class="left" id="prevImage">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button class="right" id="nextImage">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="controls">
-                    <button class="left" id="prevImage">
-                        <span class="material-symbols-outlined">chevron_left</span>
-                    </button>
-                    <button class="right" id="nextImage">
-                        <span class="material-symbols-outlined">chevron_right</span>
-                    </button>
-                </div>
+                <p id="donutCardPrice">${price} kr/st</p>
             </div>
-            <p id="donutCardPrice">${price} kr/st</p>
-        </div>
-        <div class='donutCardRating'></div>
-        <br>
-        <div class="donutCardButtonContainer">
-            <button data-operator="minus" data-id="${i}">-</button>
-            <input type="number" value="0" data-operator="amount" data-id="${i}">
-            <button data-operator="plus" data-id="${i}">+</button>
-        </div>
-    </section>
-</article>`
+            <div class='donutCardRating'></div>
+            <br>
+            <div class="donutCardButtonContainer">
+                <button data-operator="minus" data-id="${i}">-</button>
+                <input type="number" value="0" data-operator="amount" data-id="${i}">
+                <button data-operator="plus" data-id="${i}">+</button>
+            </div>
+        </section>
+    </article>`
 };                                                                                         // data id i är för att knapparna ska få index som id 0123456789 så vi vet vilken av knapparna i arrayen vi klickat på
-
+}
 /*----------------Få våra + och - knappar att fungera-------------------------*/
 
 const addBtns = document.querySelectorAll('button[data-operator="plus"]');           // kallar på plus knappen

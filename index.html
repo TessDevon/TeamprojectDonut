@@ -47,15 +47,45 @@
                 </div>
                 <div class="ourDonutsDropdownContainer">
                     <div class="ourDonutsDropdown"> <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover-->
-                        <button class="ourDonutsDropBtn">Sortera efter</button>
-                        <div class="ourDounatsDropdownContent">
-                        <a href="#">Lägsta pris</a>
-                        <a href="#">Högsta pris</a>
-                        <a href="#">Populärt</a>
-                        <a href="#">Namn</a>
-                        <a href="#">Kategori</a>
+                        <label>
+                            Visa alla
+                            <input type="radio" donutTitle="categoryFilter" id="all" name="sortDonuts" value="all" checked />
+                        </label>
+                        <label class="flexOurDonutsDropdown">
+                            <p>Kategori</p> 
+                            <div>
+                              <span>Frukt</span>  
+                            <input type="radio" donutTitle="categoryFilter" id="fruit" name="sortDonuts" value="category" />  
+                            </div>
+                            <div>
+                                <span>Godis</span> 
+                                <input type="radio" donutTitle="categoryFilter" id="candy" name="sortDonuts" value="category" />
+                            </div>
+                            <div>
+                                <span>Bär</span> 
+                                <input type="radio" donutTitle="categoryFilter" id="berrys" name="sortDonuts" value="category" />
+                            </div>
+                        </label>
+                        <label>
+                            Rating
+                            <input type="radio" donutTitle="categoryFilter" id="rating" name="sortDonuts" value="rating" />
+                        </label>
+                        <label>
+                            Namn
+                            <input type="radio" donutTitle="categoryFilter" id="name" name="sortDonuts" value="donutTitle" />
+                        </label><br><br>
                         </div>
                     </div>
+                    <div class="priceRange">
+                        <span>Prisklass</span>
+                        <span class="flex">
+                            <span>0 - 25 kr</span>
+                            <input type="range" min="0" max="25" value="25" id="priceRange" step="5">
+                            <br>
+                        </span>
+                        <span id="currentRangeValue">25 kr</span>        
+                    </div> 
+                    <div id="productsListing"></div>
                 </div>
             </div>
             <section class="donutCardWraper" id="donutCards"></section>
