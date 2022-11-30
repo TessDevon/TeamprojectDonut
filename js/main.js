@@ -24,6 +24,7 @@ const donutCards = [                                                        // E
     amount: 0,
     category: 'frukt',
     rating: 4,
+    index: 0
 }, {
     donutTitle: 'Banana surprise',
     donutImg1: './images/banansuprice.jpg',
@@ -33,6 +34,7 @@ const donutCards = [                                                        // E
     amount: 0,
     category: 'frukt',
     rating: 5,
+    index: 1
 },{
     donutTitle: 'Blåbär',
     donutImg1: './images/blueberry.jpg',
@@ -42,6 +44,7 @@ const donutCards = [                                                        // E
     amount: 0,
     category: 'bär',
     rating: 3,
+    index: 2
 },{
     donutTitle: 'Karamellchoklad',
     donutImg1: './images/caramellchoklad.jpg',
@@ -51,6 +54,7 @@ const donutCards = [                                                        // E
     amount: 0,
     category: 'godis',
     rating: 4,
+    index: 3
 },{
     donutTitle: 'Chunky monkey',
     donutImg1: './images/chunkymonkey.jpg',
@@ -60,6 +64,7 @@ const donutCards = [                                                        // E
     amount: 0,
     category: 'godis',
     rating: 5,
+    index: 4
 },{
     donutTitle: 'Citronfromage',
     donutImg1: './images/citronfromage.jpg',
@@ -69,6 +74,7 @@ const donutCards = [                                                        // E
     amount: 0,
     category: 'frukt',
     rating: 3,
+    index: 5
 },{
     donutTitle: 'Hallon-choklad',
     donutImg1: './images/hallonchoklad.jpg',
@@ -78,6 +84,7 @@ const donutCards = [                                                        // E
     amount: 0,
     category: 'bär',
     rating: 4,
+    index: 6
 },{
     donutTitle: 'Jordgubbsdröm',
     donutImg1: './images/strawberrydream.jpg',
@@ -87,6 +94,7 @@ const donutCards = [                                                        // E
     amount: 0,
     category: 'bär',
     rating: 5,
+    index: 7
 },{
     donutTitle: 'Lakrits',
     donutImg1: './images/lakrits.jpg',
@@ -96,6 +104,7 @@ const donutCards = [                                                        // E
     amount: 0,
     category: 'godis',
     rating: 2,
+    index: 8
 },{
     donutTitle: 'Mandelknäck',
     donutImg1: './images/caramell.jpg',
@@ -105,9 +114,18 @@ const donutCards = [                                                        // E
     amount: 0,
     category: 'godis',
     rating: 4,
+    index: 9
 }];
 
-
+//Uppdaterar donutCards arrayens pris om de är mellan fre och sön
+for(let i = 0; i < donutCards.length; i++){
+        let today = new Date();                                   // för att testa 
+        // Mellan fre och sön ökar priset på donuts med 15%
+        if(((today.getDay() == 5 && today.getHours() >= 15) || (today.getDay() > 5 || today.getDay() <= 1)) && ((today.getDay() == 1 && today.getHours() <= 2) || (today.getDay() < 1 || today.getDay() >= 5))) {
+            (donutCards[i].donutPrice *= 1.15)
+        }
+        donutCards[i].donutPrice  = Math.round(donutCards[i].donutPrice )
+}
 
 /*---------------------------------------------Sortera donuts------------------------------------------*/
 // Dessa är 2 arrayer som är kopierade av vår donutCards
@@ -176,16 +194,6 @@ function createDonuts(){
 donutCardsContainer.innerHTML = '';
     let filterProductsArrays = filterProducts.filter(value => filterProductsInPriceRange.includes(value)); // gör så de två array kopiorna vi skapar fungerar ihop, de värdet som ingår i båda sparas
     for(let i = 0; i < filterProductsArrays.length; i++){ 
-        let price = filterProductsArrays[i].donutPrice;
-        let today = new Date('november 26, 2022 10:00:00');                                   // för att testa 
-        
-        // Mellan fre och sön ökar priset på donuts med 15%
-        if(((today.getDay() == 5 && today.getHours() >= 15) || (today.getDay() > 5 || today.getDay() <= 1)) && ((today.getDay() == 1 && today.getHours() <= 2) || (today.getDay() < 1 || today.getDay() >= 5))) {
-            (price *= 1.15)
-        } else {
-            price;
-        }
-       price = Math.round(price)
 
         // Skriver ut stjärnorna på donuts korten sammanlänkat med rating i vår array
         let rating = '';
@@ -222,14 +230,14 @@ donutCardsContainer.innerHTML = '';
                         </button>
                     </div>
                 </div>
-                <p id="donutCardPrice">${price} kr/st</p>
+                <p id="donutCardPrice">${filterProductsArrays[i].donutPrice} kr/st</p>
             </div>
             <div class='donutCardRating'></div>
             <br>
             <div class="donutCardButtonContainer">
-                <button data-operator="minus" data-id="${i}">-</button>
-                <input type="number" value="0" data-operator="amount" data-id="${i}">
-                <button data-operator="plus" data-id="${i}">+</button>
+                <button data-operator="minus" data-id="${filterProductsArrays[i].index}">-</button>
+                <input type="number" value="0" data-operator="amount" data-id="${filterProductsArrays[i].index}">
+                <button data-operator="plus" data-id="${filterProductsArrays[i].index}">+</button>
             </div>
         </section>
     </article>`
@@ -244,7 +252,7 @@ for (let i = 0; i < addBtns.length; i++){
     subtractBtns[i].addEventListener('click', removeNumber)
     typeAmountInput[i].addEventListener('input', updateAmount)
 }
-};                                                                                         // data id i är för att knapparna ska få index som id 0123456789 så vi vet vilken av knapparna i arrayen vi klickat på
+};                                                                                  // data id i är för att knapparna ska få index som id 0123456789 så vi vet vilken av knapparna i arrayen vi klickat på
 } 
 /*----------------Få våra + och - knappar att fungera-------------------------*/
 
@@ -332,7 +340,7 @@ function UpdatedonutsBasket(){
         </div>`}  
         }                                                                              // Skriver sum eftersom jag vill att om vi har rabatt ska delsumman va anorlunda 
 
-    /*------------------ Total antal bunkar till popupen -----------------------------------*/    
+    /*------------------ Total antal munkar till popupen -----------------------------------*/    
     totalNumberOfDonuts = 0;
     
     for(let i = 0; i < donutCards.length; i++){
@@ -360,21 +368,13 @@ let totalNumberOfDonuts = 0;
 /*------------------------ Lägg till rabattkod och gör priset till 0------------------*/
 
 const discountBtn = document.querySelector('#discountBtn')                 //kallar på rabattkodsknappen
-const discountInput = document.querySelector('#discountCode')              // kallar på inputrutan jag ska skriva in  min kod i
-const totalSum = 0;                                                        // skriver totalsumman som en variabel så jag kan spara värdet av totalsumman när den ändras till 0
+const discountInput = document.querySelector('#discountCode')              // kallar på inputrutan jag ska skriva in  min kod i                                                      // skriver totalsumman som en variabel så jag kan spara värdet av totalsumman när den ändras till 0
 discountBtn.addEventListener('click', totalpriceZero)
 discountInput.addEventListener('input', wrongCode)
 
 //Gör så att när vi klickar på använd rabattkod och rätt kod är ifylld blir totalsumman 0
 function totalpriceZero(){
-    
-    if (discountInput.value === 'a_damn_fine-cup_of-coffee'){              // om value är lika med vår kod kommer totalsumman bli 0
-        totalPriceBasket.innerHTML = '';                                   // måste tömma vårt totala pris innan vi lägger upp de nya
-        totalPriceBasket.innerHTML +=                                      // säger att vi ska skicka in en span med 0 i vår html
-    `<span>${totalSum}</span>`                                             // skickar in värdet 0 i totalsumman
-    } else if (discountInput.value != 'a_damn_fine-cup_of-coffee'){
-        UpdatedonutsBasket();
-    }
+    UpdatedonutsBasket();
 }
 
 //Gör så att om vi tar bort en bokstav ur rätt rabattkod kommer hela summan visas igen
@@ -387,10 +387,12 @@ function wrongCode(){
 /*-------------------------------Uppdaterar totalsumman och rabatter-------------------------------*/
 
 //Uppdatera totalsumman i varukorgen
+let totalSumToPay = 0;                                                                  // Global variabel som nås på fler ställen. Till för över 800 kr och popupen.
+
 function totalPrice(){ 
     let sum = 0;  // sätter en startsumma till 0
     let startShippingSum = 0;
-    let today = new Date('November 26, 2022 06:00:00'); 
+    let today = new Date(); 
     let amount = 0;
     
     // Gör så att jag får ut att weekNumber är veckans nummer                                              
@@ -410,6 +412,8 @@ function totalPrice(){
             sum += (donutCards[i].amount * donutCards[i].donutPrice);                   //sum är sum + antal * pris. += för att den ska lägga till på min summa hela tiden annars skriver den bara den jag klickar på
         }
     } 
+ 
+       
 
     // Om det är måndag innan kl 10 blir det 10% rabatt på hela beställningen
     if(today.getDay() == 1 && today.getHours() <= 9){
@@ -435,6 +439,12 @@ function totalPrice(){
         }
 
     startShippingSum = Number(startShippingSum.toFixed());                              //Avrunda värdet för frakten    
+
+    // Rabattkod gör hela beställningen till 0
+    if (discountInput.value === 'a_damn_fine-cup_of-coffee') {
+        sum = 0;
+        startShippingSum = 0;
+    }
     
     // lägger till totalsumman
     totalPriceBasket.innerHTML =                                      
@@ -455,8 +465,6 @@ function totalPrice(){
 
     totalSumToPay = sum + startShippingSum;                                  // Tilldelning för uträkning av totalsumma med frakt och rabatt och avrundar summan till hela kronor
 }
-
-let totalSumToPay = 0;                                                                  // Global variabel som nås på fler ställen. Till för över 800 kr och popupen.
 
 /*---------------------------------------Töm varukorgen----------------------------------*/
 
@@ -532,7 +540,7 @@ function swapImages(e){
 ------------JS koden för att hantera beställningsknappen. START---------------------------------
 -----------------------------------------------------------------------------------------------*/ 
 const orderButton = document.querySelector('.submit_form_button');              //hämtar beställningsknapp
-const nameInput = document.querySelector('#name');                              //hämtar namn i html
+const nameInput = document.querySelector('#firstname');                              //hämtar namn i html
 const lastNameInput = document.querySelector('#lastname');                      //hämtar efternamnet i html
 const adress = document.querySelector('#adress');                               //hämtar adress
 const postNumber = document.querySelector('#postnumber');                       //hämtar postnummer
@@ -553,8 +561,8 @@ let checkNameInputOk = false;                                                   
 function checkNameInput(){          
     const exp = new RegExp('^[A-Za-zÅÄÖåäö\-]{1,}$');                           //Vad fältet får innehålla, A-ö a-ö - 
     const errorMessage = document.querySelector('#errorMessageName');           //kallar upp diven för felmedelande
-
-    if (exp.test(nameInput.value)){                                             //Om värdet stämmer med const exp så döljs felmeddelanderutan och functionen skickar true
+    
+    if (exp.test(nameInput.value)){                                           //Om värdet stämmer med const exp så döljs felmeddelanderutan och functionen skickar true
         errorMessage.setAttribute('hidden', '');
         checkNameInputOk = true;
     } else {
