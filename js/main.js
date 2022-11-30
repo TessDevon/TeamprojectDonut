@@ -800,8 +800,8 @@ if(today.getDate() == 24 && today.getMonth() == 11)                         //Om
 --------------------- Jultemat ----------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------*/
 
-//const today2 = new Date('December 24, 69 00:20:18');                         //För test av julafton
-const today2 = new Date();                                             //Dagens datum
+const today2 = new Date('December 24, 69 00:20:18');                         //För test av julafton
+//const today2 = new Date();                                             //Dagens datum
 if(today2.getDate() == 24 && today2.getMonth() == 11)                         //Om dagens datum är 24 dec
 {
     const santaVagon = document.querySelector('.fa-shopping-cart');     //Hämtar vagnen
@@ -817,10 +817,13 @@ if(today2.getDate() == 24 && today2.getMonth() == 11)                         //
     }
     const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bagrundfärg i varukorg
     const santaForm = document.querySelector('.section-form').style.backgroundImage = 'url("images/hallonchokladInzoom.jpg")';         //Byta balgrundsbild i form
-    const santaInfo = document.querySelector('.informationUlContainer').style.backgroundColor = 'green'; //Ändrad färg i info
+    const santaInfo = document.querySelector('.informationText').style.backgroundColor = 'green'; //Ändrad färg i info
     const Santafooter = document.querySelector('footer');                   //Hämtar footern
     Santafooter.style.backgroundColor = 'green';                            //Ändrad bakgrundsfärg i footern
     Santafooter.style.color = 'white';                                      //Ändrar färg på text till vit. Bättre kontrast.
+    const santaH2 = document.querySelector('.santah2')
+    santaH2.style.color = 'white';
+    santaH2.style.textdekoration = 'none';
 }
 
 /*---------------------------------------------------------------------------------------------------

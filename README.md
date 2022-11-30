@@ -2,4 +2,43 @@
 
 Made by: Sofia Olsson, Therese Hölén och Camilla Ridesjö. 
 
-In this folder you will find validation reports and pictures from this website.
+Pitcher of the webpage: 
+
+mobile
+
+
+
+tablet
+
+
+
+
+desktop
+
+
+
+
+Popup-area
+
+
+
+
+Santateam
+
+
+
+Validation HTML
+
+
+
+
+Validation CSS
+
+
+
+
+Lighthouse check
+
+
+
+Firefox check
