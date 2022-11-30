@@ -2,7 +2,11 @@
 
 Made by: Sofia Olsson, Therese Hölén och Camilla Ridesjö. 
 
-Pitcher of the webpage: 
+Tech stack: HTML, Sass, TypeScript.
+
+Git Live: https://medieinstitutet.github.io/fed22d-js-grundkurs-gruppuppgift-webbshop-team-gummianka/ 
+
+Pictures of the webpage: 
 
 mobile
 
@@ -12,18 +16,15 @@ tablet
 
 
 
-
 desktop
 
 
 
-
 Popup-area
+PopUpMobile <img src="assets/ScreenshotsOfWebpage/PopUpMobile.jpg" alt="Mobile popup">
+PopUpTablet <img src="assets/ScreenshotsOfWebpage/PopUpTablet.jpg" alt="Mobile popup">
+PopUpDesktop <img src="assets/ScreenshotsOfWebpage/PopUpDesktop.jpg" alt="Mobile popup">
 
-
-PopUpMobile.jpg
-PopUpTablet.jpg
-PopUpDesktop.jpg
 
 Santateam
 
