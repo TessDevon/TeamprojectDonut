@@ -12,25 +12,27 @@ h1 {
 }
 
 /*---------------------------------------------------------
--------------------Dropdown sorting donuts-----------------
+-----------------------------sorting donuts-----------------
 ----------------------------------------------------------*/
+.ourDonutsDropdownContainer{    // Ändra namn från dropdown till buttons?
+    max-width: 1400px;
+    padding: 10px;
 
-.ourDonutsDropBtn{
-    width: 175px;
 }
 
-.ourDonutsDropdownContainer{
-    max-width: 1270px;
-    margin-bottom: 40px;
+.ourDonutsDropdown{    
+    margin-left: 220px;
+    margin-top: 60px;
+    max-width: 1000px;
+    position: absolute; 
+
 }
 
-.ourDonutsDropdown{
-    font-size: 1.8rem;
-}
-
-.ourDounatsDropdownContent{
-    min-width: 170px;
-    font-size: 1.5rem;
+.priceRange {
+    margin-top: 70px;
+    margin-left: 400px;
+    margin-bottom: 100px;
+    font-size: 1.1rem; 
 }
 
 /*---------------------------------------------------------
