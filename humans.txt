@@ -2,12 +2,14 @@
 # The humans responsible & technology colophon
 
 # TEAM
-
-    <name> -- <role> -- <twitter>
+    Members:            Github:
+    Sofia Olsson        Sofilus
+    Therese Hölén       TessDevon
+    Camilla Ridesjö     c-ridesjo Camilla 
 
 # THANKS
 
-    <name>
+    Thanks to our expert teacher Jenni :) and our JS proficient rubber ducks <3.
 
 # TECHNOLOGY COLOPHON
 

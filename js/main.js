@@ -915,8 +915,7 @@ if(today.getDate() == 24 && today.getMonth() == 11)                         //Om
 
 //const today2 = new Date('December 24, 69 00:20:18');                         //För test av julafton
 const today2 = new Date();                                             //Dagens datum
-if(today2.getDate() == 24 && today2.getMonth() == 11)                         //Om dagens datum är 24 dec
-{
+if(today2.getDate() == 24 && today2.getMonth() == 11){                         //Om dagens datum är 24 dec
     const santaVagon = document.querySelector('.fa-shopping-cart');     //Hämtar vagnen
     santaVagon.style.color = 'red';                                     //Ändra Color på vagnen
     const santaH1 = document.querySelector('h1');                       //Hämtar H1    
@@ -928,12 +927,23 @@ if(today2.getDate() == 24 && today2.getMonth() == 11)                         //
     for (let i = 0 ; i < santaPrice.length ; i++){                          //Loopar så alla munkar får rött pris
       santaPrice[i].style.color = 'red';  
     }
-    const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bagrundfärg i varukorg
+        const santaDonut = document.querySelectorAll('.donutCard');       //Röd färg på priset
+    for (let i = 0 ; i < santaDonut.length ; i++){                          //Loopar så alla munkar får rött pris
+      santaDonut[i].style.backgroundColor = 'brown'; 
+      santaDonut[i].style.color = 'lightyellow'; 
+      santaDonut[i].style.textShadow = '2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff';
+    }
+        const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bagrundfärg i varukorg
     const santaForm = document.querySelector('.section-form').style.backgroundImage = 'url("images/hallonchokladInzoom.jpg")';         //Byta balgrundsbild i form
-    const santaInfo = document.querySelector('.informationUlContainer').style.backgroundColor = 'green'; //Ändrad färg i info
+    const santaInfo = document.querySelector('.informationText').style.backgroundColor = 'green'; //Ändrad färg i info
     const Santafooter = document.querySelector('footer');                   //Hämtar footern
     Santafooter.style.backgroundColor = 'green';                            //Ändrad bakgrundsfärg i footern
     Santafooter.style.color = 'white';                                      //Ändrar färg på text till vit. Bättre kontrast.
+    const santaH2 = document.querySelector('.santah2')
+    santaH2.style.color = 'white';
+    santaH2.style.textdekoration = 'none';
+    const santaIcon = document.querySelector('.informationUlIcons').style.color = 'white';  
+    //Kan ändra färg på pluset med den andra ikonerna verkar vara låsta i sin färg. 
 }
 
 /*---------------------------------------------------------------------------------------------------
