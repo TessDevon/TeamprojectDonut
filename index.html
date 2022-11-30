@@ -130,94 +130,94 @@
                         <h2 class="middlepart_h2">Kundformulär</h2>
                         <form id="custumerForm" action="">
                             <br><div id="infoAboutTime"></div><br><br>
-                            <label for="">
+                            <label for="name">
                                 <span>Förnamn</span>  
                                 <span class="errorMessage" id="errorMessageName" hidden></span>
                                 <input placeholder="tilltalsnamn" required class="input_group" type="text" id="name"> 
                             </label>
                             <br>
-                            <label for="">
+                            <label for="lastname">
                                 <span>Efternamn</span>  
                                 <span class="errorMessage" id="errorMessageLastname" hidden></span>
                                 <input required class="input_group" type="text" id="lastname">
                             </label>
                             <br>
-                            <label for=""> 
+                            <label for="adress"> 
                                 <span>Gatuadress</span> 
                                 <span class="errorMessage" id="errorMessageAdress" hidden></span>
                                 <input placeholder="gata och nummer" required class="input_group" type="text" id="adress">
                             </label>
                             <br>
-                            <label for="">
+                            <label for="postnumber">
                                     <span>Postnummer</span> 
                                     <span class="errorMessage" id="errorMessagePostnumber" hidden></span>
                                 <input required class="input_group" type="text" id="postnumber">
                             </label>
                             <br>
-                            <label for="">
+                            <label for="city">
                                 <span>Postort</span> 
                                 <span class="errorMessage" id="errorMessageCity" hidden></span>
                                 <input placeholder="stad" required class="input_group" type="text" id="city">
                             </label>
                             <br>
-                            <label for="">
+                            <label for="doorCode">
                                 <span>Portkod</span> 
                                 <input class="input_group" type="number" id="doorCode">
                             </label>
                             <br>
-                            <label for="">
+                            <label for="phonenumber">
                                 <span>Mobilnummer</span> 
                                 <span class="errorMessage" id="errorMessagePhoneNumber" hidden></span>
                                 <input required class="input_group" type="text" id="phonenumber">
                             </label>
                             <br>
-                            <label for="">
+                            <label for="email">
                                 <span>Epost</span> 
                                 <span class="errorMessage" id="errorMassageeMail" hidden></span>
                                 <input required class="input_group" type="text" id="email">
                             </label>
                             <br>
                             <p>Betalsätt</p>
-                            <label for="">
+                            <label for="creditcard">
                                 Kort
                                 <input type="radio" id="creditcard" name="waysToPay" value="creditcard">
                             </label>
-                            <label id="labelInvoice" for="">
+                            <label for="invoice" id="labelInvoice">
                                 Faktura
                                 <input type="radio" id="invoice" name="waysToPay" value="invoice"> 
                                 <br><span class="errorMessage" id="errorMessageInvoice" hidden></span>
                             </label> <!--vid faktura fält med personnr, ska valideras-->
                             <br>
                             <div id="ssn" class="display-none">
-                                <label for="">
+                                <label for="personNr">
                                     <span>Personnummer</span> 
                                     <span class="errorMessage" id="errorMessagePersonNR" hidden></span>
                                     <input id="personNr" placeholder="YYMMDD0000" class="input_group" type="text" >
                                 </label>
                             </div>
                             <div id="cardpay" class="display-none">
-                                <label for="">
+                                <label for="cardnr">
                                     <span>Kortnummer</span> 
                                     <span class="errorMessage" id="errorMessageCardNR" hidden></span>
                                     <input placeholder="0000000000000000" class="input_group" type="number" id="cardnr">
                                 </label>
-                                <label for="">
+                                <label for="dateyear">
                                     <span>mån/år</span> 
                                     <span class="errorMessage" id="errorMessageDateyear" hidden></span>
                                     <input placeholder="MMYY" class="input_group" type="number" id="dateyear">
                                 </label>
-                                <label for="">
+                                <label for="cvc">
                                     <span>CVC</span> 
                                     <span class="errorMessage" id="errorMessageCVC" hidden></span>
                                     <input placeholder="000" class="input_group" type="number" id="CVC">
                                 </label>
                             </div>
                             <br>
-                            <label for="">
+                            <label for="news">
                                 Prenumerera på vårt nyhetsbrev
                                 <input checked type="checkbox" name="news" id="news">
                             </label><br><br>
-                            <label for="">
+                            <label for="gdpr">
                                 Godkännande av behandling av personuppgifter
                                 <input required class="input_group" type="checkbox" name="gdpr" id="gdpr">
                             </label>
