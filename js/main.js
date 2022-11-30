@@ -19,7 +19,7 @@ const donutCards = [                                                        // E
     donutTitle: 'Apelsinmunk',
     donutImg1: './images/apelsinmunk.jpg',
     donutImg2: './images/apelsinmunk2.jpg',
-    donutAlt: 'Apelsinmunk',
+    donutAlt: 'En munk med apelsin smak. Den har vit glasyr med orangea ränder.',
     donutPrice: 15,
     amount: 0,
     category: 'frukt',
@@ -29,7 +29,7 @@ const donutCards = [                                                        // E
     donutTitle: 'Banana surprise',
     donutImg1: './images/banansuprice.jpg',
     donutImg2: './images/banansuprice2.jpg',
-    donutAlt: 'munk med banansmak',
+    donutAlt: 'En munk med banansmak. Den är brun med gul glasyr.',
     donutPrice: 20,
     amount: 0,
     category: 'frukt',
@@ -39,7 +39,7 @@ const donutCards = [                                                        // E
     donutTitle: 'Blåbär',
     donutImg1: './images/blueberry.jpg',
     donutImg2: './images/blueberry2.jpg',
-    donutAlt: 'munk med blåbärssmak',
+    donutAlt: 'En munk med blåbärssmak. Den har rosa glasyr med rosa lila strössel på.',
     donutPrice: 15,
     amount: 0,
     category: 'bär',
@@ -49,7 +49,7 @@ const donutCards = [                                                        // E
     donutTitle: 'Karamellchoklad',
     donutImg1: './images/caramellchoklad.jpg',
     donutImg2: './images/caramellchoklad2.jpg',
-    donutAlt: 'munk med karamellchoklad smak',
+    donutAlt: 'En munk med karamellchoklad smak. Den har beige glasyr med stringlad choklad på. Den har även brunt strössel.',
     donutPrice: 18,
     amount: 0,
     category: 'godis',
@@ -59,7 +59,7 @@ const donutCards = [                                                        // E
     donutTitle: 'Chunky monkey',
     donutImg1: './images/chunkymonkey.jpg',
     donutImg2: './images/chunkymonkey2.jpg',
-    donutAlt: 'munk med Chunky munky smak',
+    donutAlt: 'En munk med Chunky munky smak. Den har brun glasyr med brunt strössel på.',
     donutPrice: 25,
     amount: 0,
     category: 'godis',
@@ -69,7 +69,7 @@ const donutCards = [                                                        // E
     donutTitle: 'Citronfromage',
     donutImg1: './images/citronfromage.jpg',
     donutImg2: './images/citronfromage2.jpg',
-    donutAlt: 'munk med citron smak',
+    donutAlt: 'En munk med citron smak. Den har vit glasyr med strössel på i färgerna gul, orange och rosa.',
     donutPrice: 18,
     amount: 0,
     category: 'frukt',
@@ -79,7 +79,7 @@ const donutCards = [                                                        // E
     donutTitle: 'Hallon-choklad',
     donutImg1: './images/hallonchoklad.jpg',
     donutImg2: './images/hallonchoklad2.jpg',
-    donutAlt: 'munk med citron hallon och choklad smak',
+    donutAlt: 'En munk med citron, hallon och choklad smak. Den är täckt av choklad med hallon strössel på.',
     donutPrice: 20,
     amount: 0,
     category: 'bär',
@@ -89,7 +89,7 @@ const donutCards = [                                                        // E
     donutTitle: 'Jordgubbsdröm',
     donutImg1: './images/strawberrydream.jpg',
     donutImg2: './images/strawberrydream2.jpg',
-    donutAlt: 'munk med jordgubbs smak',
+    donutAlt: 'En munk med jordgubbs smak. Den har röd glasyr med vitt strössel på.',
     donutPrice: 15,
     amount: 0,
     category: 'bär',
@@ -99,7 +99,7 @@ const donutCards = [                                                        // E
     donutTitle: 'Lakrits',
     donutImg1: './images/lakrits.jpg',
     donutImg2: './images/lakrits2.jpg',
-    donutAlt: 'munk med laktris smak',
+    donutAlt: 'En munk med laktris smak. Den har vit glasyr lakrits bitar på.',
     donutPrice: 15,
     amount: 0,
     category: 'godis',
@@ -109,7 +109,7 @@ const donutCards = [                                                        // E
     donutTitle: 'Mandelknäck',
     donutImg1: './images/caramell.jpg',
     donutImg2: './images/caramell2.jpg',
-    donutAlt: 'munk med mandel och knäck smak',
+    donutAlt: 'En munk med mandel och knäck smak. Den har brun glasyr med bitar av knäck på.',
     donutPrice: 15,
     amount: 0,
     category: 'godis',
@@ -217,8 +217,8 @@ donutCardsContainer.innerHTML = '';
             <div class="donutCardImgContainer">
                 <div class="controlsImgSlideshow" id="controlsImgSlideshow">
                     <div class="images">
-                        <img src="${filterProductsArrays[i].donutImg1}" alt="" class="donutCardImg1" id="donutcardImg1" width="170" height="160">
-                        <img src="${filterProductsArrays[i].donutImg2}" alt="" class="donutCardImg2" id="donutCardImg2" width="170" height="160">                                 
+                        <img src="${filterProductsArrays[i].donutImg1}" alt="${filterProductsArrays[i].donutAlt}" class="donutCardImg1" id="donutcardImg1" width="170" height="160">
+                        <img src="${filterProductsArrays[i].donutImg2}" alt="${filterProductsArrays[i].donutAlt}" class="donutCardImg2" id="donutCardImg2" width="170" height="160">                                 
                     </div>
                     <span class="ratingClass" id="ratingId">${rating}</span>
                     <div class="controls">
@@ -324,7 +324,7 @@ function UpdatedonutsBasket(){
             </div>
             <section>
                 <div>
-                    <img src="${donutCards[i].donutImg1}" alt="" width="70" height="70">
+                    <img src="${donutCards[i].donutImg1}" alt="${donutCards[i].donutAlt}" width="70" height="70">
                 </div>
                 <div class="basketDonutsflex">
                     <div>
@@ -492,7 +492,7 @@ function luciaDonutHtml(){                                                  //Sk
     </div>
     <section>
         <div>
-            <img src="./images/nutDounat.jpg" alt="" height="70" width="70">
+            <img src="./images/nutDounat.jpg" alt="en luciamunk som tillkommit till din beställning för att det är lucia idag" height="70" width="70">
         </div>
         <div class="basketDonutsflex">
             <div>
