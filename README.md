@@ -21,9 +21,12 @@ desktop
 
 
 Popup-area
-PopUpMobile <img src="assets/ScreenshotsOfWebpage/PopUpMobile.jpg" alt="Mobile popup">
-PopUpTablet <img src="assets/ScreenshotsOfWebpage/PopUpTablet.jpg" alt="Tablet popup">
-PopUpDesktop <img src="assets/ScreenshotsOfWebpage/PopUpDesktop.jpg" alt="Desktop popup">
+PopUpMobile 
+<img src="assets/ScreenshotsOfWebpage/PopUpMobile.jpg" alt="Mobile popup">
+PopUpTablet 
+<img src="assets/ScreenshotsOfWebpage/PopUpTablet.jpg" alt="Tablet popup">
+PopUpDesktop 
+<img src="assets/ScreenshotsOfWebpage/PopUpDesktop.jpg" alt="Desktop popup">
 
 
 Santateam
