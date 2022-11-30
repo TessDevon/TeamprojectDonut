@@ -217,8 +217,8 @@ donutCardsContainer.innerHTML = '';
             <div class="donutCardImgContainer">
                 <div class="controlsImgSlideshow" id="controlsImgSlideshow">
                     <div class="images">
-                        <img src="${filterProductsArrays[i].donutImg1}" alt="" class="donutCardImg1" id="donutcardImg1">
-                        <img src="${filterProductsArrays[i].donutImg2}" alt="" class="donutCardImg2" id="donutCardImg2">                                 
+                        <img src="${filterProductsArrays[i].donutImg1}" alt="" class="donutCardImg1" id="donutcardImg1" width="170" height="160">
+                        <img src="${filterProductsArrays[i].donutImg2}" alt="" class="donutCardImg2" id="donutCardImg2" width="170" height="160">                                 
                     </div>
                     <span class="ratingClass" id="ratingId">${rating}</span>
                     <div class="controls">
@@ -324,7 +324,7 @@ function UpdatedonutsBasket(){
             </div>
             <section>
                 <div>
-                    <img src="${donutCards[i].donutImg1}" alt="">
+                    <img src="${donutCards[i].donutImg1}" alt="" width="70" height="70">
                 </div>
                 <div class="basketDonutsflex">
                     <div>
@@ -492,7 +492,7 @@ function luciaDonutHtml(){                                                  //Sk
     </div>
     <section>
         <div>
-            <img src="./images/nutDounat.jpg" alt="">
+            <img src="./images/nutDounat.jpg" alt="" height="70" width="70">
         </div>
         <div class="basketDonutsflex">
             <div>
