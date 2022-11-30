@@ -20,7 +20,7 @@ const donutCards = [                                                        // E
     donutImg1: './images/apelsinmunk.jpg',
     donutImg2: './images/apelsinmunk2.jpg',
     donutAlt: 'Apelsinmunk',
-    donutPrice: '15',
+    donutPrice: 15,
     amount: 0,
     category: 'frukt',
     rating: 4,
@@ -29,7 +29,7 @@ const donutCards = [                                                        // E
     donutImg1: './images/banansuprice.jpg',
     donutImg2: './images/banansuprice2.jpg',
     donutAlt: 'munk med banansmak',
-    donutPrice: '20',
+    donutPrice: 20,
     amount: 0,
     category: 'frukt',
     rating: 5,
@@ -38,7 +38,7 @@ const donutCards = [                                                        // E
     donutImg1: './images/blueberry.jpg',
     donutImg2: './images/blueberry2.jpg',
     donutAlt: 'munk med blåbärssmak',
-    donutPrice: '15',
+    donutPrice: 15,
     amount: 0,
     category: 'bär',
     rating: 3,
@@ -47,7 +47,7 @@ const donutCards = [                                                        // E
     donutImg1: './images/caramellchoklad.jpg',
     donutImg2: './images/caramellchoklad2.jpg',
     donutAlt: 'munk med karamellchoklad smak',
-    donutPrice: '18',
+    donutPrice: 18,
     amount: 0,
     category: 'godis',
     rating: 4,
@@ -56,7 +56,7 @@ const donutCards = [                                                        // E
     donutImg1: './images/chunkymonkey.jpg',
     donutImg2: './images/chunkymonkey2.jpg',
     donutAlt: 'munk med Chunky munky smak',
-    donutPrice: '25',
+    donutPrice: 25,
     amount: 0,
     category: 'godis',
     rating: 5,
@@ -65,7 +65,7 @@ const donutCards = [                                                        // E
     donutImg1: './images/citronfromage.jpg',
     donutImg2: './images/citronfromage2.jpg',
     donutAlt: 'munk med citron smak',
-    donutPrice: '18',
+    donutPrice: 18,
     amount: 0,
     category: 'frukt',
     rating: 3,
@@ -74,7 +74,7 @@ const donutCards = [                                                        // E
     donutImg1: './images/hallonchoklad.jpg',
     donutImg2: './images/hallonchoklad2.jpg',
     donutAlt: 'munk med citron hallon och choklad smak',
-    donutPrice: '20',
+    donutPrice: 20,
     amount: 0,
     category: 'bär',
     rating: 4,
@@ -83,7 +83,7 @@ const donutCards = [                                                        // E
     donutImg1: './images/strawberrydream.jpg',
     donutImg2: './images/strawberrydream2.jpg',
     donutAlt: 'munk med jordgubbs smak',
-    donutPrice: '15',
+    donutPrice: 15,
     amount: 0,
     category: 'bär',
     rating: 5,
@@ -92,7 +92,7 @@ const donutCards = [                                                        // E
     donutImg1: './images/lakrits.jpg',
     donutImg2: './images/lakrits2.jpg',
     donutAlt: 'munk med laktris smak',
-    donutPrice: '15',
+    donutPrice: 15,
     amount: 0,
     category: 'godis',
     rating: 2,
@@ -101,7 +101,7 @@ const donutCards = [                                                        // E
     donutImg1: './images/caramell.jpg',
     donutImg2: './images/caramell2.jpg',
     donutAlt: 'munk med mandel och knäck smak',
-    donutPrice: '15',
+    donutPrice: 15,
     amount: 0,
     category: 'godis',
     rating: 4,
@@ -233,10 +233,8 @@ donutCardsContainer.innerHTML = '';
             </div>
         </section>
     </article>`
-};                                                                                         // data id i är för att knapparna ska få index som id 0123456789 så vi vet vilken av knapparna i arrayen vi klickat på
-} 
-/*----------------Få våra + och - knappar att fungera-------------------------*/
-
+    
+ // ligger här i för att vi ska kunna klicka på knapparma, de ska skapas ny index för varje gång   
 const addBtns = document.querySelectorAll('button[data-operator="plus"]');           // kallar på plus knappen
 const subtractBtns = document.querySelectorAll('button[data-operator="minus"]');     // Kallar på minus knappen
 const typeAmountInput = document.querySelectorAll('input[data-operator="amount"]')   //Kallar på inputen med antal
@@ -246,6 +244,11 @@ for (let i = 0; i < addBtns.length; i++){
     subtractBtns[i].addEventListener('click', removeNumber)
     typeAmountInput[i].addEventListener('input', updateAmount)
 }
+};                                                                                         // data id i är för att knapparna ska få index som id 0123456789 så vi vet vilken av knapparna i arrayen vi klickat på
+} 
+/*----------------Få våra + och - knappar att fungera-------------------------*/
+
+
 
  /* När vi klickar på + ökar vi antal med 1*/
 function addNumber (e) {
