@@ -22,13 +22,14 @@ desktop
 
 Popup-area
 PopUpMobile <img src="assets/ScreenshotsOfWebpage/PopUpMobile.jpg" alt="Mobile popup">
-PopUpTablet <img src="assets/ScreenshotsOfWebpage/PopUpTablet.jpg" alt="Mobile popup">
-PopUpDesktop <img src="assets/ScreenshotsOfWebpage/PopUpDesktop.jpg" alt="Mobile popup">
+PopUpTablet <img src="assets/ScreenshotsOfWebpage/PopUpTablet.jpg" alt="Tablet popup">
+PopUpDesktop <img src="assets/ScreenshotsOfWebpage/PopUpDesktop.jpg" alt="Desktop popup">
 
 
 Santateam
-
-
+SantaThemeMobile <img src="assets/ScreenshotsOfWebpage/SantaThemeMobile.jpg" alt="Santa theme to mobile">
+SantaThemeTablet <img src="assets/ScreenshotsOfWebpage/SantaThemeTablet.jpg" alt="Santa theme to tablet">
+SantaThemeDesktop <img src="assets/ScreenshotsOfWebpage/SantaThemeDesktop.jpg" alt="Santa theme to Desktop">
 
 Validation HTML
 
@@ -41,6 +42,7 @@ Validation CSS
 
 
 Lighthouse check
+
 
 
 
