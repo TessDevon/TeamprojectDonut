@@ -168,11 +168,11 @@ function clickedSortBtn(e){
 const priceRangeSlider = document.querySelector('#priceRange'); // Kallar på sliden
 const currentRangeValue = document.querySelector('#currentRangeValue') // kallar på prisets behållare i html strukturen
 
-priceRangeSlider.addEventListener('input', update)
+priceRangeSlider.addEventListener('input', updateCurrentPrice)
 
 
 //Gör att värdet på den rosa texten är samma som värdet på vår slide samt skapar en array efter prisklass
-function update(e){
+function updateCurrentPrice(e){
 
     //uppdaterar värdet på rosa text är samma som value is liden
     const priceRangeValue = e.currentTarget.value // värdet i vår slide
@@ -242,7 +242,7 @@ donutCardsContainer.innerHTML = '';
         </section>
     </article>`
     
- // ligger här i för att vi ska kunna klicka på knapparma, de ska skapas ny index för varje gång   
+ // ligger här i för att vi ska kunna klicka på knapparna, de ska skapas ny index för varje gång   
 const addBtns = document.querySelectorAll('button[data-operator="plus"]');           // kallar på plus knappen
 const subtractBtns = document.querySelectorAll('button[data-operator="minus"]');     // Kallar på minus knappen
 const typeAmountInput = document.querySelectorAll('input[data-operator="amount"]')   //Kallar på inputen med antal
