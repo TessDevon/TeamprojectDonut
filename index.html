@@ -5,22 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Gottfrids munkar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="munkar för hemlevernas" content="">
-    <meta property="munkar" content>
-    <meta property="butik" content>
-    <meta property="og:image" content>
+    <meta name="description" content="Webbshop where you can buy donuts from gottfrids munkar">
+    <meta name="robots" content="all">
+    <meta property="og:title" content="Gottfrids munkar">
+    <meta property="og:type" content="Webbshop">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="./images/aLotOfDounats.jpg">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="stylesheet" href="./css/main.css">
     <meta name="theme-color" content="#fafafa">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/364f1f7cab.js" crossorigin="anonymous" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500&display=swap" rel="stylesheet">
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <body>
     <header>
@@ -32,10 +31,10 @@
                 <li class="menuList"><a class="navLinks_a" href="#ourdonuts">Våra munkar</a></li>
                 <li class="menuList"><a class="navLinks_a" href="#info">Övrig info</a></li>
                 <li class="menuList"><a class="navLinks_a" href="#shopping-basket">Varukorg</a></li> <!--Ikon för varukorg samt summa-->
-                    <a href="#shopping-basket" class="iconContainer">
-                        <i class="fa fa-shopping-cart" id="shoppingCart"></i>
-                    </a>                          
             </ul>
+            <a href="#shopping-basket" class="iconContainer" aria-label="Summery of totalprice and klick it to go to basket">
+                    <i class="fa fa-shopping-cart" id="shoppingCart"></i>
+            </a>
         </div>
     </nav>
     <main>
@@ -89,8 +88,8 @@
                     <div class="priceRange">
                         <span>Prisklass</span>
                         <span class="flex">
-                            <span>0 - 30 kr</span>
-                            <input type="range" min="0" max="30" value="30" id="priceRange" step="5">
+                            <span>15 - 30 kr</span>
+                            <input type="range" min="15" max="30" value="30" id="priceRange" step="5">
                             <br>
                         </span>
                         <span id="currentRangeValue">30 kr</span>        
@@ -128,40 +127,36 @@
            <div class="middlepart_container">
                 <section class="section_basket" id="shopping-basket">
                     <div class="basket">
-                            <h2 class="middlepart_h2">Varukorg</h2> <!--På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".-->
-                        <div class="main_heading_basket">    
-                            <h3 class="basket_heading">Valda produkter</h3>
+                        <div class="basketHeadeingContainer">
+                            <h2 class="middlepart_h2">Varukorg</h2>
                         </div>
-                        <article id="basketDonuts">
-                        </article>
-                        <label for="">
+                        <div class="main_heading_basket">    
+                            <h3 class="basket_heading">Valda donuts</h3>
+                        </div>
+                        <article id="basketDonuts"></article>
+                        <div class="emptyBasketContainer" id="emptyBasket">
+                            <p>Din varukorg är tom</p>
+                            <i class="fa fa-shopping-cart"></i>
+                        </div>
+                        <label for="discountCode">
+                            <p>Skriv in din rabattkod här!</p> 
                             <input type="text" id="discountCode" placeholder="Rabattkod" value="">
-                        </label>
-                        <button class="discount_button" id="discountBtn">Använd rabattkod</button> <!--Litet formulär där de ska kunna fylla i koden, nån label kanske-->
+                            <button class="discount_button" id="discountBtn">Använd rabattkod</button>
                         <div class="basket_sum">
-                            <h3 class="basket_heading_none">Sammanställning</h3>
                             <div>
                                 <p class="basket_heading">Totaltsumma:</p>
                                 <p class="total_amount" ><span id="totalAmountBasket">0</span> SEK</p>
                             </div>
-                            <p class="basket_heading" id="mondayDiscount"></p>
                             <div>
-                                <p>Frakt:</p>
-                                <p><span id="shippingPrice">0</span> SEK</p>
+                                <p class="shipping_heading">Frakt:</p>
+                                <p class="shipping_amount"><span id="shippingPrice">0</span> SEK</p>
                             </div>
-                            <p class="summery">Summa att betala</p>
-                            <p id="priceToPay"></p>
+                            <div class="sumToPayContainer">
+                               <p class="summery">Summa att betala:</p>
+                                <p id="priceToPay" class="total_amount" ></p> 
+                            </div>
                         </div>
-                        
-                        <button id="emptyBasketBtn">Töm Varukorgen</button>
-                        <!--bilder på de beställda munkarna
-                        info om munken som är vald, namn och pris
-                        antal knappar som ska kopplas ihop med de andra
-                        Kryss knapp så man kan ta bort en sort av munk
-                        totalsumma 
-                        Dragen rabatt
-                        Summa att betala
-                        Rabbatkod-->
+                        <button id="emptyBasketBtn" class="emptyBasketBtn">Töm Varukorgen</button>
                     </div>
                 </section>
                 <section class="section-form">

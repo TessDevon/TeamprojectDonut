@@ -113,21 +113,8 @@ h1 {
     justify-content: space-between;
 }
 
-.summery, .discount_button, .basket_heading{  
-    font-size: 2vw;
-}
-
-.middlepart_h2  {
-    font-size: 4vw;
-}
-
-.basket_heading_none{
-    display: block;                          /*Rubrikerna syns igen*/
-    font-size: 2vw;
-}
-
-.section_basket{                             
-    background-color:   rgb(131, 107, 144); /* Variabel?! Samma rosa men mörkar. Lugnare färg för ögat med är ändå Liknande den andra färgskaln*/
+.emptyBasketContainer{
+    width: 40vw;
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------

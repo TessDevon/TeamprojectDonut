@@ -78,6 +78,10 @@ nav ul {
     height: 50px;
 }
 
+nav a{
+    z-index: 3;
+}
+
 nav a i{
     border: black solid 2px;
     background-color: rgb(5, 54, 71);
@@ -86,7 +90,6 @@ nav a i{
 }
 
 nav a i.fa  {
-    z-index: 2;
     font-size:2rem;
     color:rgb(182, 19, 146);
     line-height: 50px;
@@ -236,6 +239,7 @@ nav a i.fa  {
     max-width: 150px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1;
 }
 
 .donutCardContainer img.donutCardImg2{
@@ -380,15 +384,6 @@ input[type=number] {
 --------------------------------- Basket --------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------*/
 
-.middlepart_h2, .discount_button{  
-    font-size: 9vw;
-}
-
-.discount_button{  
-    cursor: pointer;
-    font-size: smaller;
-}
-
 .section_basket{
     background-color: rgb(248, 219, 242); /*Variabel som följer temat!?*/
     padding: 10px 15px;
@@ -396,14 +391,24 @@ input[type=number] {
 }
 
 .basket{
-    background-color: white;
+    background-color: rgb(252, 252, 252);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     margin: 5px;
-    padding: 15px;
     font-family: Arial, Helvetica, sans-serif;
     max-width: 600px;
     margin: 0 auto;
+}
+
+.basketHeadingContainer{
+    height: 120px;
+}
+
+.middlepart_h2 {  
+    font-size: 3rem;
+    text-align: center;
+    line-height: 120px;
+    margin-bottom: 0;
 }
 
 .main_heading_basket{
@@ -411,28 +416,25 @@ input[type=number] {
     justify-content: space-between;
 }
 
-.basket_sum div{
-    display: flex;
-    align-items: center;
-}
-
-.total_amount{
-    margin-left: 30px;
-    font-size: 1.7rem;
-}
-
-.total_amount span{
-    margin-right: 5px;
-    font-size: 1.7rem;
-}
-
 .basket_heading{
-    font-size: 4.5vw;
-    
+    font-size: 1.6rem;
+    margin-left: 20px; 
 }
 
-.basket_heading_none{
-    display: none;      
+.emptyBasketContainer{
+    height: 170px;
+    width: 85vw;
+    max-width: 540px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    margin: 0 auto;
+    border-top: black solid 1px;
+    border-bottom: black solid 1px;
+}
+
+.emptyBasketContainer p{
+    margin-right: 5px
 }
 
 .basketDonuts {
@@ -465,6 +467,15 @@ input[type=number] {
     grid-template-columns: 40% 60%;
 }
 
+.basketDonuts img{
+    width: 70px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+}
+
 .basketDonutsflex{
     display: flex;
     flex-direction: column;
@@ -483,23 +494,111 @@ input[type=number] {
     font-size: 1.3rem;
 }
 
-.basketDonuts img{
-    width: 70px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 5px;
-}
-
 .basketDonuts p{
     font-size: 1.2rem;
     margin-top: 15px;
 }
 
+.basket label{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    font-size: 1.4rem;
+}
+
+.basket label input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-left: 20px;
+    height: 40px;
+    border: black solid 1px;
+    max-width: 400px;
+}
+
+.basket label p{
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+.discount_button{  
+    cursor: pointer;
+    font-size: smaller;
+    font-size: 0.94rem;
+    background-color: rgb(96, 172, 73);  
+    border-radius: 5px;
+    height: 40px;
+    width: 130px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+}
+
+.basket_sum{
+    background-color: rgb(202, 206, 206);
+    height: 200px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
+}
+
+.basket_sum div{
+    display: flex;
+    align-items: center;
+}
+
+.basket_sum div p{
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.shipping_heading{
+    font-size: 1.2rem;
+    margin-left: 20px;
+}
+
+.shipping_amount{
+    font-size: 1.2rem;
+    margin-left: 10px;
+}
+
+.total_amount{
+    margin-left: 10px;
+    font-size: 1.7rem;
+}
+
+.total_amount span{
+    margin-right: 5px;
+    font-size: 1.7rem;
+}
+
+.sumToPayContainer{
+    margin-top: 30px;
+}
+
 .summery{
     font-weight: 600;
-    font-size: 5.5vw;
+    font-size: 1.5rem;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.emptyBasketBtn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: smaller;
+    font-size: 0.94rem;
+    background-color: rgb(134, 45, 45);  
+    border-radius: 2px;
+    height: 40px;
+    width: 130px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
+    color: rgb(241, 237, 237);
+
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------
@@ -514,7 +613,7 @@ input[type=number] {
 }
     
 .checkout_form{
-    background-color:white;
+    background-color: rgb(252, 252, 252);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     margin: 5px;
