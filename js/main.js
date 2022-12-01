@@ -301,7 +301,7 @@ function updateAmount(e){
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*---------------------- Lägger till donuts i varukorgen när värdet är över 0 och rabatter ------------------*/
-
+let yourBasketIsEmpty = document.querySelector('#emptyBasket')
 /*Lägger in rätt donuts i varukorgen och drar av ev rabatt på delsumman*/
 function UpdatedonutsBasket(){
     basketDonuts.innerHTML = '';                                                        // rensar formuläret varje gång jag klickar på en knapp 
@@ -316,7 +316,8 @@ function UpdatedonutsBasket(){
         }
        
         //Lägger in rätt donut i varukorgen
-        if(donutCards[i].amount >= 1){                                                 //Om värdet av amount i vår array av donuts är 1 eller mer lägger vi till vår html stuktur i basket. i för att den inte ska lägga till alla utan bara enskilda. Första gången den lopas inget, andra inget, trejde träff och den skrivs ut
+        if(donutCards[i].amount >= 1){                                                  //Om värdet av amount i vår array av donuts är 1 eller mer lägger vi till vår html stuktur i basket. i för att den inte ska lägga till alla utan bara enskilda. Första gången den lopas inget, andra inget, trejde träff och den skrivs ut
+        yourBasketIsEmpty.style.display = 'none'
         basketDonuts.innerHTML +=
         `<div class="basketDonuts">
             <div class="basketHeaderDonuts">
@@ -337,8 +338,10 @@ function UpdatedonutsBasket(){
                     </div>
                 </div>
             </section>
-        </div>`}  
-        }                                                                              // Skriver sum eftersom jag vill att om vi har rabatt ska delsumman va anorlunda 
+        </div>`}  else{
+        yourBasketIsEmpty.style.display = 'flex'
+        } }
+                                                                            // Skriver sum eftersom jag vill att om vi har rabatt ska delsumman va anorlunda 
 
     /*------------------ Total antal bunkar till popupen -----------------------------------*/    
     totalNumberOfDonuts = 0;                                                        //Inintialvärdet är noll

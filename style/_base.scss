@@ -376,15 +376,6 @@ input[type=number] {
 --------------------------------- Basket --------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------*/
 
-.middlepart_h2, .discount_button{  
-    font-size: 9vw;
-}
-
-.discount_button{  
-    cursor: pointer;
-    font-size: smaller;
-}
-
 .section_basket{
     background-color: rgb(248, 219, 242); /*Variabel som följer temat!?*/
     padding: 10px 15px;
@@ -392,7 +383,7 @@ input[type=number] {
 }
 
 .basket{
-    background-color: white;
+    background-color: rgb(252, 252, 252);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     margin: 5px;
@@ -402,33 +393,32 @@ input[type=number] {
     margin: 0 auto;
 }
 
+.middlepart_h2, .discount_button{  
+    font-size: 9vw;
+    text-align: center;
+}
+
 .main_heading_basket{
     display: flex;
     justify-content: space-between;
 }
 
-.basket_sum div{
-    display: flex;
-    align-items: center;
-}
-
-.total_amount{
-    margin-left: 30px;
-    font-size: 1.7rem;
-}
-
-.total_amount span{
-    margin-right: 5px;
-    font-size: 1.7rem;
-}
-
 .basket_heading{
-    font-size: 4.5vw;
-    
+    font-size: 5vw; 
 }
 
-.basket_heading_none{
-    display: none;      
+.emptyBasketContainer{
+    height: 170px;
+    justify-content: center;
+    align-items: center;
+    font-size: 4.5vw;
+    margin: 0 auto;
+    border-top: black solid 1px;
+    border-bottom: black solid 1px;
+}
+
+.emptyBasketContainer p{
+    margin-right: 10px
 }
 
 .basketDonuts {
@@ -461,6 +451,15 @@ input[type=number] {
     grid-template-columns: 40% 60%;
 }
 
+.basketDonuts img{
+    width: 70px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+}
+
 .basketDonutsflex{
     display: flex;
     flex-direction: column;
@@ -479,50 +478,58 @@ input[type=number] {
     font-size: 1.3rem;
 }
 
-.basketDonuts img{
-    width: 70px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 5px;
-}
-
 .basketDonuts p{
     font-size: 1.2rem;
     margin-top: 15px;
+}
+
+.basket label{
+    display: block;
+    margin-top: 10px;
+}
+
+.basket label input{
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.discount_button{  
+    cursor: pointer;
+    font-size: smaller;
+    font-size: 0.94rem;
+    background-color: rgb(96, 172, 73);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
+    border-radius: 2px;
+    height: 40px;
+    width: 130px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
+    margin-top: 5px;
+}
+
+.basket_sum div{
+    display: flex;
+    align-items: center;
+}
+
+.basket_heading_none{
+    display: none;      
+}
+
+.total_amount{
+    margin-left: 30px;
+    font-size: 1.7rem;
+}
+
+.total_amount span{
+    margin-right: 5px;
+    font-size: 1.7rem;
 }
 
 .summery{
     font-weight: 600;
     font-size: 5.5vw;
 }
-
-/* I varukorgen i mobil kommer vi nog få hoppa rubriker och infon på munkarna, 
-blir nog för rörigt och plottrigt? Mitt förslag:
-Namn, bild, antal och delsumma vill man ju ha i sammanställningen på rad. 
-Följs sedan av totalsumma, dragen rabatt och Summa att betala. Se nedan.
-
-Varukorg:               Delsumma:
-Namn på munk
-bild
-antal                   Summa
-
-Namn på munk
-bild
-antal                   Summa
-
-Namn på munk
-bild 
-antal                   Summa
-
-Använd rabattkod 
-
-Totalsumma:
-Dragen rabatt:
-Summa att betala:
-*/
-/*Delen ovan flyttas till en TODOfil??*/
 
 /*-----------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------  Form   -----------------------------------------------------------------------------------
@@ -536,7 +543,7 @@ Summa att betala:
 }
     
 .checkout_form{
-    background-color:white;
+    background-color: rgb(252, 252, 252);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     margin: 5px;
