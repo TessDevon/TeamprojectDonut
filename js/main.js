@@ -471,11 +471,14 @@ function totalPrice(){
 const emptyBasketBtn = document.querySelector('#emptyBasketBtn')    // kallar på töm varukotgknappen
 emptyBasketBtn.addEventListener('click', emptyBasket)
 
-function emptyBasket (e){ 
-
+function emptyBasket (e){
+    let inputs = document.querySelectorAll('input[data-operator="amount"]');
+    inputs.forEach(input => {
+        input.value = 0;
+    });
+    
     for(let i = 0; i < donutCards.length; i++){                     // loopar igenom och kollar alla amount
         donutCards[i].amount = 0;                                   //ändrar alla amount till 0
-        typeAmountInput[i].value = 0;                               // ändrar alla inputfält till 0
     } 
 
 UpdatedonutsBasket();                                               // gör så att jag tar bort kortet i varukorgen
