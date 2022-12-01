@@ -652,6 +652,7 @@ label{
     border-radius: 5px;
     cursor: pointer;
     margin-right: 6vw;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
 }
 
 .display-none {
@@ -666,6 +667,7 @@ label{
     background-color: rgb(153, 219, 153);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
 }
 
 form p {
