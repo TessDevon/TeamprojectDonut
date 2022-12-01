@@ -115,60 +115,41 @@ nav a i.fa  {
 -------------------------sorting donuts------------------------
 ----------------------------------------------------------*/
 
-.ourDonutsDropdownContainer{    // Ändra namn från dropdown till buttons?
-    max-width: 700px;
-    margin-right: 50px; 
-    text-align: right;
-    padding: 5px;
-    padding-bottom: 10px;    
+.ourDonutsDropdownContainer{   
+    max-width: 750px;
+    margin-right: 20px; 
+    text-align: left;
+    margin-left: 30px; 
 }
 
-.ourDonutsDropdown{
-    display: flex;
-    flex-direction: column;
+.ourDonutsDropdown{   
+    row-gap: 50px;
     margin-left: 30px; 
-    text-align: left;
     max-width: 750px;
     font-family: 'Dosis', sans-serif;
     color:rgb(26, 108, 111);
     font-size: 1.5rem;
 }
-.flexOurDonutsDropdown{
-    display: flex;
-    flex-direction: column;
-}
-
-.flexOurDonutsDropdown p{
-    margin: 0;
-}
-
-.flexOurDonutsDropdown span{
-    font-size: 1.3rem;
-    margin-bottom: 5px;
-}
-
-
 
 .priceRange {
     display: block;   
     position: relative;
-    margin-left: 10px;
+    margin-left: 60px;
     font-family: 'Dosis', sans-serif;
     color:rgb(26, 108, 111);
     font-weight: bold; 
-    font-size: 1.1rem;
+    font-size: 1.0rem;
 }
 
 #currentRangeValue {
     color: rgb(214, 6, 214);
     font-weight: bold;
-    margin-right: 50px;
+    margin-left: 160px;
+    font-size: 1.0rem;
 }
 
-
-
 /*---------------------------------------------------------
--------------------Dounat card-----------------------------
+-------------------Donut card-----------------------------
 ----------------------------------------------------------*/
 
 .donutCard {

@@ -46,36 +46,24 @@
                     <h2>Våra munkar</h2>
                 </div>
                 <div class="ourDonutsDropdownContainer">
-                    <div class="ourDonutsDropdown"> <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover-->
+                    <div class="ourDonutsDropdown"><br> <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover-->
+                        <div>   
                         <label>
-                            Visa alla
-                            <input type="radio" donutTitle="categoryFilter" id="all" name="sortDonuts" value="all" checked />
-                        </label>
-                        <label class="flexOurDonutsDropdown">
-                            <p>Kategori</p> 
-                            <div>
-                              <span>Frukt</span>  
-                            <input type="radio" donutTitle="categoryFilter" id="fruit" name="sortDonuts" value="category" />  
-                            </div>
-                            <div>
-                                <span>Godis</span> 
-                                <input type="radio" donutTitle="categoryFilter" id="candy" name="sortDonuts" value="category" />
-                            </div>
-                            <div>
-                                <span>Bär</span> 
-                                <input type="radio" donutTitle="categoryFilter" id="berrys" name="sortDonuts" value="category" />
-                            </div>
-                        </label>
-                        <label>
-                            Rating
-                            <input type="radio" donutTitle="categoryFilter" id="rating" name="sortDonuts" value="rating" />
-                        </label>
-                        <label>
-                            Namn
+                            <strong>Namn</strong>
                             <input type="radio" donutTitle="categoryFilter" id="name" name="sortDonuts" value="donutTitle" />
                         </label>
                         <label>
-                            <p>Pris</p> 
+                            <strong>&nbsp;&nbsp;Rating</strong>
+                            <input type="radio" donutTitle="categoryFilter" id="rating" name="sortDonuts" value="rating" />
+                        </label>
+                        <label>
+                            <strong>&nbsp;&nbsp;Visa alla</strong>
+                            <input type="radio" donutTitle="categoryFilter" id="all" name="sortDonuts" value="all" checked />
+                        </label>
+                        </div> 
+                        <div>
+                        <label>                                     
+                              <strong><p>Pris:</p></strong>                            
                             <div>
                                 <span>Lägst till högst</span>  
                                 <input type="radio" donutTitle="categoryFilter" id="lowPrice" name="sortDonuts" value="category" />  
@@ -84,7 +72,24 @@
                                 <span>Högst till lägst</span>  
                                 <input type="radio" donutTitle="categoryFilter" id="highPrice" name="sortDonuts" value="category" />  
                             </div>
-                        </label><br><br>
+                           <!-- <label class="flexOurDonutsDropdown"> -->
+                            
+                            <strong><p>Kategori:</p></strong>                        
+                                <div>
+                                  <span>Frukt</span>  
+                                <input type="radio" donutTitle="categoryFilter" id="fruit" name="sortDonuts" value="category" />  
+                                </div>
+                                <div>
+                                    <span>Godis</span> 
+                                    <input type="radio" donutTitle="categoryFilter" id="candy" name="sortDonuts" value="category" />
+                                </div>
+                                <div>
+                                    <span>Bär</span> 
+                                    <input type="radio" donutTitle="categoryFilter" id="berrys" name="sortDonuts" value="category" />
+                                </div>
+                            </label><br>
+                        </label>   
+                    </div>                
                         </div>
                     </div>
                     <div class="priceRange">

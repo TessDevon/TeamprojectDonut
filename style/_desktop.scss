@@ -14,29 +14,31 @@ h1 {
 /*---------------------------------------------------------
 -----------------------------sorting donuts-----------------
 ----------------------------------------------------------*/
-.ourDonutsDropdownContainer{    // Ändra namn från dropdown till buttons?
-    max-width: 1400px;
-    padding: 10px;
 
+.ourDonutsDropdownContainer{   
+    max-width: 750px;
+    margin-right: 20px; 
+    text-align: left;
+    margin-left: 30px; 
 }
 
-.ourDonutsDropdown{    
-    margin-left: 220px;
-    margin-top: 60px;
-    max-width: 1000px;
-    position: absolute; 
-
+.donutFlexWrap{
+    flex-direction: row;
 }
 
 .priceRange {
-    margin-top: 70px;
-    margin-left: 400px;
-    margin-bottom: 100px;
-    font-size: 1.1rem; 
+        margin-left: 20px;
+        margin-top: 40px;
+        font-size: 1.3rem;
+}
+
+#currentRangeValue {
+    font-size: 1.3rem;
+    margin-left: 50px;
 }
 
 /*---------------------------------------------------------
--------------------Dounat card-----------------------------
+-------------------Donut card-----------------------------
 ----------------------------------------------------------*/
 
 .donutCardWraper{
