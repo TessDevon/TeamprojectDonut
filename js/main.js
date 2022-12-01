@@ -210,40 +210,40 @@ function createDonuts(){
             }
         }
         
-            // Lägger till munkarna på sidan
-            donutCardsContainer.innerHTML +=
-                `<article class="donutCard">
-            <div class="donutCardHeaderContainer">
-                <h3>${filterProductsArrays[i].donutTitle}</h3 id="donutCardHeader">
-            </div>
-            <section class="donutCardContainer">
-                <div class="donutCardImgContainer">
-                    <div class="controlsImgSlideshow" id="controlsImgSlideshow">
-                        <div class="images">
-                            <img src="${filterProductsArrays[i].donutImg1}" alt="${filterProductsArrays[i].donutAlt}" class="donutCardImg1" id="donutcardImg1" width="170" height="160">
-                            <img src="${filterProductsArrays[i].donutImg2}" alt="${filterProductsArrays[i].donutAlt}" class="donutCardImg2" id="donutCardImg2" width="170" height="160">                                 
+        // Lägger till munkarna på sidan
+        donutCardsContainer.innerHTML +=
+            `<article class="donutCard">
+                <div class="donutCardHeaderContainer">
+                    <h3>${filterProductsArrays[i].donutTitle}</h3 id="donutCardHeader">
+                </div>
+                <section class="donutCardContainer">
+                    <div class="donutCardImgContainer">
+                        <div class="controlsImgSlideshow" id="controlsImgSlideshow">
+                            <div class="images">
+                                <img src="${filterProductsArrays[i].donutImg1}" alt="${filterProductsArrays[i].donutAlt}" class="donutCardImg1" id="donutcardImg1" width="170" height="160">
+                                <img src="${filterProductsArrays[i].donutImg2}" alt="${filterProductsArrays[i].donutAlt}" class="donutCardImg2" id="donutCardImg2" width="170" height="160">                                 
+                            </div>
+                            <span class="ratingClass" id="ratingId">${rating}</span>
+                            <div class="controls">
+                                <button class="left" id="prevImage">
+                                    <span class="material-symbols-outlined">chevron_left</span>
+                                </button>
+                                <button class="right" id="nextImage">
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </button>
+                            </div>
                         </div>
-                        <span class="ratingClass" id="ratingId">${rating}</span>
-                        <div class="controls">
-                            <button class="left" id="prevImage">
-                                <span class="material-symbols-outlined">chevron_left</span>
-                            </button>
-                            <button class="right" id="nextImage">
-                                <span class="material-symbols-outlined">chevron_right</span>
-                            </button>
-                        </div>
+                        <p id="donutCardPrice">${filterProductsArrays[i].donutPrice} kr/st</p>
                     </div>
-                    <p id="donutCardPrice">${filterProductsArrays[i].donutPrice} kr/st</p>
-                </div>
-                <div class='donutCardRating'></div>
-                <br>
-                <div class="donutCardButtonContainer">
-                    <button data-operator="minus" data-id="${filterProductsArrays[i].index}">-</button>
-                    <input type="number" value="0" data-operator="amount" data-id="${filterProductsArrays[i].index}">
-                    <button data-operator="plus" data-id="${filterProductsArrays[i].index}">+</button>
-                </div>
-            </section>
-        </article>`;
+                    <div class='donutCardRating'></div>
+                    <br>
+                    <div class="donutCardButtonContainer">
+                        <button data-operator="minus" data-id="${filterProductsArrays[i].index}">-</button>
+                        <input type="number" value="0" data-operator="amount" data-id="${filterProductsArrays[i].index}">
+                        <button data-operator="plus" data-id="${filterProductsArrays[i].index}">+</button>
+                    </div>
+                </section>
+            </article>`;
     
         // Skapas ny index för varje gång loopen körs, så knapparna blir klickbara  
         const addBtns = document.querySelectorAll('button[data-operator="plus"]');           
@@ -320,30 +320,30 @@ function UpdatedonutsBasket(){
        
         //Lägger in vald munkar i varukorgen 
         if(donutCards[i].amount >= 1){                                                   
-        yourBasketIsEmpty.style.display = 'none';                                   // Tar bort varukorgen är tom
-        basketDonuts.innerHTML +=
-        `<div class="basketDonuts">
-            <div class="basketHeaderDonuts">
-                <h3>${donutCards[i].donutTitle}</h3>
-            </div>
-            <section>
-                <div>
-                    <img src="${donutCards[i].donutImg1}" alt="${donutCards[i].donutAlt}" width="70" height="70">
-                </div>
-                <div class="basketDonutsflex">
-                    <div>
-                        <h4>Antal</h4>
-                        <h4>Delsumma</h4>
+            yourBasketIsEmpty.style.display = 'none';                                   // Tar bort varukorgen är tom
+            basketDonuts.innerHTML +=
+                `<div class="basketDonuts">
+                    <div class="basketHeaderDonuts">
+                        <h3>${donutCards[i].donutTitle}</h3>
                     </div>
-                    <div>
-                        <p>${donutCards[i].amount}</p>
-                        <p>${sum} kr</p>
-                    </div>
-                </div>
-            </section>
-        </div>`;
+                    <section>
+                        <div>
+                            <img src="${donutCards[i].donutImg1}" alt="${donutCards[i].donutAlt}" width="70" height="70">
+                        </div>
+                        <div class="basketDonutsflex">
+                            <div>
+                                <h4>Antal</h4>
+                                <h4>Delsumma</h4>
+                            </div>
+                            <div>
+                                <p>${donutCards[i].amount}</p>
+                                <p>${sum} kr</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>`;
         } else {
-        yourBasketIsEmpty.style.display = 'flex';                                 // Lägger till varukorgen är tom
+            yourBasketIsEmpty.style.display = 'flex';                                 // Lägger till varukorgen är tom
         } 
     }                                                               
 
@@ -357,10 +357,9 @@ function UpdatedonutsBasket(){
     /*------------------- Luciamunk-------------------------*/    
     // const lokalToday = new Date('December 13, 69 00:20:18');                      //För testning av Luciamunken
 
-  const lokalToday = new Date();                                                   //Dagens datum
-    if(lokalToday.getDate() == 13 && lokalToday.getMonth() == 11 && totalNumberOfDonuts >= 1)    //Om dagens datum är 13 dec, varukorgen inte är tom.
-    {
-    basketDonuts.innerHTML += luciaDonutHtml();                                     //Så triggas funktionen luciaDonutHtml
+    const lokalToday = new Date();                                                   //Dagens datum
+    if(lokalToday.getDate() == 13 && lokalToday.getMonth() == 11 && totalNumberOfDonuts >= 1){    //Om dagens datum är 13 dec, varukorgen inte är tom.
+        basketDonuts.innerHTML += luciaDonutHtml();                                     //Så triggas funktionen luciaDonutHtml
         totalNumberOfDonuts += 1;                                                   //Luciamunken läggs till i total antal munkar den 13 dec.
     }
 
@@ -430,7 +429,7 @@ function totalPrice(){
     } 
 
     // Om det är jämn vecka och tisdag får man 25 kr rabatt på hela beställningen
-   if(weekNumber % 2 == 0 && sum >= 25 && today.getDay() == 2){
+    if(weekNumber % 2 == 0 && sum >= 25 && today.getDay() == 2){
         sum -= 25;
     } 
     
@@ -454,7 +453,7 @@ function totalPrice(){
     
     // Lägger till totalsumma
     totalPriceBasket.innerHTML =                                      
-    `<span>${sum}</span>`;    
+        `<span>${sum}</span>`;    
 
     // Lägger till fraktsumma
     shipping.innerHTML = `<span>${startShippingSum}</span>`;
@@ -462,7 +461,7 @@ function totalPrice(){
     //Uppdatera totalsumman i iconen längst upp till höger på skärmen
     const shoppingCart = document.querySelector('#shoppingCart');                         
     shoppingCart.innerHTML =
-    `<span class="colorWhite">${sum} sek</span>`;
+        `<span class="colorWhite">${sum} sek</span>`;
 
     // Skriver ut summa att betala som innehåller frakt och totalsumma
     document.querySelector('#priceToPay').innerHTML = `<span>${sum+startShippingSum} SEK</span>`;
@@ -770,7 +769,8 @@ function errorMessagePersonNR(){
 }
 
 function activateOrderButton(){                             // Om alla dessa värde innan paraneserna är sanna, och de första värdena inom den första parantesen eller den andra parantesen är sanna så tas attributet disable bort. Om inte detta uppfylls sätts attributet disabled.
-    if (checkNameInputOk && checklastNameInputOk && messageAdressOk && messagePostnumberOk && messageCityOk && messagePhoneNumberOk && messageeMailOk && messagegdprOk && totalNumberOfDonuts >= 1 && ((creditCard.checked && messageCardNROk && messageMonthyearOk && messageCVCOk) || (inVoice.checked && personNROk))){
+    if (checkNameInputOk && checklastNameInputOk && messageAdressOk && messagePostnumberOk && messageCityOk && messagePhoneNumberOk && messageeMailOk && messagegdprOk && totalNumberOfDonuts >= 1 &&
+        ((creditCard.checked && messageCardNROk && messageMonthyearOk && messageCVCOk) || (inVoice.checked && personNROk))){
         orderButton.removeAttribute('disabled');    
     } else {
         orderButton.setAttribute('disabled', ''); 
@@ -896,8 +896,7 @@ function stopClearFormTimer(){                                              // F
 
 //const today = new Date('December 24, 69 00:20:18');                         //För test av julafton
 const today = new Date();                                             //Dagens datum
-if(today.getDate() == 24 && today.getMonth() == 11)                         //Om dagens datum är 24 dec
-{
+if(today.getDate() == 24 && today.getMonth() == 11){                         //Om dagens datum är 24 dec
     const santaVagon = document.querySelector('.fa-shopping-cart');  
     santaVagon.style.color = 'red';    //Ändra Color  
     santaVagon.style.textShadow = '2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff';
@@ -912,7 +911,6 @@ if(today.getDate() == 24 && today.getMonth() == 11)                         //Om
     }
     const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bagrundfärg röd
     const santaForm = document.querySelector('.section-form').style.backgroundImage = 'url("images/hallonchokladInzoom.jpg")';                  //Byta balgrundsbild
-
 }
 
 /*---------------------------------------------------------------------------------------------------
@@ -931,15 +929,15 @@ if(today2.getDate() == 24 && today2.getMonth() == 11){                         /
     const santaheader = document.querySelector('header').style.backgroundImage = 'url("images/santaDonuts.jpg")';                  //Ändra bakgrundsbild headern
     const santaPrice = document.querySelectorAll('#donutCardPrice');       //Röd färg på priset
     for (let i = 0 ; i < santaPrice.length ; i++){                          //Loopar så alla munkar får rött pris
-      santaPrice[i].style.color = 'red';  
+        santaPrice[i].style.color = 'red';  
     }
-        const santaDonut = document.querySelectorAll('.donutCard');       //Röd färg på priset
+    const santaDonut = document.querySelectorAll('.donutCard');       //Röd färg på priset
     for (let i = 0 ; i < santaDonut.length ; i++){                          //Loopar så alla munkar får rött pris
-      santaDonut[i].style.backgroundColor = 'brown'; 
-      santaDonut[i].style.color = 'lightyellow'; 
-      santaDonut[i].style.textShadow = '2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff';
+        santaDonut[i].style.backgroundColor = 'brown'; 
+        santaDonut[i].style.color = 'lightyellow'; 
+        santaDonut[i].style.textShadow = '2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff';
     }
-        const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bagrundfärg i varukorg
+    const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bagrundfärg i varukorg
     const santaForm = document.querySelector('.section-form').style.backgroundImage = 'url("images/hallonchokladInzoom.jpg")';         //Byta balgrundsbild i form
     const santaInfo = document.querySelector('.informationText').style.backgroundColor = 'green'; //Ändrad färg i info
     const Santafooter = document.querySelector('footer');                   //Hämtar footern
