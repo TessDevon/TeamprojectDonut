@@ -498,32 +498,6 @@ input[type=number] {
     font-size: 5.5vw;
 }
 
-/* I varukorgen i mobil kommer vi nog få hoppa rubriker och infon på munkarna, 
-blir nog för rörigt och plottrigt? Mitt förslag:
-Namn, bild, antal och delsumma vill man ju ha i sammanställningen på rad. 
-Följs sedan av totalsumma, dragen rabatt och Summa att betala. Se nedan.
-
-Varukorg:               Delsumma:
-Namn på munk
-bild
-antal                   Summa
-
-Namn på munk
-bild
-antal                   Summa
-
-Namn på munk
-bild 
-antal                   Summa
-
-Använd rabattkod 
-
-Totalsumma:
-Dragen rabatt:
-Summa att betala:
-*/
-/*Delen ovan flyttas till en TODOfil??*/
-
 /*-----------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------  Form   -----------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------*/
@@ -558,11 +532,13 @@ label{
 }
 
 .reset_form_button{
+    border: none;
     font-size: larger;
+    font-weight: 600;
     background-color:  rgb(248, 219, 242);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 10vw;
+    margin-right: 6vw;
 }
 
 .display-none {
@@ -571,8 +547,10 @@ label{
 }
 
 .submit_form_button{
+    border: none;
     font-size: larger;
-    background-color: rgb(195, 237, 195);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
+    font-weight: 600;
+    background-color: rgb(153, 219, 153);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
     border-radius: 5px;
     cursor: pointer;
 }
