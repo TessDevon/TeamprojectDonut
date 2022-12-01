@@ -74,6 +74,10 @@ nav ul {
     height: 50px;
 }
 
+nav a{
+    z-index: 3;
+}
+
 nav a i{
     border: black solid 2px;
     background-color: rgb(5, 54, 71);
@@ -82,7 +86,6 @@ nav a i{
 }
 
 nav a i.fa  {
-    z-index: 2;
     font-size:2rem;
     color:rgb(182, 19, 146);
     line-height: 50px;
@@ -232,6 +235,7 @@ nav a i.fa  {
     max-width: 150px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1;
 }
 
 .donutCardContainer img.donutCardImg2{
