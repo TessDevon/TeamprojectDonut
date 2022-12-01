@@ -105,6 +105,7 @@ nav a i.fa  {
 /*---------------------------------------------------------
 -------------------------Our donuts------------------------
 ----------------------------------------------------------*/
+
 .ourDonuts{
     height: 80px;
     text-align: center;
@@ -117,55 +118,64 @@ nav a i.fa  {
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 30px;    
 }
-
 /*---------------------------------------------------------
 -------------------------sorting donuts------------------------
 ----------------------------------------------------------*/
 
-.ourDonutsDropdown{       
+.ourDonutsDropdownContainer{    // Ändra namn från dropdown till buttons?
+    max-width: 700px;
+    margin-right: 50px; 
+    text-align: right;
+    padding: 5px;
+    padding-bottom: 10px;    
+}
+
+.ourDonutsDropdown{
+    display: flex;
+    flex-direction: column;
     margin-left: 30px; 
+    text-align: left;
+    max-width: 750px;
     font-family: 'Dosis', sans-serif;
     color:rgb(26, 108, 111);
     font-size: 1.5rem;
 }
-
-.nameRatingShowalldiv{
-    font-size: 1.5rem;
+.flexOurDonutsDropdown{
     display: flex;
-    gap: 55px;
+    flex-direction: column;
 }
 
-.categoriGroupP{
-    margin-bottom: 0px;
+.flexOurDonutsDropdown p{
+    margin: 0;
 }
 
-.ratingRadioButtons{
-    margin-left: 45px;
+.flexOurDonutsDropdown span{
+    font-size: 1.3rem;
+    margin-bottom: 5px;
 }
 
-.nameRatingShowalldivs{
-    display: inline;
-}
+
 
 .priceRange {
     display: block;   
     position: relative;
-    margin-left: 60px;
+    margin-left: 10px;
     font-family: 'Dosis', sans-serif;
     color:rgb(26, 108, 111);
     font-weight: bold; 
-    font-size: 1.0rem;
+    font-size: 1.1rem;
 }
 
 #currentRangeValue {
     color: rgb(214, 6, 214);
     font-weight: bold;
-    margin-left: 160px;
-    font-size: 1.0rem;
+    margin-right: 50px;
 }
 
+
+
 /*---------------------------------------------------------
--------------------Donut card-----------------------------
+-------------------Dounat card-----------------------------
 ----------------------------------------------------------*/
 
 .donutCard {

@@ -11,38 +11,9 @@ h1 {
     font-size: 4rem;
 }
 
-.ourDonutsDropdown{       
-    display: flex;
-    flex-direction: row;
-    margin: 0px;
-    justify-content: space-evenly;
-    margin-left: 0px; 
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
 /*---------------------------------------------------------
 -----------------------------sorting donuts-----------------
 ----------------------------------------------------------*/
-
-
-.priceRange {
-    margin-left: 20px;
-    margin-top: 40px;
-    font-size: 1.3rem;
-    display: inline;
-}
-
-#currentRangeValue {
-    font-size: 1.3rem;
-    margin-left: 200px;
-}
-
-.categoriGroupP{
-    margin-top: 0;
-
 .ourDonutsDropdownContainer{    // Ändra namn från dropdown till buttons?
     max-width: 1400px;
     padding: 10px;
@@ -53,18 +24,17 @@ h1 {
     margin-top: 60px;
     max-width: 1000px;
     position: absolute; 
-
 }
 
-.PriceCategoriDiv{
-    margin-top: 40px;
+.priceRange {
+    margin-top: 70px;
+    margin-left: 400px;
+    margin-bottom: 100px;
+    font-size: 1.1rem; 
 }
 
-.nameRatingShowalldiv {
-    margin-top: 40px;
-}
 /*---------------------------------------------------------
--------------------Donut card-----------------------------
+-------------------Dounat card-----------------------------
 ----------------------------------------------------------*/
 
 .donutCardWraper{

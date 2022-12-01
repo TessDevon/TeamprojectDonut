@@ -10,40 +10,15 @@ h1 {
     font-size: 4rem;
 }
 
-/*.donutFlexWrap {
+.donutFlexWrap {
     display: flex;
     max-width: 700px;
     margin: 0 auto;
-}*/
-
+}
 
 
 /*---------------------------------------------------------
--------------------------sorting donuts------------------------
-----------------------------------------------------------*/
-
-.PriceCategoriDiv{
-    display: flex;
-    gap: 55px;
-    margin-bottom: 35px;
-    justify-content: center;
-}
-
-.nameRatingShowalldiv {
-    display: flex;
-    justify-content: center;
-}
-
-.priceRange {
-    display: flex;
-    justify-content: center;
-}
-
-#currentRangeValue {
-    margin-left: 20px;
-}
-/*---------------------------------------------------------
--------------------Donut card-----------------------------
+-------------------Dounat card-----------------------------
 ----------------------------------------------------------*/
 
 .donutCard {
