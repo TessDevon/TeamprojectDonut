@@ -416,6 +416,7 @@ input[type=number] {
 .emptyBasketContainer{
     height: 170px;
     width: 85vw;
+    max-width: 540px ;
     justify-content: center;
     align-items: center;
     font-size: 1.3rem;
@@ -491,7 +492,8 @@ input[type=number] {
 }
 
 .basket label{
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin-top: 20px;
     margin-left: 20px;
     font-size: 1.4rem;
@@ -500,8 +502,10 @@ input[type=number] {
 .basket label input{
     margin-top: 5px;
     margin-bottom: 5px;
+    margin-right: 10px;
     height: 40px;
     border: black solid 1px;
+    max-width: 400px;
 }
 
 .discount_button{  
