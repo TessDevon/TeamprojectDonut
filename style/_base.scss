@@ -513,7 +513,7 @@ input[type=number] {
     font-size: smaller;
     font-size: 0.94rem;
     background-color: rgb(96, 172, 73);  
-    border-radius: 2px;
+    border-radius: 5px;
     height: 40px;
     width: 130px;
     border: none;
@@ -582,6 +582,7 @@ input[type=number] {
     height: 40px;
     width: 130px;
     border: none;
+    border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
     color: rgb(241, 237, 237);
 

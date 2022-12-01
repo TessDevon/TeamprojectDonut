@@ -338,7 +338,7 @@ function UpdatedonutsBasket(){
                     </div>
                 </div>
             </section>
-        </div>`}  else{
+        </div>`} else {
         yourBasketIsEmpty.style.display = 'flex'
         } }
                                                                             // Skriver sum eftersom jag vill att om vi har rabatt ska delsumman va anorlunda 
