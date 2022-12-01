@@ -1,6 +1,7 @@
 h1 {
     font-size: 5rem;
 }
+
 /*---------------------------------------------------------
 -------------------------Our donuts------------------------
 ----------------------------------------------------------*/
@@ -137,21 +138,8 @@ h1 {
     justify-content: space-between;
 }
 
-.summery, .discount_button, .basket_heading{  
-    font-size: 2vw;
-}
-
-.middlepart_h2  {
-    font-size: 4vw;
-}
-
-.basket_heading_none{
-    display: block;                          /*Rubrikerna syns igen*/
-    font-size: 2vw;
-}
-
-.section_basket{                             
-    background-color:   rgb(131, 107, 144); /* Variabel?! Samma rosa men mörkar. Lugnare färg för ögat med är ändå Liknande den andra färgskaln*/
+.emptyBasketContainer{
+    width: 40vw;
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------
@@ -167,12 +155,12 @@ form p {
 }
 
 .reset_form_button{
-    font-size: large;
-    margin-right: 11vw;
+    font-size: larger;
+    margin-right: 7vw;
 }
 
 .submit_form_button{
-    font-size: large;
+    font-size: x-large;
 
 }
 
@@ -203,4 +191,12 @@ form p {
     width: 100px;
     height: 50px;
     font-size: 1.5rem;
+}
+
+/*---------------------------------------------------------------------------------------------------
+-------------------------------- Footer----------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------*/
+
+footer {
+    font-size: 1.1rem;
 }

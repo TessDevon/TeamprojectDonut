@@ -14,7 +14,7 @@ body{
 header {
     position: relative;    
     padding: 20px;
-    color: rgb(21, 123, 134);
+    color: rgb(15, 88, 96);
     background-image: url("../images/donut_in_napkin2.jpg");
     min-height: 50vh;
     background-size: cover;
@@ -63,6 +63,10 @@ h1 {
     margin-left: 10px;
 }
 
+.navLinks_a:hover {
+    color: rgb(192, 39, 115);
+  }
+
 nav ul {
     padding: 20px;
 }
@@ -70,8 +74,12 @@ nav ul {
 .iconContainer {
     position: fixed;
     top: 30px;
-    right: 30px;
+    right: 20px;
     height: 50px;
+}
+
+nav a{
+    z-index: 3;
 }
 
 nav a i{
@@ -82,7 +90,6 @@ nav a i{
 }
 
 nav a i.fa  {
-    z-index: 2;
     font-size:2rem;
     color:rgb(182, 19, 146);
     line-height: 50px;
@@ -222,6 +229,7 @@ nav a i.fa  {
     max-width: 150px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 1;
 }
 
 .donutCardContainer img.donutCardImg2{
@@ -366,15 +374,6 @@ input[type=number] {
 --------------------------------- Basket --------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------*/
 
-.middlepart_h2, .discount_button{  
-    font-size: 9vw;
-}
-
-.discount_button{  
-    cursor: pointer;
-    font-size: smaller;
-}
-
 .section_basket{
     background-color: rgb(248, 219, 242); /*Variabel som följer temat!?*/
     padding: 10px 15px;
@@ -382,14 +381,24 @@ input[type=number] {
 }
 
 .basket{
-    background-color: white;
+    background-color: rgb(252, 252, 252);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     margin: 5px;
-    padding: 15px;
     font-family: Arial, Helvetica, sans-serif;
     max-width: 600px;
     margin: 0 auto;
+}
+
+.basketHeadingContainer{
+    height: 120px;
+}
+
+.middlepart_h2 {  
+    font-size: 3rem;
+    text-align: center;
+    line-height: 120px;
+    margin-bottom: 0;
 }
 
 .main_heading_basket{
@@ -397,28 +406,25 @@ input[type=number] {
     justify-content: space-between;
 }
 
-.basket_sum div{
-    display: flex;
-    align-items: center;
-}
-
-.total_amount{
-    margin-left: 30px;
-    font-size: 1.7rem;
-}
-
-.total_amount span{
-    margin-right: 5px;
-    font-size: 1.7rem;
-}
-
 .basket_heading{
-    font-size: 4.5vw;
-    
+    font-size: 1.6rem;
+    margin-left: 20px; 
 }
 
-.basket_heading_none{
-    display: none;      
+.emptyBasketContainer{
+    height: 170px;
+    width: 85vw;
+    max-width: 540px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    margin: 0 auto;
+    border-top: black solid 1px;
+    border-bottom: black solid 1px;
+}
+
+.emptyBasketContainer p{
+    margin-right: 5px
 }
 
 .basketDonuts {
@@ -451,6 +457,15 @@ input[type=number] {
     grid-template-columns: 40% 60%;
 }
 
+.basketDonuts img{
+    width: 70px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+}
+
 .basketDonutsflex{
     display: flex;
     flex-direction: column;
@@ -469,50 +484,112 @@ input[type=number] {
     font-size: 1.3rem;
 }
 
-.basketDonuts img{
-    width: 70px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 5px;
-}
-
 .basketDonuts p{
     font-size: 1.2rem;
     margin-top: 15px;
 }
 
-.summery{
-    font-weight: 600;
-    font-size: 5.5vw;
+.basket label{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    font-size: 1.4rem;
 }
 
-/* I varukorgen i mobil kommer vi nog få hoppa rubriker och infon på munkarna, 
-blir nog för rörigt och plottrigt? Mitt förslag:
-Namn, bild, antal och delsumma vill man ju ha i sammanställningen på rad. 
-Följs sedan av totalsumma, dragen rabatt och Summa att betala. Se nedan.
+.basket label input{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-left: 20px;
+    height: 40px;
+    border: black solid 1px;
+    max-width: 400px;
+}
 
-Varukorg:               Delsumma:
-Namn på munk
-bild
-antal                   Summa
+.basket label p{
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
 
-Namn på munk
-bild
-antal                   Summa
+.discount_button{  
+    cursor: pointer;
+    font-size: smaller;
+    font-size: 0.94rem;
+    background-color: rgb(96, 172, 73);  
+    border-radius: 5px;
+    height: 40px;
+    width: 130px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+}
 
-Namn på munk
-bild 
-antal                   Summa
+.basket_sum{
+    background-color: rgb(202, 206, 206);
+    height: 200px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
+}
 
-Använd rabattkod 
+.basket_sum div{
+    display: flex;
+    align-items: center;
+}
 
-Totalsumma:
-Dragen rabatt:
-Summa att betala:
-*/
-/*Delen ovan flyttas till en TODOfil??*/
+.basket_sum div p{
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.shipping_heading{
+    font-size: 1.2rem;
+    margin-left: 20px;
+}
+
+.shipping_amount{
+    font-size: 1.2rem;
+    margin-left: 10px;
+}
+
+.total_amount{
+    margin-left: 10px;
+    font-size: 1.7rem;
+}
+
+.total_amount span{
+    margin-right: 5px;
+    font-size: 1.7rem;
+}
+
+.sumToPayContainer{
+    margin-top: 30px;
+}
+
+.summery{
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.emptyBasketBtn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: smaller;
+    font-size: 0.94rem;
+    background-color: rgb(134, 45, 45);  
+    border-radius: 2px;
+    height: 40px;
+    width: 130px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
+    color: rgb(241, 237, 237);
+
+}
 
 /*-----------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------  Form   -----------------------------------------------------------------------------------
@@ -526,7 +603,7 @@ Summa att betala:
 }
     
 .checkout_form{
-    background-color:white;
+    background-color: rgb(252, 252, 252);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     margin: 5px;
@@ -548,11 +625,13 @@ label{
 }
 
 .reset_form_button{
+    border: none;
     font-size: larger;
+    font-weight: 600;
     background-color:  rgb(248, 219, 242);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 10vw;
+    margin-right: 6vw;
 }
 
 .display-none {
@@ -561,8 +640,10 @@ label{
 }
 
 .submit_form_button{
+    border: none;
     font-size: larger;
-    background-color: rgb(195, 237, 195);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
+    font-weight: 600;
+    background-color: rgb(153, 219, 153);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
     border-radius: 5px;
     cursor: pointer;
 }

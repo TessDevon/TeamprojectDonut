@@ -5,23 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Gottfrids munkar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="munkar för hemlevernas" content="">
-    <meta property="munkar" content>
-    <meta property="butik" content>
-    <meta property="og:image" content>
+    <meta name="description" content="Webbshop where you can buy donuts from gottfrids munkar">
+    <meta name="robots" content="all">
+    <meta property="og:title" content="Gottfrids munkar">
+    <meta property="og:type" content="Webbshop">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="./images/aLotOfDounats.jpg">
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="stylesheet" href="./css/main.css">
     <meta name="theme-color" content="#fafafa">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/364f1f7cab.js" crossorigin="anonymous" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500&display=swap" rel="stylesheet">
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
 <body>
     <header>
@@ -30,13 +28,13 @@
     <nav>
         <div class="navLinks">
             <ul>
-                <li class="menuList"><a class=" navLinks_a" href="#ourdonuts">Våra munkar</a></li>
-                <li class="menuList"></liclass><a class=" navLinks_a"href="#info">Övrig info</a></li>
-                <li class="menuList"></li><a class=" navLinks_a"href="#shopping-basket">Varukorg</a></li> <!--Ikon för varukorg samt summa-->
-                    <a href="#shopping-basket" class="iconContainer">
-                        <i class="fa fa-shopping-cart" id="shoppingCart"></i>
-                    </a>                          
+                <li class="menuList"><a class="navLinks_a" href="#ourdonuts">Våra munkar</a></li>
+                <li class="menuList"><a class="navLinks_a" href="#info">Övrig info</a></li>
+                <li class="menuList"><a class="navLinks_a" href="#shopping-basket">Varukorg</a></li> <!--Ikon för varukorg samt summa-->
             </ul>
+            <a href="#shopping-basket" class="iconContainer" aria-label="Summery of totalprice and klick it to go to basket">
+                    <i class="fa fa-shopping-cart" id="shoppingCart"></i>
+            </a>
         </div>
     </nav>
     <main>
@@ -92,8 +90,8 @@
                     <div class="priceRange">
                         <span>Prisklass&nbsp;&nbsp;</span>
                         <span class="flex">
-                            <span>0 - 30 kr</span>
-                            <input type="range" min="0" max="30" value="30" id="priceRange" step="5">
+                            <span>15 - 30 kr</span>
+                            <input type="range" min="15" max="30" value="30" id="priceRange" step="5">
                             <br>
                         </span> 
                         <span id="currentRangeValue">30 kr</span>  
@@ -104,7 +102,7 @@
         </section>
         <section class="informationText">
             <div class="informationTextHeaderContainer" id="info">
-                <h2>Övrig information</h2>
+                <h2 class="santah2">Övrig information</h2>
             </div>
             <div class="informationUlContainer">
                 <ul class="informationUlIcons">
@@ -131,40 +129,36 @@
            <div class="middlepart_container">
                 <section class="section_basket" id="shopping-basket">
                     <div class="basket">
-                            <h2 class="middlepart_h2">Varukorg</h2> <!--På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".-->
-                        <div class="main_heading_basket">    
-                            <h3 class="basket_heading">Valda produkter</h3>
+                        <div class="basketHeadeingContainer">
+                            <h2 class="middlepart_h2">Varukorg</h2>
                         </div>
-                        <article id="basketDonuts">
-                        </article>
-                        <label for="">
+                        <div class="main_heading_basket">    
+                            <h3 class="basket_heading">Valda donuts</h3>
+                        </div>
+                        <article id="basketDonuts"></article>
+                        <div class="emptyBasketContainer" id="emptyBasket">
+                            <p>Din varukorg är tom</p>
+                            <i class="fa fa-shopping-cart"></i>
+                        </div>
+                        <label for="discountCode">
+                            <p>Skriv in din rabattkod här!</p> 
                             <input type="text" id="discountCode" placeholder="Rabattkod" value="">
-                        </label>
-                        <button class="discount_button" id="discountBtn">Använd rabattkod</button> <!--Litet formulär där de ska kunna fylla i koden, nån label kanske-->
+                            <button class="discount_button" id="discountBtn">Använd rabattkod</button>
                         <div class="basket_sum">
-                            <h3 class="basket_heading_none">Sammanställning</h3>
                             <div>
                                 <p class="basket_heading">Totaltsumma:</p>
                                 <p class="total_amount" ><span id="totalAmountBasket">0</span> SEK</p>
                             </div>
-                            <p class="basket_heading" id="mondayDiscount"></p>
                             <div>
-                                <p>Frakt:</p>
-                                <p><span id="shippingPrice">0</span> SEK</p>
+                                <p class="shipping_heading">Frakt:</p>
+                                <p class="shipping_amount"><span id="shippingPrice">0</span> SEK</p>
                             </div>
-                            <p class="summery">Summa att betala</p>
-                            <p id="priceToPay"></p>
+                            <div class="sumToPayContainer">
+                               <p class="summery">Summa att betala:</p>
+                                <p id="priceToPay" class="total_amount" ></p> 
+                            </div>
                         </div>
-                        
-                        <button id="emptyBasketBtn">Töm Varukorgen</button>
-                        <!--bilder på de beställda munkarna
-                        info om munken som är vald, namn och pris
-                        antal knappar som ska kopplas ihop med de andra
-                        Kryss knapp så man kan ta bort en sort av munk
-                        totalsumma 
-                        Dragen rabatt
-                        Summa att betala
-                        Rabbatkod-->
+                        <button id="emptyBasketBtn" class="emptyBasketBtn">Töm Varukorgen</button>
                     </div>
                 </section>
                 <section class="section-form">
@@ -172,94 +166,94 @@
                         <h2 class="middlepart_h2">Kundformulär</h2>
                         <form id="custumerForm" action="">
                             <br><div id="infoAboutTime"></div><br><br>
-                            <label for="">
+                            <label for="name">
                                 <span>Förnamn</span>  
                                 <span class="errorMessage" id="errorMessageName" hidden></span>
                                 <input placeholder="tilltalsnamn" required class="input_group" type="text" id="firstname"> 
                             </label>
                             <br>
-                            <label for="">
+                            <label for="lastname">
                                 <span>Efternamn</span>  
                                 <span class="errorMessage" id="errorMessageLastname" hidden></span>
                                 <input required class="input_group" type="text" id="lastname">
                             </label>
                             <br>
-                            <label for=""> 
+                            <label for="adress"> 
                                 <span>Gatuadress</span> 
                                 <span class="errorMessage" id="errorMessageAdress" hidden></span>
                                 <input placeholder="gata och nummer" required class="input_group" type="text" id="adress">
                             </label>
                             <br>
-                            <label for="">
+                            <label for="postnumber">
                                     <span>Postnummer</span> 
                                     <span class="errorMessage" id="errorMessagePostnumber" hidden></span>
                                 <input required class="input_group" type="text" id="postnumber">
                             </label>
                             <br>
-                            <label for="">
+                            <label for="city">
                                 <span>Postort</span> 
                                 <span class="errorMessage" id="errorMessageCity" hidden></span>
                                 <input placeholder="stad" required class="input_group" type="text" id="city">
                             </label>
                             <br>
-                            <label for="">
+                            <label for="doorCode">
                                 <span>Portkod</span> 
                                 <input class="input_group" type="number" id="doorCode">
                             </label>
                             <br>
-                            <label for="">
+                            <label for="phonenumber">
                                 <span>Mobilnummer</span> 
                                 <span class="errorMessage" id="errorMessagePhoneNumber" hidden></span>
                                 <input required class="input_group" type="text" id="phonenumber">
                             </label>
                             <br>
-                            <label for="">
+                            <label for="email">
                                 <span>Epost</span> 
                                 <span class="errorMessage" id="errorMassageeMail" hidden></span>
                                 <input required class="input_group" type="text" id="email">
                             </label>
                             <br>
                             <p>Betalsätt</p>
-                            <label for="">
+                            <label for="creditcard">
                                 Kort
                                 <input type="radio" id="creditcard" name="waysToPay" value="creditcard">
                             </label>
-                            <label id="labelInvoice" for="">
+                            <label for="invoice" id="labelInvoice">
                                 Faktura
                                 <input type="radio" id="invoice" name="waysToPay" value="invoice"> 
                                 <br><span class="errorMessage" id="errorMessageInvoice" hidden></span>
                             </label> <!--vid faktura fält med personnr, ska valideras-->
                             <br>
                             <div id="ssn" class="display-none">
-                                <label for="">
+                                <label for="personNr">
                                     <span>Personnummer</span> 
                                     <span class="errorMessage" id="errorMessagePersonNR" hidden></span>
                                     <input id="personNr" placeholder="YYMMDD0000" class="input_group" type="text" >
                                 </label>
                             </div>
                             <div id="cardpay" class="display-none">
-                                <label for="">
+                                <label for="cardnr">
                                     <span>Kortnummer</span> 
                                     <span class="errorMessage" id="errorMessageCardNR" hidden></span>
                                     <input placeholder="0000000000000000" class="input_group" type="number" id="cardnr">
                                 </label>
-                                <label for="">
+                                <label for="dateyear">
                                     <span>mån/år</span> 
                                     <span class="errorMessage" id="errorMessageDateyear" hidden></span>
                                     <input placeholder="MMYY" class="input_group" type="number" id="dateyear">
                                 </label>
-                                <label for="">
+                                <label for="cvc">
                                     <span>CVC</span> 
                                     <span class="errorMessage" id="errorMessageCVC" hidden></span>
                                     <input placeholder="000" class="input_group" type="number" id="CVC">
                                 </label>
                             </div>
                             <br>
-                            <label for="">
+                            <label for="news">
                                 Prenumerera på vårt nyhetsbrev
                                 <input checked type="checkbox" name="news" id="news">
                             </label><br><br>
-                            <label for="">
+                            <label for="gdpr">
                                 Godkännande av behandling av personuppgifter
                                 <input required class="input_group" type="checkbox" name="gdpr" id="gdpr">
                             </label>
@@ -273,9 +267,9 @@
     </main>
     <footer>
         <address>
-            Adress: Måsvägen 4, Stockholm<br>
-            Telefon: 08-634 30 30<br>
-            E-post: <a href="#">gottfridsmunkar@gmail.com</a>
+            <strong>Adress:</strong> Måsvägen 4, Stockholm<br>
+            <strong>Telefon:</strong> 08-634 30 30<br>
+            <strong>E-post:</strong> <a href="#">gottfridsmunkar@gmail.com</a>
         </address>
     </footer>
     <div class="stopArea" id="stopArea" hidden>
