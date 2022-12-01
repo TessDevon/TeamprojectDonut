@@ -12,8 +12,21 @@ h1 {
 
 .donutFlexWrap {
     display: flex;
-    max-width: 700px;
     margin: 0 auto;
+    gap: 40px;
+    max-width: 1400px;
+    .ourDonutsDropdown {
+        margin-left: 0;
+    }
+    .ourDonuts {
+        width: auto;
+    }
+    .priceRange {
+        margin-left: 0;
+    }
+    .ourDonutsDropdownContainer {
+        margin-right: 0;
+    }
 }
 
 
