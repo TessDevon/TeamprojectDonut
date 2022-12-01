@@ -17,6 +17,9 @@ h1 {
     margin: 0px;
     justify-content: space-evenly;
     margin-left: 0px; 
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -39,6 +42,17 @@ h1 {
     margin-left: 50px;
 }
 
+.categoriGroupP{
+    margin-top: 0;
+}
+
+.PriceCategoriDiv{
+    margin-top: 40px;
+}
+
+.nameRatingShowalldiv {
+    margin-top: 40px;
+}
 /*---------------------------------------------------------
 -------------------Donut card-----------------------------
 ----------------------------------------------------------*/
