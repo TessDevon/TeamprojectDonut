@@ -474,11 +474,15 @@ function totalPrice(){
 const emptyBasketBtn = document.querySelector('#emptyBasketBtn');   
 emptyBasketBtn.addEventListener('click', emptyBasket);
 
-function emptyBasket (e){ 
 
-    for(let i = 0; i < donutCards.length; i++){                     
-        donutCards[i].amount = 0;                                   //ändrar antal i munk arrayen till 0
-        typeAmountInput[i].value = 0;                               // ändrar inputfälten till 0
+function emptyBasket (e){
+    let inputs = document.querySelectorAll('input[data-operator="amount"]');
+    inputs.forEach(input => {
+        input.value = 0;
+    });
+    
+    for(let i = 0; i < donutCards.length; i++){                     // loopar igenom och kollar alla amount
+        donutCards[i].amount = 0;                                   //ändrar alla amount till 0
     } 
 
     UpdatedonutsBasket();                                           // gör så att munkarna försvinner i varukorgen
