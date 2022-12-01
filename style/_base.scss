@@ -495,7 +495,6 @@ input[type=number] {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-    margin-left: 20px;
     font-size: 1.4rem;
 }
 
@@ -503,9 +502,15 @@ input[type=number] {
     margin-top: 5px;
     margin-bottom: 5px;
     margin-right: 10px;
+    margin-left: 20px;
     height: 40px;
     border: black solid 1px;
     max-width: 400px;
+}
+
+.basket label p{
+    margin-left: 20px;
+    margin-bottom: 5px;
 }
 
 .discount_button{  
@@ -520,6 +525,7 @@ input[type=number] {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
     margin-top: 5px;
     margin-bottom: 30px;
+    margin-left: 20px;
 }
 
 .basket_sum{
@@ -572,6 +578,7 @@ input[type=number] {
 .emptyBasketBtn{
     margin-top: 20px;
     margin-bottom: 20px;
+    margin-left: 20px;
     cursor: pointer;
     font-size: smaller;
     font-size: 0.94rem;
