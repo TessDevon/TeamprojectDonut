@@ -387,15 +387,20 @@ input[type=number] {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     margin: 5px;
-    padding: 15px;
     font-family: Arial, Helvetica, sans-serif;
     max-width: 600px;
     margin: 0 auto;
 }
 
-.middlepart_h2, .discount_button{  
-    font-size: 9vw;
+.basketHeadingContainer{
+    height: 80px;
+}
+
+.middlepart_h2 {  
+    font-size: 3rem;
     text-align: center;
+    line-height: 80px;
+    margin-bottom: 0;
 }
 
 .main_heading_basket{
@@ -404,21 +409,23 @@ input[type=number] {
 }
 
 .basket_heading{
-    font-size: 5vw; 
+    font-size: 1.6rem;
+    margin-left: 20px; 
 }
 
 .emptyBasketContainer{
     height: 170px;
+    width: 85vw;
     justify-content: center;
     align-items: center;
-    font-size: 4.5vw;
+    font-size: 1.3rem;
     margin: 0 auto;
     border-top: black solid 1px;
     border-bottom: black solid 1px;
 }
 
 .emptyBasketContainer p{
-    margin-right: 10px
+    margin-right: 5px
 }
 
 .basketDonuts {
@@ -485,26 +492,37 @@ input[type=number] {
 
 .basket label{
     display: block;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 1.4rem;
 }
 
 .basket label input{
-    border-radius: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
+    height: 40px;
+    border: black solid 1px;
 }
 
 .discount_button{  
     cursor: pointer;
     font-size: smaller;
     font-size: 0.94rem;
-    background-color: rgb(96, 172, 73);  /*Får ej läggas till i variabel då denna ska vara fast färg.*/
+    background-color: rgb(96, 172, 73);  
     border-radius: 2px;
     height: 40px;
     width: 130px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
     margin-top: 5px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.basket_sum{
+    background-color: rgb(202, 206, 206);
+    height: 200px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
 }
 
 .basket_sum div{
@@ -512,12 +530,23 @@ input[type=number] {
     align-items: center;
 }
 
-.basket_heading_none{
-    display: none;      
+.basket_sum div p{
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.shipping_heading{
+    font-size: 1.2rem;
+    margin-left: 20px;
+}
+
+.shipping_amount{
+    font-size: 1.2rem;
+    margin-left: 10px;
 }
 
 .total_amount{
-    margin-left: 30px;
+    margin-left: 10px;
     font-size: 1.7rem;
 }
 
@@ -526,9 +555,32 @@ input[type=number] {
     font-size: 1.7rem;
 }
 
+.sumToPayContainer{
+    margin-top: 30px;
+}
+
 .summery{
     font-weight: 600;
-    font-size: 5.5vw;
+    font-size: 1.5rem;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.emptyBasketBtn{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: smaller;
+    font-size: 0.94rem;
+    background-color: rgb(134, 45, 45);  
+    border-radius: 2px;
+    height: 40px;
+    width: 130px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px 0px;
+    color: rgb(241, 237, 237);
+
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------

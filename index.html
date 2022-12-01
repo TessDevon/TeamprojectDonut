@@ -129,7 +129,9 @@
            <div class="middlepart_container">
                 <section class="section_basket" id="shopping-basket">
                     <div class="basket">
-                            <h2 class="middlepart_h2">Varukorg</h2> <!--På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".-->
+                        <div class="basketHeadeingContainer">
+                            <h2 class="middlepart_h2">Varukorg</h2>
+                        </div>
                         <div class="main_heading_basket">    
                             <h3 class="basket_heading">Valda donuts</h3>
                         </div>
@@ -142,31 +144,23 @@
                             Skriv in din rabattkod här!
                             <input type="text" id="discountCode" placeholder="Rabattkod" value="">
                         </label>
-                        <button class="discount_button" id="discountBtn">Använd rabattkod</button> <!--Litet formulär där de ska kunna fylla i koden, nån label kanske-->
+                        <button class="discount_button" id="discountBtn">Använd rabattkod</button>
                         <div class="basket_sum">
-                            <h3 class="basket_heading_none">Sammanställning</h3>
                             <div>
                                 <p class="basket_heading">Totaltsumma:</p>
                                 <p class="total_amount" ><span id="totalAmountBasket">0</span> SEK</p>
                             </div>
-                            <p class="basket_heading" id="mondayDiscount"></p>
                             <div>
-                                <p>Frakt:</p>
-                                <p><span id="shippingPrice">0</span> SEK</p>
+                                <p class="shipping_heading">Frakt:</p>
+                                <p class="shipping_amount"><span id="shippingPrice">0</span> SEK</p>
                             </div>
-                            <p class="summery">Summa att betala</p>
-                            <p id="priceToPay"></p>
+                            <div class="sumToPayContainer">
+                               <p class="summery">Summa att betala:</p>
+                                <p id="priceToPay" class="total_amount" ></p> 
+                            </div>
+                            
                         </div>
-                        
-                        <button id="emptyBasketBtn">Töm Varukorgen</button>
-                        <!--bilder på de beställda munkarna
-                        info om munken som är vald, namn och pris
-                        antal knappar som ska kopplas ihop med de andra
-                        Kryss knapp så man kan ta bort en sort av munk
-                        totalsumma 
-                        Dragen rabatt
-                        Summa att betala
-                        Rabbatkod-->
+                        <button id="emptyBasketBtn" class="emptyBasketBtn">Töm Varukorgen</button>
                     </div>
                 </section>
                 <section class="section-form">

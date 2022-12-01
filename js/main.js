@@ -168,11 +168,11 @@ function clickedSortBtn(e){
 const priceRangeSlider = document.querySelector('#priceRange'); // Kallar på sliden
 const currentRangeValue = document.querySelector('#currentRangeValue') // kallar på prisets behållare i html strukturen
 
-priceRangeSlider.addEventListener('input', updateCurrentPrice)
+priceRangeSlider.addEventListener('input', update)
 
 
 //Gör att värdet på den rosa texten är samma som värdet på vår slide samt skapar en array efter prisklass
-function updateCurrentPrice(e){
+function update(e){
 
     //uppdaterar värdet på rosa text är samma som value is liden
     const priceRangeValue = e.currentTarget.value // värdet i vår slide
@@ -416,15 +416,12 @@ function totalPrice(){
         }
     } 
  
-       
-
     // Om det är måndag innan kl 10 blir det 10% rabatt på hela beställningen
     if(today.getDay() == 1 && today.getHours() <= 9){
         sum *= 0.9;
-        mondayText = document.querySelector('#mondayDiscount')
         mondayText.innerHTML =
         `<span>Måndagsrabatt: 10% på hela beställningen</span>`
-    }
+    } 
 
     // Om det är jämn vecka och tisdag får man 25 kr rabatt
    if(weekNumber % 2 == 0 && sum >= 25 && today.getDay() == 2){
