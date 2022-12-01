@@ -1,20 +1,20 @@
 
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------- Donut cards -------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------- Munk korten -------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*const { doc } = require("prettier");*/
 
+/*------------------------ Alla munkar på sidan -------------------------------*/
 
-/*------Få våra donut kort att komma upp genom att ligger i en array och körs genom en loop--------*/
+const donutCardsContainer = document.querySelector('#donutCards');       
+const basketDonuts = document.querySelector('#basketDonuts');                
+const totalPriceBasket = document.querySelector('#totalAmountBasket');      
+const shipping = document.querySelector('#shippingPrice');                  
 
-const donutCardsContainer = document.querySelector('#donutCards')           //Kallar på section för våra donut kort för att kunna lägga in våra kort
-const basketDonuts = document.querySelector('#basketDonuts')                // kallar på html strukturen till donutsen som ska ligga i vår varukorg
-const totalPriceBasket = document.querySelector('#totalAmountBasket');      // Kallar på diven där html sturkturen för totalsumman ska ligga
-const shipping = document.querySelector('#shippingPrice')                   // Kallar på html stukturen till frakt i varukorgen
-
-const donutCards = [                                                        // En array med varje donut kort som objekt
+// Sidans varor, 10 munkar
+const donutCards = [                                                        
 {
     donutTitle: 'Apelsinmunk',
     donutImg1: './images/apelsinmunk.jpg',
@@ -117,37 +117,41 @@ const donutCards = [                                                        // E
     index: 9
 }];
 
-//Uppdaterar donutCards arrayens pris om de är mellan fre och sön
+//Uppdaterar priset på munkarna med 15% om de är mellan fre kl: 15:00 och mån kl: 03:00
 for(let i = 0; i < donutCards.length; i++){
-        let today = new Date();                                   // för att testa 
-        // Mellan fre och sön ökar priset på donuts med 15%
-        if(((today.getDay() == 5 && today.getHours() >= 15) || (today.getDay() > 5 || today.getDay() <= 1)) && ((today.getDay() == 1 && today.getHours() <= 2) || (today.getDay() < 1 || today.getDay() >= 5))) {
-            (donutCards[i].donutPrice *= 1.15)
-        }
-        donutCards[i].donutPrice  = Math.round(donutCards[i].donutPrice )
+
+    let today = new Date();  
+
+    if(((today.getDay() == 5 && today.getHours() >= 15) || (today.getDay() > 5 || today.getDay() <= 1)) && ((today.getDay() == 1 && today.getHours() <= 2) || (today.getDay() < 1 || today.getDay() >= 5))) {
+        (donutCards[i].donutPrice *= 1.15);
+    }
+
+    donutCards[i].donutPrice  = Math.round(donutCards[i].donutPrice);
 }
 
 /*---------------------------------------------Sortera donuts------------------------------------------*/
-// Dessa är 2 arrayer som är kopierade av vår donutCards
-let filterProducts = [...donutCards]
-let filterProductsInPriceRange = [...donutCards]
+
+// 2 arraykopior av donutCards
+let filterProducts = [...donutCards];
+let filterProductsInPriceRange = [...donutCards];
 
 const sortBtns = document.querySelectorAll('.ourDonutsDropdown input[type="radio"]');
 
 for(let i = 0; i < sortBtns.length; i++){
     sortBtns[i].addEventListener('click', clickedSortBtn);
 } 
-createDonuts(); // så den skriver ut våra kort från början
 
-// Beroende på vilken sorteringsknapp vi klickar i kommer den sortera arrayen
+createDonuts();                                                                         // Skriver ut munkarna från start
+
+// Sorterar munkarna beroende på vald knapp
 function clickedSortBtn(e){ 
-    filterProducts = [...donutCards] //arrayenm som kommer sorteras
-    const clickedBtn = e.currentTarget.id
+    filterProducts = [...donutCards];                                                   //Ny array som kommer sorteras
+    const clickedBtn = e.currentTarget.id;
     
     if(clickedBtn == 'name' || clickedBtn == 'all'){
         filterProducts.sort((a, b) => a.donutTitle.localeCompare(b.donutTitle));
     } else if (clickedBtn == 'rating'){
-        filterProducts.sort((a, b) => a.rating - b.rating)
+        filterProducts.sort((a, b) => a.rating - b.rating);
     } else if(clickedBtn == 'lowPrice'){
         filterProducts.sort((a, b) => a.donutPrice - b.donutPrice);
     } else if(clickedBtn == 'highPrice'){
@@ -160,164 +164,163 @@ function clickedSortBtn(e){
         filterProducts = filterProducts.filter(donutCard => donutCard.category === 'godis');
     }
 
-    createDonuts(); // kallar på våra kort igen så de skrivs ut sorterade
+    createDonuts();                                                                     // Skriver ut den sorterade arrayen
 }
 
-/*---------------------------------------------Filtrering på pris------------------------------------------*/
+/*-------------------------------------Filtrering på pris------------------------------------------*/
 
-const priceRangeSlider = document.querySelector('#priceRange'); // Kallar på sliden
-const currentRangeValue = document.querySelector('#currentRangeValue') // kallar på prisets behållare i html strukturen
+const priceRangeSlider = document.querySelector('#priceRange'); 
+const currentRangeValue = document.querySelector('#currentRangeValue');
 
-priceRangeSlider.addEventListener('input', update)
+priceRangeSlider.addEventListener('input', update);
 
-
-//Gör att värdet på den rosa texten är samma som värdet på vår slide samt skapar en array efter prisklass
+//Gör att värdet på den rosa texten är samma som värdet på sliden, samt skapar en array efter prisklass
 function update(e){
 
-    //uppdaterar värdet på rosa text är samma som value is liden
-    const priceRangeValue = e.currentTarget.value // värdet i vår slide
+    //Värdet på den rosa texten är samma som värdet i sliden
+    const priceRangeValue = e.currentTarget.value;                                // värdet i sliden
 
     currentRangeValue.innerHTML =
-    `<span>${priceRangeValue} kr</span>` // Skriver ut värdet i rosa text, skickar in till vår html struktur
+    `<span>${priceRangeValue} kr</span>`;                                           
 
-    //Skapar en ny array för de donuts som ingår i prisspannet
-    filterProductsInPriceRange = [...donutCards]
+    
+    filterProductsInPriceRange = [...donutCards];                                //En kopierad array som kommer innehålla de donuts som ingår i prisspannet
 
-    filterProductsInPriceRange = filterProductsInPriceRange.filter(product => product.donutPrice <= priceRangeValue) // skapar en array med de donuts som ingår i spannet
-    createDonuts(); // Skriver ut rätt donuts
+    filterProductsInPriceRange = filterProductsInPriceRange.filter(product => product.donutPrice <= priceRangeValue);    // Lägger in munkar som ingår i spannet i arrayen
+    createDonuts();                                                             // Skriver ut arrayen med rätt munkar
 }
 
-// Varje gång loopen körs kommer vår artikel läggas in i vår html struktur i vår section och alla 10 korten kommer upp i webben
-// GÖr även så att alla korts pris uppdateras mellan fre och måndag
+// Skickar in munk korten till vår html struktur, samt rating
 function createDonuts(){
 
-donutCardsContainer.innerHTML = '';
-    let filterProductsArrays = filterProducts.filter(value => filterProductsInPriceRange.includes(value)); // gör så de två array kopiorna vi skapar fungerar ihop, de värdet som ingår i båda sparas
+    donutCardsContainer.innerHTML = '';
+    let filterProductsArrays = filterProducts.filter(value => filterProductsInPriceRange.includes(value)); // Lägger ihop de två arraykopiorna, värdet som ingår i båda sparas i en ny array
+    
+    // Skriver ut rating på munk korten
     for(let i = 0; i < filterProductsArrays.length; i++){ 
 
-        // Skriver ut stjärnorna på donuts korten sammanlänkat med rating i vår array
         let rating = '';
 
         for(let j = 0; j < 5; j++){
 
             if (j < filterProductsArrays[i].rating){
-                rating += '<span class="fa fa-star checked"></span>'
+                rating += '<span class="fa fa-star checked"></span>';
             } else{
-                rating += '<span class="fa fa-star"></span>'
+                rating += '<span class="fa fa-star"></span>';
             }
         }
         
-        // Lägger till donutcards på sidan
-        donutCardsContainer.innerHTML +=
-            `<article class="donutCard">
-        <div class="donutCardHeaderContainer">
-            <h3>${filterProductsArrays[i].donutTitle}</h3 id="donutCardHeader">
-        </div>
-        <section class="donutCardContainer">
-            <div class="donutCardImgContainer">
-                <div class="controlsImgSlideshow" id="controlsImgSlideshow">
-                    <div class="images">
-                        <img src="${filterProductsArrays[i].donutImg1}" alt="${filterProductsArrays[i].donutAlt}" class="donutCardImg1" id="donutcardImg1" width="170" height="160">
-                        <img src="${filterProductsArrays[i].donutImg2}" alt="${filterProductsArrays[i].donutAlt}" class="donutCardImg2" id="donutCardImg2" width="170" height="160">                                 
+            // Lägger till munkarna på sidan
+            donutCardsContainer.innerHTML +=
+                `<article class="donutCard">
+            <div class="donutCardHeaderContainer">
+                <h3>${filterProductsArrays[i].donutTitle}</h3 id="donutCardHeader">
+            </div>
+            <section class="donutCardContainer">
+                <div class="donutCardImgContainer">
+                    <div class="controlsImgSlideshow" id="controlsImgSlideshow">
+                        <div class="images">
+                            <img src="${filterProductsArrays[i].donutImg1}" alt="${filterProductsArrays[i].donutAlt}" class="donutCardImg1" id="donutcardImg1" width="170" height="160">
+                            <img src="${filterProductsArrays[i].donutImg2}" alt="${filterProductsArrays[i].donutAlt}" class="donutCardImg2" id="donutCardImg2" width="170" height="160">                                 
+                        </div>
+                        <span class="ratingClass" id="ratingId">${rating}</span>
+                        <div class="controls">
+                            <button class="left" id="prevImage">
+                                <span class="material-symbols-outlined">chevron_left</span>
+                            </button>
+                            <button class="right" id="nextImage">
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </button>
+                        </div>
                     </div>
-                    <span class="ratingClass" id="ratingId">${rating}</span>
-                    <div class="controls">
-                        <button class="left" id="prevImage">
-                            <span class="material-symbols-outlined">chevron_left</span>
-                        </button>
-                        <button class="right" id="nextImage">
-                            <span class="material-symbols-outlined">chevron_right</span>
-                        </button>
-                    </div>
+                    <p id="donutCardPrice">${filterProductsArrays[i].donutPrice} kr/st</p>
                 </div>
-                <p id="donutCardPrice">${filterProductsArrays[i].donutPrice} kr/st</p>
-            </div>
-            <div class='donutCardRating'></div>
-            <br>
-            <div class="donutCardButtonContainer">
-                <button data-operator="minus" data-id="${filterProductsArrays[i].index}">-</button>
-                <input type="number" value="0" data-operator="amount" data-id="${filterProductsArrays[i].index}">
-                <button data-operator="plus" data-id="${filterProductsArrays[i].index}">+</button>
-            </div>
-        </section>
-    </article>`
+                <div class='donutCardRating'></div>
+                <br>
+                <div class="donutCardButtonContainer">
+                    <button data-operator="minus" data-id="${filterProductsArrays[i].index}">-</button>
+                    <input type="number" value="0" data-operator="amount" data-id="${filterProductsArrays[i].index}">
+                    <button data-operator="plus" data-id="${filterProductsArrays[i].index}">+</button>
+                </div>
+            </section>
+        </article>`;
     
- // ligger här i för att vi ska kunna klicka på knapparna, de ska skapas ny index för varje gång   
-const addBtns = document.querySelectorAll('button[data-operator="plus"]');           // kallar på plus knappen
-const subtractBtns = document.querySelectorAll('button[data-operator="minus"]');     // Kallar på minus knappen
-const typeAmountInput = document.querySelectorAll('input[data-operator="amount"]')   //Kallar på inputen med antal
+        // Skapas ny index för varje gång loopen körs, så knapparna blir klickbara  
+        const addBtns = document.querySelectorAll('button[data-operator="plus"]');           
+        const subtractBtns = document.querySelectorAll('button[data-operator="minus"]');    
+        const typeAmountInput = document.querySelectorAll('input[data-operator="amount"]');  
 
-for (let i = 0; i < addBtns.length; i++){
-    addBtns[i].addEventListener('click', addNumber)
-    subtractBtns[i].addEventListener('click', removeNumber)
-    typeAmountInput[i].addEventListener('input', updateAmount)
-}
-};                                                                                  // data id i är för att knapparna ska få index som id 0123456789 så vi vet vilken av knapparna i arrayen vi klickat på
+        for (let i = 0; i < addBtns.length; i++){
+            addBtns[i].addEventListener('click', addNumber);
+            subtractBtns[i].addEventListener('click', removeNumber);
+            typeAmountInput[i].addEventListener('input', updateAmount);
+        }
+    }
 } 
-/*----------------Få våra + och - knappar att fungera-------------------------*/
 
+/*----------------Få våra + och - knappar att fungera, samt input fältet-------------------------*/
 
+ //När man klickar på + ökar antal med 1
+function addNumber (e){
 
- /* När vi klickar på + ökar vi antal med 1*/
-function addNumber (e) {
-
-    const clickedDonut = e.currentTarget.dataset.id;                                 // Gör så jag får ut indexet av knappen som jag klickar på
-    donutCards[clickedDonut].amount += 1;                                            // [] de skrivet vi in för att komma åt de vi klickade på, alltså vilket objekt vi klickat på. Och de andra länkar till vår lista och amount, de gör att när vi klickar ökar amount med 1 varje gång på rätt donut
+    const clickedDonut = e.currentTarget.dataset.id;                                 // Indexet av knappen som klickas på
+    donutCards[clickedDonut].amount += 1;                                            // Antal ökar med 1 för vaje klick
     
-    const amountEl = e.currentTarget.parentElement.querySelector('input')
-    amountEl.value = donutCards[clickedDonut].amount;                                //Gör så att value i input = amount i våra objekt
+    const amountEl = e.currentTarget.parentElement.querySelector('input');
+    amountEl.value = donutCards[clickedDonut].amount;                                //Värdet i input fältet = antal i arrayen med munkarna
     
-    UpdatedonutsBasket();                                                            // kallar på min funktion som lägger till och tar bort donuts från basket
+    UpdatedonutsBasket();                                                            
 }   
 
- /* När vi klickar på - minskar vi antalet med 1*/
+ //När man klickar på - minskar antalet med 1
 function removeNumber(e){
 
-    const clickedDonut = e.currentTarget.dataset.id;                                 // Gör så jag får ut indexet av knappen som jag klickar på
-    const amountEl = e.currentTarget.parentElement.querySelector('input')
+    const clickedDonut = e.currentTarget.dataset.id;                                 // Index av knappen som klickas på
+    const amountEl = e.currentTarget.parentElement.querySelector('input');
     
     if(donutCards[clickedDonut].amount > 0){
-
-        donutCards[clickedDonut].amount -= 1;                                        // [] de skrivet vi in för att komma åt de vi klickade på. Och de andra länkar till vår lista och amount, de gör att när vi klickar ökar amount med 1 varje gång på rätt donut
-
-        amountEl.value = donutCards[clickedDonut].amount;                            //Gör så att value i input = amount i våra objekt
+        donutCards[clickedDonut].amount -= 1;                                       //Antalet minksar med 1 varje klick
+        amountEl.value = donutCards[clickedDonut].amount;                           //Värdet i input fältet = antal i arrayen med munkarna
     }
     
-    UpdatedonutsBasket();                                                            // kallar på min funktion som lägger till och tar bort donuts från basket
+    UpdatedonutsBasket();                                                            
 }
 
-/*Gör det möjligt att skriva in antal i inputrutan*/
+///Gör det möjligt att skriva in antal i inputrutan
 function updateAmount(e){
 
-    const changedDonutId = e.currentTarget.dataset.id;                               // Gör så jag får ut indexet det inputfältet som ändras
-    const donutValue = Number(e.currentTarget.value);                                // Gör om värdet i input till number
-    donutCards[changedDonutId].amount = donutValue;                                  // säger att värdet i value ska vara samma som i amount
+    const changedDonutId = e.currentTarget.dataset.id;                               // Ger indexet av inputfältet som ändras
+    const donutValue = Number(e.currentTarget.value);                                // Gör om värdet i input från sting till nummer
+    donutCards[changedDonutId].amount = donutValue;                                  // Värdet i input fältet ska vara samma som antal i munk arrayen
 
-    UpdatedonutsBasket();                                                            // Kallar på funktionen så våra donuts skrivs ut
+    UpdatedonutsBasket();                                                           
 }
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------- Basket -------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------- Varukorg -------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-/*---------------------- Lägger till donuts i varukorgen när värdet är över 0 och rabatter ------------------*/
-let yourBasketIsEmpty = document.querySelector('#emptyBasket')
-/*Lägger in rätt donuts i varukorgen och drar av ev rabatt på delsumman*/
+/*---------------------- Lägger till munkar i varukorgen och korrekt pris med dragna rabatter i delsumman ------------------*/
+
+
+let yourBasketIsEmpty = document.querySelector('#emptyBasket');                   // Varukorgen är tom
+
+//Lägger in valda munkar i varukorgen och drar av ev rabatt på delsumman
 function UpdatedonutsBasket(){
-    basketDonuts.innerHTML = '';                                                        // rensar formuläret varje gång jag klickar på en knapp 
+    basketDonuts.innerHTML = '';                                                         
     let sum = 0;
    
-    // Gör så att delsumman drar av 10% rabatt när man beställer 10 eller fler donuts
-    for(let i = 0; i < donutCards.length; i++){                                         // loopa igenom alla donuts i vår array så vi kan hitta den med amount som är större än 0
+    // Gör så att delsumman drar av 10% rabatt när man beställer 10 eller fler munkar av samma sort
+    for(let i = 0; i < donutCards.length; i++){                                         
         if(donutCards[i].amount >= 10){
             sum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9);
         } else{
             sum += (donutCards[i].amount * donutCards[i].donutPrice);
         }
        
-        //Lägger in rätt donut i varukorgen
-        if(donutCards[i].amount >= 1){                                                  //Om värdet av amount i vår array av donuts är 1 eller mer lägger vi till vår html stuktur i basket. i för att den inte ska lägga till alla utan bara enskilda. Första gången den lopas inget, andra inget, trejde träff och den skrivs ut
-        yourBasketIsEmpty.style.display = 'none'
+        //Lägger in vald munkar i varukorgen 
+        if(donutCards[i].amount >= 1){                                                   
+        yourBasketIsEmpty.style.display = 'none';                                   // Tar bort varukorgen är tom
         basketDonuts.innerHTML +=
         `<div class="basketDonuts">
             <div class="basketHeaderDonuts">
@@ -338,10 +341,11 @@ function UpdatedonutsBasket(){
                     </div>
                 </div>
             </section>
-        </div>`} else {
-        yourBasketIsEmpty.style.display = 'flex'
-        } }
-                                                                            // Skriver sum eftersom jag vill att om vi har rabatt ska delsumman va anorlunda 
+        </div>`;
+        } else {
+        yourBasketIsEmpty.style.display = 'flex';                                 // Lägger till varukorgen är tom
+        } 
+    }                                                               
 
     /*------------------ Total antal bunkar till popupen -----------------------------------*/    
     totalNumberOfDonuts = 0;                                                        //Inintialvärdet är noll
@@ -350,7 +354,6 @@ function UpdatedonutsBasket(){
         totalNumberOfDonuts += donutCards[i].amount;
     }
     
-
     /*------------------- Luciamunk-------------------------*/    
     //const lokalToday = new Date('December 13, 69 00:20:18');                      //För testning av Luciamunken
 
@@ -370,43 +373,45 @@ let totalNumberOfDonuts = 0;
 
 /*------------------------ Lägg till rabattkod och gör priset till 0------------------*/
 
-const discountBtn = document.querySelector('#discountBtn')                 //kallar på rabattkodsknappen
-const discountInput = document.querySelector('#discountCode')              // kallar på inputrutan jag ska skriva in  min kod i                                                      // skriver totalsumman som en variabel så jag kan spara värdet av totalsumman när den ändras till 0
-discountBtn.addEventListener('click', totalpriceZero)
-discountInput.addEventListener('input', wrongCode)
+const discountBtn = document.querySelector('#discountBtn');                 
+const discountInput = document.querySelector('#discountCode'); 
 
-//Gör så att när vi klickar på använd rabattkod och rätt kod är ifylld blir totalsumman 0
+discountBtn.addEventListener('click', totalpriceZero);
+discountInput.addEventListener('input', wrongCode);
+
+// Varukorgen uppdateras när använd rabattkod klickas på
 function totalpriceZero(){
     UpdatedonutsBasket();
 }
 
-//Gör så att om vi tar bort en bokstav ur rätt rabattkod kommer hela summan visas igen
+//Tas det bort en bokstav ur rätt rabattkod kommer hela summan visas igen
 function wrongCode(){ 
     if (discountInput.value != 'a_damn_fine-cup_of-coffee'){
         UpdatedonutsBasket();
     }
 }
 
-/*-------------------------------Uppdaterar totalsumman och rabatter-------------------------------*/
+/*-------------------------------Uppdaterar totalsumman och lägger till rabatter-------------------------------*/
 
 //Uppdatera totalsumman i varukorgen
 let totalSumToPay = 0;                                                                  // Global variabel som nås på fler ställen. Till för över 800 kr och popupen.
 
 function totalPrice(){ 
-    let sum = 0;  // sätter en startsumma till 0
+    let sum = 0;  
     let startShippingSum = 0;
     let today = new Date(); 
     let amount = 0;
     
-    // Gör så att jag får ut att weekNumber är veckans nummer                                              
+    // Weeknumber = veckans nummer                                              
     startDate = new Date(today.getFullYear(), 0, 1);        
     var days = Math.floor((today - startDate) /
     (24 * 60 * 60 * 1000));
-    var weekNumber = Math.ceil(days / 7);         
-                                  
-    for(let i = 0; i < donutCards.length; i++){                                            // loopar igenom alla så jag hittar vilka som har värde över 0
+    var weekNumber = Math.ceil(days / 7);   
+
+    // Vid beställning av 10 eller fler munkar av en sort ska den munksorten få 10% rabatt                              
+    for(let i = 0; i < donutCards.length; i++){                                            
         amount += donutCards[i].amount;
-       // Om man beställer 10 eller fler av en sort ska den munksorten få 10% rabatt 
+        
         if(donutCards[i].amount >= 10){
             sum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9);
     
@@ -420,10 +425,10 @@ function totalPrice(){
     if(today.getDay() == 1 && today.getHours() <= 9){
         sum *= 0.9;
         mondayText.innerHTML =
-        `<span>Måndagsrabatt: 10% på hela beställningen</span>`
+        `<span>Måndagsrabatt: 10% på hela beställningen</span>`;
     } 
 
-    // Om det är jämn vecka och tisdag får man 25 kr rabatt
+    // Om det är jämn vecka och tisdag får man 25 kr rabatt på hela beställningen
    if(weekNumber % 2 == 0 && sum >= 25 && today.getDay() == 2){
         sum -= 25;
     } 
@@ -432,56 +437,52 @@ function totalPrice(){
 
     // Frakt priset
     if(amount >= 16 || amount == 0){
-            (startShippingSum = 0);
+        (startShippingSum = 0);
 
-        } else {
-            startShippingSum = (sum * 0.1) +25
-        }
+    } else {
+        startShippingSum = (sum * 0.1) + 25;
+    }
 
-    startShippingSum = Number(startShippingSum.toFixed());                              //Avrunda värdet för frakten    
+    startShippingSum = Number(startShippingSum.toFixed());                              //Avrunda värdet för frakten till hela kronor    
 
-    // Rabattkod gör hela beställningen till 0
+    // Rabattkod som gör hela beställningen till 0
     if (discountInput.value === 'a_damn_fine-cup_of-coffee') {
         sum = 0;
         startShippingSum = 0;
     }
     
-    // lägger till totalsumman
+    // Lägger till totalsumma
     totalPriceBasket.innerHTML =                                      
-    `<span>${sum}</span>`    
+    `<span>${sum}</span>`;    
 
-    // Lägger in fraktsumman i html strukturen
-    shipping.innerHTML = `<span>${startShippingSum}</span>`
+    // Lägger till fraktsumma
+    shipping.innerHTML = `<span>${startShippingSum}</span>`;
 
     //Uppdatera totalsumman i iconen längst upp till höger på skärmen
-    const shoppingCart = document.querySelector('#shoppingCart')                         //kallar på shopping vagnen i html strukturen
+    const shoppingCart = document.querySelector('#shoppingCart');                         
     shoppingCart.innerHTML =
-    `<span class="colorWhite">${sum} sek</span>`
-
-  
+    `<span class="colorWhite">${sum} sek</span>`;
 
     // Skriver ut summa att betala som innehåller frakt och totalsumma
-    document.querySelector('#priceToPay').innerHTML = `<span>${sum+startShippingSum} SEK</span>`
+    document.querySelector('#priceToPay').innerHTML = `<span>${sum+startShippingSum} SEK</span>`;
 
     totalSumToPay = sum + startShippingSum;                                  // Tilldelning för uträkning av totalsumma med frakt och rabatt och avrundar summan till hela kronor
 }
 
 /*---------------------------------------Töm varukorgen----------------------------------*/
 
-const emptyBasketBtn = document.querySelector('#emptyBasketBtn')    // kallar på töm varukotgknappen
-emptyBasketBtn.addEventListener('click', emptyBasket)
+const emptyBasketBtn = document.querySelector('#emptyBasketBtn');   
+emptyBasketBtn.addEventListener('click', emptyBasket);
 
 function emptyBasket (e){ 
 
-    for(let i = 0; i < donutCards.length; i++){                     // loopar igenom och kollar alla amount
-        donutCards[i].amount = 0;                                   //ändrar alla amount till 0
-        typeAmountInput[i].value = 0;                               // ändrar alla inputfält till 0
+    for(let i = 0; i < donutCards.length; i++){                     
+        donutCards[i].amount = 0;                                   //ändrar antal i munk arrayen till 0
+        typeAmountInput[i].value = 0;                               // ändrar inputfälten till 0
     } 
 
-UpdatedonutsBasket();                                               // gör så att jag tar bort kortet i varukorgen
+    UpdatedonutsBasket();                                           // gör så att munkarna försvinner i varukorgen
 } 
-
- // På priset har jag satt att priset ska multipliceras med värdet i amount
 
 /*-------------------- Luciamunk start--------------------------------*/
 UpdatedonutsBasket();                                                       //Körs för att Luciamunken ska läggas i varukorgen.
