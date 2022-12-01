@@ -122,67 +122,47 @@ nav a i.fa  {
 -------------------------sorting donuts------------------------
 ----------------------------------------------------------*/
 
-.ourDonutsDropdownContainer{    // Ändra namn från dropdown till buttons?
-    max-width: 700px;
-    margin-right: 50px; 
-    text-align: right;
-    padding: 5px;
-    padding-bottom: 10px;    
-}
-
-.ourDonutsDropdown{
-    display: flex;
-    flex-direction: column;
+.ourDonutsDropdown{       
     margin-left: 30px; 
-    text-align: left;
-    max-width: 750px;
     font-family: 'Dosis', sans-serif;
     color:rgb(26, 108, 111);
     font-size: 1.5rem;
 }
-.flexOurDonutsDropdown{
+
+.nameRatingShowalldiv{
+    font-size: 1.5rem;
     display: flex;
-    flex-direction: column;
+    gap: 55px;
 }
 
-.flexOurDonutsDropdown p{
-    margin: 0;
+.categoriGroupP{
+    margin-bottom: 0px;
 }
 
-.flexOurDonutsDropdown span{
-    font-size: 1.3rem;
-    margin-bottom: 5px;
+.ratingRadioButtons{
+    margin-left: 45px;
 }
 
-/*
-TODO: Raderas, ska vara med?
 .nameRatingShowalldivs{
     display: inline;
 }
-*/
 
 .priceRange {
     display: block;   
     position: relative;
-    margin-left: 10px;
+    margin-left: 60px;
     font-family: 'Dosis', sans-serif;
     color:rgb(26, 108, 111);
     font-weight: bold; 
-    font-size: 1.1rem;
+    font-size: 1.0rem;
 }
 
 #currentRangeValue {
     color: rgb(214, 6, 214);
     font-weight: bold;
-    margin-right: 50px;
-    /*
-    TODO: Dessa blir raderade, ska de vara med?
-    margin-left: 160px;
+    margin-left: 175px;
     font-size: 1.0rem;
-    */
 }
-
-
 
 /*---------------------------------------------------------
 -------------------Dounat card-----------------------------

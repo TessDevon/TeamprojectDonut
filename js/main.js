@@ -355,14 +355,15 @@ function UpdatedonutsBasket(){
     }
     
     /*------------------- Luciamunk-------------------------*/    
-    //const lokalToday = new Date('December 13, 69 00:20:18');                      //För testning av Luciamunken
+    // const lokalToday = new Date('December 13, 69 00:20:18');                      //För testning av Luciamunken
 
-   const lokalToday = new Date();                                                   //Dagens datum
-    if(lokalToday.getDate() == 13 && lokalToday.getMonth() == 11)                   //Om dagens datum är 13 dec
+  const lokalToday = new Date();                                                   //Dagens datum
+    if(lokalToday.getDate() == 13 && lokalToday.getMonth() == 11 && totalNumberOfDonuts >= 1)    //Om dagens datum är 13 dec, varukorgen inte är tom.
     {
     basketDonuts.innerHTML += luciaDonutHtml();                                     //Så triggas funktionen luciaDonutHtml
         totalNumberOfDonuts += 1;                                                   //Luciamunken läggs till i total antal munkar den 13 dec.
     }
+
 /*--------------------Luciamunk--Slut----------------------*/    
 
     totalPrice();                                                                   // sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
@@ -769,7 +770,7 @@ function errorMessagePersonNR(){
 }
 
 function activateOrderButton(){                             // Om alla dessa värde innan paraneserna är sanna, och de första värdena inom den första parantesen eller den andra parantesen är sanna så tas attributet disable bort. Om inte detta uppfylls sätts attributet disabled.
-    if (checkNameInputOk && checklastNameInputOk && messageAdressOk && messagePostnumberOk && messageCityOk && messagePhoneNumberOk && messageeMailOk && messagegdprOk && ((creditCard.checked && messageCardNROk && messageMonthyearOk && messageCVCOk) || (inVoice.checked && personNROk))){
+    if (checkNameInputOk && checklastNameInputOk && messageAdressOk && messagePostnumberOk && messageCityOk && messagePhoneNumberOk && messageeMailOk && messagegdprOk && totalNumberOfDonuts >= 1 && ((creditCard.checked && messageCardNROk && messageMonthyearOk && messageCVCOk) || (inVoice.checked && personNROk))){
         orderButton.removeAttribute('disabled');    
     } else {
         orderButton.setAttribute('disabled', ''); 

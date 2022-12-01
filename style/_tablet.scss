@@ -30,6 +30,53 @@ h1 {
 }
 
 
+
+/*---------------------------------------------------------
+-------------------------sorting donuts------------------------
+----------------------------------------------------------*/
+
+.donutFlexWrap{
+    justify-content: center;
+}
+
+.PriceCategoriDiv{
+    display: flex;
+    gap: 55px;
+    margin-bottom: 35px;
+    justify-content: center;
+}
+
+.nameRatingShowalldiv {
+    display: flex;
+    justify-content: center;
+}
+
+.priceRange {
+    display: flex;
+    justify-content: center;
+}
+
+#currentRangeValue {
+    margin-left: 20px;
+}
+
+.priceRange {
+    display: block;   
+    position: relative;
+    margin-left: 60px;
+    font-family: 'Dosis', sans-serif;
+    color:rgb(26, 108, 111);
+    font-weight: bold; 
+    font-size: 1.0rem;
+}
+
+#currentRangeValue {
+    color: rgb(214, 6, 214);
+    font-weight: bold;
+    margin-left: 175px;
+    font-size: 1.0rem;
+}
+
 /*---------------------------------------------------------
 -------------------Dounat card-----------------------------
 ----------------------------------------------------------*/
