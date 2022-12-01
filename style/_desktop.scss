@@ -11,25 +11,28 @@ h1 {
     font-size: 4rem;
 }
 
+.ourDonutsDropdown{       
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    justify-content: center;
+    gap: 10vw;
+    margin-left: 0px; 
+}
+
+
 /*---------------------------------------------------------
 -----------------------------sorting donuts-----------------
 ----------------------------------------------------------*/
-
-.ourDonutsDropdownContainer{   
-    max-width: 750px;
-    margin-right: 20px; 
-    text-align: left;
-    margin-left: 30px; 
-}
-
-.donutFlexWrap{
-    flex-direction: row;
-}
+#currentRangeValue {
+    margin-left: 160px;
+}                               /*Går ej att ändra?*/
 
 .priceRange {
         margin-left: 20px;
         margin-top: 40px;
         font-size: 1.3rem;
+        display: inline;
 }
 
 #currentRangeValue {

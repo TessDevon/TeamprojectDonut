@@ -98,7 +98,6 @@ nav a i.fa  {
 /*---------------------------------------------------------
 -------------------------Our donuts------------------------
 ----------------------------------------------------------*/
-
 .ourDonuts{
     height: 80px;
     text-align: center;
@@ -111,24 +110,34 @@ nav a i.fa  {
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 30px;    
 }
+
 /*---------------------------------------------------------
 -------------------------sorting donuts------------------------
 ----------------------------------------------------------*/
 
-.ourDonutsDropdownContainer{   
-    max-width: 750px;
-    margin-right: 20px; 
-    text-align: left;
+.ourDonutsDropdown{       
     margin-left: 30px; 
-}
-
-.ourDonutsDropdown{   
-    row-gap: 50px;
-    margin-left: 30px; 
-    max-width: 750px;
     font-family: 'Dosis', sans-serif;
     color:rgb(26, 108, 111);
     font-size: 1.5rem;
+}
+
+.nameRatingShowalldiv{
+    font-size: 1.5rem;
+    display: flex;
+    gap: 55px;
+}
+
+.categoriGroupP{
+    margin-bottom: 0px;
+}
+
+.ratingRadioButtons{
+    margin-left: 45px;
+}
+
+.nameRatingShowalldivs{
+    display: inline;
 }
 
 .priceRange {
