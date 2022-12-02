@@ -367,6 +367,7 @@ function UpdatedonutsBasket(){
 
     totalPrice();                                                                   // sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html-strukturen om amount är 1 eller större
     maxSummaryNoInvoice();  // Körs för funktionen Ta bort Faktura över 800 kr. Bytes till Summery senare.
+    activateOrderButton();
 };
 
 let totalNumberOfDonuts = 0;
@@ -489,7 +490,7 @@ function emptyBasket (e){
 } 
 
 /*-------------------- Luciamunk-start--------------------------------*/
-UpdatedonutsBasket();                                                       //Körs för att Luciamunken ska läggas i varukorgen.
+
 function luciaDonutHtml(){                                                  //Skapar strängen för Luciamunken
     return `<div class="basketDonuts">
     <div class="basketHeaderDonuts">
@@ -983,6 +984,7 @@ function closePopUpArea() {
     emptyBasket();                                                          // Varukorgen töms.
     document.getElementById('custumerForm').reset();                        // Formulär återställs.
     popupArea.setAttribute('hidden', '');                                   // Inforutan blir dold och hemsidan syns igen. 
+    location.reload();
 }
 
 /*------------------------------------------------------------------------------------------------------*/ 
@@ -994,3 +996,5 @@ function totalPriceToPay() {
 function allDonuts() {
     document.querySelector('#summaryDonuts').innerHTML=totalNumberOfDonuts;   // Funktionen som redovisar totalt antal munkar i popupen
 }
+
+UpdatedonutsBasket();                                                       //Körs för att Luciamunken ska läggas i varukorgen och för initial uppdatering.
