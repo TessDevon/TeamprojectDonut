@@ -480,6 +480,8 @@ function emptyBasket (e){
     inputs.forEach(input => {
         input.value = 0;
     });
+
+    discountInput.value = '';
     
     for(let i = 0; i < donutCards.length; i++){                     // loopar igenom och kollar alla amount
         donutCards[i].amount = 0;                                   //ändrar alla amount till 0
