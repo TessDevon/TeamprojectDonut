@@ -30,7 +30,7 @@
             <ul>
                 <li class="menuList"><a class="navLinks_a" href="#ourdonuts">Våra munkar</a></li>
                 <li class="menuList"><a class="navLinks_a" href="#info">Övrig info</a></li>
-                <li class="menuList"><a class="navLinks_a" href="#shopping-basket">Varukorg</a></li> <!--Ikon för varukorg samt summa-->
+                <li class="menuList"><a class="navLinks_a" href="#shopping-basket">Varukorg</a></li> 
             </ul>
             <a href="#shopping-basket" class="iconContainer" aria-label="Summery of totalprice and klick it to go to basket">
                     <i class="fa fa-shopping-cart" id="shoppingCart"></i>
@@ -116,15 +116,15 @@
                     <li id="icon6"><i class="fa-solid fa-plus"></i></li>
                 </ul>
                 <ul class="informationUlText">
-                    <li>10% rabatt vid köp av 10 munkar av samma smak</li>
-                    <li>25 kr rabatt tisdagar jämna veckor om ni köper för mer än 25 kr</li>
-                    <li>Fri frakt vid fler än 15 munkar</li>
-                    <li>Leveranstid 30 minuter från lagd beställning</li>
-                    <li>Undantag på leveranstid <br><br>
-                        På helger: leveranstid 1,5 h efter lagd beställning <br> 
-                        Mellan 22-06: leverantid 45 minuter efter lagd beställning <br> 
-                        Sker beställningen på fredagar mellan 11-13 levereras munkarna kl 15 </li>
-                    <li>På lucia tillkommer en smarrig luciamunk till din beställning</li>
+                    <li>10 % rabatt vid köp av 10 munkar av samma smak.</li>
+                    <li>25 kr rabatt tisdagar jämna veckor om ni köper för mer än 25 kr.</li>
+                    <li>Fri frakt vid fler än 15 munkar.</li>
+                    <li>Leveranstiden är 30 minuter från lagd beställning.</li>
+                    <li>Undantag för leveranstiden: <br><br>
+                        Helger: Leveranstid 1,5 h efter lagd beställning. <br> <br> 
+                        Mellan kl 22.00-06.00: Leveranstid 45 minuter efter lagd beställning. <br> <br> 
+                        Om beställningen sker på fredagar kl 11.00-13.00 levereras munkarna kl 15.00. </li><br> 
+                    <li>På luciadagen tillkommer en smarrig luciamunk till din beställning.</li>
                 </ul>
             </div>
         </section>    
@@ -135,7 +135,7 @@
                             <h2 class="middlepart_h2">Varukorg</h2>
                         </div>
                         <div class="main_heading_basket">    
-                            <h3 class="basket_heading">Valda donuts</h3>
+                            <h3 class="basket_heading">Valda munkar</h3>
                         </div>
                         <article id="basketDonuts"></article>
                         <div class="emptyBasketContainer" id="emptyBasket">
@@ -143,12 +143,12 @@
                             <i class="fa fa-shopping-cart"></i>
                         </div>
                         <label for="discountCode">
-                            <p>Skriv in din rabattkod här!</p> 
+                            <p>Skriv in din rabattkod här:</p> 
                             <input type="text" id="discountCode" placeholder="Rabattkod" value="">
                             <button class="discount_button" id="discountBtn">Använd rabattkod</button>
                         <div class="basket_sum">
                             <div>
-                                <p class="basket_heading">Totaltsumma:</p>
+                                <p class="basket_heading">Totalsumma:</p>
                                 <p class="total_amount" ><span id="totalAmountBasket">0</span> SEK</p>
                             </div>
                             <div>
@@ -160,7 +160,7 @@
                                 <p id="priceToPay" class="total_amount" ></p> 
                             </div>
                         </div>
-                        <button id="emptyBasketBtn" class="emptyBasketBtn">Töm Varukorgen</button>
+                        <button id="emptyBasketBtn" class="emptyBasketBtn">Töm varukorgen</button>
                     </div>
                 </section>
                 <section class="section-form">
@@ -210,7 +210,7 @@
                             </label>
                             <br>
                             <label for="email">
-                                <span>Epost</span> 
+                                <span>E-post</span> 
                                 <span class="errorMessage" id="errorMassageeMail" hidden></span>
                                 <input required class="input_group" type="text" id="email">
                             </label>
