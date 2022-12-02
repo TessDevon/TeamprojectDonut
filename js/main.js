@@ -309,13 +309,16 @@ let yourBasketIsEmpty = document.querySelector('#emptyBasket');                 
 function UpdatedonutsBasket(){
     basketDonuts.innerHTML = '';                                                         
     let sum = 0;
+
+   yourBasketIsEmpty.style.display = 'flex';
    
     // Gör så att delsumman drar av 10 % rabatt när man beställer 10 eller fler munkar av samma sort
     for(let i = 0; i < donutCards.length; i++){                                         
         if(donutCards[i].amount >= 10){
-            sum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9);
+            sum = ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9);
+            sum= Math.round(sum);
         } else{
-            sum += (donutCards[i].amount * donutCards[i].donutPrice);
+            sum = (donutCards[i].amount * donutCards[i].donutPrice);
         }
        
         //Lägger in valda munkar i varukorgen 
@@ -342,9 +345,7 @@ function UpdatedonutsBasket(){
                         </div>
                     </section>
                 </div>`;
-        } else {
-            yourBasketIsEmpty.style.display = 'flex';                                 // Lägger till varukorgen är tom
-        } 
+        }
     }                                                               
 
     /*------------------ Totalt antal munkar till popupen -----------------------------------*/    
@@ -402,6 +403,7 @@ function totalPrice(){
     let startShippingSum = 0;
     let today = new Date(); 
     let amount = 0;
+    let mondayText = document.querySelector('#mondayDiscount')
     
     // Weeknumber = veckans nummer                                              
     startDate = new Date(today.getFullYear(), 0, 1);        
@@ -481,6 +483,8 @@ function emptyBasket (e){
     inputs.forEach(input => {
         input.value = 0;
     });
+
+    discountInput.value = '';                                        // Tömmer rabbatkodsfältet
     
     for(let i = 0; i < donutCards.length; i++){                     // loopar igenom och kollar alla amount
         donutCards[i].amount = 0;                                   //ändrar alla amount till 0

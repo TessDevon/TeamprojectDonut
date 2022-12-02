@@ -79,7 +79,7 @@ nav ul {
 }
 
 nav a{
-    z-index: 3;
+    z-index: 1;
 }
 
 nav a i{
@@ -688,10 +688,11 @@ footer {
     top: 0;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 2;
 }
 
 .stopAreaTextArea{
-    z-index: 2;
+    z-index: 3;
     width: 80vw;
     margin-left: 10vw;
     margin-top: 20vw;
