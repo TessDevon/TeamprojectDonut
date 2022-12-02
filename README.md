@@ -22,6 +22,7 @@ Mobile5
 Mobile6 
 <img src="assets/ScreenshotsOfWebpage/Mobile6.jpg" alt="Mobile6">
 
+
 TABLET
 Tablet1
 <img src="assets/ScreenshotsOfWebpage/Tablet1.jpg" alt="Tablet1">
@@ -46,7 +47,6 @@ Desltop4
 <img src="assets/ScreenshotsOfWebpage/Desltop4.jpg" alt="Desltop4">
 
 
-
 Popup-area
 PopUpMobile 
 <img src="assets/ScreenshotsOfWebpage/PopUpMobile.jpg" alt="Mobile popup">
@@ -66,13 +66,16 @@ Santa3
 Santa4
 <img src="assets/ScreenshotsOfWebpage/Santa4.jpg" alt="Santa theme4">
 
+
 Validation HTML
 <img src="assets/Validation/Validation_html">
+
 
 Validation CSS
 <img src="assets/Validation/Validation_css_mobile">
 <img src="assets/Validation/Validation_css_tablet">
 <img src="assets/Validation/Validation_css_desktop">
+
 
 Lighthouse check
 
