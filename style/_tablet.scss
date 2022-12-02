@@ -15,21 +15,20 @@ h1 {
     margin: 0 auto;
     gap: 40px;
     max-width: 1400px;
-    .ourDonutsDropdown {
-        margin-left: 0;
-    }
-    .ourDonuts {
-        width: auto;
-    }
-    .priceRange {
-        margin-left: 0;
-    }
-    .ourDonutsDropdownContainer {
-        margin-right: 0;
-    }
 }
 
-
+.ourDonutsDropdown {
+    margin-left: 0;
+}
+.ourDonuts {
+    width: auto;
+}
+.priceRange {
+    margin-left: 0;
+}
+.ourDonutsDropdownContainer {
+    margin-right: 0;
+}
 
 /*---------------------------------------------------------
 -------------------------sorting donuts------------------------
@@ -196,7 +195,6 @@ form p {
 
 .submit_form_button{
     font-size: x-large;
-
 }
 
 /*------------------------------------------------------------------------------------------------------------------

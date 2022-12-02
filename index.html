@@ -48,43 +48,43 @@
                             <div class="nameRatingShowalldiv">   
                                 <div class="nameRatingShowalldivs">    
                                     <strong>Namn</strong>
-                                    <input type="radio" donutTitle="categoryFilter" id="name" name="sortDonuts" value="donutTitle" />
+                                    <input type="radio" title="categoryFilter" id="name" name="sortDonuts" value="donutTitle">
                                 </div>
                                 <div class="nameRatingShowalldivs">
                                     <strong>Rating</strong>
-                                    <input type="radio" donutTitle="categoryFilter" id="rating" name="sortDonuts" value="rating" />
+                                    <input type="radio" title="categoryFilter" id="rating" name="sortDonuts" value="rating">
                                 </div>
                                 <div class="nameRatingShowalldivs">
                                     <strong >Visa alla</strong>
-                                    <input type="radio" donutTitle="categoryFilter" id="all" name="sortDonuts" value="all" checked />
+                                    <input type="radio" title="categoryFilter" id="all" name="sortDonuts" value="all" checked>
                                 </div>
                             </div> 
                             <div class="PriceCategoriDiv">
                                 <div>                                                                 
-                                    <strong><p class="categoriGroupP">Pris:</p></strong>                            
+                                   <p class="categoriGroupP"> <strong>Pris:</strong></p>                            
                                         <div>
                                             <span>Lägst till högst</span>  
-                                            <input type="radio" donutTitle="categoryFilter" id="lowPrice" name="sortDonuts" value="category" />     
+                                            <input type="radio" title="categoryFilter" id="lowPrice" name="sortDonuts" value="category">     
                                         </div>
                                         <div>
                                             <span>Högst till lägst</span>  
-                                            <input type="radio" donutTitle="categoryFilter" id="highPrice" name="sortDonuts" value="category" />     
+                                            <input type="radio" title="categoryFilter" id="highPrice" name="sortDonuts" value="category">     
                                         </div>
                                        <!-- <label class="flexOurDonutsDropdown"> -->
                                 </div> 
                                 <div>   
-                                    <strong><p class="categoriGroupP">Kategori:</p></strong>                        
+                                    <p class="categoriGroupP"><strong>Kategori:</strong></p>                       
                                         <div>
                                             <span>Frukt</span>  
-                                        <input type="radio" donutTitle="categoryFilter" id="fruit" name="sortDonuts" value="category" />  
+                                        <input type="radio" title="categoryFilter" id="fruit" name="sortDonuts" value="category">  
                                         </div>
                                         <div>
                                             <span>Godis</span> 
-                                            <input type="radio" donutTitle="categoryFilter" id="candy" name="sortDonuts" value="category" />
+                                            <input type="radio" title="categoryFilter" id="candy" name="sortDonuts" value="category">
                                         </div>
                                         <div>
                                             <span>Bär</span> 
-                                            <input type="radio" donutTitle="categoryFilter" id="berrys" name="sortDonuts" value="category" />
+                                            <input type="radio" title="categoryFilter" id="berrys" name="sortDonuts" value="category">
                                         </div>
                                     </div>  
                                 </div>          
@@ -113,10 +113,10 @@
                     <li>Fri frakt vid fler än 15 munkar.</li>
                     <li>Leveranstiden är 30 minuter från lagd beställning.</li>
                     <li>Undantag för leveranstiden: <br><br>
-                        Helger: Leveranstid 1,5 h efter lagd beställning. <br> <br> 
-                        Mellan kl 22.00-06.00: Leveranstid 45 minuter efter lagd beställning. <br> <br> 
-                        Om beställningen sker på fredagar kl 11.00-13.00 levereras munkarna kl 15.00. </li><br> 
-                    <li>På luciadagen tillkommer en smarrig luciamunk till din beställning.</li>
+                        Helger: Leveranstid 1,5 h efter lagd beställning.<br><br> 
+                        Mellan kl 22.00-06.00: Leveranstid 45 minuter efter lagd beställning.<br><br> 
+                        Om beställningen sker på fredagar kl 11.00-13.00 levereras munkarna kl 15.00.<br></li> 
+                        <li>På luciadagen tillkommer en smarrig luciamunk till din beställning.</li>
                 </ul>
             </div>
         </section>    
@@ -135,9 +135,10 @@
                             <i class="fa fa-shopping-cart"></i>
                         </div>
                         <label for="discountCode">
-                            <p>Skriv in din rabattkod här:</p> 
+                            <span>Skriv in din rabattkod här:</span> 
                             <input type="text" id="discountCode" placeholder="Rabattkod" value="">
-                            <button class="discount_button" id="discountBtn">Använd rabattkod</button>
+                        </label>
+                            <button class="discount_button" id="discountBtn">Använd rabattkod</button>                        
                         <div class="basket_sum">
                             <div>
                                 <p class="basket_heading">Totalsumma:</p>
@@ -150,7 +151,7 @@
                             <p id="mondayDiscount"></p> 
                             <div class="sumToPayContainer">
                                 <p class="summery">Summa att betala:</p>
-                                <p id="priceToPay" class="total_amount" ></p> 
+                                <p id="priceToPay" class="total_amount"></p> 
                             </div>
                         </div><br><br>
                         <button id="emptyBasketBtn" class="emptyBasketBtn">Töm varukorgen</button>
@@ -159,9 +160,9 @@
                 <section class="section-form">
                     <div class="checkout_form">
                         <h2 class="middlepart_h2">Kundformulär</h2>
-                        <form id="custumerForm" action="">
+                        <form id="custumerForm" action="#">
                             <br><div id="infoAboutTime"></div><br><br>
-                            <label for="name">
+                            <label for="firstname">
                                 <span>Förnamn</span>  
                                 <span class="errorMessage" id="errorMessageName" hidden></span>
                                 <input placeholder="tilltalsnamn" required class="input_group" type="text" id="firstname"> 
@@ -237,7 +238,7 @@
                                     <span class="errorMessage" id="errorMessageDateyear" hidden></span>
                                     <input placeholder="MMYY" class="input_group" type="number" id="dateyear">
                                 </label>
-                                <label for="cvc">
+                                <label for="CVC">
                                     <span>CVC</span> 
                                     <span class="errorMessage" id="errorMessageCVC" hidden></span>
                                     <input placeholder="000" class="input_group" type="number" id="CVC">
@@ -262,19 +263,21 @@
     </main>
     <footer>
         <address>
-            <strong>Adress:</strong> Måsvägen 4, Stockholm<br>
-            <strong>Telefon:</strong> 08-634 30 30<br>
-            <strong>E-post:</strong> <a href="#">gottfridsmunkar@gmail.com</a>
+            Adress: Måsvägen 4, Stockholm<br>
+            Telefon: 08-634 30 30<br>
+            E-post: <a href="#">gottfridsmunkar@gmail.com</a>
         </address>
     </footer>
     <div class="stopArea" id="stopArea" hidden>
         <div class="stopAreaTextArea">
-        <h2 class="stopAreah2">Tack för din beställning! </h2>
-        <p class="stopAreaP">Du har beställt <span class="stopAreaspan" id="summaryDonuts"></span> st munkar, för totalt <span class="stopAreaspan" id="summaryArea"></span> kr. </p>
-        <p class="stopAreaP">Beräknad leverans <span class="stopAreaspan" id="textAboutDeliveryTime"></span></p><br>
-        <p class="stopAreaP"> Hoppas det smakar och välkommen åter! <br><br><br>
-        Mvh Gottfrid med personal</p><br><br>
+            <h2 class="stopAreah2">Tack för din beställning! </h2>
+            <p class="stopAreaP">Du har beställt <span class="stopAreaspan" id="summaryDonuts"></span> st munkar, för totalt <span class="stopAreaspan" id="summaryArea"></span> kr. </p>
+            <p class="stopAreaP">Beräknad leverans <span class="stopAreaspan" id="textAboutDeliveryTime"></span></p><br>
+            <p class="stopAreaP"> Hoppas det smakar och välkommen åter! <br><br><br>
+            Mvh Gottfrid med personal</p><br><br>
+        </div>
         <button class="stopAreaButton" id="stopAreaButton">Stäng</button>
+        
     </div>
 
     <script type="text/javascript" src="js/main.js"></script>
