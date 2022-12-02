@@ -400,7 +400,7 @@ let totalSumToPay = 0;                                                          
 function totalPrice(){ 
     let sum = 0;  
     let startShippingSum = 0;
-    let today = new Date('November 28, 2022 09:00:00'); 
+    let today = new Date(); 
     let amount = 0;
     let mondayText = document.querySelector('#mondayDiscount')
     
