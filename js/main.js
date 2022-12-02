@@ -309,6 +309,8 @@ let yourBasketIsEmpty = document.querySelector('#emptyBasket');                 
 function UpdatedonutsBasket(){
     basketDonuts.innerHTML = '';                                                         
     let sum = 0;
+
+   yourBasketIsEmpty.style.display = 'flex';
    
     // Gör så att delsumman drar av 10 % rabatt när man beställer 10 eller fler munkar av samma sort
     for(let i = 0; i < donutCards.length; i++){                                         
@@ -343,9 +345,7 @@ function UpdatedonutsBasket(){
                         </div>
                     </section>
                 </div>`;
-        } else {
-            yourBasketIsEmpty.style.display = 'flex';                                 // Lägger till varukorgen är tom
-        } 
+        }
     }                                                               
 
     /*------------------ Totalt antal munkar till popupen -----------------------------------*/    
