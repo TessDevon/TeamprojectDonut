@@ -78,4 +78,4 @@ Validation CSS
 
 
 Lighthouse check
-
+<img src="assets/Validation/Lighthouse_check">
