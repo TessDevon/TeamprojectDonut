@@ -314,6 +314,7 @@ function UpdatedonutsBasket(){
     for(let i = 0; i < donutCards.length; i++){                                         
         if(donutCards[i].amount >= 10){
             sum = ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9);
+            sum= Math.round(sum);
         } else{
             sum = (donutCards[i].amount * donutCards[i].donutPrice);
         }
@@ -481,7 +482,7 @@ function emptyBasket (e){
         input.value = 0;
     });
 
-    discountInput.value = '';
+    discountInput.value = '';                                        // Tömmer rabbatkodsfältet
     
     for(let i = 0; i < donutCards.length; i++){                     // loopar igenom och kollar alla amount
         donutCards[i].amount = 0;                                   //ändrar alla amount till 0
