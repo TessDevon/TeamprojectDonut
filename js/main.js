@@ -984,6 +984,7 @@ function closePopUpArea() {
     emptyBasket();                                                          // Varukorgen töms.
     document.getElementById('custumerForm').reset();                        // Formulär återställs.
     popupArea.setAttribute('hidden', '');                                   // Inforutan blir dold och hemsidan syns igen. 
+    location.reload();
 }
 
 /*------------------------------------------------------------------------------------------------------*/ 
