@@ -313,9 +313,9 @@ function UpdatedonutsBasket(){
     // Gör så att delsumman drar av 10 % rabatt när man beställer 10 eller fler munkar av samma sort
     for(let i = 0; i < donutCards.length; i++){                                         
         if(donutCards[i].amount >= 10){
-            sum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9);
+            sum = ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9);
         } else{
-            sum += (donutCards[i].amount * donutCards[i].donutPrice);
+            sum = (donutCards[i].amount * donutCards[i].donutPrice);
         }
        
         //Lägger in valda munkar i varukorgen 
