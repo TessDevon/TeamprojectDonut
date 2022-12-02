@@ -179,6 +179,7 @@ nav a i.fa  {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+
 /*Slideshow*/
 .controlsImgSlideshow{
     position: relative;
@@ -357,7 +358,8 @@ input[type=number] {
     min-height: 90px;
     margin-left: auto;
     margin-right: auto;
-    padding: 10px;    
+    padding: 10px;
+    
 }
 
 .fa-sack-dollar{
@@ -504,7 +506,7 @@ input[type=number] {
     max-width: 400px;
 }
 
-.basket label span{
+.basket label p{
     margin-left: 20px;
     margin-bottom: 5px;
 }
@@ -608,6 +610,7 @@ input[type=number] {
     padding: 15px;
     font-family: Arial, Helvetica, sans-serif;
     max-width: 700px;
+    margin-left: 0 auto;
 }
 
 label{
