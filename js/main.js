@@ -1,7 +1,7 @@
 
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------- Munk korten -------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------- Donut cards -------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*const { doc } = require("prettier");*/
@@ -117,7 +117,7 @@ const donutCards = [
     index: 9
 }];
 
-//Uppdaterar priset på munkarna med 15% om de är mellan fre kl: 15:00 och mån kl: 03:00
+//Uppdaterar priset på munkarna med 15 % om det är mellan fre kl 15:00 och mån kl 03:00
 for(let i = 0; i < donutCards.length; i++){
 
     let today = new Date();  
@@ -129,7 +129,7 @@ for(let i = 0; i < donutCards.length; i++){
     donutCards[i].donutPrice  = Math.round(donutCards[i].donutPrice);
 }
 
-/*---------------------------------------------Sortera donuts------------------------------------------*/
+/*---------------------------------------------Munksortering------------------------------------------*/
 
 // 2 arraykopior av donutCards
 let filterProducts = [...donutCards];
@@ -145,7 +145,7 @@ createDonuts();                                                                 
 
 // Sorterar munkarna beroende på vald knapp
 function clickedSortBtn(e){ 
-    filterProducts = [...donutCards];                                                   //Ny array som kommer sorteras
+    filterProducts = [...donutCards];                                                   //Ny array som kommer att sorteras
     const clickedBtn = e.currentTarget.id;
     
     if(clickedBtn == 'name' || clickedBtn == 'all'){
@@ -174,11 +174,11 @@ const currentRangeValue = document.querySelector('#currentRangeValue');
 
 priceRangeSlider.addEventListener('input', update);
 
-//Gör att värdet på den rosa texten är samma som värdet på sliden, samt skapar en array efter prisklass
+//Gör att värdet på den rosa texten är samma som värdet på slidern, samt skapar en array efter prisklass
 function update(e){
 
-    //Värdet på den rosa texten är samma som värdet i sliden
-    const priceRangeValue = e.currentTarget.value;                                // värdet i sliden
+    //Värdet på den rosa texten är samma som värdet i slidern
+    const priceRangeValue = e.currentTarget.value;                                // värdet i slidern
 
     currentRangeValue.innerHTML =
     `<span>${priceRangeValue} kr</span>`;                                           
@@ -190,13 +190,13 @@ function update(e){
     createDonuts();                                                             // Skriver ut arrayen med rätt munkar
 }
 
-// Skickar in munk korten till vår html struktur, samt rating
+// Skickar in munkkorten till vår html-struktur, samt rating
 function createDonuts(){
 
     donutCardsContainer.innerHTML = '';
     let filterProductsArrays = filterProducts.filter(value => filterProductsInPriceRange.includes(value)); // Lägger ihop de två arraykopiorna, värdet som ingår i båda sparas i en ny array
     
-    // Skriver ut rating på munk korten
+    // Skriver ut rating på munkkorten
     for(let i = 0; i < filterProductsArrays.length; i++){ 
 
         let rating = '';
@@ -286,7 +286,7 @@ function removeNumber(e){
     UpdatedonutsBasket();                                                            
 }
 
-///Gör det möjligt att skriva in antal i inputrutan
+///Gör det möjligt att skriva in antal i input-rutan
 function updateAmount(e){
 
     const changedDonutId = e.currentTarget.dataset.id;                               // Ger indexet av inputfältet som ändras
@@ -297,7 +297,7 @@ function updateAmount(e){
 }
 
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------- Varukorg -------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------- Basket -------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*---------------------- Lägger till munkar i varukorgen och korrekt pris med dragna rabatter i delsumman ------------------*/
@@ -310,7 +310,7 @@ function UpdatedonutsBasket(){
     basketDonuts.innerHTML = '';                                                         
     let sum = 0;
    
-    // Gör så att delsumman drar av 10% rabatt när man beställer 10 eller fler munkar av samma sort
+    // Gör så att delsumman drar av 10 % rabatt när man beställer 10 eller fler munkar av samma sort
     for(let i = 0; i < donutCards.length; i++){                                         
         if(donutCards[i].amount >= 10){
             sum += ((donutCards[i].amount * donutCards[i].donutPrice) * 0.9);
@@ -318,7 +318,7 @@ function UpdatedonutsBasket(){
             sum += (donutCards[i].amount * donutCards[i].donutPrice);
         }
        
-        //Lägger in vald munkar i varukorgen 
+        //Lägger in valda munkar i varukorgen 
         if(donutCards[i].amount >= 1){                                                   
             yourBasketIsEmpty.style.display = 'none';                                   // Tar bort varukorgen är tom
             basketDonuts.innerHTML +=
@@ -347,8 +347,8 @@ function UpdatedonutsBasket(){
         } 
     }                                                               
 
-    /*------------------ Total antal bunkar till popupen -----------------------------------*/    
-    totalNumberOfDonuts = 0;                                                        //Inintialvärdet är noll
+    /*------------------ Totalt antal munkar till popupen -----------------------------------*/    
+    totalNumberOfDonuts = 0;                                                        //Initialvärdet är noll
     
     for(let i = 0; i < donutCards.length; i++){                                     //Loop som summerar alla munkar på sidan.
         totalNumberOfDonuts += donutCards[i].amount;
@@ -365,7 +365,7 @@ function UpdatedonutsBasket(){
 
 /*--------------------Luciamunk--Slut----------------------*/    
 
-    totalPrice();                                                                   // sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html strukturen om amount är 1 eller större
+    totalPrice();                                                                   // sitter utanför if statement för att den ska skriva ut 0 eftersom jag satt att dern bara ska skriva ut html-strukturen om amount är 1 eller större
     maxSummaryNoInvoice();  // Körs för funktionen Ta bort Faktura över 800 kr. Bytes till Summery senare.
 };
 
@@ -435,7 +435,7 @@ function totalPrice(){
     
     sum = Number(sum.toFixed());                                                        //Avrundat värdet till hela kronor
 
-    // Frakt priset
+    // Fraktpriset
     if(amount >= 16 || amount == 0){
         (startShippingSum = 0);
 
@@ -458,7 +458,7 @@ function totalPrice(){
     // Lägger till fraktsumma
     shipping.innerHTML = `<span>${startShippingSum}</span>`;
 
-    //Uppdatera totalsumman i iconen längst upp till höger på skärmen
+    //Uppdatera totalsumman i ikonen längst upp till höger på skärmen
     const shoppingCart = document.querySelector('#shoppingCart');                         
     shoppingCart.innerHTML =
         `<span class="colorWhite">${sum} sek</span>`;
@@ -488,7 +488,7 @@ function emptyBasket (e){
     UpdatedonutsBasket();                                           // gör så att munkarna försvinner i varukorgen
 } 
 
-/*-------------------- Luciamunk start--------------------------------*/
+/*-------------------- Luciamunk-start--------------------------------*/
 UpdatedonutsBasket();                                                       //Körs för att Luciamunken ska läggas i varukorgen.
 function luciaDonutHtml(){                                                  //Skapar strängen för Luciamunken
     return `<div class="basketDonuts">
@@ -513,17 +513,17 @@ function luciaDonutHtml(){                                                  //Sk
     </div>`;
 }
 
-/*---------------------Luciamunkslut ----------------------------*/
+/*---------------------Luciamunk-slut ----------------------------*/
 
 
-/*------------------------------ Start växling av bilder i munksection -----------------------------*/
+/*------------------------------ Start växling av bilder i munksektion -----------------------------*/
 
 const prevImageBtn = document.querySelectorAll('#prevImage');        //Har adderat två knappar per munk i HTML ovanför och kallat på dessa.
 const nextImageBtn = document.querySelectorAll('#nextImage');
 
 for (let i = 0; i < prevImageBtn.length; i++){                      //Loopar igenom knapparna på alla munkar
-    prevImageBtn[i].addEventListener('click', swapImages)           //adventlisner klick på backåtknappen som triggar funktionen nedan
-    nextImageBtn[i].addEventListener('click', swapImages)           //adventlisner klick på framåtknappen som triggar funktionen nedan 
+    prevImageBtn[i].addEventListener('click', swapImages)           //eventlistener klick på backåtknappen som triggar funktionen nedan
+    nextImageBtn[i].addEventListener('click', swapImages)           //eventlistener klick på framåtknappen som triggar funktionen nedan 
 }
 
 function swapImages(e){
@@ -537,12 +537,12 @@ function swapImages(e){
     donutCardImg2Slideshow.setAttribute('src', firstDonut);                         //Andra munken byts till första
 };
 
-/*------------------------------ Stop växling av bilder i munksection ------------------------------*/
+/*------------------------------ Stop växling av bilder i munksektion ------------------------------*/
 
 
 
 /*-----------------------------Form-------------------------------------------------------------
-------------JS koden för att hantera beställningsknappen. START---------------------------------
+------------JS-koden för att hantera beställningsknappen. START---------------------------------
 -----------------------------------------------------------------------------------------------*/ 
 const orderButton = document.querySelector('.submit_form_button');              //hämtar beställningsknapp
 const nameInput = document.querySelector('#firstname');                              //hämtar namn i html
@@ -567,15 +567,15 @@ function checkNameInput(){
     const exp = new RegExp('^[A-Za-zÅÄÖåäö\-]{1,}$');                           //Vad fältet får innehålla, A-ö a-ö - 
     const errorMessage = document.querySelector('#errorMessageName');           //kallar upp diven för felmedelande
     
-    if (exp.test(nameInput.value)){                                           //Om värdet stämmer med const exp så döljs felmeddelanderutan och functionen skickar true
+    if (exp.test(nameInput.value)){                                           //Om värdet stämmer med const exp så döljs felmeddelanderutan och funktionen skickar true
         errorMessage.setAttribute('hidden', '');
         checkNameInputOk = true;
     } else {
-        errorMessage.innerHTML = 'Endast bostäver och bindelsträck';            //Om värdet inte stämmer visas felmeddelanderutan med denna text och functionen skickar false. 
+        errorMessage.innerHTML = 'Endast bostäver och bindelsträck';            //Om värdet inte stämmer visas felmeddelanderutan med denna text och funktionen skickar false. 
         errorMessage.removeAttribute('hidden');
         checkNameInputOk = false;
     }
-    activateOrderButton();                                                      //Kör denna funnktion för att uppdatera beställknappen eftersom jag ändrat ckeckputImputOk.  
+    activateOrderButton();                                                      //Kör denna funktion för att uppdatera beställknappen eftersom jag ändrat ckeckputImputOk.  
 }
 
 lastNameInput.addEventListener('change', checklastNameInput);                   //Som ovan men med inställningar till efternamn
@@ -768,7 +768,7 @@ function errorMessagePersonNR(){
     activateOrderButton();
 }
 
-function activateOrderButton(){                             // Om alla dessa värde innan paraneserna är sanna, och de första värdena inom den första parantesen eller den andra parantesen är sanna så tas attributet disable bort. Om inte detta uppfylls sätts attributet disabled.
+function activateOrderButton(){                             // Om alla dessa värden innan parenteserna är sanna, och de första värdena inom den första parentesen eller den andra parentesen är sanna så tas attributet disable bort. Om inte detta uppfylls sätts attributet disabled.
     if (checkNameInputOk && checklastNameInputOk && messageAdressOk && messagePostnumberOk && messageCityOk && messagePhoneNumberOk && messageeMailOk && messagegdprOk && totalNumberOfDonuts >= 1 &&
         ((creditCard.checked && messageCardNROk && messageMonthyearOk && messageCVCOk) || (inVoice.checked && personNROk))){
         orderButton.removeAttribute('disabled');    
@@ -779,18 +779,18 @@ function activateOrderButton(){                             // Om alla dessa vä
 
 
 
-orderButton.addEventListener('click', sendOrder);           // Eventlister till Beställknapp. När den klickas triggas funktionen sendOrder. Har även testat 'sublit i fältet istället för 'click'.
+orderButton.addEventListener('click', sendOrder);           // Eventlistener till Beställknapp. När den klickas triggas funktionen sendOrder. Har även testat 'submit' i fältet istället för 'click'.
 
 function sendOrder(e){                                      // Funktion som innehåller alla funktioner som triggas när Beställknappen klickas.   
     e.preventDefault();
-    showPopupArea();                                        // Kör funktionen som visar popuprutan med sammanställningen. 
+    showPopupArea();                                        // Kör funktionen som visar popup-rutan med sammanställningen. 
     allDonuts();                                            // Antal munkar
     totalPriceToPay();                                      // Totalsumma (Att betala)
     deliveryTime();                                         // Funktionen som visar texten med leveranstiden
     stopClearFormTimer();                                   //Timern stängs av.
 }
 
-/*------------JS koden för att hantera beställningsknappen.  STOP-------------------------------*/ 
+/*------------JS-koden för att hantera beställningsknappen.  STOP-------------------------------*/ 
 
 
 
@@ -823,7 +823,7 @@ function maxSummaryNoInvoice(){
 
 
 /**
- * När man klickar på kort ska korinformation visas och när vi klickar på form ska personnr visas
+ * När man klickar på kort ska kortnformation visas och när vi klickar på form ska personnr visas
  */
 const creditcardBtn = document.querySelector('#creditcard')
 const invoiceBtn = document.querySelector('#invoice')
@@ -850,7 +850,7 @@ function showPersonNr(){
 ------------- Tidsbegränsningen på 15 min ---------------------------------------------------------
 ---------------------------------------------------------------------------------------------------*/
 
-// Sätter EventListner till change på alla delar i form. När någon av dessa triggas startar funktionen Start timer.     
+// Sätter eventListener till change på alla delar i form. När någon av dessa triggas startar funktionen Start timer.     
 nameInput.addEventListener('change', startTimer);                            
 lastNameInput.addEventListener('change', startTimer); 
 adress.addEventListener('change', startTimer);                          
@@ -909,8 +909,8 @@ if(today.getDate() == 24 && today.getMonth() == 11){                         //O
     for (let i = 0 ; i < santaPrice.length ; i++){
       santaPrice[i].style.color = 'red';  
     }
-    const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bagrundfärg röd
-    const santaForm = document.querySelector('.section-form').style.backgroundImage = 'url("images/hallonchokladInzoom.jpg")';                  //Byta balgrundsbild
+    const santaBasket = document.querySelector('#shopping-basket').style.backgroundColor = 'brown';                    //Byt bakgrundsfärg röd
+    const santaForm = document.querySelector('.section-form').style.backgroundImage = 'url("images/hallonchokladInzoom.jpg")';                  //Byta bakgrundsbild
 }
 
 /*---------------------------------------------------------------------------------------------------
@@ -921,7 +921,7 @@ if(today.getDate() == 24 && today.getMonth() == 11){                         //O
 const today2 = new Date();                                             //Dagens datum
 if(today2.getDate() == 24 && today2.getMonth() == 11){                         //Om dagens datum är 24 dec
     const santaVagon = document.querySelector('.fa-shopping-cart');     //Hämtar vagnen
-    santaVagon.style.color = 'red';                                     //Ändra Color på vagnen
+    santaVagon.style.color = 'red';                                     //Ändra färg på vagnen
     const santaH1 = document.querySelector('h1');                       //Hämtar H1    
     santaH1.style.color = 'black';                                      //Ändra färg på text i H1
     santaH1.style.paddingTop = '100px';                                 //Ändrad padding så texten passar ny bild
@@ -947,14 +947,14 @@ if(today2.getDate() == 24 && today2.getMonth() == 11){                         /
     santaH2.style.color = 'white';
     santaH2.style.textdekoration = 'none';
     const santaIcon = document.querySelector('.informationUlIcons').style.color = 'white';  
-    //Kan ändra färg på pluset med den andra ikonerna verkar vara låsta i sin färg. 
+    //Kan ändra färg på pluset med de andra ikonerna verkar vara låsta i sin färg. 
 }
 
 /*---------------------------------------------------------------------------------------------------
 ---------------------- Delivery Time Code -----------------------------------------------------------
 ---------------------------------------------------------------------------------------------------*/
   
-const textToDelivery = document.querySelector('#textAboutDeliveryTime');        //Hämtar span där texten ska stå i HTMLen. 
+const textToDelivery = document.querySelector('#textAboutDeliveryTime');        //Hämtar span där texten ska stå i HTML:en. 
 
 function deliveryTime() {                                                       //Ska triggas när man trycker på Submit-knappen 
     const lokalToday = new Date();
@@ -970,7 +970,7 @@ function deliveryTime() {                                                       
     }
 }
 
-const popupArea = document.querySelector('#stopArea');                                                   // Diven med popupen
+const popupArea = document.querySelector('#stopArea');                                                   // Div:en med popupen
 
 function showPopupArea() {                                                                               // Funktion som visar popUparea   
     popupArea.removeAttribute('hidden');                                                                 // Kör popupen synlig   
@@ -981,8 +981,8 @@ stopAreaButton.addEventListener('click', closePopUpArea);                       
 
 function closePopUpArea() {                                                                                 
     emptyBasket();                                                          // Varukorgen töms.
-    document.getElementById('custumerForm').reset();                        // Formen resetas.
-    popupArea.setAttribute('hidden', '');                                   // Inforutan blir hidden och hemsidan syns igen. 
+    document.getElementById('custumerForm').reset();                        // Formulär återställs.
+    popupArea.setAttribute('hidden', '');                                   // Inforutan blir dold och hemsidan syns igen. 
 }
 
 /*------------------------------------------------------------------------------------------------------*/ 
@@ -992,5 +992,5 @@ function totalPriceToPay() {
 }
 
 function allDonuts() {
-    document.querySelector('#summaryDonuts').innerHTML=totalNumberOfDonuts;   // Funktionen som redovisar total antal munkar i popupen
+    document.querySelector('#summaryDonuts').innerHTML=totalNumberOfDonuts;   // Funktionen som redovisar totalt antal munkar i popupen
 }
